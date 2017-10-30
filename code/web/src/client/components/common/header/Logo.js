@@ -7,7 +7,7 @@ import { secondary } from '../../ui/common/fonts'
 import { textLevel1 } from '../../ui/common/shadows'
 
 // App Imports
-import { home } from '../../../setup/routes'
+import home from '../../../setup/routes/home'
 
 // Component
 const Logo = (props) => {

@@ -26,6 +26,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "babel-preset-stage-2": "^6.24.1",
+    "dotenv": "^4.0.0",
     "express": "^5.0.0-alpha.6",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",

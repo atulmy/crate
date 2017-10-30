@@ -3,7 +3,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 // App Imports
-import routes from '../setup/routes'
+import { routes } from '../setup/routes'
 import Layout from './common/Layout'
 import NotFound from './common/NotFound'
 

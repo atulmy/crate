@@ -12,7 +12,6 @@ import { Input } from '../ui/input'
 import { level1 } from '../ui/common/shadows'
 
 // App Imports
-import { user } from '../../setup/routes'
 
 // Component
 const Signup = () => (
@@ -44,29 +43,31 @@ const Signup = () => (
         </GridCell>
 
         <GridCell style={ { textAlign: 'center' } }>
-            <div style={ { width: '25em', margin: '0 auto' } }>
-                <Input
-                    type="text"
-                    fullWidth={ true }
-                    placeholder="Name"
-                />
+            <form>
+                <div style={ { width: '25em', margin: '0 auto' } }>
+                    <Input
+                        type="text"
+                        fullWidth={ true }
+                        placeholder="Name"
+                    />
 
-                <Input
-                    type="email"
-                    fullWidth={ true }
-                    placeholder="Email"
-                    style={ { marginTop: '0.5em' } }
-                />
+                    <Input
+                        type="email"
+                        fullWidth={ true }
+                        placeholder="Email"
+                        style={ { marginTop: '1em' } }
+                    />
 
-                <Input
-                    type="password"
-                    fullWidth={ true }
-                    placeholder="Password"
-                    style={ { marginTop: '0.5em' } }
-                />
-            </div>
+                    <Input
+                        type="password"
+                        fullWidth={ true }
+                        placeholder="Password"
+                        style={ { marginTop: '1em' } }
+                    />
+                </div>
 
-            <Button theme="secondary" style={ { marginTop: '2em' } }>Signup</Button>
+                <Button type="submit" theme="secondary" style={ { marginTop: '2em' } }>Signup</Button>
+            </form>
         </GridCell>
     </Grid>
 )

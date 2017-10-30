@@ -12,7 +12,7 @@ import { textLevel1 } from '../ui/common/shadows'
 import { white, grey, grey3 } from '../ui/common/colors'
 
 // App Imports
-import { user } from '../../setup/routes'
+import user from '../../setup/routes/user'
 
 // Component
 const HowItWorks = () => (

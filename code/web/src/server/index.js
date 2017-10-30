@@ -15,7 +15,7 @@ import thunk from 'redux-thunk'
 
 // App Imports
 import { rootReducer } from '../client/setup/store'
-import routes from '../client/setup/routes'
+import { routes } from '../client/setup/routes'
 import App from '../client/components/App'
 import index from './views/index'
 

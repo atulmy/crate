@@ -11,7 +11,7 @@ import ImageTile from '../ui/image/Tile'
 import { level1 } from '../ui/common/shadows'
 
 // App Imports
-import { user } from '../../setup/routes'
+import user from '../../setup/routes/user'
 
 // Component
 const Women = () => (

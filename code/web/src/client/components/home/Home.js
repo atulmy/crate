@@ -11,7 +11,7 @@ import { white } from '../ui/common/colors'
 import { textLevel1 } from '../ui/common/shadows'
 
 // App Imports
-import { user } from '../../setup/routes'
+import user from '../../setup/routes/user'
 
 // Component
 const Home = () => (

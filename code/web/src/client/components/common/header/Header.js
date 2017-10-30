@@ -7,7 +7,8 @@ import { primary as primaryGradient } from '../../ui/common/gradients'
 import { level1 } from '../../ui/common/shadows'
 
 // App Imports
-import { home, user } from '../../../setup/routes'
+import home from '../../../setup/routes/home'
+import user from '../../../setup/routes/user'
 import Logo from './Logo'
 import Menu from './Menu'
 import MenuItem from './MenuItem'
