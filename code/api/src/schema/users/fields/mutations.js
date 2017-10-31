@@ -2,11 +2,11 @@
 import { GraphQLString, GraphQLInt } from 'graphql'
 
 // App Imports
-import UserType from '../type'
+import { UserType } from '../type'
 import { create, remove } from '../resolvers'
 
 // Create
-export const userCreate = {
+export const userSignup = {
     type: UserType,
     args: {
         name: {

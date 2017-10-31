@@ -34,23 +34,16 @@ export function login(userCredentials) {
             type: LOGIN_REQUEST
         })
 
-        /*
-        return axios.post(routesApi, userCredentials)
-            .then((response) => {
-                let error = null
+        return axios.post(routesApi, queryBuilder({ type: 'query', operation: 'userLogin', data: userCredentials, fields: ['user {name, email}', 'token'] }))
+            .then(response => {
+                let error = ''
 
-                if(response.status === 200 && response.data.token !== '') {
-                    const token = response.data.token
+                if(response.data.errors && response.data.errors.length > 0) {
+                    error = response.data.errors[0].message
+                } else if(response.data.data.userLogin.token !== '') {
+                    const token = response.data.data.userLogin.token
 
-                    axios.get(routesApi, { headers: { 'Authorization':  `Bearer ${ token }` } })
-                        .then((response) => {
-                            dispatch(setUser(token, response.data.user))
-                        })
-                        .catch(() => {
-                            error = 'Please try again'
-                        })
-                } else {
-                    error = response.data.error
+                    dispatch(setUser(token, response.data.data.userLogin.user))
                 }
 
                 dispatch({
@@ -58,26 +51,19 @@ export function login(userCredentials) {
                     error
                 })
             })
-            .catch((error) => {
-                let errorMessage = 'Please try again.'
-
-                if(error.response && error.response.data.error) {
-                    errorMessage = error.response.data.error
-                }
-
+            .catch(error => {
                 dispatch({
                     type: LOGIN_RESPONSE,
-                    error: errorMessage
+                    error: 'Please try again'
                 })
             })
-        */
     }
 }
 
 // Register a user
 export function register(userDetails) {
     return dispatch => {
-        return axios.post(routesApi, queryBuilder({ type: 'mutation', operation: 'userCreate', data: userDetails, fields: ['id', 'name', 'email'] }))
+        return axios.post(routesApi, queryBuilder({ type: 'mutation', operation: 'userSignup', data: userDetails, fields: ['id', 'name', 'email'] }))
     }
 }
 

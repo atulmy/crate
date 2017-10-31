@@ -68,7 +68,7 @@ const index = (helmet = {}, appHtml = '', styles = '', initialState = {}) => (
     
     <!-- CSS - Global -->
     <style type="text/css">
-        html, body { font-family: 'Roboto', sans-serif; background-color: #fafafa; }
+        html, body { font-family: 'Roboto', sans-serif; background-color: #f9f9f9; }
         a { text-decoration: none; }
     </style>
     

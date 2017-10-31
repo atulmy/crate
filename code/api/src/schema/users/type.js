@@ -4,7 +4,7 @@ import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 // User type
 const UserType = new GraphQLObjectType({
     name: 'user',
-    description: '...',
+    description: 'User type',
 
     fields: () => ({
         id: { type: GraphQLInt },
@@ -16,4 +16,15 @@ const UserType = new GraphQLObjectType({
     })
 })
 
-export default UserType
+// User type
+const UserLoginType = new GraphQLObjectType({
+    name: 'userAuth',
+    description: 'User Authentication Type',
+
+    fields: () => ({
+        user: { type: UserType },
+        token: { type: GraphQLString }
+    })
+})
+
+export { UserType, UserLoginType }

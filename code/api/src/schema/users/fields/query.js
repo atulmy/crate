@@ -1,9 +1,9 @@
 // Imports
-import { GraphQLInt, GraphQLList } from 'graphql'
+import { GraphQLInt, GraphQLString, GraphQLList } from 'graphql'
 
 // App Imports
-import UserType from '../type'
-import { getAll, getById } from '../resolvers'
+import { UserType, UserLoginType } from '../type'
+import { getAll, getById, login } from '../resolvers'
 
 // All
 export const users = {
@@ -18,4 +18,21 @@ export const user = {
         id: { type: GraphQLInt }
     },
     resolve: getById
+}
+
+// Auth
+export const userLogin = {
+    type: UserLoginType,
+    args: {
+        email: {
+            name: 'email',
+            type: GraphQLString
+        },
+
+        password: {
+            name: 'password',
+            type: GraphQLString
+        }
+    },
+    resolve: login
 }

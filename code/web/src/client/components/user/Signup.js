@@ -2,16 +2,22 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 // UI Imports
 import { Grid, GridCell } from '../ui/grid'
 import Button from '../ui/button'
 import ImageTile from '../ui/image/Tile'
-import { Input } from '../ui/input'
+import Input from '../ui/input/Input'
+import H3 from '../ui/typography/H3'
+import Icon from '../ui/icon'
 import { level1 } from '../ui/common/shadows'
+import { white } from '../ui/common/colors'
 
 // App Imports
+import userRoutes from '../../setup/routes/user'
+import { messageShow, messageHide } from '../common/api/actions'
 import { register } from './api/actions'
 
 // Component
@@ -22,7 +28,6 @@ class Signup extends Component {
         this.state = {
             error: '',
             isLoading: false,
-            complete: false,
             user: {
                 name: '',
                 email: '',
@@ -47,24 +52,28 @@ class Signup extends Component {
             isLoading: true
         })
 
+        this.props.messageShow('Signing you up, please wait...')
+
         this.props.register(this.state.user)
             .then(response => {
                 this.setState({
-                    isLoading: false,
-                    error: '',
-                    complete: true
+                    isLoading: false
                 })
+
+                if(response.data.errors && response.data.errors.length > 0) {
+                    this.props.messageShow(response.data.errors[0].message)
+                } else {
+                    this.props.messageShow('Signed up successfully.')
+
+                    this.props.history.push(userRoutes.login.path)
+                }
             })
             .catch(error => {
-                let errorMessage = 'Please try again.'
-
-                if(error.response && error.response.data.error) {
-                    errorMessage = error.response.data.error
-                }
+                this.props.messageShow('There was some error signing you up. Please try again.')
 
                 this.setState({
                     isLoading: false,
-                    error: errorMessage
+                    error: 'Error signing up.'
                 })
             })
     }
@@ -73,7 +82,7 @@ class Signup extends Component {
         return(
             <Grid alignCenter={ true } style={ { padding: '2em' } }>
                 <Helmet>
-                    <title>Monthly supply of clothes and accessories for Men - Crate</title>
+                    <title>Create an account - Crate</title>
                 </Helmet>
 
                 <GridCell>
@@ -99,31 +108,40 @@ class Signup extends Component {
                 </GridCell>
 
                 <GridCell style={ { textAlign: 'center' } }>
+                    <H3 font="secondary" style={ { marginBottom: '1em' } }>Create an account</H3>
+
+                    {/* Signup Form */}
                     <form onSubmit={ this.onSubmit.bind(this) }>
                         <div style={ { width: '25em', margin: '0 auto' } }>
+                            {/* Name */}
                             <Input
                                 type="text"
                                 fullWidth={ true }
                                 placeholder="Name"
+                                required="required"
                                 name="name"
                                 value={ this.state.user.name }
                                 onChange={ this.onChange.bind(this) }
                             />
 
+                            {/* Email */}
                             <Input
                                 type="email"
                                 fullWidth={ true }
                                 placeholder="Email"
+                                required="required"
                                 name="email"
                                 value={ this.state.user.email }
                                 onChange={ this.onChange.bind(this) }
                                 style={ { marginTop: '1em' } }
                             />
 
+                            {/* Password */}
                             <Input
                                 type="password"
                                 fullWidth={ true }
                                 placeholder="Password"
+                                required="required"
                                 name="password"
                                 value={ this.state.user.password }
                                 onChange={ this.onChange.bind(this) }
@@ -131,7 +149,15 @@ class Signup extends Component {
                             />
                         </div>
 
-                        <Button type="submit" theme="secondary" style={ { marginTop: '2em' } }>Signup</Button>
+                        <div style={ { marginTop: '2em' } }>
+                            {/* Login link */}
+                            <Link to={ userRoutes.login.path }>
+                                <Button type="button" style={ { marginRight: '0.5em' } }>Login</Button>
+                            </Link>
+
+                            {/* Form submit */}
+                            <Button type="submit" theme="secondary">Signup <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
+                        </div>
                     </form>
                 </GridCell>
             </Grid>
@@ -141,7 +167,9 @@ class Signup extends Component {
 
 // Component Properties
 Signup.propTypes = {
-    register: PropTypes.func.isRequired
+    register: PropTypes.func.isRequired,
+    messageShow: PropTypes.func.isRequired,
+    messageHide: PropTypes.func.isRequired
 }
 
-export default connect(null, { register })(Signup)
+export default connect(null, { register, messageShow, messageHide })(withRouter(Signup))

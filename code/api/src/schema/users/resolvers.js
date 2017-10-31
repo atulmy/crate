@@ -1,13 +1,53 @@
+// Imports
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+
 // App Imports
+import config from '../../config/config.json'
 import models from '../../models'
 
 // Create
 export async function create(parentValue, { name, email, password }) {
-    return await models.User.create({
-        name,
-        email,
-        password
-    })
+    // Users exists with same email check
+    const user = await models.User.findOne({ where: { email }})
+
+    if(!user) {
+        // User does not exists
+        const passwordHashed = await bcrypt.hash(password, config.saltRounds)
+
+        return await models.User.create({
+            name,
+            email,
+            password: passwordHashed
+        })
+    } else {
+        // User exists
+        throw new Error(`The email ${ email } is already registered. Please try to login.`)
+    }
+}
+
+export async function login(parentValue, { email, password }) {
+    const user = await models.User.findOne({ where: { email } })
+
+    if(!user) {
+        // User does not exists
+        throw new Error(`We do not have any user registered with ${ email } email address. Please signup.`)
+    } else {
+        const userDetails = user.get()
+
+        // User exists
+        const passwordMatch = await bcrypt.compare(password, userDetails.password)
+
+        if(!passwordMatch) {
+            // Incorrect password
+            throw new Error(`Sorry, the password you entered is incorrect. Please try again.`)
+        } else {
+            return {
+                user: userDetails,
+                token: jwt.sign(userDetails, config.secret)
+            }
+        }
+    }
 }
 
 // Get by ID

@@ -72,7 +72,7 @@ const HowItWorks = () => (
         <Grid style={ { backgroundColor: grey } }>
             <GridCell style={ { padding: '3em', textAlign: 'center' } }>
                 <Link to={ user.signup.path }>
-                    <Button style={ { marginTop: '1em' } }>Start <Icon size={ 1.3 } style={ { color: white } }>navigate_next</Icon></Button>
+                    <Button theme="primary" style={ { marginTop: '1em' } }>Start <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
                 </Link>
             </GridCell>
         </Grid>

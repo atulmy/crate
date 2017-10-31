@@ -3,6 +3,7 @@ import React  from 'react'
 import PropTypes from 'prop-types'
 
 // UI Imports
+import { white, black } from '../common/colors'
 import { primary, secondary } from '../common/gradients'
 import { level2, level3, level4 } from '../common/shadows'
 
@@ -17,7 +18,6 @@ const Button = (props) => {
             {/* language=CSS */}
             <style jsx>{`
                 button {
-                    color: white;
                     padding: 0.8em 1.5em;
                     border: none;
                     border-radius: 1.4em;
@@ -26,8 +26,10 @@ const Button = (props) => {
                     cursor: pointer;
                     outline: none;
                     font-size: 1em;
-                    box-shadow: ${ level2 };
-                    background-image: ${ theme === 'primary' ? primary : secondary };
+                    color: ${ theme !== 'none' ? white : black };
+                    box-shadow: ${ theme !== 'none' ? level2 : 'none' };
+                    background-color: transparent;
+                    background-image: ${ theme === 'primary' ? primary : theme === 'secondary' ? secondary : 'none' };
                 }
                 button:hover {
                     box-shadow: ${ level3 };
@@ -48,7 +50,7 @@ Button.propTypes = {
 }
 Button.defaultProps = {
     type: 'button',
-    theme: 'primary'
+    theme: 'none'
 }
 
 export default Button
