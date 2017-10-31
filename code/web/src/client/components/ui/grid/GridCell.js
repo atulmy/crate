@@ -16,8 +16,6 @@ const GridCell = (props) => {
         ...others
     } = props
 
-    console.log(gutter)
-
     return(
         <div { ...others }>
             { children }

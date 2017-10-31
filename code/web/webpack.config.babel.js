@@ -1,4 +1,6 @@
+// Imports
 import path from 'path'
+import Dotenv from 'dotenv-webpack'
 
 const config = {
     entry: {
@@ -20,6 +22,10 @@ const config = {
             }
         ]
     },
+
+    plugins: [
+        new Dotenv()
+    ],
 
     node: {
         fs: "empty"

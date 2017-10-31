@@ -1,6 +1,3 @@
-// Imports
-import dotenv from 'dotenv/config'
-
 // Configs
 
 // URL

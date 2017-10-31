@@ -1,0 +1,40 @@
+// Imports
+import { GraphQLString, GraphQLInt } from 'graphql'
+
+// App Imports
+import UserType from '../type'
+import { create, remove } from '../resolvers'
+
+// Create
+export const userCreate = {
+    type: UserType,
+    args: {
+        name: {
+            name: 'name',
+            type: GraphQLString
+        },
+
+        email: {
+            name: 'email',
+            type: GraphQLString
+        },
+
+        password: {
+            name: 'password',
+            type: GraphQLString
+        }
+    },
+    resolve: create
+}
+
+// Remove
+export const userRemove = {
+    type: UserType,
+    args: {
+        id: {
+            name: 'id',
+            type: GraphQLInt
+        }
+    },
+    resolve: remove
+}

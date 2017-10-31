@@ -4,11 +4,11 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
 // App Imports
-//import * as blog from '../components/blog/api/state'
+import user from '../components/user/api/state'
 
 // App Reducer
 const appReducer = combineReducers({
-    //...blog
+    user
 })
 
 // Root Reducer
@@ -36,3 +36,5 @@ export const store = createStore(
         applyMiddleware(thunk),
     )
 )
+
+console.log(store.getState())
