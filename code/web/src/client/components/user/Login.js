@@ -20,6 +20,7 @@ import userRoutes from '../../setup/routes/user'
 import homeRoutes from '../../setup/routes/home'
 import { messageShow, messageHide } from '../common/api/actions'
 import { login } from './api/actions'
+import AuthCheck from './AuthCheck'
 
 // Component
 class Login extends Component {
@@ -123,6 +124,9 @@ class Login extends Component {
                         </div>
                     </form>
                 </GridCell>
+
+                {/* Auth Check */}
+                <AuthCheck />
             </Grid>
         )
     }

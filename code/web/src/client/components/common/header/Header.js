@@ -1,5 +1,8 @@
 // Imports
 import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
@@ -14,8 +17,7 @@ import Menu from './Menu'
 import MenuItem from './MenuItem'
 
 // Component
-const Header = () => {
-
+const Header = (props) => {
     return(
         <header style={ { backgroundImage: primaryGradient, boxShadow: level1, padding: '0 2em', height: '5em', position: 'fixed', left: 0, right: 0, top: 0 } }>
             <Grid alignCenter={ true } style={ { marginTop: '1.5em' } }>
@@ -35,15 +37,37 @@ const Header = () => {
 
                 {/* Right menu */}
                 <GridCell style={ { textAlign: 'right' } }>
-                    <Menu>
-                        <MenuItem to={ user.login.path }>Login</MenuItem>
+                    {
+                        props.user.isAuthenticated
+                            ?
+                        <Menu>
+                            <MenuItem to={ user.signup.path }>Subscription</MenuItem>
 
-                        <MenuItem to={ user.signup.path }>Signup</MenuItem>
-                    </Menu>
+                            <MenuItem to={ user.signup.path }>Profile</MenuItem>
+                        </Menu>
+                            :
+                        <Menu>
+                            <MenuItem to={ user.login.path }>Login</MenuItem>
+
+                            <MenuItem to={ user.signup.path }>Signup</MenuItem>
+                        </Menu>
+                    }
                 </GridCell>
             </Grid>
         </header>
     )
 }
 
-export default Header
+// Component Properties
+Header.propTypes = {
+    user: PropTypes.object.isRequired
+}
+
+// Component State
+function headerState(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default withRouter(connect(headerState, {})(Header))

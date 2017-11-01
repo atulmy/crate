@@ -1,5 +1,7 @@
 // Imports
 import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 
@@ -11,15 +13,17 @@ import ImageTile from '../ui/image/Tile'
 import { level1 } from '../ui/common/shadows'
 
 // App Imports
-import user from '../../setup/routes/user'
+import userRoutes from '../../setup/routes/user'
 
 // Component
-const Women = () => (
+const Women = (props) => (
     <Grid alignCenter={ true } style={ { padding: '2em' } }>
+        {/* SEO */}
         <Helmet>
             <title>Monthly supply of clothes and accessories for Women - Crate</title>
         </Helmet>
 
+        {/* Left Content - Image Collage */}
         <GridCell>
             <Grid alignCenter={ true }>
                 <GridCell justifyCenter={ true }>
@@ -42,16 +46,38 @@ const Women = () => (
             </Grid>
         </GridCell>
 
+        {/* Right Content */}
         <GridCell style={ { textAlign: 'center' } }>
             <H2 font="secondary">Monthly crates for Women</H2>
 
             <H4 style={ { marginTop: '0.5em' } }>Save time. Look great. The personal styling service customized to your fit, lifestyle & spending preferences.</H4>
 
-            <Link to={ user.signup.path }>
-                <Button theme="secondary" style={ { marginTop: '1em' } }>Get Started</Button>
-            </Link>
+            {/* Call to action */}
+            {
+                props.user.isAuthenticated
+                    ?
+                <Link to={ userRoutes.signup.path }>
+                    <Button theme="secondary" style={ { marginTop: '1em' } }>Get Subscription</Button>
+                </Link>
+                    :
+                <Link to={ userRoutes.signup.path }>
+                    <Button theme="secondary" style={ { marginTop: '1em' } }>Get Started</Button>
+                </Link>
+            }
         </GridCell>
     </Grid>
 )
 
-export default Women
+// Component Properties
+Women.propTypes = {
+    user: PropTypes.object.isRequired
+}
+
+// Component State
+function womenState(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(womenState, {})(Women)

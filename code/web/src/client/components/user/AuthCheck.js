@@ -20,14 +20,16 @@ class AuthCheck extends Component {
     }
 }
 
+// Component Properties
 AuthCheck.propTypes = {
-    user: PropTypes.object.isRequired,
-};
+    user: PropTypes.object.isRequired
+}
 
+// Component State
 function mapStateToProps(state) {
     return {
         user: state.user
     }
 }
 
-export default connect(mapStateToProps, {})(AuthCheck);
+export default connect(mapStateToProps, {})(AuthCheck)

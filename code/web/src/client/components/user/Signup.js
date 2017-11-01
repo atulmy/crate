@@ -19,6 +19,7 @@ import { white } from '../ui/common/colors'
 import userRoutes from '../../setup/routes/user'
 import { messageShow, messageHide } from '../common/api/actions'
 import { register } from './api/actions'
+import AuthCheck from './AuthCheck'
 
 // Component
 class Signup extends Component {
@@ -81,10 +82,12 @@ class Signup extends Component {
     render() {
         return(
             <Grid alignCenter={ true } style={ { padding: '2em' } }>
+                {/* SEO */}
                 <Helmet>
                     <title>Create an account - Crate</title>
                 </Helmet>
 
+                {/* Left Content - Image Collage */}
                 <GridCell>
                     <Grid alignCenter={ true }>
                         <GridCell justifyCenter={ true }>
@@ -107,6 +110,7 @@ class Signup extends Component {
                     </Grid>
                 </GridCell>
 
+                {/* Right Content */}
                 <GridCell style={ { textAlign: 'center' } }>
                     <H3 font="secondary" style={ { marginBottom: '1em' } }>Create an account</H3>
 
@@ -160,6 +164,9 @@ class Signup extends Component {
                         </div>
                     </form>
                 </GridCell>
+
+                {/* Auth Check */}
+                <AuthCheck />
             </Grid>
         )
     }

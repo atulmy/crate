@@ -1,5 +1,7 @@
 // Imports
 import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 
@@ -12,10 +14,10 @@ import { textLevel1 } from '../ui/common/shadows'
 import { white, grey, grey3 } from '../ui/common/colors'
 
 // App Imports
-import user from '../../setup/routes/user'
+import userRoutes from '../../setup/routes/user'
 
 // Component
-const HowItWorks = () => (
+const HowItWorks = (props) => (
     <div>
         {/* SEO */}
         <Helmet>
@@ -71,12 +73,32 @@ const HowItWorks = () => (
         {/* Bottom call to action bar */}
         <Grid style={ { backgroundColor: grey } }>
             <GridCell style={ { padding: '3em', textAlign: 'center' } }>
-                <Link to={ user.signup.path }>
-                    <Button theme="primary" style={ { marginTop: '1em' } }>Start <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
-                </Link>
+                {
+                    props.user.isAuthenticated
+                        ?
+                    <Link to={ userRoutes.signup.path }>
+                        <Button theme="primary" style={ { marginTop: '1em' } }>Subscribe <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
+                    </Link>
+                        :
+                    <Link to={ userRoutes.signup.path }>
+                        <Button theme="primary" style={ { marginTop: '1em' } }>Start <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
+                    </Link>
+                }
             </GridCell>
         </Grid>
     </div>
 )
 
-export default HowItWorks
+// Component Properties
+HowItWorks.propTypes = {
+    user: PropTypes.object.isRequired
+}
+
+// Component State
+function howItWorksState(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(howItWorksState, {})(HowItWorks)
