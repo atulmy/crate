@@ -32,6 +32,8 @@ const Header = (props) => {
                         <MenuItem to={ home.women.path }>Women</MenuItem>
 
                         <MenuItem to={ home.howItWorks.path }>How It Works</MenuItem>
+
+                        <MenuItem to={ home.whatsNew.path }>What's New</MenuItem>
                     </Menu>
                 </GridCell>
 
@@ -41,9 +43,9 @@ const Header = (props) => {
                         props.user.isAuthenticated
                             ?
                         <Menu>
-                            <MenuItem to={ user.signup.path }>Subscription</MenuItem>
+                            <MenuItem to={ user.subscriptions.path }>Subscription</MenuItem>
 
-                            <MenuItem to={ user.signup.path }>Profile</MenuItem>
+                            <MenuItem to={ user.profile.path }>Profile</MenuItem>
                         </Menu>
                             :
                         <Menu>

@@ -76,7 +76,7 @@ const HowItWorks = (props) => (
                 {
                     props.user.isAuthenticated
                         ?
-                    <Link to={ userRoutes.signup.path }>
+                    <Link to={ userRoutes.subscriptions.path }>
                         <Button theme="primary" style={ { marginTop: '1em' } }>Subscribe <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
                     </Link>
                         :

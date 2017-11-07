@@ -13,7 +13,7 @@ import { white } from '../ui/common/colors'
 import { textLevel1 } from '../ui/common/shadows'
 
 // App Imports
-import user from '../../setup/routes/user'
+import userRoutes from '../../setup/routes/user'
 
 // Component
 const Home = (props) => (
@@ -32,11 +32,11 @@ const Home = (props) => (
             {
                 props.user.isAuthenticated
                     ?
-                <Link to={ user.signup.path }>
+                <Link to={ userRoutes.subscriptions.path }>
                     <Button theme="secondary" style={ { marginTop: '1em' } }>Get Subscription</Button>
                 </Link>
                     :
-                <Link to={ user.signup.path }>
+                <Link to={ userRoutes.signup.path }>
                     <Button theme="secondary" style={ { marginTop: '1em' } }>Get Started</Button>
                 </Link>
             }

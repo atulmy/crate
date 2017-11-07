@@ -45,8 +45,8 @@ const store = createStore(
 app.get('*', (request, response) => {
 
     // Check for auth
-    if(request.cookies.token) {
-        const auth = JSON.parse(request.cookies.token)
+    if(request.cookies.auth) {
+        const auth = JSON.parse(request.cookies.auth)
 
         if (auth && auth.token !== '' && auth.user) {
             store.dispatch(setUser(auth.token, auth.user))

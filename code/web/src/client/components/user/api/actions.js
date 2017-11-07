@@ -61,14 +61,14 @@ export function login(userCredentials) {
     }
 }
 
-//
+// Set user token and info in localStorage and cookie
 export function loginSetUserLocalStorageAndCookie(token, user) {
     // Update token
     window.localStorage.setItem('token', token)
     window.localStorage.setItem('user', JSON.stringify(user))
 
     // Set cookie for SSR
-    cookie.set('token', { token, user }, { path: '/' })
+    cookie.set('auth', { token, user }, { path: '/' })
 }
 
 // Register a user
@@ -81,10 +81,20 @@ export function register(userDetails) {
 // Log out user and remove token from localStorage
 export function logout() {
     return dispatch => {
-        window.localStorage.removeItem('token')
+        logoutUnsetUserLocalStorageAndCookie()
 
         dispatch({
             type: LOGOUT
         })
     }
+}
+
+// Unset user token and info in localStorage and cookie
+export function logoutUnsetUserLocalStorageAndCookie(token, user) {
+    // Update token
+    window.localStorage.removeItem('token')
+    window.localStorage.removeItem('user')
+
+    // Set cookie for SSR
+    cookie.remove('auth')
 }

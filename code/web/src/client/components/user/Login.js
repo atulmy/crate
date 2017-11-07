@@ -17,7 +17,6 @@ import { white } from '../ui/common/colors'
 
 // App Imports
 import userRoutes from '../../setup/routes/user'
-import homeRoutes from '../../setup/routes/home'
 import { messageShow, messageHide } from '../common/api/actions'
 import { login } from './api/actions'
 import AuthCheck from './AuthCheck'

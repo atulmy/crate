@@ -6,11 +6,13 @@ import thunk from 'redux-thunk'
 // App Imports
 import common from '../components/common/api/state'
 import user from '../components/user/api/state'
+import blogs from '../components/home/api/state'
 
 // App Reducer
 const appReducer = combineReducers({
     common,
-    user
+    user,
+    blogs
 })
 
 // Root Reducer

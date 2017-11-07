@@ -6,12 +6,13 @@ import { Route, Switch } from 'react-router-dom'
 import { routes } from '../setup/routes'
 import Layout from './common/Layout'
 import NotFound from './common/NotFound'
+import RoutePrivate from './user/RoutePrivate'
 
 const App = (props) => (
     <Layout>
         <Switch>
             { Object.values(routes).map((route, index) => (
-                <Route { ...route } key={ index }/>
+                route.auth ? <RoutePrivate { ...route } key={ index }/> : <Route { ...route } key={ index }/>
             )) }
 
             <Route component={ NotFound } />
