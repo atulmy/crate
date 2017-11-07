@@ -44,10 +44,16 @@ const store = createStore(
 // Match any Route
 app.get('*', (request, response) => {
 
-    const auth = JSON.parse(request.cookies.token)
+    // Check for auth
+    if(request.cookies.token) {
+        const auth = JSON.parse(request.cookies.token)
 
-    store.dispatch(setUser(auth.token, auth.user))
+        if (auth && auth.token !== '' && auth.user) {
+            store.dispatch(setUser(auth.token, auth.user))
+        }
+    }
 
+    // HTTP status code
     let status = 200
 
     const matches = Object.values(routes).reduce((matches, route) => {

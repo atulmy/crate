@@ -4,6 +4,7 @@ import axios from 'axios'
 // App Imports
 import { routesApi } from '../../../setup/routes'
 import { queryBuilder } from '../../../setup/helpers'
+import cookie from 'js-cookie'
 
 // Actions Types
 export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
@@ -39,8 +40,11 @@ export function login(userCredentials) {
                     error = response.data.errors[0].message
                 } else if(response.data.data.userLogin.token !== '') {
                     const token = response.data.data.userLogin.token
+                    const user = response.data.data.userLogin.user
 
-                    dispatch(setUser(token, response.data.data.userLogin.user))
+                    dispatch(setUser(token, user))
+
+                    loginSetUserLocalStorageAndCookie(token, user)
                 }
 
                 dispatch({
@@ -55,6 +59,16 @@ export function login(userCredentials) {
                 })
             })
     }
+}
+
+//
+export function loginSetUserLocalStorageAndCookie(token, user) {
+    // Update token
+    window.localStorage.setItem('token', token)
+    window.localStorage.setItem('user', JSON.stringify(user))
+
+    // Set cookie for SSR
+    cookie.set('token', { token, user }, { path: '/' })
 }
 
 // Register a user
