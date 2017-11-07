@@ -2,12 +2,13 @@
 import path from 'path'
 import { Server } from 'http'
 import Express from 'express'
+import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
 import { flushToHTML } from 'styled-jsx/server'
 
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import { matchPath } from 'react-router'
-import { StaticRouter } from 'react-router-dom'
+import { StaticRouter, matchPath } from 'react-router-dom'
 import { Helmet } from "react-helmet"
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -17,11 +18,19 @@ import thunk from 'redux-thunk'
 import { rootReducer } from '../client/setup/store'
 import { routes } from '../client/setup/routes'
 import App from '../client/components/App'
+import { setUser } from '../client/components/user/api/actions'
 import index from './views/index'
 
 // Create new server
 const app = new Express()
 const server = new Server(app)
+
+// Request body parser
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
+
+// Request body cookie parser
+app.use(cookieParser())
 
 // Static files folder
 app.use(Express.static(path.join(__dirname, '../', 'static')))
@@ -34,6 +43,10 @@ const store = createStore(
 
 // Match any Route
 app.get('*', (request, response) => {
+
+    const auth = JSON.parse(request.cookies.token)
+
+    store.dispatch(setUser(auth.token, auth.user))
 
     let status = 200
 

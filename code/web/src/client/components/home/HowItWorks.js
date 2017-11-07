@@ -25,7 +25,7 @@ const HowItWorks = (props) => (
         </Helmet>
 
         {/* Top title bar */}
-        <Grid style={ { backgroundColor: grey } }>
+        <Grid gutter={ false } style={ { backgroundColor: grey } }>
             <GridCell style={ { padding: '2em', textAlign: 'center' } }>
                 <H3 font="secondary">Just 3 easy steps</H3>
             </GridCell>
@@ -71,7 +71,7 @@ const HowItWorks = (props) => (
         </Grid>
 
         {/* Bottom call to action bar */}
-        <Grid style={ { backgroundColor: grey } }>
+        <Grid gutter={ false } style={ { backgroundColor: grey } }>
             <GridCell style={ { padding: '3em', textAlign: 'center' } }>
                 {
                     props.user.isAuthenticated

@@ -2,6 +2,8 @@
 import jwt from 'jsonwebtoken'
 
 export default function (request, response, next) {
+    console.log(request)
+
     let token = request.body.token || request.query.token || request.headers['x-access-token'] || request.cookies.token
 
     if(token && token !== null) {

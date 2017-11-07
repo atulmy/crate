@@ -15,9 +15,6 @@ export const LOGOUT = 'AUTH/LOGOUT'
 
 // Set a user after login or using localStorage token
 export function setUser(token, user) {
-    window.localStorage.setItem('token', token)
-    window.localStorage.setItem('user', JSON.stringify(user))
-
     if(token) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     } else {

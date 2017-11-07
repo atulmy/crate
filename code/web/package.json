@@ -27,8 +27,11 @@
   "dependencies": {
     "axios": "^0.17.0",
     "babel-preset-stage-2": "^6.24.1",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "express": "^5.0.0-alpha.6",
+    "js-cookie": "^2.2.0",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
