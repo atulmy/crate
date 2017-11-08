@@ -4,7 +4,6 @@ import { Server } from 'http'
 import Express from 'express'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
-import { flushToHTML } from 'styled-jsx/server'
 
 import React from 'react'
 import { renderToString } from 'react-dom/server'
@@ -13,6 +12,7 @@ import { Helmet } from "react-helmet"
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
+import { flushToHTML } from 'styled-jsx/server'
 
 // App Imports
 import { rootReducer } from '../client/setup/store'

@@ -17,7 +17,7 @@ import userRoutes from '../../setup/routes/user'
 
 // Component
 const Home = (props) => (
-    <Grid alignCenter={ true } style={ { backgroundImage: `url('/images/homepage.jpg')`, backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center top', height: 'calc(100vh - 5em)', textAlign: 'center', color: white } }>
+    <Grid alignCenter={ true } style={ { backgroundImage: `url('/images/cover.jpg')`, backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center top', height: 'calc(100vh - 5em)', textAlign: 'center', color: white } }>
         {/* SEO */}
         <Helmet>
             <title>Monthly supply of clothes and accessories for Men and Women - Crate</title>

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 // App Imports
-import { routes } from '../../setup/routes'
+import userRoutes from '../../setup/routes/user'
 
 // Component
 class AuthCheck extends Component {
@@ -14,7 +14,7 @@ class AuthCheck extends Component {
 
         return (
             <div>
-                { isAuthenticated ? <Redirect to={ routes.home.path } /> : '' }
+                { isAuthenticated ? <Redirect to={ userRoutes.subscriptions.path } /> : <Redirect to={ userRoutes.login.path } /> }
             </div>
         )
     }
