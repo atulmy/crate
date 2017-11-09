@@ -18,7 +18,7 @@ const Button = (props) => {
             {/* language=CSS */}
             <style jsx>{`
                 button {
-                    padding: 0.8em 1.5em;
+                    padding: 0.8em 1.8em;
                     border: none;
                     border-radius: 1.4em;
                     text-transform: uppercase;

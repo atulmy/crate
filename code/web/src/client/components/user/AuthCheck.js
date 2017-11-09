@@ -14,7 +14,7 @@ class AuthCheck extends Component {
 
         return (
             <div>
-                { isAuthenticated ? <Redirect to={ userRoutes.subscriptions.path } /> : <Redirect to={ userRoutes.login.path } /> }
+                { isAuthenticated ? <Redirect to={ userRoutes.subscriptions.path } /> : '' }
             </div>
         )
     }

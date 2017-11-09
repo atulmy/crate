@@ -14,34 +14,41 @@ import { textLevel1 } from '../ui/common/shadows'
 
 // App Imports
 import userRoutes from '../../setup/routes/user'
+import Onboarding from './Onboarding'
 
 // Component
 const Home = (props) => (
-    <Grid alignCenter={ true } style={ { backgroundImage: `url('/images/cover.jpg')`, backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center top', height: 'calc(100vh - 5em)', textAlign: 'center', color: white } }>
-        {/* SEO */}
-        <Helmet>
-            <title>Monthly supply of clothes and accessories for Men and Women - Crate</title>
-        </Helmet>
+    <div>
+        {/* Home */}
+        <Grid gutter={ false } alignCenter={ true } style={ { backgroundImage: `url('/images/cover.jpg')`, backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center top', height: 'calc(100vh - 5em)', textAlign: 'center', color: white } }>
+            {/* SEO */}
+            <Helmet>
+                <title>Monthly supply of clothes and accessories for Men and Women - Crate</title>
+            </Helmet>
 
-        <GridCell>
-            <H1 font="secondary" style={ { textShadow: textLevel1 } }>Crate</H1>
+            <GridCell>
+                <H1 font="secondary" style={ { textShadow: textLevel1 } }>Crate</H1>
 
-            <H4 style={ { textShadow: textLevel1, marginTop: '0.5em' } }>Your monthly subscription of trendy clothes and accessories</H4>
+                <H4 style={ { textShadow: textLevel1, marginTop: '0.5em' } }>Your monthly subscription of trendy clothes and accessories</H4>
 
-            {/* Call to action */}
-            {
-                props.user.isAuthenticated
-                    ?
-                <Link to={ userRoutes.subscriptions.path }>
-                    <Button theme="secondary" style={ { marginTop: '1em' } }>Get Subscription</Button>
-                </Link>
-                    :
-                <Link to={ userRoutes.signup.path }>
-                    <Button theme="secondary" style={ { marginTop: '1em' } }>Get Started</Button>
-                </Link>
-            }
-        </GridCell>
-    </Grid>
+                {/* Call to action */}
+                {
+                    props.user.isAuthenticated
+                        ?
+                    <Link to={ userRoutes.subscriptions.path }>
+                        <Button theme="secondary" style={ { marginTop: '1em' } }>Get Subscription</Button>
+                    </Link>
+                        :
+                    <Link to={ userRoutes.signup.path }>
+                        <Button theme="secondary" style={ { marginTop: '1em' } }>Get Started</Button>
+                    </Link>
+                }
+            </GridCell>
+        </Grid>
+
+        {/* Onboarding */}
+        <Onboarding />
+    </div>
 )
 
 // Component Properties
