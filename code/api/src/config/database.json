@@ -4,7 +4,8 @@
     "password": null,
     "database": "crate",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "seederStorage": "sequelize"
   },
 
   "production": {
@@ -12,6 +13,7 @@
     "password": null,
     "database": "crate",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "seederStorage": "sequelize"
   }
 }

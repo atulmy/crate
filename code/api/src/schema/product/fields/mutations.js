@@ -2,29 +2,29 @@
 import { GraphQLString, GraphQLInt } from 'graphql'
 
 // App Imports
-import ThoughtType from '../type'
+import ProductType from '../type'
 import { create, remove } from '../resolvers'
 
-// Thought create
-export const thoughtCreate = {
-    type: ThoughtType,
+// Product create
+export const productCreate = {
+    type: ProductType,
     args: {
         name: {
             name: 'name',
             type: GraphQLString
         },
 
-        thought: {
-            name: 'thought',
+        product: {
+            name: 'product',
             type: GraphQLString
         }
     },
     resolve: create
 }
 
-// Thought remove
-export const thoughtRemove = {
-    type: ThoughtType,
+// Product remove
+export const productRemove = {
+    type: ProductType,
     args: {
         id: {
             name: 'id',

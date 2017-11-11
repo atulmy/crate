@@ -77,11 +77,11 @@ const HowItWorks = (props) => (
                     props.user.isAuthenticated
                         ?
                     <Link to={ userRoutes.subscriptions.path }>
-                        <Button theme="primary" style={ { marginTop: '1em' } }>Subscribe <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
+                        <Button theme="primary">Subscribe <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
                     </Link>
                         :
                     <Link to={ userRoutes.signup.path }>
-                        <Button theme="primary" style={ { marginTop: '1em' } }>Start <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
+                        <Button theme="primary">Start <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
                     </Link>
                 }
             </GridCell>

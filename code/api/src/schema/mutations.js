@@ -2,8 +2,8 @@
 import { GraphQLObjectType } from 'graphql'
 
 // App Imports
-import * as thought from './thoughts/fields/mutations'
-import * as user from './users/fields/mutations'
+import * as product from './product/fields/mutations'
+import * as user from './user/fields/mutations'
 
 // Mutation
 const mutation = new GraphQLObjectType({
@@ -11,7 +11,7 @@ const mutation = new GraphQLObjectType({
     description: '...',
 
     fields: {
-        ...thought,
+        ...product,
         ...user
     }
 })

@@ -1,6 +1,6 @@
 # Crate 👕👖📦 
 
-A replica of stitchfix.com / krate.in which offers users to get monthly subscription of trendy clothes and accessories. 
+A very basic replica of stitchfix.com / krate.in which offers users to get monthly subscription of trendy clothes and accessories. 
 
 Built with Node + Express + GraphQL + React + Redux + JWT Auth + React Storybook. 
 

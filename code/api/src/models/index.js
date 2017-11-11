@@ -5,8 +5,8 @@ import Sequelize from 'sequelize'
 import databaseConnection from '../setup/databaseConnection'
 
 const models = {
-    Thought: databaseConnection.import('./thought'),
-    User: databaseConnection.import('./user')
+    User: databaseConnection.import('./user'),
+    Product: databaseConnection.import('./product')
 }
 
 Object.keys(models).forEach((modelName) => {

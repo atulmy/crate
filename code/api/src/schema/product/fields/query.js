@@ -2,18 +2,18 @@
 import { GraphQLInt, GraphQLList } from 'graphql'
 
 // App Imports
-import ThoughtType from '../type'
+import ProductType from '../type'
 import { getAll, getById } from '../resolvers'
 
-// Thoughts All
-export const thoughts = {
-    type: new GraphQLList(ThoughtType),
+// Products All
+export const products = {
+    type: new GraphQLList(ProductType),
     resolve: getAll
 }
 
-// Thought By ID
-export const thought = {
-    type: ThoughtType,
+// Product By ID
+export const product = {
+    type: ProductType,
     args: {
         id: { type: GraphQLInt }
     },

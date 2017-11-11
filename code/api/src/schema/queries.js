@@ -2,8 +2,8 @@
 import { GraphQLObjectType } from 'graphql'
 
 // App Imports
-import * as thought from './thoughts/fields/query'
-import * as user from './users/fields/query'
+import * as thought from './product/fields/query'
+import * as user from './user/fields/query'
 
 // Query
 const query = new GraphQLObjectType({
