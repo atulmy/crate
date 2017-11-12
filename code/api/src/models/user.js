@@ -1,5 +1,5 @@
 // User
-export default (sequelize, DataTypes) => {
+const User = (sequelize, DataTypes) => {
     return sequelize.define('users', {
         name: {
             type: DataTypes.STRING
@@ -12,3 +12,10 @@ export default (sequelize, DataTypes) => {
         }
     })
 }
+
+
+User.associate = function(models) {
+    User.hasMany(models.Subscription);
+}
+
+export default User
