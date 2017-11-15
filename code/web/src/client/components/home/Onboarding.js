@@ -50,9 +50,8 @@ class Onboarding extends Component {
 
     render() {
         const steps = [
+            /* 1. Welcome to Crate */
             <Grid gutter={ false } alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
-                {/* 1. Welcome to Crate */}
-
                 {/* Left - Headline and info */}
                 <GridCell>
                     <H1 font="secondary" style={ { textShadow: textLevel1 } }>Welcome to Crate</H1>
@@ -68,9 +67,8 @@ class Onboarding extends Component {
                 </GridCell>
             </Grid>,
 
+            /* 2. For Men */
             <Grid gutter={ false } alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
-                {/* 2. For Men */}
-
                 {/* Left - Image */}
                 <GridCell>
                     <img src={ '/images/collage.png' } alt="collage" title="products collage" style={ { width: 400 } } />
@@ -86,9 +84,8 @@ class Onboarding extends Component {
                 </GridCell>
             </Grid>,
 
+            /* 3. For Women */
             <Grid gutter={ false } alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
-                {/* 3. For Women */}
-
                 {/* Left - Headline and info */}
                 <GridCell>
                     <H1 font="secondary" style={ { textShadow: textLevel1 } }>For Women</H1>
@@ -104,9 +101,8 @@ class Onboarding extends Component {
                 </GridCell>
             </Grid>,
 
+            /* 4. Fix me up */
             <Grid gutter={ false } alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
-                {/* 4. Fix me up */}
-
                 {/* Center - Headline and info */}
                 <GridCell>
                     <H1 font="secondary" style={ { textShadow: textLevel1 } }>Fix me up</H1>

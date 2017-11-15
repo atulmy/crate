@@ -7,32 +7,36 @@ import { Link } from 'react-router-dom'
 
 // UI Imports
 import { Grid, GridCell } from '../ui/grid'
-import { H3, H4 } from '../ui/typography'
+import { H3 } from '../ui/typography'
 import Button from '../ui/button'
 import Icon from '../ui/icon'
-import { textLevel1 } from '../ui/common/shadows'
 import { white, grey, grey3 } from '../ui/common/colors'
 
 // App Imports
 import userRoutes from '../../setup/routes/user'
-import { actionBlogsFetch } from './api/actions'
+import { getList as getProductList } from '../product/api/actions'
+import ProductItem from '../product/Item'
 
 // Component
 class WhatsNew extends Component {
 
-    static fetchData({store}) {
-        return store.dispatch(actionBlogsFetch())
+    // Runs on server only for SSR
+    static fetchData({ store }) {
+        return store.dispatch(getProductList())
     }
 
+    // Runs on client only
     componentDidMount() {
-        this.props.actionBlogsFetch()
+        this.props.getProductList()
     }
 
     refresh() {
-        this.props.actionBlogsFetch()
+        this.props.getProductList()
     }
 
     render() {
+        console.log(this.props.products)
+
         return (
             <div>
                 {/* SEO */}
@@ -47,11 +51,12 @@ class WhatsNew extends Component {
                     </GridCell>
                 </Grid>
 
+                {/* Product list */}
                 {
-                    this.props.blogs.list.length > 0
+                    this.props.products.list.length > 0
                         ?
-                    this.props.blogs.list.map(blog => (
-                        <p>{ blog.title }</p>
+                    this.props.products.list.map(product => (
+                        <ProductItem key={ product.id } product={ product } />
                     ))
                         :
                     <p>Loading...</p>
@@ -63,11 +68,11 @@ class WhatsNew extends Component {
                         {
                             this.props.user.isAuthenticated
                                 ?
-                            <Link to={userRoutes.subscriptions.path}>
+                            <Link to={ userRoutes.subscriptions.path }>
                                 <Button theme="primary" style={{marginTop: '1em'}}>Subscribe <Icon size={1.2} style={{color: white}}>navigate_next</Icon></Button>
                             </Link>
                                 :
-                            <Link to={userRoutes.signup.path}>
+                            <Link to={ userRoutes.signup.path }>
                                 <Button theme="primary" style={{marginTop: '1em'}}>Start <Icon size={1.2} style={{color: white}}>navigate_next</Icon></Button>
                             </Link>
                         }
@@ -81,15 +86,16 @@ class WhatsNew extends Component {
 // Component Properties
 WhatsNew.propTypes = {
     user: PropTypes.object.isRequired,
-    actionBlogsFetch: PropTypes.func.isRequired,
+    products: PropTypes.object.isRequired,
+    getProductList: PropTypes.func.isRequired
 }
 
 // Component State
 function whatsNewState(state) {
     return {
         user: state.user,
-        blogs: state.blogs
+        products: state.products
     }
 }
 
-export default connect(whatsNewState, { actionBlogsFetch })(WhatsNew)
+export default connect(whatsNewState, { getProductList })(WhatsNew)

@@ -1,4 +1,6 @@
 // Imports
+import express from 'express'
+import path from 'path'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
@@ -17,6 +19,9 @@ export default function(server) {
 
     // Request body cookie parser
     server.use(cookieParser())
+
+    // Static files folder
+    server.use(express.static(path.join(__dirname, '../', 'static')))
 
     // HTTP logger
     server.use(morgan('tiny'))

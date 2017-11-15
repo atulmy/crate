@@ -123,6 +123,6 @@ server.listen(port, (error) => {
     if(error) {
         return console.error(error)
     } else {
-        return console.info(`Server running on http://localhost:${port} [${env}]`)
+        return console.info(`Server running on http://localhost:${ port } [${ env }]`)
     }
 })

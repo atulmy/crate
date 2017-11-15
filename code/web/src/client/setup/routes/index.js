@@ -7,4 +7,7 @@ import user from './user'
 export const routes = Object.assign(home, user)
 
 // API Routes
-export const routesApi = APP_URL_API
+export const routeApi = APP_URL_API
+
+// Image
+export const routeImage = APP_URL_API

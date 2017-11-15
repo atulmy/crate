@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 // App Imports
-import { routesApi } from '../../../setup/routes'
+import { routeApi } from '../../../setup/routes'
 import { queryBuilder } from '../../../setup/helpers'
 import cookie from 'js-cookie'
 
@@ -32,7 +32,7 @@ export function login(userCredentials) {
             type: LOGIN_REQUEST
         })
 
-        return axios.post(routesApi, queryBuilder({ type: 'query', operation: 'userLogin', data: userCredentials, fields: ['user {name, email}', 'token'] }))
+        return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'userLogin', data: userCredentials, fields: ['user {name, email}', 'token'] }))
             .then(response => {
                 let error = ''
 
@@ -74,7 +74,7 @@ export function loginSetUserLocalStorageAndCookie(token, user) {
 // Register a user
 export function register(userDetails) {
     return dispatch => {
-        return axios.post(routesApi, queryBuilder({ type: 'mutation', operation: 'userSignup', data: userDetails, fields: ['id', 'name', 'email'] }))
+        return axios.post(routeApi, queryBuilder({ type: 'mutation', operation: 'userSignup', data: userDetails, fields: ['id', 'name', 'email'] }))
     }
 }
 

@@ -26,6 +26,7 @@ const Home = (props) => (
                 <title>Monthly supply of clothes and accessories for Men and Women - Crate</title>
             </Helmet>
 
+            {/* Content */}
             <GridCell>
                 <H1 font="secondary" style={ { textShadow: textLevel1 } }>Crate</H1>
 
