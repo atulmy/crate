@@ -45,35 +45,39 @@ class WhatsNew extends Component {
                 </Helmet>
 
                 {/* Top title bar */}
-                <Grid gutter={false} style={{backgroundColor: grey}}>
-                    <GridCell style={{padding: '2em', textAlign: 'center'}}>
+                <Grid gutter={ false } style={ { backgroundColor: grey } }>
+                    <GridCell style={ { padding: '2em', textAlign: 'center'} }>
                         <H3 font="secondary">What's new</H3>
                     </GridCell>
                 </Grid>
 
                 {/* Product list */}
-                {
-                    this.props.products.list.length > 0
-                        ?
-                    this.props.products.list.map(product => (
-                        <ProductItem key={ product.id } product={ product } />
-                    ))
-                        :
-                    <p>Loading...</p>
-                }
+                <Grid gutter={ false }>
+                    {
+                        this.props.products.list.length > 0
+                            ?
+                        this.props.products.list.map(product => (
+                            <GridCell key={ product.id } style={ { textAlign: 'center' } }>
+                                <ProductItem product={ product } />
+                            </GridCell>
+                        ))
+                            :
+                        <p>Loading...</p>
+                    }
+                </Grid>
 
                 {/* Bottom call to action bar */}
-                <Grid gutter={false} style={{backgroundColor: grey}}>
-                    <GridCell style={{padding: '3em', textAlign: 'center'}}>
+                <Grid gutter={ false } style={ { backgroundColor: grey } }>
+                    <GridCell style={ { padding: '3em', textAlign: 'center' } }>
                         {
                             this.props.user.isAuthenticated
                                 ?
                             <Link to={ userRoutes.subscriptions.path }>
-                                <Button theme="primary" style={{marginTop: '1em'}}>Subscribe <Icon size={1.2} style={{color: white}}>navigate_next</Icon></Button>
+                                <Button theme="primary">Subscribe <Icon size={1.2} style={{color: white}}>navigate_next</Icon></Button>
                             </Link>
                                 :
                             <Link to={ userRoutes.signup.path }>
-                                <Button theme="primary" style={{marginTop: '1em'}}>Start <Icon size={1.2} style={{color: white}}>navigate_next</Icon></Button>
+                                <Button theme="primary">Start <Icon size={1.2} style={{color: white}}>navigate_next</Icon></Button>
                             </Link>
                         }
                     </GridCell>

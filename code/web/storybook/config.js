@@ -8,6 +8,7 @@ function loadStories() {
     require('./stories/icons.js'),
     require('./stories/input.js'),
     require('./stories/modal.js'),
+    require('./stories/card.js'),
     require('./stories/grid.js')
 }
 
