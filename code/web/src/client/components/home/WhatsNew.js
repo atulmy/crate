@@ -15,6 +15,7 @@ import { white, grey, grey3 } from '../ui/common/colors'
 // App Imports
 import userRoutes from '../../setup/routes/user'
 import { getList as getProductList } from '../product/api/actions'
+import Loading from '../common/Loading'
 import ProductItem from '../product/Item'
 
 // Component
@@ -35,8 +36,6 @@ class WhatsNew extends Component {
     }
 
     render() {
-        console.log(this.props.products)
-
         return (
             <div>
                 {/* SEO */}
@@ -45,39 +44,45 @@ class WhatsNew extends Component {
                 </Helmet>
 
                 {/* Top title bar */}
-                <Grid gutter={ false } style={ { backgroundColor: grey } }>
+                <Grid style={ { backgroundColor: grey } }>
                     <GridCell style={ { padding: '2em', textAlign: 'center'} }>
                         <H3 font="secondary">What's new</H3>
                     </GridCell>
                 </Grid>
 
                 {/* Product list */}
-                <Grid gutter={ false }>
+                <Grid>
                     {
-                        this.props.products.list.length > 0
+                        this.props.products.isLoading
                             ?
-                        this.props.products.list.map(product => (
-                            <GridCell key={ product.id } style={ { textAlign: 'center' } }>
-                                <ProductItem product={ product } />
-                            </GridCell>
-                        ))
+                        <Loading />
                             :
-                        <p>Loading...</p>
+                        (
+                            this.props.products.list.length > 0
+                                ?
+                            this.props.products.list.map(product => (
+                                <GridCell key={ product.id } style={ { textAlign: 'center' } }>
+                                    <ProductItem product={ product } />
+                                </GridCell>
+                            ))
+                                :
+                            <p>No products to show.</p>
+                        )
                     }
                 </Grid>
 
                 {/* Bottom call to action bar */}
-                <Grid gutter={ false } style={ { backgroundColor: grey } }>
+                <Grid style={ { backgroundColor: grey } }>
                     <GridCell style={ { padding: '3em', textAlign: 'center' } }>
                         {
                             this.props.user.isAuthenticated
                                 ?
                             <Link to={ userRoutes.subscriptions.path }>
-                                <Button theme="primary">Subscribe <Icon size={1.2} style={{color: white}}>navigate_next</Icon></Button>
+                                <Button theme="primary">Subscribe <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
                             </Link>
                                 :
                             <Link to={ userRoutes.signup.path }>
-                                <Button theme="primary">Start <Icon size={1.2} style={{color: white}}>navigate_next</Icon></Button>
+                                <Button theme="primary">Start <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
                             </Link>
                         }
                     </GridCell>

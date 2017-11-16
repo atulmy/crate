@@ -4,6 +4,9 @@ export default (sequelize, DataTypes) => {
         name: {
             type: DataTypes.STRING
         },
+        slug: {
+            type: DataTypes.STRING
+        },
         description: {
             type: DataTypes.TEXT
         },

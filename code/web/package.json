@@ -32,6 +32,7 @@
     "dotenv": "^4.0.0",
     "express": "^5.0.0-alpha.6",
     "js-cookie": "^2.2.0",
+    "moment": "^2.19.2",
     "prop-types": "^15.6.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",

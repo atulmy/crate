@@ -12,7 +12,11 @@ const App = (props) => (
     <Layout>
         <Switch>
             { Object.values(routes).map((route, index) => (
-                route.auth ? <RoutePrivate { ...route } key={ index }/> : <Route { ...route } key={ index }/>
+                route.auth
+                    ?
+                <RoutePrivate { ...route } key={ index } path={ typeof route.path === 'function' ? route.path() : route.path }/>
+                    :
+                <Route { ...route } key={ index } path={ typeof route.path === 'function' ? route.path() : route.path } />
             )) }
 
             <Route component={ NotFound } />

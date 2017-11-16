@@ -25,7 +25,7 @@ const Women = (props) => (
 
         {/* Left Content - Image Collage */}
         <GridCell>
-            <Grid alignCenter={ true }>
+            <Grid gutter={ true } alignCenter={ true }>
                 <GridCell justifyCenter={ true }>
                     <ImageTile width={ 300 } height={ 530 } shadow={ level1 } image={ '/images/stock/women/1.jpg' } />
                 </GridCell>

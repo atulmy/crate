@@ -81,7 +81,7 @@ class Signup extends Component {
 
     render() {
         return(
-            <Grid alignCenter={ true } style={ { padding: '2em' } }>
+            <Grid gutter={ true } alignCenter={ true } style={ { padding: '2em' } }>
                 {/* SEO */}
                 <Helmet>
                     <title>Create an account - Crate</title>
@@ -89,7 +89,7 @@ class Signup extends Component {
 
                 {/* Left Content - Image Collage */}
                 <GridCell>
-                    <Grid alignCenter={ true }>
+                    <Grid gutter={ true } alignCenter={ true }>
                         <GridCell justifyCenter={ true }>
                             <ImageTile width={ 300 } height={ 530 } shadow={ level1 } image={ '/images/stock/men/1.jpg' } />
                         </GridCell>

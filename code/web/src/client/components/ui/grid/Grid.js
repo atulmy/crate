@@ -77,7 +77,7 @@ Grid.defaultProps = {
     alignBottom: false,
     alignCenter: false,
 
-    gutter: true,
+    gutter: false,
 }
 
 export default Grid

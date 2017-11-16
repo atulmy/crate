@@ -27,7 +27,7 @@ export function getList(isLoading = true) {
                 isLoading
             })
 
-            return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'products', fields: ['id', 'name', 'description', 'image'] }))
+            return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'products', fields: ['id', 'name', 'slug', 'description', 'image'] }))
                 .then((response) => {
                     if(response.status === 200) {
                         dispatch({
@@ -52,27 +52,38 @@ export function getList(isLoading = true) {
 }
 
 // Get single product
-export function get(id, isLoading = true) {
-    return dispatch => {
-        dispatch({
-            type: PRODUCTS_GET_REQUEST,
-            isLoading
-        })
+export function get(slug, isLoading = true) {
+    return (dispatch, getState) => {
+        let state = getState()
 
-        return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'product', data: { id: parseInt(id, 10) }, fields: ['id', 'name', 'product'] }))
-            .then((response) => {
-                dispatch({
-                    type: PRODUCTS_GET_RESPONSE,
-                    error: null,
-                    item: response.data.data.product
-                })
+        if(!state.product.item || state.product.item.slug !== slug) {
+            dispatch({
+                type: PRODUCTS_GET_REQUEST,
+                isLoading
             })
-            .catch((error) => {
-                dispatch({
-                    type: PRODUCTS_GET_FAILURE,
-                    error: error
+
+            return axios.post(routeApi, queryBuilder({
+                type: 'query',
+                operation: 'product',
+                data: {slug},
+                fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
+            }))
+                .then((response) => {
+                    dispatch({
+                        type: PRODUCTS_GET_RESPONSE,
+                        error: null,
+                        isLoading: false,
+                        item: response.data.data.product
+                    })
                 })
-            })
+                .catch((error) => {
+                    dispatch({
+                        type: PRODUCTS_GET_FAILURE,
+                        error: error,
+                        isLoading: false
+                    })
+                })
+        }
     }
 }
 

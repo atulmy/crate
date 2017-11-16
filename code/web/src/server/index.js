@@ -57,8 +57,10 @@ app.get('*', (request, response) => {
     let status = 200
 
     const matches = Object.values(routes).reduce((matches, route) => {
-        const match = matchPath(request.url, route.path, route)
+        const match = matchPath(request.url, typeof route.path === 'function' ? route.path() : route.path, route)
+
         if (match && match.isExact) {
+
             matches.push({
                 route,
                 match,

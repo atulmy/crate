@@ -24,13 +24,13 @@ const Profile = (props) => (
         </Helmet>
 
         {/* Top title bar */}
-        <Grid gutter={ false } style={ { backgroundColor: grey } }>
+        <Grid style={ { backgroundColor: grey } }>
             <GridCell style={ { padding: '2em', textAlign: 'center' } }>
                 <H3 font="secondary">Profile</H3>
             </GridCell>
         </Grid>
 
-        <Grid gutter={ false }>
+        <Grid>
             <GridCell style={ { padding: '2em', textAlign: 'center' } }>
                 <H4 style={ { marginBottom: '0.5em' } }>{ props.user.details.name }</H4>
 

@@ -25,14 +25,14 @@ const HowItWorks = (props) => (
         </Helmet>
 
         {/* Top title bar */}
-        <Grid gutter={ false } style={ { backgroundColor: grey } }>
+        <Grid style={ { backgroundColor: grey } }>
             <GridCell style={ { padding: '2em', textAlign: 'center' } }>
                 <H3 font="secondary">Just 3 easy steps</H3>
             </GridCell>
         </Grid>
 
         {/* 1 - Fill Out Your Style Profile */}
-        <Grid gutter={ false }>
+        <Grid>
             <GridCell justifyCenter={ true } style={ { textAlign: 'center', padding: '8em 0em' } }>
                 <Icon size={ 4 } style={ { color: grey3, textShadow: textLevel1 } }>looks_one</Icon>
 
@@ -45,7 +45,7 @@ const HowItWorks = (props) => (
         </Grid>
 
         {/* 2 - Receive a Fix Delivery */}
-        <Grid gutter={ false }>
+        <Grid>
             <GridCell style={ { background: `url('/images/stock/how-it-works/2.jpg') center top no-repeat` } } />
 
             <GridCell justifyCenter={ true } style={ { textAlign: 'center', padding: '8em 0em' } }>
@@ -58,7 +58,7 @@ const HowItWorks = (props) => (
         </Grid>
 
         {/* 3 - Keep what you want */}
-        <Grid gutter={ false }>
+        <Grid>
             <GridCell justifyCenter={ true } style={ { textAlign: 'center', padding: '8em 0em' } }>
                 <Icon size={ 4 } style={ { color: grey3, textShadow: textLevel1 } }>looks_3</Icon>
 
@@ -71,7 +71,7 @@ const HowItWorks = (props) => (
         </Grid>
 
         {/* Bottom call to action bar */}
-        <Grid gutter={ false } style={ { backgroundColor: grey } }>
+        <Grid style={ { backgroundColor: grey } }>
             <GridCell style={ { padding: '3em', textAlign: 'center' } }>
                 {
                     props.user.isAuthenticated

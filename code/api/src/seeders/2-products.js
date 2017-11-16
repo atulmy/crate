@@ -7,6 +7,7 @@ module.exports = {
       return queryInterface.bulkInsert('products', [
           {
               name: 'T-Shirt for Men - White',
+              slug: 't-shirt-for-men-white',
               description: 'A very nice white t-shirt for men.',
               type: params.product.types.cloth.id,
               gender: params.user.gender.male.id,
@@ -16,6 +17,7 @@ module.exports = {
           },
           {
               name: 'T-Shirt for Men - Grey',
+              slug: 't-shirt-for-men-grey',
               description: 'A very nice grey t-shirt for men.',
               type: params.product.types.cloth.id,
               gender: params.user.gender.male.id,
@@ -25,6 +27,7 @@ module.exports = {
           },
           {
               name: 'T-Shirt for Women - Black',
+              slug: 't-shirt-for-women-black',
               description: 'A very nice black t-shirt for women.',
               type: params.product.types.cloth.id,
               gender: params.user.gender.female.id,
@@ -34,6 +37,7 @@ module.exports = {
           },
           {
               name: 'T-Shirt for Women - Grey',
+              slug: 't-shirt-for-women-grey',
               description: 'A very nice grey t-shirt for women.',
               type: params.product.types.cloth.id,
               gender: params.user.gender.female.id,
@@ -43,6 +47,7 @@ module.exports = {
           },
           {
               name: 'Watch for Men',
+              slug: 'watch-for-men',
               description: 'A very nice watch for men.',
               type: params.product.types.accessory.id,
               gender: params.user.gender.male.id,
@@ -52,6 +57,7 @@ module.exports = {
           },
           {
               name: 'Watch for Women',
+              slug: 'watch-for-women',
               description: 'A very nice watch for women.',
               type: params.product.types.accessory.id,
               gender: params.user.gender.female.id,
@@ -61,6 +67,7 @@ module.exports = {
           },
           {
               name: 'Belt for Men',
+              slug: 'belt-for-men',
               description: 'A very nice belt for men.',
               type: params.product.types.accessory.id,
               gender: params.user.gender.male.id,
@@ -70,6 +77,7 @@ module.exports = {
           },
           {
               name: 'Belt for Women',
+              slug: 'belt-for-women',
               description: 'A very nice belt for women.',
               type: params.product.types.accessory.id,
               gender: params.user.gender.female.id,

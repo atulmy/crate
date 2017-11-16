@@ -51,7 +51,7 @@ class Onboarding extends Component {
     render() {
         const steps = [
             /* 1. Welcome to Crate */
-            <Grid gutter={ false } alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
+            <Grid alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
                 {/* Left - Headline and info */}
                 <GridCell>
                     <H1 font="secondary" style={ { textShadow: textLevel1 } }>Welcome to Crate</H1>
@@ -68,7 +68,7 @@ class Onboarding extends Component {
             </Grid>,
 
             /* 2. For Men */
-            <Grid gutter={ false } alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
+            <Grid alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
                 {/* Left - Image */}
                 <GridCell>
                     <img src={ '/images/collage.png' } alt="collage" title="products collage" style={ { width: 400 } } />
@@ -85,7 +85,7 @@ class Onboarding extends Component {
             </Grid>,
 
             /* 3. For Women */
-            <Grid gutter={ false } alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
+            <Grid alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
                 {/* Left - Headline and info */}
                 <GridCell>
                     <H1 font="secondary" style={ { textShadow: textLevel1 } }>For Women</H1>
@@ -102,7 +102,7 @@ class Onboarding extends Component {
             </Grid>,
 
             /* 4. Fix me up */
-            <Grid gutter={ false } alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
+            <Grid alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
                 {/* Center - Headline and info */}
                 <GridCell>
                     <H1 font="secondary" style={ { textShadow: textLevel1 } }>Fix me up</H1>

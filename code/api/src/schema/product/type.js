@@ -9,6 +9,7 @@ const ProductType = new GraphQLObjectType({
     fields: () => ({
         id: { type: GraphQLInt },
         name: { type: GraphQLString },
+        slug: { type: GraphQLString },
         product: { type: GraphQLString },
         description: { type: GraphQLString },
         image: { type: GraphQLString },
