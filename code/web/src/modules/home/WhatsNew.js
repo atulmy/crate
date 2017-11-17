@@ -10,7 +10,7 @@ import { Grid, GridCell } from '../ui/grid'
 import { H3 } from '../ui/typography'
 import Button from '../ui/button'
 import Icon from '../ui/icon'
-import { white, grey, grey3 } from '../ui/common/colors'
+import { white, grey } from '../ui/common/colors'
 
 // App Imports
 import userRoutes from '../../setup/routes/user'
@@ -28,10 +28,6 @@ class WhatsNew extends Component {
 
     // Runs on client only
     componentDidMount() {
-        this.props.getProductList()
-    }
-
-    refresh() {
         this.props.getProductList()
     }
 

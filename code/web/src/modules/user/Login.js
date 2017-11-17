@@ -46,6 +46,8 @@ class Login extends Component {
     onSubmit(event) {
         event.preventDefault()
 
+        this.props.messageShow('Logging in, please wait...')
+
         this.props.login(this.state.user)
             .then(response => {
                 if(this.props.user.error && this.props.user.error.length > 0) {
@@ -54,6 +56,8 @@ class Login extends Component {
                     window.setTimeout(() => {
                         this.props.messageHide()
                     }, 5000)
+                } else {
+                    this.props.messageHide()
                 }
             })
             .catch(error => {

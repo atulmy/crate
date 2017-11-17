@@ -43,7 +43,7 @@ const Header = (props) => {
                         props.user.isAuthenticated
                             ?
                         <Menu>
-                            <MenuItem to={ user.subscriptions.path }>Subscription</MenuItem>
+                            <MenuItem to={ user.subscriptions.path }>Subscriptions</MenuItem>
 
                             <MenuItem to={ user.profile.path }>Profile</MenuItem>
                         </Menu>

@@ -20,7 +20,7 @@ module.exports = {
               createdAt: Sequelize.literal('NOW()'),
               updatedAt: Sequelize.literal('NOW()')
           }
-      ], {})
+      ])
   },
 
   down: (queryInterface, Sequelize) => {

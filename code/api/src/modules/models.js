@@ -7,8 +7,8 @@ import databaseConnection from '../setup/databaseConnection'
 const models = {
     User: databaseConnection.import('./user/model'),
     Product: databaseConnection.import('./product/model'),
-    Subscription: databaseConnection.import('./subscription/model'),
-    Crate: databaseConnection.import('./crate/model')
+    Crate: databaseConnection.import('./crate/model'),
+    Subscription: databaseConnection.import('./subscription/model')
 }
 
 Object.keys(models).forEach((modelName) => {

@@ -2,8 +2,9 @@
 import { GraphQLObjectType } from 'graphql'
 
 // App Imports
-import * as thought from './product/fields/query'
 import * as user from './user/fields/query'
+import * as product from './product/fields/query'
+import * as crate from './crate/fields/query'
 
 // Query
 const query = new GraphQLObjectType({
@@ -11,8 +12,9 @@ const query = new GraphQLObjectType({
     description: 'API Queries [Read]',
 
     fields: () => ({
-        ...thought,
-        ...user
+        ...user,
+        ...product,
+        ...crate
     })
 })
 

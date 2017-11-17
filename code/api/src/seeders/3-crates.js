@@ -1,22 +1,41 @@
 'use strict';
 
-const bcrypt = require('bcrypt');
-const config = require('../config/config.json');
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
-      return queryInterface.bulkInsert('users', [
+      return queryInterface.bulkInsert('crates', [
           {
-              name: 'The Admin',
-              email: 'admin@crate.com',
-              password: bcrypt.hashSync('123456', config.saltRounds),
+              name: 'Clothes for Men',
+              description: 'A monthly supply of trendy clothes for men.',
               createdAt: Sequelize.literal('NOW()'),
               updatedAt: Sequelize.literal('NOW()')
           },
           {
-              name: 'The User',
-              email: 'user@crate.com',
-              password: bcrypt.hashSync('123456', config.saltRounds),
+              name: 'Clothes for Women',
+              description: 'A monthly supply of trendy clothes for women.',
+              createdAt: Sequelize.literal('NOW()'),
+              updatedAt: Sequelize.literal('NOW()')
+          },
+          {
+              name: 'Accessories for Men',
+              description: 'A monthly supply of trendy accessories for men',
+              createdAt: Sequelize.literal('NOW()'),
+              updatedAt: Sequelize.literal('NOW()')
+          },
+          {
+              name: 'Accessories for Women',
+              description: 'A monthly supply of trendy accessories for women',
+              createdAt: Sequelize.literal('NOW()'),
+              updatedAt: Sequelize.literal('NOW()')
+          },
+          {
+              name: 'Clothes and Accessories for Men',
+              description: 'A monthly supply of trendy clothes and accessories for men',
+              createdAt: Sequelize.literal('NOW()'),
+              updatedAt: Sequelize.literal('NOW()')
+          },
+          {
+              name: 'Clothes and Accessories for Women',
+              description: 'A monthly supply of trendy clothes and accessories for women',
               createdAt: Sequelize.literal('NOW()'),
               updatedAt: Sequelize.literal('NOW()')
           }
@@ -24,6 +43,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete('users', null, {});
+      return queryInterface.bulkDelete('crates', null, {});
   }
 }

@@ -1,4 +1,4 @@
-// Product
+// Crate
 export default (sequelize, DataTypes) => {
     return sequelize.define('crates', {
         name: {

@@ -19,14 +19,6 @@ import Loading from '../common/Loading'
 // Component
 class Detail extends Component {
 
-    constructor(props) {
-        super(props)
-
-        this.state = {
-
-        }
-    }
-
     // Runs on server only for SSR
     static fetchData({ store, params }) {
         return store.dispatch(get(params.slug))
@@ -41,17 +33,17 @@ class Detail extends Component {
 
         return(
             <div>
-                {/* SEO */}
-                <Helmet>
-                    <title>What's new - Crate</title>
-                </Helmet>
-
                 {
                     isLoading
                         ?
                     <Loading />
                         :
                     <div>
+                        {/* SEO */}
+                        <Helmet>
+                            <title>{ `Product - ${ item.name }` }</title>
+                        </Helmet>
+
                         {/* Top title bar */}
                         <Grid style={ { backgroundColor: grey } }>
                             <GridCell style={ { padding: '2em', textAlign: 'center'} }>
