@@ -26,10 +26,11 @@ export function setUser(token, user) {
 }
 
 // Login a user using credentials
-export function login(userCredentials) {
+export function login(userCredentials, isLoading = true) {
     return dispatch => {
         dispatch({
-            type: LOGIN_REQUEST
+            type: LOGIN_REQUEST,
+            isLoading
         })
 
         return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'userLogin', data: userCredentials, fields: ['user {name, email}', 'token'] }))

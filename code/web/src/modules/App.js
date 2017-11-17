@@ -6,7 +6,7 @@ import { Route, Switch } from 'react-router-dom'
 import { routes } from '../setup/routes'
 import Layout from './common/Layout'
 import NotFound from './common/NotFound'
-import RoutePrivate from './user/RoutePrivate'
+import RoutePrivate from './auth/RoutePrivate'
 
 const App = (props) => (
     <Layout>

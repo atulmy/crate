@@ -4,10 +4,10 @@ import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT } from './actions'
 
 // Initial State
 export const userInitialState = {
-    isAuthenticated: false,
-    details: null,
+    error: null,
     isLoading: false,
-    error: null
+    isAuthenticated: false,
+    details: null
 }
 
 // State
@@ -17,26 +17,28 @@ export default (state = userInitialState, action) => {
             return {
                 ...state,
                 isAuthenticated: !isEmpty(action.user),
-                details: action.user
+                details: action.user,
             }
 
         case LOGIN_REQUEST:
             return {
                 ...state,
-                isLoading: true,
-                error: null
+                error: null,
+                isLoading: action.isLoading
             }
 
         case LOGIN_RESPONSE:
             return {
                 ...state,
-                isLoading: false,
-                error: action.error
+                error: action.error,
+                isLoading: false
             }
 
         case LOGOUT:
             return {
                 ...state,
+                error: null,
+                isLoading: false,
                 isAuthenticated: false,
                 details: null
             }

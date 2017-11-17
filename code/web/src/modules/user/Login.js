@@ -19,7 +19,7 @@ import { white } from '../ui/common/colors'
 import userRoutes from '../../setup/routes/user'
 import { messageShow, messageHide } from '../common/api/actions'
 import { login } from './api/actions'
-import AuthCheck from './AuthCheck'
+import AuthCheck from '../auth/AuthCheck'
 
 // Component
 class Login extends Component {
@@ -47,9 +47,19 @@ class Login extends Component {
         event.preventDefault()
 
         this.props.login(this.state.user)
+            .then(response => {
+                if(this.props.user.error && this.props.user.error.length > 0) {
+                    this.props.messageShow(this.props.user.error)
+                }
+            })
+            .catch(error => {
+                this.props.messageShow(this.props.user.error)
+            })
     }
 
     render() {
+        const { isLoading, error } = this.props.user
+
         return(
             <Grid gutter={ true } alignCenter={ true } style={ { padding: '2em' } }>
                 {/* SEO */}
@@ -119,7 +129,7 @@ class Login extends Component {
                             </Link>
 
                             {/* Form submit */}
-                            <Button type="submit" theme="secondary">Login <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
+                            <Button type="submit" theme="secondary" disabled={ isLoading }>Login <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
                         </div>
                     </form>
                 </GridCell>
@@ -133,9 +143,17 @@ class Login extends Component {
 
 // Component Properties
 Login.propTypes = {
+    user: PropTypes.object.isRequired,
     login: PropTypes.func.isRequired,
     messageShow: PropTypes.func.isRequired,
     messageHide: PropTypes.func.isRequired
 }
 
-export default connect(null, { login, messageShow, messageHide })(withRouter(Login))
+// Component State
+function loginState(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(loginState, { login, messageShow, messageHide })(withRouter(Login))

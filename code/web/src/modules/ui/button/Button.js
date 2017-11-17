@@ -3,16 +3,16 @@ import React  from 'react'
 import PropTypes from 'prop-types'
 
 // UI Imports
-import { white, black } from '../common/colors'
+import { white, grey2, black } from '../common/colors'
 import { primary, secondary } from '../common/gradients'
-import { level2, level3, level4 } from '../common/shadows'
+import { level1, level2, level3, level4 } from '../common/shadows'
 
 // Component
 const Button = (props) => {
-    const { children, type, theme, ...other } = props
+    const { children, type, disabled, theme, ...other } = props
 
     return(
-        <button type={ type } { ...other }>
+        <button type={ type } disabled={ disabled } { ...other }>
             { children }
 
             {/* language=CSS */}
@@ -37,6 +37,12 @@ const Button = (props) => {
                 button:active {
                     box-shadow: ${ level4 };
                 }
+                button:disabled {
+                    color: ${ white };
+                    box-shadow: ${ level1 };
+                    background-color: ${ grey2 };
+                    background-image: none;
+                }
             `}
             </style>
         </button>
@@ -46,10 +52,12 @@ const Button = (props) => {
 // Component Properties
 Button.propTypes = {
     type: PropTypes.string,
-    theme: PropTypes.string
+    disabled: PropTypes.bool,
+    theme: PropTypes.string,
 }
 Button.defaultProps = {
     type: 'button',
+    disabled: false,
     theme: 'none'
 }
 

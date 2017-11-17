@@ -8,17 +8,9 @@ import PropTypes from 'prop-types'
 import userRoutes from '../../setup/routes/user'
 
 // Component
-class AuthCheck extends Component {
-    render() {
-        const { isAuthenticated } = this.props.user;
-
-        return (
-            <div>
-                { isAuthenticated ? <Redirect to={ userRoutes.subscriptions.path } /> : '' }
-            </div>
-        )
-    }
-}
+const AuthCheck = (props) => (
+    props.user.isAuthenticated ? <Redirect to={ userRoutes.subscriptions.path } /> : ''
+)
 
 // Component Properties
 AuthCheck.propTypes = {
@@ -26,10 +18,10 @@ AuthCheck.propTypes = {
 }
 
 // Component State
-function mapStateToProps(state) {
+function authCheckState(state) {
     return {
         user: state.user
     }
 }
 
-export default connect(mapStateToProps, {})(AuthCheck)
+export default connect(authCheckState, {})(AuthCheck)

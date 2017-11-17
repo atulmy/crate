@@ -8,22 +8,20 @@ import { connect } from 'react-redux'
 import userRoutes from '../../setup/routes/user'
 
 // Component
-class RoutePrivate extends Component {
-    render() {
-        const { isAuthenticated } = this.props.user
+const RoutePrivate = (props) => (
+    props.user.isAuthenticated ? <Route { ...props } component={ props.component } /> : <Redirect to={ userRoutes.login.path } />
+)
 
-        return ( isAuthenticated ? <Route { ...this.props } component={ this.props.component } /> : <Redirect to={ userRoutes.login.path } /> )
-    }
-}
-
+// Component Properties
 RoutePrivate.propTypes = {
     user: PropTypes.object.isRequired,
 }
 
-function mapStateToProps(state) {
+// Component State
+function routePrivateState(state) {
     return {
         user: state.user
     }
 }
 
-export default connect(mapStateToProps, {})(RoutePrivate);
+export default connect(routePrivateState, {})(RoutePrivate);

@@ -48,8 +48,8 @@ const Profile = (props) => (
 
 // Component Properties
 Profile.propTypes = {
-    logout: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired
 }
 
 // Component State

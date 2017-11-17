@@ -19,7 +19,7 @@ import { white } from '../ui/common/colors'
 import userRoutes from '../../setup/routes/user'
 import { messageShow, messageHide } from '../common/api/actions'
 import { register } from './api/actions'
-import AuthCheck from './AuthCheck'
+import AuthCheck from '../auth/AuthCheck'
 
 // Component
 class Signup extends Component {
@@ -160,7 +160,7 @@ class Signup extends Component {
                             </Link>
 
                             {/* Form submit */}
-                            <Button type="submit" theme="secondary">Signup <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
+                            <Button type="submit" theme="secondary" disabled={ this.state.isLoading }>Signup <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
                         </div>
                     </form>
                 </GridCell>
