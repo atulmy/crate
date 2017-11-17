@@ -50,10 +50,18 @@ class Login extends Component {
             .then(response => {
                 if(this.props.user.error && this.props.user.error.length > 0) {
                     this.props.messageShow(this.props.user.error)
+
+                    window.setTimeout(() => {
+                        this.props.messageHide()
+                    }, 5000)
                 }
             })
             .catch(error => {
                 this.props.messageShow(this.props.user.error)
+
+                window.setTimeout(() => {
+                    this.props.messageHide()
+                }, 5000)
             })
     }
 
