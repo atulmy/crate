@@ -1,5 +1,5 @@
 // App Imports
-import Detail from '../../components/product/Detail'
+import Detail from '../../modules/product/Detail'
 
 // User routes
 export default {

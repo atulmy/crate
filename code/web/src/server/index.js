@@ -15,11 +15,11 @@ import thunk from 'redux-thunk'
 import { flushToHTML } from 'styled-jsx/server'
 
 // App Imports
-import { rootReducer } from '../client/setup/store'
-import { routes } from '../client/setup/routes'
-import App from '../client/components/App'
-import { setUser } from '../client/components/user/api/actions'
-import index from './views/index'
+import { rootReducer } from '../setup/store'
+import { routes } from '../setup/routes'
+import App from '../modules/App'
+import { setUser } from '../modules/user/api/actions'
+import view from './view'
 
 // Create new server
 const app = new Express()
@@ -103,7 +103,7 @@ app.get('*', (request, response) => {
             // Ger Styles
             const styles = flushToHTML()
 
-            let html = index(helmet, appHtml, styles, initialState)
+            let html = view(helmet, appHtml, styles, initialState)
 
             // Reset the state on server
             store.dispatch({

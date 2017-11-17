@@ -8,7 +8,7 @@ import * as user from './user/fields/query'
 // Query
 const query = new GraphQLObjectType({
     name: 'query',
-    description: '...',
+    description: 'API Queries [Read]',
 
     fields: () => ({
         ...thought,

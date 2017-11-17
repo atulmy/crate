@@ -1,9 +1,9 @@
 // App Imports
-import Home from '../../components/home/Home'
-import Men from '../../components/home/Men'
-import Women from '../../components/home/Women'
-import HowItWorks from '../../components/home/HowItWorks'
-import WhatsNew from '../../components/home/WhatsNew'
+import Home from '../../modules/home/Home'
+import Men from '../../modules/home/Men'
+import Women from '../../modules/home/Women'
+import HowItWorks from '../../modules/home/HowItWorks'
+import WhatsNew from '../../modules/home/WhatsNew'
 
 // Home routes
 export default {

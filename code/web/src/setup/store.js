@@ -4,9 +4,9 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
 // App Imports
-import common from '../components/common/api/state'
-import user from '../components/user/api/state'
-import * as product from '../components/product/api/state'
+import common from '../modules/common/api/state'
+import user from '../modules/user/api/state'
+import * as product from '../modules/product/api/state'
 
 // App Reducer
 const appReducer = combineReducers({

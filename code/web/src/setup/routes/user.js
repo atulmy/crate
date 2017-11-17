@@ -1,8 +1,8 @@
 // App Imports
-import Login from '../../components/user/Login'
-import Signup from '../../components/user/Signup'
-import Profile from '../../components/user/Profile'
-import Subscriptions from '../../components/user/Subscriptions'
+import Login from '../../modules/user/Login'
+import Signup from '../../modules/user/Signup'
+import Profile from '../../modules/user/Profile'
+import Subscriptions from '../../modules/user/Subscriptions'
 
 // User routes
 export default {

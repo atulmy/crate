@@ -5,8 +5,10 @@ import Sequelize from 'sequelize'
 import databaseConnection from '../setup/databaseConnection'
 
 const models = {
-    User: databaseConnection.import('./user'),
-    Product: databaseConnection.import('./product')
+    User: databaseConnection.import('./user/model'),
+    Product: databaseConnection.import('./product/model'),
+    Subscription: databaseConnection.import('./subscription/model'),
+    Crate: databaseConnection.import('./crate/model')
 }
 
 Object.keys(models).forEach((modelName) => {

@@ -5,9 +5,9 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 // App Imports
-import { store } from './setup/store'
-import { setUser, loginSetUserLocalStorageAndCookie } from './components/user/api/actions'
-import App from './components/App'
+import { store } from '../setup/store'
+import { setUser, loginSetUserLocalStorageAndCookie } from '../modules/user/api/actions'
+import App from '../modules/App'
 
 // User Authentication
 const token = window.localStorage.getItem('token')

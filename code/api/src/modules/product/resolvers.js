@@ -1,5 +1,5 @@
 // App Imports
-import models from '../../models'
+import models from '../models'
 
 // Get product by ID
 export async function getById(parentValue, { id }) {

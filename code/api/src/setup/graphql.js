@@ -4,7 +4,7 @@ import graphqlHTTP from 'express-graphql'
 // App Imports
 import config from '../config/config.json'
 import authentication from './authentication'
-import schema from '../schema'
+import schema from '../modules/schema'
 
 // Setup GraphQL
 export default function(server) {
