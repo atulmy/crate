@@ -6,18 +6,6 @@ const Subscription = (sequelize, DataTypes) => {
         },
         crateId: {
             type: DataTypes.INTEGER
-        },
-        description: {
-            type: DataTypes.TEXT
-        },
-        type: {
-            type: DataTypes.INTEGER
-        },
-        gender: {
-            type: DataTypes.INTEGER
-        },
-        image: {
-            type: DataTypes.TEXT
         }
     })
 }

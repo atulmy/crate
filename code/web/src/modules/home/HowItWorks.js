@@ -14,6 +14,7 @@ import { textLevel1 } from '../ui/common/shadows'
 import { white, grey, grey3 } from '../ui/common/colors'
 
 // App Imports
+import crateRoutes from '../../setup/routes/crate'
 import userRoutes from '../../setup/routes/user'
 
 // Component
@@ -76,7 +77,7 @@ const HowItWorks = (props) => (
                 {
                     props.user.isAuthenticated
                         ?
-                    <Link to={ userRoutes.subscriptions.path }>
+                    <Link to={ crateRoutes.list.path }>
                         <Button theme="primary">Subscribe <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
                     </Link>
                         :

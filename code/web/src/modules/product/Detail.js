@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import moment from 'moment'
 
@@ -12,7 +13,7 @@ import { H2, H3, H4 } from '../ui/typography'
 import { grey, grey2 } from '../ui/common/colors'
 
 // App Imports
-import { routeImage } from '../../setup/routes'
+import { routeImage, routes } from '../../setup/routes'
 import { get } from './api/actions'
 import Loading from '../common/Loading'
 
@@ -38,38 +39,44 @@ class Detail extends Component {
                         ?
                     <Loading />
                         :
-                    <div>
-                        {/* SEO */}
-                        <Helmet>
-                            <title>{ `Product - ${ item.name }` }</title>
-                        </Helmet>
+                    (
+                        item && item.name
+                            ?
+                        <div>
+                            {/* SEO */}
+                            <Helmet>
+                                <title>{ `Product - ${ item.name }` }</title>
+                            </Helmet>
 
-                        {/* Top title bar */}
-                        <Grid style={ { backgroundColor: grey } }>
-                            <GridCell style={ { padding: '2em', textAlign: 'center'} }>
-                                <H3 font="secondary">Product</H3>
-                            </GridCell>
-                        </Grid>
+                            {/* Top title bar */}
+                            <Grid style={ { backgroundColor: grey } }>
+                                <GridCell style={ { padding: '2em', textAlign: 'center'} }>
+                                    <H3 font="secondary">Product</H3>
+                                </GridCell>
+                            </Grid>
 
-                        {/* Product Details */}
-                        <Grid gutter={ true } alignCenter={ true } style={ { padding: '2em' } }>
-                            {/* Left Content - Image */}
-                            <GridCell style={ { maxWidth: '30em' } }>
-                                <Card>
-                                    <img src={ routeImage + item.image } alt={ item.name } style={ { width: '100%' } } />
-                                </Card>
-                            </GridCell>
+                            {/* Product Details */}
+                            <Grid gutter={ true } alignCenter={ true } style={ { padding: '2em' } }>
+                                {/* Left Content - Image */}
+                                <GridCell style={ { maxWidth: '30em' } }>
+                                    <Card>
+                                        <img src={ routeImage + item.image } alt={ item.name } style={ { width: '100%' } } />
+                                    </Card>
+                                </GridCell>
 
-                            {/* Right Content */}
-                            <GridCell style={ { textAlign: 'center' } }>
-                                <H2 font="secondary">{ item.name }</H2>
+                                {/* Right Content */}
+                                <GridCell style={ { textAlign: 'center' } }>
+                                    <H2 font="secondary">{ item.name }</H2>
 
-                                <H4 style={ { marginTop: '1em' } }>{ item.description }</H4>
+                                    <H4 style={ { marginTop: '1em' } }>{ item.description }</H4>
 
-                                <p style={ { marginTop: '1.5em', color: grey2 } }>Launched on { moment(item.createdAt).format('dddd, MMMM Do YYYY') }</p>
-                            </GridCell>
-                        </Grid>
-                    </div>
+                                    <p style={ { marginTop: '1.5em', color: grey2 } }>Launched on { moment(item.createdAt).format('dddd, MMMM Do YYYY') }</p>
+                                </GridCell>
+                            </Grid>
+                        </div>
+                            :
+                        <Redirect to={ routes.home.path } />
+                    )
                 }
             </div>
         )

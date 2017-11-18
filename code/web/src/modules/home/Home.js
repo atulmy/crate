@@ -13,6 +13,7 @@ import { white } from '../ui/common/colors'
 import { textLevel1 } from '../ui/common/shadows'
 
 // App Imports
+import crateRoutes from '../../setup/routes/crate'
 import userRoutes from '../../setup/routes/user'
 import Onboarding from './Onboarding'
 
@@ -36,7 +37,7 @@ const Home = (props) => (
                 {
                     props.user.isAuthenticated
                         ?
-                    <Link to={ userRoutes.subscriptions.path }>
+                    <Link to={ crateRoutes.list.path }>
                         <Button theme="secondary" style={ { marginTop: '1em' } }>Get Subscription</Button>
                     </Link>
                         :

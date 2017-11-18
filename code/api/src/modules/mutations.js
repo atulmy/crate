@@ -5,6 +5,7 @@ import { GraphQLObjectType } from 'graphql'
 import * as user from './user/fields/mutations'
 import * as product from './product/fields/mutations'
 import * as crate from './crate/fields/mutations'
+import * as subscription from './subscription/fields/mutations'
 
 // Mutation
 const mutation = new GraphQLObjectType({
@@ -14,7 +15,8 @@ const mutation = new GraphQLObjectType({
     fields: {
         ...user,
         ...product,
-        ...crate
+        ...crate,
+        ...subscription
     }
 })
 

@@ -13,6 +13,7 @@ import Icon from '../ui/icon'
 import { white, grey } from '../ui/common/colors'
 
 // App Imports
+import crateRoutes from '../../setup/routes/crate'
 import userRoutes from '../../setup/routes/user'
 import { getList as getProductList } from '../product/api/actions'
 import Loading from '../common/Loading'
@@ -73,7 +74,7 @@ class WhatsNew extends Component {
                         {
                             this.props.user.isAuthenticated
                                 ?
-                            <Link to={ userRoutes.subscriptions.path }>
+                            <Link to={ crateRoutes.list.path }>
                                 <Button theme="primary">Subscribe <Icon size={ 1.2 } style={ { color: white } }>navigate_next</Icon></Button>
                             </Link>
                                 :

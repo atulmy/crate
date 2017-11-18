@@ -8,8 +8,8 @@ const SubscriptionType = new GraphQLObjectType({
 
     fields: () => ({
         id: { type: GraphQLInt },
-        name: { type: GraphQLString },
-        description: { type: GraphQLString },
+        userId: { type: GraphQLInt },
+        crateId: { type: GraphQLInt },
         createdAt: { type: GraphQLString },
         updatedAt: { type: GraphQLString }
     })

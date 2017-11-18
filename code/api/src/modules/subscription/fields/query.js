@@ -6,13 +6,13 @@ import SubscriptionType from '../type'
 import { getAll, get } from '../resolvers'
 
 // Subscriptions All
-export const crates = {
+export const subscriptions = {
     type: new GraphQLList(SubscriptionType),
     resolve: getAll
 }
 
 // Subscription By slug
-export const crate = {
+export const subscription = {
     type: SubscriptionType,
     args: {
         id: { type: GraphQLInt }
