@@ -1,8 +1,11 @@
 // Subscription
 const Subscription = (sequelize, DataTypes) => {
-    return sequelize.define('products', {
+    return sequelize.define('subscriptions', {
         userId: {
-            type: DataTypes.STRING
+            type: DataTypes.INTEGER
+        },
+        crateId: {
+            type: DataTypes.INTEGER
         },
         description: {
             type: DataTypes.TEXT
@@ -20,7 +23,8 @@ const Subscription = (sequelize, DataTypes) => {
 }
 
 Subscription.associate = function (models) {
-    Subscription.belongsTo(models.User);
+    Subscription.belongsTo(models.User)
+    Subscription.belongsTo(models.Crate)
 }
 
 export default Subscription

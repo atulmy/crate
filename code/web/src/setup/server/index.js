@@ -15,10 +15,10 @@ import thunk from 'redux-thunk'
 import { flushToHTML } from 'styled-jsx/server'
 
 // App Imports
-import { rootReducer } from '../setup/store'
-import { routes } from '../setup/routes'
-import App from '../modules/App'
-import { setUser } from '../modules/user/api/actions'
+import { rootReducer } from '../../setup/store'
+import { routes } from '../../setup/routes'
+import App from '../../modules/App'
+import { setUser } from '../../modules/user/api/actions'
 import view from './view'
 
 // Create new server
@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(cookieParser())
 
 // Static files folder
-app.use(Express.static(path.join(__dirname, '../', 'static')))
+app.use(Express.static(path.join(__dirname, '../../', 'static')))
 
 // Store (new store for each request)
 const store = createStore(
@@ -81,41 +81,42 @@ app.get('*', (request, response) => {
     })
 
     // Resolve the AJAX calls and render
-    Promise.all(promises).then((...data) => {
+    Promise.all(promises)
+        .then((...data) => {
+            const initialState = store.getState()
+            const context = {}
 
-        const initialState = store.getState()
-        const context = {}
+            const appHtml = renderToString(
+                <Provider store={ store } key="provider">
+                    <StaticRouter context={ context } location={ request.url }>
+                        <App />
+                    </StaticRouter>
+                </Provider>
+            )
 
-        const appHtml = renderToString(
-            <Provider store={ store } key="provider">
-                <StaticRouter context={ context } location={ request.url }>
-                    <App />
-                </StaticRouter>
-            </Provider>
-        )
+            if (context.url) {
+                response.redirect(context.url)
+            } else {
+                // Get Meta header tags
+                const helmet = Helmet.renderStatic()
 
-        if (context.url) {
-            response.redirect(context.url)
-        } else {
-            // Get Meta header tags
-            const helmet = Helmet.renderStatic()
+                // Ger Styles
+                const styles = flushToHTML()
 
-            // Ger Styles
-            const styles = flushToHTML()
+                let html = view(helmet, appHtml, styles, initialState)
 
-            let html = view(helmet, appHtml, styles, initialState)
+                // Reset the state on server
+                store.dispatch({
+                    type: 'RESET'
+                })
 
-            // Reset the state on server
-            store.dispatch({
-                type: 'RESET'
-            })
-
-            // Finally send generated HTML with initial data to the client
-            return response.status(status).send(html)
-        }
-    }, (error) => {
-        console.error(response, error)
-    })
+                // Finally send generated HTML with initial data to the client
+                return response.status(status).send(html)
+            }
+        })
+        .catch(error => {
+            console.error(error)
+        })
 })
 
 // Start Server

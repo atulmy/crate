@@ -8,19 +8,15 @@ import { Link } from 'react-router-dom'
 // UI Imports
 import { Grid, GridCell } from '../ui/grid'
 import { H3 } from '../ui/typography'
-import Button from '../ui/button'
-import Icon from '../ui/icon'
 import { white, grey, grey3 } from '../ui/common/colors'
 
 // App Imports
-import userRoutes from '../../setup/routes/user'
-import { getList as getCratesList } from '../crate/api/actions'
-import { getList as getSubscriptionsList } from '../subscription/api/actions'
+import { getList as getCratesList } from './api/actions'
 import Loading from '../common/Loading'
-import CrateItem from '../crate/Item'
+import CrateItem from './Item'
 
 // Component
-class Subscriptions extends Component {
+class List extends Component {
 
     // Runs on server only for SSR
     static fetchData({ store }) {
@@ -30,7 +26,6 @@ class Subscriptions extends Component {
     // Runs on client only
     componentDidMount() {
         this.props.getCratesList()
-        this.props.getSubscriptionsList()
     }
 
     render() {
@@ -38,17 +33,17 @@ class Subscriptions extends Component {
             <div>
                 {/* SEO */}
                 <Helmet>
-                    <title>My Subscriptions - Crate</title>
+                    <title>Crates for everyone! - Crate</title>
                 </Helmet>
 
                 {/* Top title bar */}
                 <Grid style={ { backgroundColor: grey } }>
                     <GridCell style={ { padding: '2em', textAlign: 'center'} }>
-                        <H3 font="secondary">My subscriptions</H3>
+                        <H3 font="secondary">Crates for everyone!</H3>
                     </GridCell>
                 </Grid>
 
-                {/* Product list */}
+                {/* Crate list */}
                 <Grid>
                     <GridCell>
                         {
@@ -76,19 +71,16 @@ class Subscriptions extends Component {
 }
 
 // Component Properties
-Subscriptions.propTypes = {
-    subscriptions: PropTypes.object.isRequired,
+List.propTypes = {
     crates: PropTypes.object.isRequired,
-    getSubscriptionsList: PropTypes.func.isRequired,
     getCratesList: PropTypes.func.isRequired
 }
 
 // Component State
-function subscriptionsState(state) {
+function listState(state) {
     return {
-        subscriptions: state.subscriptions,
         crates: state.crates
     }
 }
 
-export default connect(subscriptionsState, { getSubscriptionsList, getCratesList })(Subscriptions)
+export default connect(listState, { getCratesList })(List)

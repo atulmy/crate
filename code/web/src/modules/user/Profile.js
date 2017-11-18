@@ -20,13 +20,13 @@ const Profile = (props) => (
     <div>
         {/* SEO */}
         <Helmet>
-            <title>Profile - Crate</title>
+            <title>My Profile - Crate</title>
         </Helmet>
 
         {/* Top title bar */}
         <Grid style={ { backgroundColor: grey } }>
             <GridCell style={ { padding: '2em', textAlign: 'center' } }>
-                <H3 font="secondary">Profile</H3>
+                <H3 font="secondary">My profile</H3>
             </GridCell>
         </Grid>
 

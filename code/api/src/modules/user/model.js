@@ -14,7 +14,7 @@ const User = (sequelize, DataTypes) => {
 }
 
 User.associate = function(models) {
-    User.hasMany(models.Subscription);
+    User.hasMany(models.Subscription)
 }
 
 export default User

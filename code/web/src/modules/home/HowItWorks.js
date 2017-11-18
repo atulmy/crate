@@ -36,9 +36,9 @@ const HowItWorks = (props) => (
             <GridCell justifyCenter={ true } style={ { textAlign: 'center', padding: '8em 0em' } }>
                 <Icon size={ 4 } style={ { color: grey3, textShadow: textLevel1 } }>looks_one</Icon>
 
-                <H4 style={ { marginTop: '0.5em', textTransform: 'uppercase' } }>Fill Out Your Style Profile</H4>
+                <H4 style={ { marginTop: '0.5em', textTransform: 'uppercase' } }>Subscribe to your crate</H4>
 
-                <p style={ { marginTop: '0.5em', color: grey3 } }>Tell your personal stylist about your fit, size and style preferences.</p>
+                <p style={ { marginTop: '0.5em', color: grey3 } }>Choose one or multiple crates as per your need.</p>
             </GridCell>
 
             <GridCell style={ { background: `url('/images/stock/how-it-works/1.jpg') center top no-repeat` } } />
@@ -53,7 +53,7 @@ const HowItWorks = (props) => (
 
                 <H4 style={ { marginTop: '0.5em', textTransform: 'uppercase' } }>Receive a Fix Delivery</H4>
 
-                <p style={ { marginTop: '0.5em', color: grey3 } }>Get 3 to 5 pieces of clothing delivered to your door.</p>
+                <p style={ { marginTop: '0.5em', color: grey3 } }>Get 3 to 5 pieces of clothing or accessories delivered to your door.</p>
             </GridCell>
         </Grid>
 

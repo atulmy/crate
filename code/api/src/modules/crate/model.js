@@ -1,5 +1,5 @@
 // Crate
-export default (sequelize, DataTypes) => {
+const Crate = (sequelize, DataTypes) => {
     return sequelize.define('crates', {
         name: {
             type: DataTypes.STRING
@@ -9,3 +9,9 @@ export default (sequelize, DataTypes) => {
         }
     })
 }
+
+Crate.associate = function(models) {
+    Crate.hasMany(models.Subscription)
+}
+
+export default Crate

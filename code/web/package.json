@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "export NODE_ENV=development && webpack -d",
-    "start": "export NODE_ENV=development && npm run build && nodemon --exec babel-node -- src/server/index.js",
+    "start": "export NODE_ENV=development && npm run build && nodemon --exec babel-node -- src/setup/server/index.js",
     "build:prod": "export NODE_ENV=production && webpack -p",
-    "start:prod": "export NODE_ENV=production && npm run build:prod && nodemon --exec babel-node -- src/server/index.js",
+    "start:prod": "export NODE_ENV=production && npm run build:prod && nodemon --exec babel-node -- src/setup/server/index.js",
     "storybook": "start-storybook -p 9000 -c storybook"
   },
   "keywords": [],

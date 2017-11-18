@@ -12,6 +12,7 @@ import { level1 } from '../../ui/common/shadows'
 // App Imports
 import home from '../../../setup/routes/home'
 import user from '../../../setup/routes/user'
+import crate from '../../../setup/routes/crate'
 import Logo from './Logo'
 import Menu from './Menu'
 import MenuItem from './MenuItem'
@@ -43,6 +44,8 @@ const Header = (props) => {
                         props.user.isAuthenticated
                             ?
                         <Menu>
+                            <MenuItem to={ crate.list.path }>Crates</MenuItem>
+
                             <MenuItem to={ user.subscriptions.path }>Subscriptions</MenuItem>
 
                             <MenuItem to={ user.profile.path }>Profile</MenuItem>

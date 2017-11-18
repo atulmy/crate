@@ -4,7 +4,7 @@ import Dotenv from 'dotenv-webpack'
 
 const config = {
     entry: {
-        js: './src/client/index.js'
+        js: './src/setup/client/index.js'
     },
 
     output: {

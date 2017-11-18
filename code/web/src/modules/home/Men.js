@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 // UI Imports
 import { Grid, GridCell } from '../ui/grid'
-import { H2, H4 } from '../ui/typography'
+import { H2, H5 } from '../ui/typography'
 import Button from '../ui/button'
 import ImageTile from '../ui/image/Tile'
 import { level1 } from '../ui/common/shadows'
@@ -50,7 +50,7 @@ const Men = (props) => (
         <GridCell style={ { textAlign: 'center' } }>
             <H2 font="secondary">Monthly crates for Men</H2>
 
-            <H4 style={ { marginTop: '0.5em' } }>Save time. Look great. The personal styling service customized to your fit, lifestyle & spending preferences.</H4>
+            <H5 style={ { marginTop: '0.5em' } }>Save time. Look great. The personal styling service customized to your fit, lifestyle & spending preferences.</H5>
 
             {/* Call to action */}
             {
