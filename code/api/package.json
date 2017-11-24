@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "setup": "node_modules/.bin/sequelize db:migrate && node_modules/.bin/sequelize db:seed:all",
+    "setup": "npm run setup:install && npm run setup:db",
+    "setup:install": "npm install",
+    "setup:db": "npm run db:migrate && npm run db:seed",
+    "db:migrate": "./node_modules/.bin/sequelize db:migrate",
+    "db:seed": "./node_modules/.bin/sequelize db:seed:all",
     "start": "nodemon src/index.js --exec babel-node --presets es2015,stage-2"
   },
   "keywords": [],
