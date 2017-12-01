@@ -10,7 +10,7 @@ import { Grid, GridCell } from '../ui/grid'
 import { H3 } from '../ui/typography'
 import Button from '../ui/button'
 import Icon from '../ui/icon'
-import { white, grey } from '../ui/common/colors'
+import { white, grey, grey2 } from '../ui/common/colors'
 
 // App Imports
 import crateRoutes from '../../setup/routes/crate'
@@ -44,6 +44,8 @@ class WhatsNew extends Component {
                 <Grid style={ { backgroundColor: grey } }>
                     <GridCell style={ { padding: '2em', textAlign: 'center'} }>
                         <H3 font="secondary">What's new</H3>
+
+                        <p style={ { marginTop: '1em', color: grey2 } }>Watch this space to keep updated with latest clothes and accessories we add to your crates.</p>
                     </GridCell>
                 </Grid>
 
@@ -71,6 +73,8 @@ class WhatsNew extends Component {
                 {/* Bottom call to action bar */}
                 <Grid style={ { backgroundColor: grey } }>
                     <GridCell style={ { padding: '3em', textAlign: 'center' } }>
+                        <p style={ { marginBottom: '1em', color: grey2 } }>Like what you see?</p>
+
                         {
                             this.props.user.isAuthenticated
                                 ?

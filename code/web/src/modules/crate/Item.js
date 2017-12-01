@@ -10,7 +10,7 @@ import Icon from '../ui/icon'
 import { white, grey2, black } from '../ui/common/colors'
 
 // App Imports
-import { routeImage } from '../../setup/routes'
+import { APP_URL } from '../../setup/configs'
 
 // Component
 const Item = (props) => {
@@ -20,7 +20,7 @@ const Item = (props) => {
     return (
         <Card style={ { width: '18em', backgroundColor: white } }>
             <p style={ { padding: '2em 3em 0 3em' } }>
-                <img src="/images/crate.png" alt={ name } style={ { width: '100%' } } />
+                <img src={ `${ APP_URL }/images/crate.png` } alt={ name } style={ { width: '100%' } } />
             </p>
 
             <div style={ { padding: '1em 1.2em' } }>

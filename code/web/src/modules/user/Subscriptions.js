@@ -8,16 +8,12 @@ import { Link } from 'react-router-dom'
 // UI Imports
 import { Grid, GridCell } from '../ui/grid'
 import { H3 } from '../ui/typography'
-import Button from '../ui/button'
-import Icon from '../ui/icon'
-import { white, grey, grey3 } from '../ui/common/colors'
+import { grey, grey2 } from '../ui/common/colors'
 
 // App Imports
-import userRoutes from '../../setup/routes/user'
 import { getList as getCratesList } from '../crate/api/actions'
 import { getList as getSubscriptionsList } from '../subscription/api/actions'
 import Loading from '../common/Loading'
-import CrateItem from '../crate/Item'
 
 // Component
 class Subscriptions extends Component {
@@ -45,6 +41,8 @@ class Subscriptions extends Component {
                 <Grid style={ { backgroundColor: grey } }>
                     <GridCell style={ { padding: '2em', textAlign: 'center'} }>
                         <H3 font="secondary">My subscriptions</H3>
+
+                        <p style={ { marginTop: '1em', color: grey2 } }>The crates you are subscribed to are listed here. You can cancel anytime.</p>
                     </GridCell>
                 </Grid>
 
@@ -61,7 +59,7 @@ class Subscriptions extends Component {
                                     ?
                                 this.props.crates.list.map(crate => (
                                     <div key={ crate.id } style={ { margin: '2em', float: 'left' } }>
-                                        <CrateItem crate={ crate } />
+
                                     </div>
                                 ))
                                     :

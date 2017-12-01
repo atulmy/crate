@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 
 // UI Imports
 import { Grid, GridCell } from '../ui/grid'
-import { H3, H5 } from '../ui/typography'
-import Button from '../ui/button'
-import { white, grey } from '../ui/common/colors'
+import { H3 } from '../ui/typography'
+import { grey } from '../ui/common/colors'
 
 // App Imports
+import { APP_URL } from '../../setup/configs'
 import home from '../../setup/routes/home'
 
 // Component
@@ -30,14 +30,14 @@ const NotFound = (props) => (
         <Grid>
             <GridCell style={ { textAlign: 'center' } }>
                 <p style={ { textAlign: 'center', marginTop: '2em', marginBottom: '2em' } }>
-                    <img src="/images/crate-broken.png" alt="404" style={ { width: '10em' } } />
+                    <img src={ `${ APP_URL }/images/crate-broken.png` } alt="404" style={ { width: '10em' } } />
                 </p>
 
                 <H3 font="secondary">Page you are looking for does not exists or has removed. It's 404.</H3>
 
-                <H5 style={ { marginTop: '2em' } }>What can you do?</H5>
+                <p style={ { marginTop: '2em' } }>What can you do?</p>
 
-                <H5 style={ { marginTop: '0.5em' } }>You can contact us for any help or go to <Link to={ home.home.path }>home page.</Link></H5>
+                <p style={ { marginTop: '0.5em' } }>You can contact us for any help or go to <Link to={ home.home.path }>home page.</Link></p>
             </GridCell>
         </Grid>
     </div>

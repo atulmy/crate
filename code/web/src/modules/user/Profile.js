@@ -37,7 +37,7 @@ const Profile = (props) => (
                 <p style={ { color: grey2, marginBottom: '2em' } }>{ props.user.details.email }</p>
 
                 <Link to={ userRoutes.subscriptions.path }>
-                    <Button theme="primary">Subscription</Button>
+                    <Button theme="primary">Subscriptions</Button>
                 </Link>
 
                 <Button theme="secondary" onClick={ props.logout } style={ { marginLeft: '1em' } }>Logout</Button>

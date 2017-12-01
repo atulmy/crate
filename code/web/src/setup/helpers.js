@@ -59,7 +59,7 @@ export function queryBuilder(options) {
         variables: Object.assign(options.data, options.variables)
     }
 
-    console.log(query)
+    // console.log(query)
 
     return query
 }

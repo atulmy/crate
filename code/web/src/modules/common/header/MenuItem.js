@@ -5,28 +5,33 @@ import { Link, withRouter } from 'react-router-dom'
 
 // UI Imports
 import { white } from '../../ui/common/colors'
-import { secondary } from '../../ui/common/gradients'
+import { primary, secondary } from '../../ui/common/gradients'
 import { level1 } from '../../ui/common/shadows'
 
 // Component
 const MenuItem = (props) => {
-    const { children, to, active } = props
+    const { children, to, type, active, style } = props
 
     const isActiveRoute = () => {
         return props.location.pathname === to || active
     }
 
     return (
-        <Link to={ to } style={ Object.assign({ padding: '0.6em 1em', textTransform: 'uppercase', color: white }, isActiveRoute() ? { backgroundImage: secondary, borderRadius: '1.4em', boxShadow: level1 } : {}) } >{ children }</Link>
+        <Link to={ to } style={ Object.assign({ padding: '0.6em 1em', textTransform: 'uppercase', color: white }, isActiveRoute() ? { backgroundImage: (type === 'secondary' ? secondary : primary), borderRadius: '1.4em', boxShadow: level1 } : style) } >{ children }</Link>
     )
 }
 
 // Component Properties
 MenuItem.propTypes = {
-    active: PropTypes.bool
+    to: PropTypes.string.isRequired,
+    type: PropTypes.string,
+    active: PropTypes.bool,
+    style: PropTypes.object
 }
 MenuItem.defaultProps = {
-    active: false
+    type: 'secondary',
+    active: false,
+    style: {}
 }
 
 export default withRouter(MenuItem)

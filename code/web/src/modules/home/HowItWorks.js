@@ -11,9 +11,10 @@ import { H3, H4 } from '../ui/typography'
 import Button from '../ui/button'
 import Icon from '../ui/icon'
 import { textLevel1 } from '../ui/common/shadows'
-import { white, grey, grey3 } from '../ui/common/colors'
+import { white, grey, grey2, grey3 } from '../ui/common/colors'
 
 // App Imports
+import { APP_URL } from '../../setup/configs'
 import crateRoutes from '../../setup/routes/crate'
 import userRoutes from '../../setup/routes/user'
 
@@ -28,7 +29,9 @@ const HowItWorks = (props) => (
         {/* Top title bar */}
         <Grid style={ { backgroundColor: grey } }>
             <GridCell style={ { padding: '2em', textAlign: 'center' } }>
-                <H3 font="secondary">Just 3 easy steps</H3>
+                <H3 font="secondary">How it works</H3>
+
+                <p style={ { marginTop: '1em', color: grey2 } }>Just 3 easy steps to subscribe and receive your monthly subscription of trendy clothes and accessories</p>
             </GridCell>
         </Grid>
 
@@ -42,12 +45,12 @@ const HowItWorks = (props) => (
                 <p style={ { marginTop: '0.5em', color: grey3 } }>Choose one or multiple crates as per your need.</p>
             </GridCell>
 
-            <GridCell style={ { background: `url('/images/stock/how-it-works/1.jpg') center top no-repeat` } } />
+            <GridCell style={ { background: `url('${ APP_URL }/images/stock/how-it-works/1.jpg') center top no-repeat` } } />
         </Grid>
 
         {/* 2 - Receive a Fix Delivery */}
         <Grid>
-            <GridCell style={ { background: `url('/images/stock/how-it-works/2.jpg') center top no-repeat` } } />
+            <GridCell style={ { background: `url('${ APP_URL }/images/stock/how-it-works/2.jpg') center top no-repeat` } } />
 
             <GridCell justifyCenter={ true } style={ { textAlign: 'center', padding: '8em 0em' } }>
                 <Icon size={ 4 } style={ { color: grey3, textShadow: textLevel1 } }>looks_two</Icon>
@@ -68,7 +71,7 @@ const HowItWorks = (props) => (
                 <p style={ { marginTop: '0.5em', color: grey3 } }>Only pay for what you keep. Returns are easy and free.</p>
             </GridCell>
 
-            <GridCell style={ { background: `url('/images/stock/how-it-works/3.jpg') center top no-repeat` } } />
+            <GridCell style={ { background: `url('${ APP_URL }/images/stock/how-it-works/3.jpg') center top no-repeat` } } />
         </Grid>
 
         {/* Bottom call to action bar */}

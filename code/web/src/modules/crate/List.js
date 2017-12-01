@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 // UI Imports
 import { Grid, GridCell } from '../ui/grid'
 import { H3 } from '../ui/typography'
-import { white, grey, grey3 } from '../ui/common/colors'
+import { grey, grey2 } from '../ui/common/colors'
 
 // App Imports
 import { getList as getCratesList } from './api/actions'
@@ -40,6 +40,8 @@ class List extends Component {
                 <Grid style={ { backgroundColor: grey } }>
                     <GridCell style={ { padding: '2em', textAlign: 'center'} }>
                         <H3 font="secondary">Crates for everyone!</H3>
+
+                        <p style={ { marginTop: '1em', color: grey2 } }>You can choose crate which suits your need. You can also subscribe to multiple crates.</p>
                     </GridCell>
                 </Grid>
 

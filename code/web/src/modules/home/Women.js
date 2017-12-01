@@ -13,6 +13,7 @@ import ImageTile from '../ui/image/Tile'
 import { level1 } from '../ui/common/shadows'
 
 // App Imports
+import { APP_URL } from '../../setup/configs'
 import crateRoutes from '../../setup/routes/crate'
 import userRoutes from '../../setup/routes/user'
 
@@ -28,19 +29,19 @@ const Women = (props) => (
         <GridCell>
             <Grid gutter={ true } alignCenter={ true }>
                 <GridCell justifyCenter={ true }>
-                    <ImageTile width={ 300 } height={ 530 } shadow={ level1 } image={ '/images/stock/women/1.jpg' } />
+                    <ImageTile width={ 300 } height={ 530 } shadow={ level1 } image={ `${ APP_URL }/images/stock/women/1.jpg` } />
                 </GridCell>
 
                 <GridCell>
                     <Grid>
                         <GridCell justifyCenter={ true }>
-                            <ImageTile width={ 170 } height={ 250 } shadow={ level1 } image={ '/images/stock/women/2.jpg' } />
+                            <ImageTile width={ 170 } height={ 250 } shadow={ level1 } image={ `${ APP_URL }/images/stock/women/2.jpg` } />
                         </GridCell>
                     </Grid>
 
                     <Grid>
                         <GridCell justifyCenter={ true }>
-                            <ImageTile width={ 170 } height={ 250 } shadow={ level1 } image={ '/images/stock/women/3.jpg' } style={ {  marginTop: '1.9em' } } />
+                            <ImageTile width={ 170 } height={ 250 } shadow={ level1 } image={ `${ APP_URL }/images/stock/women/3.jpg` } style={ {  marginTop: '1.9em' } } />
                         </GridCell>
                     </Grid>
                 </GridCell>

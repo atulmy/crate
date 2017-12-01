@@ -8,9 +8,12 @@ import {
     PRODUCTS_GET_REQUEST,
     PRODUCTS_GET_RESPONSE,
     PRODUCTS_GET_FAILURE,
+    PRODUCTS_GET_RELATED_LIST_REQUEST,
+    PRODUCTS_GET_RELATED_LIST_RESPONSE,
+    PRODUCTS_GET_RELATED_LIST_FAILURE
 } from './actions'
 
-// Thoughts list
+// Product list
 
 // Initial State
 const productsInitialState = {
@@ -88,3 +91,46 @@ export const product = (state = productInitialState, action) => {
             return state
     }
 }
+
+
+// Product Related list
+
+// Initial State
+const productsRelatedInitialState = {
+    isLoading: false,
+    error: null,
+    list: [],
+    productId: 0
+}
+
+// State
+export const productsRelated = (state = productsRelatedInitialState, action) => {
+    switch (action.type) {
+        case PRODUCTS_GET_RELATED_LIST_REQUEST:
+            return {
+                ...state,
+                isLoading: action.isLoading,
+                error: null
+            }
+
+        case PRODUCTS_GET_RELATED_LIST_RESPONSE:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.error,
+                list: action.list,
+                productId: action.productId
+            }
+
+        case PRODUCTS_GET_RELATED_LIST_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.error
+            }
+
+        default:
+            return state
+    }
+}
+

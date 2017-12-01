@@ -17,8 +17,9 @@ import { flushToHTML } from 'styled-jsx/server'
 // App Imports
 import { rootReducer } from '../../setup/store'
 import { routes } from '../../setup/routes'
-import App from '../../modules/App'
 import { setUser } from '../../modules/user/api/actions'
+import { APP_URL } from '../configs'
+import App from '../../modules/App'
 import view from './view'
 
 // Create new server
@@ -60,7 +61,6 @@ app.get('*', (request, response) => {
         const match = matchPath(request.url, typeof route.path === 'function' ? route.path() : route.path, route)
 
         if (match && match.isExact) {
-
             matches.push({
                 route,
                 match,
@@ -103,7 +103,7 @@ app.get('*', (request, response) => {
                 // Ger Styles
                 const styles = flushToHTML()
 
-                let html = view(helmet, appHtml, styles, initialState)
+                let html = view(APP_URL, helmet, appHtml, styles, initialState)
 
                 // Reset the state on server
                 store.dispatch({

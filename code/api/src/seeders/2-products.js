@@ -12,8 +12,8 @@ module.exports = {
               type: params.product.types.cloth.id,
               gender: params.user.gender.male.id,
               image: '/images/stock/t-shirt-male-1.jpg',
-              createdAt: Sequelize.literal('NOW()'),
-              updatedAt: Sequelize.literal('NOW()')
+              createdAt: new Date(),
+              updatedAt: new Date()
           },
           {
               name: 'T-Shirt for Men - Grey',
@@ -22,8 +22,8 @@ module.exports = {
               type: params.product.types.cloth.id,
               gender: params.user.gender.male.id,
               image: '/images/stock/t-shirt-male-2.jpg',
-              createdAt: Sequelize.literal('NOW()'),
-              updatedAt: Sequelize.literal('NOW()')
+              createdAt: new Date(),
+              updatedAt: new Date()
           },
           {
               name: 'T-Shirt for Women - Black',
@@ -32,8 +32,8 @@ module.exports = {
               type: params.product.types.cloth.id,
               gender: params.user.gender.female.id,
               image: '/images/stock/t-shirt-female-1.jpg',
-              createdAt: Sequelize.literal('NOW()'),
-              updatedAt: Sequelize.literal('NOW()')
+              createdAt: new Date(),
+              updatedAt: new Date()
           },
           {
               name: 'T-Shirt for Women - Grey',
@@ -42,8 +42,8 @@ module.exports = {
               type: params.product.types.cloth.id,
               gender: params.user.gender.female.id,
               image: '/images/stock/t-shirt-female-2.jpg',
-              createdAt: Sequelize.literal('NOW()'),
-              updatedAt: Sequelize.literal('NOW()')
+              createdAt: new Date(),
+              updatedAt: new Date()
           },
           {
               name: 'Watch for Men',
@@ -52,8 +52,8 @@ module.exports = {
               type: params.product.types.accessory.id,
               gender: params.user.gender.male.id,
               image: '/images/stock/watch-male.jpg',
-              createdAt: Sequelize.literal('NOW()'),
-              updatedAt: Sequelize.literal('NOW()')
+              createdAt: new Date(),
+              updatedAt: new Date()
           },
           {
               name: 'Watch for Women',
@@ -62,8 +62,8 @@ module.exports = {
               type: params.product.types.accessory.id,
               gender: params.user.gender.female.id,
               image: '/images/stock/watch-female.jpg',
-              createdAt: Sequelize.literal('NOW()'),
-              updatedAt: Sequelize.literal('NOW()')
+              createdAt: new Date(),
+              updatedAt: new Date()
           },
           {
               name: 'Belt for Men',
@@ -72,8 +72,8 @@ module.exports = {
               type: params.product.types.accessory.id,
               gender: params.user.gender.male.id,
               image: '/images/stock/belt-male.jpg',
-              createdAt: Sequelize.literal('NOW()'),
-              updatedAt: Sequelize.literal('NOW()')
+              createdAt: new Date(),
+              updatedAt: new Date()
           },
           {
               name: 'Belt for Women',
@@ -82,8 +82,8 @@ module.exports = {
               type: params.product.types.accessory.id,
               gender: params.user.gender.female.id,
               image: '/images/stock/belt-female.jpg',
-              createdAt: Sequelize.literal('NOW()'),
-              updatedAt: Sequelize.literal('NOW()')
+              createdAt: new Date(),
+              updatedAt: new Date()
           }
       ])
   },

@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 // App Imports
 import { store } from '../../setup/store'
 import { setUser, loginSetUserLocalStorageAndCookie } from '../../modules/user/api/actions'
+import ScrollToTop from '../../modules/common/ScrollToTop'
 import App from '../../modules/App'
 
 // User Authentication
@@ -25,7 +26,9 @@ if(token && token !== 'undefined' && token !== '') {
 const Client = () => (
     <Provider store={ store } key="provider">
         <Router>
-            <App />
+            <ScrollToTop>
+                <App />
+            </ScrollToTop>
         </Router>
     </Provider>
 )

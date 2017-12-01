@@ -10,15 +10,15 @@ module.exports = {
               name: 'The Admin',
               email: 'admin@crate.com',
               password: bcrypt.hashSync('123456', config.saltRounds),
-              createdAt: Sequelize.literal('NOW()'),
-              updatedAt: Sequelize.literal('NOW()')
+              createdAt: new Date(),
+              updatedAt: new Date()
           },
           {
               name: 'The User',
               email: 'user@crate.com',
               password: bcrypt.hashSync('123456', config.saltRounds),
-              createdAt: Sequelize.literal('NOW()'),
-              updatedAt: Sequelize.literal('NOW()')
+              createdAt: new Date(),
+              updatedAt: new Date()
           }
       ])
   },

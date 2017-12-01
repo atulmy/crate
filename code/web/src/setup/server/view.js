@@ -1,4 +1,4 @@
-const index = (helmet = {}, appHtml = '', styles = '', initialState = {}) => (
+const index = (APP_URL, helmet = {}, appHtml = '', styles = '', initialState = {}) => (
 `<!doctype html>
 <html lang="en">
 <head>
@@ -9,10 +9,10 @@ const index = (helmet = {}, appHtml = '', styles = '', initialState = {}) => (
     ${ helmet.title.toString() }
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="icon" type="image/x-icon" href="${ APP_URL }/images/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="${ APP_URL }/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="${ APP_URL }/images/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="${ APP_URL }/images/favicon-16x16.png" />
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
@@ -20,13 +20,10 @@ const index = (helmet = {}, appHtml = '', styles = '', initialState = {}) => (
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     
     <!-- CSS - Reset -->
-    <link href="/css/reset.css" rel="stylesheet" />
+    <link href="${ APP_URL }/css/reset.css" rel="stylesheet" />
     
-    <!-- CSS - Global -->
-    <style type="text/css">
-        html, body { font-family: 'Roboto', sans-serif; background-color: #f9f9f9; }
-        a { text-decoration: none; }
-    </style>
+    <!-- CSS - Common -->
+    <link href="${ APP_URL }/css/common.css" rel="stylesheet" />
     
     <!-- CSS - Generated -->
         ${ styles }
@@ -42,7 +39,7 @@ const index = (helmet = {}, appHtml = '', styles = '', initialState = {}) => (
     </script>
     
     <!-- JS Bundle -->
-    <script type="text/javascript" src="/js/bundle.js?${ Math.random() }"></script>
+    <script type="text/javascript" src="${ APP_URL }/js/bundle.js?${ Math.random() }"></script>
 </body>
 </html>`
 )

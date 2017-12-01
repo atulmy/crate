@@ -13,6 +13,7 @@ import { white } from '../ui/common/colors'
 import { textLevel1 } from '../ui/common/shadows'
 
 // App Imports
+import { APP_URL } from '../../setup/configs'
 import crateRoutes from '../../setup/routes/crate'
 import userRoutes from '../../setup/routes/user'
 import Onboarding from './Onboarding'
@@ -21,7 +22,7 @@ import Onboarding from './Onboarding'
 const Home = (props) => (
     <div>
         {/* Home */}
-        <Grid alignCenter={ true } style={ { backgroundImage: `url('/images/cover.jpg')`, backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center top', height: 'calc(100vh - 5em)', textAlign: 'center', color: white } }>
+        <Grid alignCenter={ true } style={ { backgroundImage: `url('${ APP_URL }/images/cover.jpg')`, backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center top', height: 'calc(100vh - 5em)', textAlign: 'center', color: white } }>
             {/* SEO */}
             <Helmet>
                 <title>Monthly supply of clothes and accessories for Men and Women - Crate</title>

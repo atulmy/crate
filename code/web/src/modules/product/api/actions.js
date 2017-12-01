@@ -12,6 +12,9 @@ export const PRODUCTS_GET_LIST_FAILURE = 'PRODUCTS/GET_LIST_FAILURE'
 export const PRODUCTS_GET_REQUEST = 'PRODUCTS/GET_REQUEST'
 export const PRODUCTS_GET_RESPONSE = 'PRODUCTS/GET_RESPONSE'
 export const PRODUCTS_GET_FAILURE = 'PRODUCTS/GET_FAILURE'
+export const PRODUCTS_GET_RELATED_LIST_REQUEST = 'PRODUCTS/GET_RELATED_LIST_REQUEST'
+export const PRODUCTS_GET_RELATED_LIST_RESPONSE = 'PRODUCTS/GET_RELATED_LIST_RESPONSE'
+export const PRODUCTS_GET_RELATED_LIST_FAILURE = 'PRODUCTS/GET_RELATED_LIST_FAILURE'
 
 // Actions
 
@@ -27,8 +30,8 @@ export function getList(isLoading = true) {
                 isLoading
             })
 
-            return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'products', fields: ['id', 'name', 'slug', 'description', 'image'] }))
-                .then((response) => {
+            return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'products', fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt'] }))
+                .then(response => {
                     if(response.status === 200) {
                         dispatch({
                             type: PRODUCTS_GET_LIST_RESPONSE,
@@ -40,7 +43,7 @@ export function getList(isLoading = true) {
                         console.error(response)
                     }
                 })
-                .catch(function (error) {
+                .catch(error => {
                     dispatch({
                         type: PRODUCTS_GET_LIST_FAILURE,
                         error: error,
@@ -53,6 +56,7 @@ export function getList(isLoading = true) {
 
 // Get single product
 export function get(slug, isLoading = true) {
+
     return (dispatch, getState) => {
         let state = getState()
 
@@ -68,17 +72,62 @@ export function get(slug, isLoading = true) {
                 data: {slug},
                 fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
             }))
-                .then((response) => {
-                    dispatch({
-                        type: PRODUCTS_GET_RESPONSE,
-                        error: null,
-                        isLoading: false,
-                        item: response.data.data.product
-                    })
+                .then(response => {
+                    if(response.data.errors && response.data.errors.length > 0) {
+                        dispatch({
+                            type: PRODUCTS_GET_FAILURE,
+                            error: response.data.errors[0].message,
+                            isLoading: false
+                        })
+                    } else {
+                        dispatch({
+                            type: PRODUCTS_GET_RESPONSE,
+                            error: null,
+                            isLoading: false,
+                            item: response.data.data.product
+                        })
+                    }
                 })
-                .catch((error) => {
+                .catch(error => {
                     dispatch({
                         type: PRODUCTS_GET_FAILURE,
+                        error: error,
+                        isLoading: false
+                    })
+                })
+        }
+    }
+}
+
+// Get list of products related to a product
+export function getRelatedList(productId, isLoading = true) {
+    return (dispatch, getState) => {
+        let state = getState()
+
+        if(state.productsRelated.list.length === 0 || state.productId !== productId) {
+            dispatch({
+                type: PRODUCTS_GET_RELATED_LIST_REQUEST,
+                error: null,
+                isLoading
+            })
+
+            return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'productsRelated', data: { productId }, fields: ['id', 'name', 'slug', 'description', 'image'] }))
+                .then(response => {
+                    if(response.status === 200) {
+                        dispatch({
+                            type: PRODUCTS_GET_RELATED_LIST_RESPONSE,
+                            error: null,
+                            isLoading: false,
+                            list: response.data.data.productsRelated,
+                            productId
+                        })
+                    } else {
+                        console.error(response)
+                    }
+                })
+                .catch(error => {
+                    dispatch({
+                        type: PRODUCTS_GET_RELATED_LIST_FAILURE,
                         error: error,
                         isLoading: false
                     })

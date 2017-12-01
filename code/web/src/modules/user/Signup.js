@@ -16,6 +16,7 @@ import { level1 } from '../ui/common/shadows'
 import { white } from '../ui/common/colors'
 
 // App Imports
+import { APP_URL } from '../../setup/configs'
 import userRoutes from '../../setup/routes/user'
 import { messageShow, messageHide } from '../common/api/actions'
 import { register } from './api/actions'
@@ -99,19 +100,19 @@ class Signup extends Component {
                 <GridCell>
                     <Grid gutter={ true } alignCenter={ true }>
                         <GridCell justifyCenter={ true }>
-                            <ImageTile width={ 300 } height={ 530 } shadow={ level1 } image={ '/images/stock/men/1.jpg' } />
+                            <ImageTile width={ 300 } height={ 530 } shadow={ level1 } image={ `${ APP_URL }/images/stock/men/1.jpg` } />
                         </GridCell>
 
                         <GridCell>
                             <Grid>
                                 <GridCell justifyCenter={ true }>
-                                    <ImageTile width={ 170 } height={ 250 } shadow={ level1 } image={ '/images/stock/women/2.jpg' } />
+                                    <ImageTile width={ 170 } height={ 250 } shadow={ level1 } image={ `${ APP_URL }/images/stock/women/2.jpg` } />
                                 </GridCell>
                             </Grid>
 
                             <Grid>
                                 <GridCell justifyCenter={ true }>
-                                    <ImageTile width={ 170 } height={ 250 } shadow={ level1 } image={ '/images/stock/women/3.jpg' } style={ {  marginTop: '1.9em' } } />
+                                    <ImageTile width={ 170 } height={ 250 } shadow={ level1 } image={ `${ APP_URL }/images/stock/women/3.jpg` } style={ {  marginTop: '1.9em' } } />
                                 </GridCell>
                             </Grid>
                         </GridCell>

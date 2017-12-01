@@ -10,6 +10,7 @@ import { white } from '../ui/common/colors'
 import { textLevel1 } from '../ui/common/shadows'
 
 // App Imports
+import { APP_URL } from '../../setup/configs'
 
 // Component
 class Onboarding extends Component {
@@ -63,7 +64,7 @@ class Onboarding extends Component {
 
                 {/* Right - Image */}
                 <GridCell>
-                    <img src={ '/images/collage.png' } alt="collage" title="products collage" style={ { width: 400 } } />
+                    <img src={ `${ APP_URL }/images/collage.png` } alt="collage" title="products collage" style={ { width: 400 } } />
                 </GridCell>
             </Grid>,
 
@@ -71,7 +72,7 @@ class Onboarding extends Component {
             <Grid alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
                 {/* Left - Image */}
                 <GridCell>
-                    <img src={ '/images/collage.png' } alt="collage" title="products collage" style={ { width: 400 } } />
+                    <img src={ `${ APP_URL }/images/collage.png` } alt="collage" title="products collage" style={ { width: 400 } } />
                 </GridCell>
 
                 {/* Right - Headline and info */}
@@ -97,7 +98,7 @@ class Onboarding extends Component {
 
                 {/* Right - Image */}
                 <GridCell>
-                    <img src={ '/images/collage.png' } alt="collage" title="products collage" style={ { width: 400 } } />
+                    <img src={ `${ APP_URL }/images/collage.png` } alt="collage" title="products collage" style={ { width: 400 } } />
                 </GridCell>
             </Grid>,
 
