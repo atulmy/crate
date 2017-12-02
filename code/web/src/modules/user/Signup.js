@@ -6,14 +6,14 @@ import { Link, withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 // UI Imports
-import { Grid, GridCell } from '../ui/grid'
-import Button from '../ui/button'
-import ImageTile from '../ui/image/Tile'
-import Input from '../ui/input/Input'
-import H3 from '../ui/typography/H3'
-import Icon from '../ui/icon'
-import { level1 } from '../ui/common/shadows'
-import { white } from '../ui/common/colors'
+import { Grid, GridCell } from '../../ui/grid'
+import Button from '../../ui/button'
+import ImageTile from '../../ui/image/Tile'
+import Input from '../../ui/input/Input'
+import H3 from '../../ui/typography/H3'
+import Icon from '../../ui/icon'
+import { level1 } from '../../ui/common/shadows'
+import { white } from '../../ui/common/colors'
 
 // App Imports
 import { APP_URL } from '../../setup/configs'
@@ -24,6 +24,7 @@ import AuthCheck from '../auth/AuthCheck'
 
 // Component
 class Signup extends Component {
+
     constructor(props) {
         super(props)
 
@@ -38,7 +39,7 @@ class Signup extends Component {
         }
     }
 
-    onChange(event) {
+    onChange = (event) => {
         let user = this.state.user
         user[event.target.name] = event.target.value
 
@@ -47,7 +48,7 @@ class Signup extends Component {
         })
     }
 
-    onSubmit(event) {
+    onSubmit = (event) => {
         event.preventDefault()
 
         this.setState({
@@ -124,7 +125,7 @@ class Signup extends Component {
                     <H3 font="secondary" style={ { marginBottom: '1em' } }>Create an account</H3>
 
                     {/* Signup Form */}
-                    <form onSubmit={ this.onSubmit.bind(this) }>
+                    <form onSubmit={ this.onSubmit }>
                         <div style={ { width: '25em', margin: '0 auto' } }>
                             {/* Name */}
                             <Input
@@ -134,7 +135,7 @@ class Signup extends Component {
                                 required="required"
                                 name="name"
                                 value={ this.state.user.name }
-                                onChange={ this.onChange.bind(this) }
+                                onChange={ this.onChange }
                             />
 
                             {/* Email */}
@@ -145,7 +146,7 @@ class Signup extends Component {
                                 required="required"
                                 name="email"
                                 value={ this.state.user.email }
-                                onChange={ this.onChange.bind(this) }
+                                onChange={ this.onChange }
                                 style={ { marginTop: '1em' } }
                             />
 
@@ -157,7 +158,7 @@ class Signup extends Component {
                                 required="required"
                                 name="password"
                                 value={ this.state.user.password }
-                                onChange={ this.onChange.bind(this) }
+                                onChange={ this.onChange }
                                 style={ { marginTop: '1em' } }
                             />
                         </div>

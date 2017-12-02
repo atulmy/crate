@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 // UI Imports
-import { Grid, GridCell } from '../ui/grid'
+import { Grid, GridCell } from '../../ui/grid'
 
 // App Imports
 import { getRelatedList as getProductRelatedList } from '../product/api/actions'

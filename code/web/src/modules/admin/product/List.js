@@ -7,18 +7,18 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 // UI Imports
-import { Grid, GridCell } from '../../ui/grid'
-import Button from '../../ui/button'
-import Icon from '../../ui/icon'
-import { white } from '../../ui/common/colors'
+import { Grid, GridCell } from '../../../ui/grid'
+import Button from '../../../ui/button'
+import Icon from '../../../ui/icon'
+import {grey3, white} from '../../../ui/common/colors'
 
 // App Imports
 import { getList as getProductList } from '../../product/api/actions'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import AdminMenu from '../common/Menu'
-import { routeImage } from "../../../setup/routes"
-import admin from "../../../setup/routes/admin"
+import { routeImage } from '../../../setup/routes'
+import admin from '../../../setup/routes/admin'
 
 // Component
 class List extends Component {
@@ -40,85 +40,93 @@ class List extends Component {
             <div>
                 {/* SEO */}
                 <Helmet>
-                    <title>Dashboard - Admin - Crate</title>
+                    <title>Products - Admin - Crate</title>
                 </Helmet>
 
                 {/* Top menu bar */}
                 <AdminMenu />
 
                 {/* Page Content */}
-                <Grid alignCenter={ true } style={ { padding: '1em' } }>
-                    <GridCell style={ { textAlign: 'right' } }>
-                        <Link to={ admin.productCreate.path }>
-                            <Button theme="secondary" style={ { marginTop: '1em' } }><Icon size={ 1.2 } style={ { color: white } }>add</Icon> Add</Button>
-                        </Link>
-                    </GridCell>
-                </Grid>
+                <div>
+                    {/* Top actions bar */}
+                    <Grid alignCenter={ true } style={ { padding: '1em' } }>
+                        <GridCell style={ { textAlign: 'right' } }>
+                            <Link to={ admin.productCreate.path }>
+                                <Button theme="secondary" style={ { marginTop: '1em' } }><Icon size={ 1.2 } style={ { color: white } }>add</Icon> Add</Button>
+                            </Link>
+                        </GridCell>
+                    </Grid>
 
-                <Grid alignCenter={ true } style={ { padding: '1em' } }>
-                    <GridCell>
-                        <table className="striped">
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Created at</th>
-                                    <th>Updated at</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                {
-                                    isLoading
-                                        ?
+                    {/* Product list */}
+                    <Grid alignCenter={ true } style={ { padding: '1em' } }>
+                        <GridCell>
+                            <table className="striped">
+                                <thead>
                                     <tr>
-                                        <td colspan="6">
-                                            <Loading message="loading products..." />
-                                        </td>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Created at</th>
+                                        <th>Updated at</th>
+                                        <th style={ { textAlign: 'center' } }>Actions</th>
                                     </tr>
-                                        :
-                                    (
-                                        list.length > 0
+                                </thead>
+
+                                <tbody>
+                                    {
+                                        isLoading
                                             ?
-                                        list.map(({ id, image, name, description, createdAt, updatedAt }) => (
-                                            <tr key={ id }>
-                                                <td>
-                                                    <img src={ routeImage + image } alt={ name } style={ { width: 100 } } />
-                                                </td>
-
-                                                <td>
-                                                    { name }
-                                                </td>
-
-                                                <td>
-                                                    { description }
-                                                </td>
-
-                                                <td>
-                                                    { moment.utc(createdAt).format('dddd, MMMM Do YYYY') }
-                                                </td>
-
-                                                <td>
-                                                    { moment.utc(updatedAt).format('dddd, MMMM Do YYYY') }
-                                                </td>
-
-                                                <td></td>
-                                            </tr>
-                                        ))
-                                            :
                                         <tr>
                                             <td colspan="6">
-                                                <EmptyMessage message="No products to show." />
+                                                <Loading message="loading products..." />
                                             </td>
                                         </tr>
-                                    )
-                                }
-                            </tbody>
-                        </table>
-                    </GridCell>
-                </Grid>
+                                            :
+                                        (
+                                            list.length > 0
+                                                ?
+                                            list.map(({ id, image, name, description, createdAt, updatedAt }) => (
+                                                <tr key={ id }>
+                                                    <td>
+                                                        <img src={ routeImage + image } alt={ name } style={ { width: 100 } } />
+                                                    </td>
+
+                                                    <td>
+                                                        { name }
+                                                    </td>
+
+                                                    <td>
+                                                        { description }
+                                                    </td>
+
+                                                    <td>
+                                                        { moment.utc(createdAt).format('dddd, MMMM Do YYYY') }
+                                                    </td>
+
+                                                    <td>
+                                                        { moment.utc(updatedAt).format('dddd, MMMM Do YYYY') }
+                                                    </td>
+
+                                                    <td style={ { textAlign: 'center' } }>
+                                                        <Icon size={ 2 }>mode_edit</Icon>
+
+                                                        <Icon size={ 2 } style={ { marginLeft: '0.5em' } }>delete</Icon>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                                :
+                                            <tr>
+                                                <td colspan="6">
+                                                    <EmptyMessage message="No products to show." />
+                                                </td>
+                                            </tr>
+                                        )
+                                    }
+                                </tbody>
+                            </table>
+                        </GridCell>
+                    </Grid>
+                </div>
             </div>
         )
     }

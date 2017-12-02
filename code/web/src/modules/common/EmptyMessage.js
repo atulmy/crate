@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // UI Imports
-import { grey3 } from '../ui/common/colors'
+import { grey3 } from '../../ui/common/colors'
 
 // Component
 const EmptyMessage = (props) => (

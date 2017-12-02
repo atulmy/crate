@@ -6,12 +6,12 @@ import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 
 // UI Imports
-import { Grid, GridCell } from '../ui/grid'
-import { H3, H4 } from '../ui/typography'
-import Button from '../ui/button'
-import Icon from '../ui/icon'
-import { textLevel1 } from '../ui/common/shadows'
-import { white, grey, grey2, grey3 } from '../ui/common/colors'
+import { Grid, GridCell } from '../../ui/grid'
+import { H3, H4 } from '../../ui/typography'
+import Button from '../../ui/button'
+import Icon from '../../ui/icon'
+import { textLevel1 } from '../../ui/common/shadows'
+import { white, grey, grey2, grey3 } from '../../ui/common/colors'
 
 // App Imports
 import { APP_URL } from '../../setup/configs'

@@ -3,11 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // UI Imports
-import Card from '../ui/card/Card'
-import Button from '../ui/button/Button'
-import H4 from '../ui/typography/H4'
-import Icon from '../ui/icon'
-import { white, grey2, black } from '../ui/common/colors'
+import Card from '../../ui/card/Card'
+import Button from '../../ui/button/Button'
+import H4 from '../../ui/typography/H4'
+import Icon from '../../ui/icon'
+import { white, grey2, black } from '../../ui/common/colors'
 
 // App Imports
 import { APP_URL } from '../../setup/configs'

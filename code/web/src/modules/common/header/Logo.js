@@ -3,8 +3,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // UI Imports
-import { secondary } from '../../ui/common/fonts'
-import { textLevel1 } from '../../ui/common/shadows'
+import { secondary } from '../../../ui/common/fonts'
+import { textLevel1 } from '../../../ui/common/shadows'
 
 // App Imports
 import home from '../../../setup/routes/home'

@@ -4,9 +4,9 @@ import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 
 // UI Imports
-import { Grid, GridCell } from '../ui/grid'
-import { H3 } from '../ui/typography'
-import { grey } from '../ui/common/colors'
+import { Grid, GridCell } from '../../ui/grid'
+import { H3 } from '../../ui/typography'
+import { grey } from '../../ui/common/colors'
 
 // App Imports
 import { APP_URL } from '../../setup/configs'

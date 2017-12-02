@@ -6,11 +6,11 @@ import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 
 // UI Imports
-import { Grid, GridCell } from '../ui/grid'
-import { H3 } from '../ui/typography'
-import Button from '../ui/button'
-import Icon from '../ui/icon'
-import { white, grey, grey2 } from '../ui/common/colors'
+import { Grid, GridCell } from '../../ui/grid'
+import { H3 } from '../../ui/typography'
+import Button from '../../ui/button'
+import Icon from '../../ui/icon'
+import { white, grey, grey2 } from '../../ui/common/colors'
 
 // App Imports
 import crateRoutes from '../../setup/routes/crate'
@@ -33,6 +33,8 @@ class WhatsNew extends Component {
     }
 
     render() {
+        const { isLoading, list } = this.props.products
+
         return (
             <div>
                 {/* SEO */}
@@ -52,14 +54,14 @@ class WhatsNew extends Component {
                 {/* Product list */}
                 <Grid>
                     {
-                        this.props.products.isLoading
+                        isLoading
                             ?
                         <Loading />
                             :
                         (
-                            this.props.products.list.length > 0
+                            list.length > 0
                                 ?
-                            this.props.products.list.map(product => (
+                            list.map(product => (
                                 <GridCell key={ product.id } style={ { textAlign: 'center' } }>
                                     <ProductItem product={ product } />
                                 </GridCell>

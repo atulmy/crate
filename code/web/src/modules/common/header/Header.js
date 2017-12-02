@@ -5,9 +5,9 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 // UI Imports
-import { Grid, GridCell } from '../../ui/grid'
-import { primary as primaryGradient } from '../../ui/common/gradients'
-import { level1 } from '../../ui/common/shadows'
+import { Grid, GridCell } from '../../../ui/grid'
+import { primary as primaryGradient } from '../../../ui/common/gradients'
+import { level1 } from '../../../ui/common/shadows'
 
 // App Imports
 import home from '../../../setup/routes/home'

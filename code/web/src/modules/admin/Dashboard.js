@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
 // UI Imports
-import { Grid, GridCell } from '../ui/grid'
-import { grey3 } from '../ui/common/colors'
+import { Grid, GridCell } from '../../ui/grid'
+import { grey3 } from '../../ui/common/colors'
 
 // App Imports
 import AdminMenu from './common/Menu'

@@ -7,10 +7,10 @@ import { Helmet } from 'react-helmet'
 import moment from 'moment'
 
 // UI Imports
-import { Grid, GridCell } from '../ui/grid'
-import Card from '../ui/card/Card'
-import { H2, H3, H4 } from '../ui/typography'
-import { grey, grey2 } from '../ui/common/colors'
+import { Grid, GridCell } from '../../ui/grid'
+import Card from '../../ui/card/Card'
+import { H2, H3, H4 } from '../../ui/typography'
+import { grey, grey2 } from '../../ui/common/colors'
 
 // App Imports
 import { routeImage, routes } from '../../setup/routes'

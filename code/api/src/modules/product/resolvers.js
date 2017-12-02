@@ -27,7 +27,7 @@ export async function getBySlug(parentValue, { slug }) {
 
 // Get all products
 export async function getAll() {
-    return await models.Product.findAll()
+    return await models.Product.findAll({ order: [['id', 'DESC']] })
 }
 
 // Get related products

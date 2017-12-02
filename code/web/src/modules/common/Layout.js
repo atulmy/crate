@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 // UI Imports
-import Icon from '../ui/icon/Icon'
-import { white, black } from '../ui/common/colors'
-import { level2 } from '../ui/common/shadows'
+import Icon from '../../ui/icon/Icon'
+import { white, black } from '../../ui/common/colors'
+import { level2 } from '../../ui/common/shadows'
 
 // App Imports
 import { renderIf } from '../../setup/helpers'

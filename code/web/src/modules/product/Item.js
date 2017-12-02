@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 // UI Imports
-import Card from '../ui/card/Card'
-import H4 from '../ui/typography/H4'
-import { white, grey2, black } from '../ui/common/colors'
+import Card from '../../ui/card/Card'
+import H4 from '../../ui/typography/H4'
+import { white, grey2, black } from '../../ui/common/colors'
 
 // App Imports
 import { routeImage, routes } from '../../setup/routes'

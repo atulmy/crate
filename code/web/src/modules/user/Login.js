@@ -6,14 +6,14 @@ import { Link, withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 // UI Imports
-import { Grid, GridCell } from '../ui/grid'
-import Button from '../ui/button'
-import ImageTile from '../ui/image/Tile'
-import Input from '../ui/input/Input'
-import H3 from '../ui/typography/H3'
-import Icon from '../ui/icon'
-import { level1 } from '../ui/common/shadows'
-import { white } from '../ui/common/colors'
+import { Grid, GridCell } from '../../ui/grid'
+import Button from '../../ui/button'
+import ImageTile from '../../ui/image/Tile'
+import Input from '../../ui/input/Input'
+import H3 from '../../ui/typography/H3'
+import Icon from '../../ui/icon'
+import { level1 } from '../../ui/common/shadows'
+import { white } from '../../ui/common/colors'
 
 // App Imports
 import { APP_URL } from '../../setup/configs'
@@ -33,9 +33,11 @@ class Login extends Component {
                 password: '',
             }
         }
+
+        // Function bindings
     }
 
-    onChange(event) {
+    onChange = (event) => {
         let user = this.state.user
         user[event.target.name] = event.target.value
 
@@ -44,7 +46,7 @@ class Login extends Component {
         })
     }
 
-    onSubmit(event) {
+    onSubmit = (event) => {
         event.preventDefault()
 
         this.props.messageShow('Logging in, please wait...')
@@ -108,7 +110,7 @@ class Login extends Component {
                     <H3 font="secondary" style={ { marginBottom: '1em' } }>Login to your account</H3>
 
                     {/* Login Form */}
-                    <form onSubmit={ this.onSubmit.bind(this) }>
+                    <form onSubmit={ this.onSubmit }>
                         <div style={ { width: '25em', margin: '0 auto' } }>
                             {/* Email */}
                             <Input
@@ -118,7 +120,7 @@ class Login extends Component {
                                 required="required"
                                 name="email"
                                 value={ this.state.user.email }
-                                onChange={ this.onChange.bind(this) }
+                                onChange={ this.onChange }
                                 style={ { marginTop: '1em' } }
                             />
 
@@ -130,7 +132,7 @@ class Login extends Component {
                                 required="required"
                                 name="password"
                                 value={ this.state.user.password }
-                                onChange={ this.onChange.bind(this) }
+                                onChange={ this.onChange }
                                 style={ { marginTop: '1em' } }
                             />
                         </div>

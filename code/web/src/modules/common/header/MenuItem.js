@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
 
 // UI Imports
-import { white } from '../../ui/common/colors'
-import { primary, secondary } from '../../ui/common/gradients'
-import { level1 } from '../../ui/common/shadows'
+import { white } from '../../../ui/common/colors'
+import { primary, secondary } from '../../../ui/common/gradients'
+import { level1 } from '../../../ui/common/shadows'
 
 // Component
 const MenuItem = (props) => {

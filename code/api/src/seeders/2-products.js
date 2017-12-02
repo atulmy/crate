@@ -6,6 +6,46 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.bulkInsert('products', [
           {
+              name: 'Belt for Men',
+              slug: 'belt-for-men',
+              description: 'A very nice belt for men.',
+              type: params.product.types.accessory.id,
+              gender: params.user.gender.male.id,
+              image: '/images/stock/belt-male.jpg',
+              createdAt: new Date(),
+              updatedAt: new Date()
+          },
+          {
+              name: 'Belt for Women',
+              slug: 'belt-for-women',
+              description: 'A very nice belt for women.',
+              type: params.product.types.accessory.id,
+              gender: params.user.gender.female.id,
+              image: '/images/stock/belt-female.jpg',
+              createdAt: new Date(),
+              updatedAt: new Date()
+          },
+          {
+              name: 'Watch for Men',
+              slug: 'watch-for-men',
+              description: 'A very nice watch for men.',
+              type: params.product.types.accessory.id,
+              gender: params.user.gender.male.id,
+              image: '/images/stock/watch-male.jpg',
+              createdAt: new Date(),
+              updatedAt: new Date()
+          },
+          {
+              name: 'Watch for Women',
+              slug: 'watch-for-women',
+              description: 'A very nice watch for women.',
+              type: params.product.types.accessory.id,
+              gender: params.user.gender.female.id,
+              image: '/images/stock/watch-female.jpg',
+              createdAt: new Date(),
+              updatedAt: new Date()
+          },
+          {
               name: 'T-Shirt for Men - White',
               slug: 't-shirt-for-men-white',
               description: 'A very nice white t-shirt for men.',
@@ -42,46 +82,6 @@ module.exports = {
               type: params.product.types.cloth.id,
               gender: params.user.gender.female.id,
               image: '/images/stock/t-shirt-female-2.jpg',
-              createdAt: new Date(),
-              updatedAt: new Date()
-          },
-          {
-              name: 'Watch for Men',
-              slug: 'watch-for-men',
-              description: 'A very nice watch for men.',
-              type: params.product.types.accessory.id,
-              gender: params.user.gender.male.id,
-              image: '/images/stock/watch-male.jpg',
-              createdAt: new Date(),
-              updatedAt: new Date()
-          },
-          {
-              name: 'Watch for Women',
-              slug: 'watch-for-women',
-              description: 'A very nice watch for women.',
-              type: params.product.types.accessory.id,
-              gender: params.user.gender.female.id,
-              image: '/images/stock/watch-female.jpg',
-              createdAt: new Date(),
-              updatedAt: new Date()
-          },
-          {
-              name: 'Belt for Men',
-              slug: 'belt-for-men',
-              description: 'A very nice belt for men.',
-              type: params.product.types.accessory.id,
-              gender: params.user.gender.male.id,
-              image: '/images/stock/belt-male.jpg',
-              createdAt: new Date(),
-              updatedAt: new Date()
-          },
-          {
-              name: 'Belt for Women',
-              slug: 'belt-for-women',
-              description: 'A very nice belt for women.',
-              type: params.product.types.accessory.id,
-              gender: params.user.gender.female.id,
-              image: '/images/stock/belt-female.jpg',
               createdAt: new Date(),
               updatedAt: new Date()
           }

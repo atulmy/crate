@@ -2,12 +2,12 @@
 import React, { Component } from 'react'
 
 // UI Imports
-import { Grid, GridCell } from '../ui/grid'
-import { H1, H6 } from '../ui/typography'
-import Modal from '../ui/modal/Modal'
-import Button from '../ui/button'
-import { white } from '../ui/common/colors'
-import { textLevel1 } from '../ui/common/shadows'
+import { Grid, GridCell } from '../../ui/grid'
+import { H1, H6 } from '../../ui/typography'
+import Modal from '../../ui/modal/Modal'
+import Button from '../../ui/button'
+import { white } from '../../ui/common/colors'
+import { textLevel1 } from '../../ui/common/shadows'
 
 // App Imports
 import { APP_URL } from '../../setup/configs'

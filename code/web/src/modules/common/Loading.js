@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // UI Imports
-import { grey2 } from '../ui/common/colors'
+import { grey2 } from '../../ui/common/colors'
 
 // Component
 const Loading = (props) => (

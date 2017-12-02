@@ -1,6 +1,7 @@
 // App Imports
 import Dashboard from '../../modules/admin/Dashboard'
 import ProductList from '../../modules/admin/product/List'
+import ProductCreate from '../../modules/admin/product/Create'
 
 // Admin routes
 export default {
@@ -20,7 +21,7 @@ export default {
 
     productCreate: {
         path: '/admin/product/create',
-        component: ProductList,
+        component: ProductCreate,
         auth: true
     },
 
