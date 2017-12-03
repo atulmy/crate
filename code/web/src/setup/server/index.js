@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(cookieParser())
 
 // Static files folder
-app.use(Express.static(path.join(__dirname, '../../', 'static')))
+app.use(Express.static(path.join(__dirname, '..', '..', 'static')))
 
 // Store (new store for each request)
 const store = createStore(

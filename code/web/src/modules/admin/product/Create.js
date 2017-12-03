@@ -10,6 +10,10 @@ import moment from 'moment'
 import { Grid, GridCell } from '../../../ui/grid'
 import Button from '../../../ui/button'
 import Icon from '../../../ui/icon'
+import H4 from '../../../ui/typography/H4'
+import Input from '../../../ui/input/Input'
+import Textarea from '../../../ui/input/Textarea'
+import { white } from "../../../ui/common/colors"
 
 // App Imports
 import { create as productCreate } from '../../product/api/actions'
@@ -28,8 +32,11 @@ class ProductCreate extends Component {
             isLoading: false,
             product: {
                 name: '',
-                email: '',
-                password: '',
+                slug: '',
+                description: '',
+                type: 0,
+                gender: 0,
+                image: ''
             }
         }
     }
@@ -52,7 +59,7 @@ class ProductCreate extends Component {
 
         this.props.messageShow('Signing you up, please wait...')
 
-        this.props.register(this.state.user)
+        this.props.productCreate(this.state.product)
             .then(response => {
                 this.setState({
                     isLoading: false
@@ -63,7 +70,7 @@ class ProductCreate extends Component {
                 } else {
                     this.props.messageShow('Signed up successfully.')
 
-                    this.props.history.push(userRoutes.login.path)
+                    this.props.history.push(admin.productList.path)
                 }
 
                 window.setTimeout(() => {
@@ -101,7 +108,7 @@ class ProductCreate extends Component {
                     <Grid alignCenter={ true } style={ { padding: '1em' } }>
                         <GridCell style={ { textAlign: 'left' } }>
                             <Link to={ admin.productList.path }>
-                                <Button style={ { marginTop: '1em' } }><Icon size={ 1.2 }>arrow_back</Icon> Back</Button>
+                                <Button><Icon size={ 1.2 }>arrow_back</Icon> Back</Button>
                             </Link>
                         </GridCell>
                     </Grid>
@@ -109,7 +116,41 @@ class ProductCreate extends Component {
                     {/* Product list */}
                     <Grid alignCenter={ true } style={ { padding: '1em' } }>
                         <GridCell>
+                            <H4 font="secondary" style={ { marginBottom: '1em', textAlign: 'center' } }>Create Product</H4>
 
+                            {/* Signup Form */}
+                            <form onSubmit={ this.onSubmit }>
+                                <div style={ { width: '25em', margin: '0 auto' } }>
+                                    {/* Name */}
+                                    <Input
+                                        type="text"
+                                        fullWidth={ true }
+                                        placeholder="Name"
+                                        required="required"
+                                        name="name"
+                                        value={ this.state.product.name }
+                                        onChange={ this.onChange }
+                                    />
+
+                                    {/* Description */}
+                                    <Textarea
+                                        fullWidth={ true }
+                                        placeholder="Description"
+                                        required="required"
+                                        name="description"
+                                        value={ this.state.product.description }
+                                        onChange={ this.onChange }
+                                        style={ { marginTop: '1em' } }
+                                    />
+                                </div>
+
+                                <div style={ { marginTop: '2em', textAlign: 'center' } }>
+                                    {/* Form submit */}
+                                    <Button type="submit" theme="secondary" disabled={ this.state.isLoading }>
+                                        <Icon size={ 1.2 } style={ { color: white } }>check</Icon> Save
+                                    </Button>
+                                </div>
+                            </form>
                         </GridCell>
                     </Grid>
                 </div>

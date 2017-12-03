@@ -2,29 +2,34 @@
 import { GraphQLString, GraphQLInt } from 'graphql'
 
 // App Imports
-import SubscriptionType from '../type'
-import { create, remove } from '../resolvers'
+import { UserType } from './type'
+import { create, remove } from './resolvers'
 
-// Subscription create
-export const subscriptionCreate = {
-    type: SubscriptionType,
+// Create
+export const userSignup = {
+    type: UserType,
     args: {
         name: {
             name: 'name',
             type: GraphQLString
         },
 
-        description: {
-            name: 'description',
+        email: {
+            name: 'email',
+            type: GraphQLString
+        },
+
+        password: {
+            name: 'password',
             type: GraphQLString
         }
     },
     resolve: create
 }
 
-// Subscription remove
-export const subscriptionRemove = {
-    type: SubscriptionType,
+// Remove
+export const userRemove = {
+    type: UserType,
     args: {
         id: {
             name: 'id',

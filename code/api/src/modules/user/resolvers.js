@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 
 // App Imports
 import config from '../../config/config.json'
-import models from '../models'
+import models from '../../setup/models'
 
 // Create
 export async function create(parentValue, { name, email, password }) {

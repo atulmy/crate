@@ -19,4 +19,17 @@ const ProductType = new GraphQLObjectType({
     })
 })
 
-export default ProductType
+
+// User Gender type
+const ProductTypesType = new GraphQLObjectType({
+    name: 'productTypesType',
+    description: 'User Types Type',
+
+    fields: () => ({
+        id: { type: GraphQLInt },
+        name: { type: GraphQLString }
+    })
+})
+
+
+export { ProductType, ProductTypesType }

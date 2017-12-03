@@ -37,7 +37,7 @@ const NotFound = (props) => (
 
                 <p style={ { marginTop: '2em' } }>What can you do?</p>
 
-                <p style={ { marginTop: '0.5em' } }>You can contact us for any help or go to <Link to={ home.home.path }>home page.</Link></p>
+                <p style={ { marginTop: '0.5em' } }>You can go to <Link to={ home.home.path }>home page.</Link> or contact us for any help.</p>
             </GridCell>
         </Grid>
     </div>

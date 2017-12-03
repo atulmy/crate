@@ -2,8 +2,8 @@
 import { GraphQLInt, GraphQLList } from 'graphql'
 
 // App Imports
-import SubscriptionType from '../type'
-import { getAll, get } from '../resolvers'
+import SubscriptionType from './type'
+import { getAll, get } from './resolvers'
 
 // Subscriptions All
 export const subscriptions = {

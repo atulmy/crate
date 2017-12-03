@@ -2,6 +2,5 @@
   "events": {
     "restart": "npm run build"
   },
-  "ignore": ["src/static/*", "storybook/*"],
-  "delay": "1000"
+  "ignore": ["src/static/*", "storybook/*"]
 }

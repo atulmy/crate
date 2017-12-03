@@ -2,34 +2,29 @@
 import { GraphQLString, GraphQLInt } from 'graphql'
 
 // App Imports
-import { UserType } from '../type'
-import { create, remove } from '../resolvers'
+import CrateType from './type'
+import { create, remove } from './resolvers'
 
-// Create
-export const userSignup = {
-    type: UserType,
+// Crate create
+export const crateCreate = {
+    type: CrateType,
     args: {
         name: {
             name: 'name',
             type: GraphQLString
         },
 
-        email: {
-            name: 'email',
-            type: GraphQLString
-        },
-
-        password: {
-            name: 'password',
+        description: {
+            name: 'description',
             type: GraphQLString
         }
     },
     resolve: create
 }
 
-// Remove
-export const userRemove = {
-    type: UserType,
+// Crate remove
+export const crateRemove = {
+    type: CrateType,
     args: {
         id: {
             name: 'id',

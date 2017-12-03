@@ -24,6 +24,7 @@ const Textarea = (props) => {
                     padding-bottom: 0.4em;
                     font-size: 1em;
                     border: none;
+                    background-color: transparent;
                     border-bottom: 1px solid ${ grey3 };
                     width: ${ fullWidth ? '100%' : 'auto' };
                 }
@@ -41,11 +42,9 @@ const Textarea = (props) => {
 
 // Component Properties
 Textarea.propTypes = {
-    type: PropTypes.string,
     fullWidth: PropTypes.bool
 }
 Textarea.defaultProps = {
-    type: 'button',
     fullWidth: false
 }
 

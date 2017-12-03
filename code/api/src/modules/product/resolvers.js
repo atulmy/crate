@@ -1,5 +1,6 @@
 // App Imports
-import models from '../models'
+import params from '../../config/params'
+import models from '../../setup/models'
 
 // Get product by ID
 export async function getById(parentValue, { id }) {
@@ -59,4 +60,9 @@ export async function remove(parentValue, { id }) {
     } else {
         return await models.Product.destroy({ where: { id }})
     }
+}
+
+// Product types
+export async function getTypes() {
+    console.log(params)
 }

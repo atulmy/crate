@@ -9,10 +9,10 @@ const index = (APP_URL, helmet = {}, appHtml = '', styles = '', initialState = {
     ${ helmet.title.toString() }
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="${ APP_URL }/images/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="${ APP_URL }/images/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="${ APP_URL }/images/favicon-96x96.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="${ APP_URL }/images/favicon-16x16.png" />
+    <link rel="icon" type="image/x-icon" href="${ APP_URL }/images/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="${ APP_URL }/images/favicon/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="${ APP_URL }/images/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="${ APP_URL }/images/favicon/favicon-96x96.png" />
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />

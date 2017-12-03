@@ -1,5 +1,5 @@
 // App Imports
-import models from '../models'
+import models from '../../setup/models'
 
 // Get crate by ID
 export async function get(parentValue, { id }) {

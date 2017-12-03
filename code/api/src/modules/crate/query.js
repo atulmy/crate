@@ -2,8 +2,8 @@
 import { GraphQLInt, GraphQLList } from 'graphql'
 
 // App Imports
-import CrateType from '../type'
-import { getAll, get } from '../resolvers'
+import CrateType from './type'
+import { getAll, get } from './resolvers'
 
 // Crates All
 export const crates = {
