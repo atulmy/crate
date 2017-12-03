@@ -6,44 +6,48 @@ import PropTypes from 'prop-types'
 import { grey2, grey4, black } from '../common/colors'
 
 // Component
-const Textarea = (props) => {
+const Input = (props) => {
     const { children, fullWidth, ...other } = props
 
     return(
-        <span>
-            <textarea { ...other }>{ children }</textarea>
+        <div>
+            <select { ...other }>{ children }</select>
 
             {/* language=CSS */}
             <style jsx>{`
-                textarea {
+                select {
                     outline: none;
-                    color: ${ black };
                     padding-top: 0.8em;
                     padding-bottom: 0.4em;
                     font-size: 1em;
                     border: none;
                     background-color: transparent;
+                    color: ${ black };
                     border-bottom: 1px solid ${ grey2 };
                     width: ${ fullWidth ? '100%' : 'auto' };
+                    -webkit-appearance: none;
+                    border-radius: 0;
                 }
-                textarea:hover {
+                select:hover {
                     border-bottom: 1px solid ${ grey4 };
                 }
-                textarea:active {
+                select:active {
                     border-bottom: 1px solid ${ grey4 };
                 }
             `}
             </style>
-        </span>
+        </div>
     )
 }
 
 // Component Properties
-Textarea.propTypes = {
+Input.propTypes = {
+    type: PropTypes.string,
     fullWidth: PropTypes.bool
 }
-Textarea.defaultProps = {
+Input.defaultProps = {
+    type: 'button',
     fullWidth: false
 }
 
-export default Textarea
+export default Input

@@ -2,7 +2,7 @@
 import { GraphQLInt, GraphQLList } from 'graphql'
 
 // App Imports
-import SubscriptionType from './type'
+import SubscriptionType from './types'
 import { getAll, get } from './resolvers'
 
 // Subscriptions All

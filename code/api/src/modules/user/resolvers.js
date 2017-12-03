@@ -3,7 +3,8 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
 // App Imports
-import config from '../../config/config.json'
+import config from '../../config/config'
+import params from '../../config/params'
 import models from '../../setup/models'
 
 // Create
@@ -68,4 +69,9 @@ export async function getAll() {
 // Delete
 export async function remove(parentValue, { id }) {
     return await models.User.destroy({ where: { id }})
+}
+
+// User genders
+export async function getGenders() {
+    return Object.values(params.user.gender)
 }

@@ -2,7 +2,7 @@
 import { GraphQLString, GraphQLInt, GraphQLList } from 'graphql'
 
 // App Imports
-import { ProductType, ProductTypesType } from './type'
+import { ProductType, ProductTypesType } from './types'
 import { getAll, getBySlug, getRelated, getTypes } from './resolvers'
 
 // Products All

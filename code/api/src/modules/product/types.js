@@ -19,7 +19,6 @@ const ProductType = new GraphQLObjectType({
     })
 })
 
-
 // User Gender type
 const ProductTypesType = new GraphQLObjectType({
     name: 'productTypesType',
@@ -30,6 +29,5 @@ const ProductTypesType = new GraphQLObjectType({
         name: { type: GraphQLString }
     })
 })
-
 
 export { ProductType, ProductTypesType }

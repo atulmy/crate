@@ -2,7 +2,7 @@
 import { GraphQLString, GraphQLInt } from 'graphql'
 
 // App Imports
-import CrateType from './type'
+import CrateType from './types'
 import { create, remove } from './resolvers'
 
 // Crate create

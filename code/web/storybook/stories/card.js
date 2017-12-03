@@ -4,8 +4,8 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 // UI Imports
-import Card from '../../src/client/components/ui/card/Card'
-import H3 from '../../src/client/components/ui/typography/H1'
+import Card from '../../src/ui/card/Card'
+import H3 from '../../src/ui/typography/H1'
 
 // Buttons
 storiesOf('Card', module)

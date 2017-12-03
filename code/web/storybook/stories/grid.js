@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 // UI Imports
-import { Grid, GridCell } from '../../src/client/components/ui/grid'
+import { Grid, GridCell } from '../../src/ui/grid'
 
 // Stories
 storiesOf('Grid', module)

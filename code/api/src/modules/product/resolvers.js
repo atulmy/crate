@@ -64,5 +64,5 @@ export async function remove(parentValue, { id }) {
 
 // Product types
 export async function getTypes() {
-    console.log(params)
+    return Object.values(params.product.types)
 }

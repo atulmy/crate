@@ -2,7 +2,7 @@
 import { GraphQLInt, GraphQLList } from 'graphql'
 
 // App Imports
-import CrateType from './type'
+import CrateType from './types'
 import { getAll, get } from './resolvers'
 
 // Crates All

@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 // UI Imports
-import { Input, Textarea } from '../../src/client/components/ui/input'
+import { Input, Textarea, Select } from '../../src/ui/input'
 
 // Buttons
 storiesOf('Input', module)
@@ -16,4 +16,13 @@ storiesOf('Input', module)
     ))
     .add('textarea', () => (
         <Textarea />
+    ))
+    .add('select', () => (
+        <Select>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+        </Select>
     ))

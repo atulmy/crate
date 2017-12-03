@@ -99,3 +99,10 @@ export function logoutUnsetUserLocalStorageAndCookie(token, user) {
     // Set cookie for SSR
     cookie.remove('auth')
 }
+
+// Get user gender
+export function getGenders() {
+    return dispatch => {
+        return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'userGenders', fields: ['id', 'name'] }))
+    }
+}

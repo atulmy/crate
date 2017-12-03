@@ -4,8 +4,8 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 // UI Imports
-import Button from '../../src/client/components/ui/button/Button'
-import Icon from '../../src/client/components/ui/icon/Icon'
+import Button from '../../src/ui/button/Button'
+import Icon from '../../src/ui/icon/Icon'
 
 // Buttons
 storiesOf('Button', module)

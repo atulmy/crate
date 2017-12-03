@@ -9,6 +9,7 @@ import { queryBuilder } from '../../../setup/helpers'
 export const PRODUCTS_GET_LIST_REQUEST = 'PRODUCTS/GET_LIST_REQUEST'
 export const PRODUCTS_GET_LIST_RESPONSE = 'PRODUCTS/GET_LIST_RESPONSE'
 export const PRODUCTS_GET_LIST_FAILURE = 'PRODUCTS/GET_LIST_FAILURE'
+export const PRODUCTS_GET_LIST_RESET = 'PRODUCTS/GET_LIST_RESET'
 export const PRODUCTS_GET_REQUEST = 'PRODUCTS/GET_REQUEST'
 export const PRODUCTS_GET_RESPONSE = 'PRODUCTS/GET_RESPONSE'
 export const PRODUCTS_GET_FAILURE = 'PRODUCTS/GET_FAILURE'
@@ -147,5 +148,12 @@ export function create(data) {
 export function remove(data) {
     return dispatch => {
         return axios.post(routeApi, queryBuilder({ type: 'mutation', operation: 'productRemove', data, fields: ['id'] }))
+    }
+}
+
+// Get product types
+export function getTypes() {
+    return dispatch => {
+        return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'productTypes', fields: ['id', 'name'] }))
     }
 }

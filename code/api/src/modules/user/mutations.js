@@ -2,7 +2,7 @@
 import { GraphQLString, GraphQLInt } from 'graphql'
 
 // App Imports
-import { UserType } from './type'
+import { UserType } from './types'
 import { create, remove } from './resolvers'
 
 // Create

@@ -4,8 +4,8 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 // UI Imports
-import * as colors from '../../src/client/components/ui/common/colors'
-import * as fonts from '../../src/client/components/ui/common/fonts'
+import * as colors from '../../src/ui/common/colors'
+import * as fonts from '../../src/ui/common/fonts'
 
 // Stories
 

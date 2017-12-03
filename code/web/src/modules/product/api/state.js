@@ -5,6 +5,7 @@ import {
     PRODUCTS_GET_LIST_REQUEST,
     PRODUCTS_GET_LIST_RESPONSE,
     PRODUCTS_GET_LIST_FAILURE,
+    PRODUCTS_GET_LIST_RESET,
     PRODUCTS_GET_REQUEST,
     PRODUCTS_GET_RESPONSE,
     PRODUCTS_GET_FAILURE,
@@ -46,6 +47,9 @@ export const products = (state = productsInitialState, action) => {
                 isLoading: false,
                 error: action.error
             }
+
+        case PRODUCTS_GET_LIST_RESET:
+            return Object.assign({}, productsInitialState)
 
         default:
             return state

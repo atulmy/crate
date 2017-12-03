@@ -4,22 +4,21 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
-import moment from 'moment'
 
 // UI Imports
 import { Grid, GridCell } from '../../../ui/grid'
 import Button from '../../../ui/button'
 import Icon from '../../../ui/icon'
 import H4 from '../../../ui/typography/H4'
-import Input from '../../../ui/input/Input'
-import Textarea from '../../../ui/input/Textarea'
+import { Input, Textarea, Select } from '../../../ui/input'
 import { white } from "../../../ui/common/colors"
 
 // App Imports
-import { create as productCreate } from '../../product/api/actions'
+import { create as productCreate, getTypes as getProductTypes } from '../../product/api/actions'
+import { getGenders as getUserGenders } from '../../user/api/actions'
+import { messageShow, messageHide } from '../../common/api/actions'
 import AdminMenu from '../common/Menu'
 import admin from '../../../setup/routes/admin'
-import { messageShow, messageHide } from '../../common/api/actions'
 
 // Component
 class ProductCreate extends Component {
@@ -37,8 +36,46 @@ class ProductCreate extends Component {
                 type: 0,
                 gender: 0,
                 image: ''
-            }
+            },
+            productTypes: [],
+            userGenders: [],
         }
+    }
+
+    componentDidMount() {
+        // Get product types
+        this.props.getProductTypes()
+            .then(response => {
+                if(response.data.errors && response.data.errors.length > 0) {
+                    this.props.messageShow(response.data.errors[0].message)
+                } else {
+                    this.setState({
+                        productTypes: response.data.data.productTypes
+                    })
+                }
+            })
+            .catch(error => {
+                this.props.messageShow('There was some error fetching product types. Please try again.')
+
+                console.error(error)
+            })
+
+        // Get user genders
+        this.props.getUserGenders()
+            .then(response => {
+                if(response.data.errors && response.data.errors.length > 0) {
+                    this.props.messageShow(response.data.errors[0].message)
+                } else {
+                    this.setState({
+                        userGenders: response.data.data.userGenders
+                    })
+                }
+            })
+            .catch(error => {
+                this.props.messageShow('There was some error fetching product types. Please try again.')
+
+                console.error(error)
+            })
     }
 
     onChange = (event) => {
@@ -142,6 +179,46 @@ class ProductCreate extends Component {
                                         onChange={ this.onChange }
                                         style={ { marginTop: '1em' } }
                                     />
+
+                                    {/* Type */}
+                                    <Select
+                                        fullWidth={ true }
+                                        required="required"
+                                        name="type"
+                                        value={ this.state.product.type }
+                                        onChange={ this.onChange }
+                                        style={ { marginTop: '1em' } }
+                                    >
+                                        {
+                                            this.state.productTypes.length > 0
+                                                ?
+                                            this.state.productTypes.map(type => (
+                                                <option value={ type.id }>{ type.name }</option>
+                                            ))
+                                                :
+                                            <option disabled="disabled" selected="selected">Select type</option>
+                                        }
+                                    </Select>
+
+                                    {/* Gender */}
+                                    <Select
+                                        fullWidth={ true }
+                                        required="required"
+                                        name="gender"
+                                        value={ this.state.product.gender }
+                                        onChange={ this.onChange }
+                                        style={ { marginTop: '1em' } }
+                                    >
+                                        {
+                                            this.state.userGenders.length > 0
+                                                ?
+                                            this.state.userGenders.map(type => (
+                                                <option value={ type.id }>{ type.name }</option>
+                                            ))
+                                                :
+                                            <option disabled="disabled" selected="selected">Select gender</option>
+                                        }
+                                    </Select>
                                 </div>
 
                                 <div style={ { marginTop: '2em', textAlign: 'center' } }>
@@ -162,8 +239,10 @@ class ProductCreate extends Component {
 // Component Properties
 ProductCreate.propTypes = {
     productCreate: PropTypes.func.isRequired,
+    getProductTypes: PropTypes.func.isRequired,
+    getUserGenders: PropTypes.func.isRequired,
     messageShow: PropTypes.func.isRequired,
     messageHide: PropTypes.func.isRequired
 }
 
-export default connect(null, { productCreate, messageShow, messageHide })(ProductCreate)
+export default connect(null, { productCreate, getProductTypes, getUserGenders, messageShow, messageHide })(ProductCreate)
