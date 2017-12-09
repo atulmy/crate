@@ -43,10 +43,17 @@ export async function getRelated(parentValue, { productId }) {
 }
 
 // Create product
-export async function create(parentValue, { name, product }) {
+export async function create(parentValue, { name, slug, description, type, gender, image }) {
+    // @note: Ideally you should not store full image path in your database, just store the file name
+    image = `/images/uploads/${ image }`
+
     return await models.Product.create({
         name,
-        product
+        slug,
+        description,
+        type,
+        gender,
+        image
     })
 }
 

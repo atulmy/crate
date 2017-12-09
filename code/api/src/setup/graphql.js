@@ -23,5 +23,5 @@ export default function(server) {
                 isAuthenticated: request.user && request.user.id > 0
             }
         }
-    })))
+    }) ) )
 }

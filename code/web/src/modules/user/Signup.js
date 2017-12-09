@@ -70,22 +70,19 @@ class Signup extends Component {
 
                     this.props.history.push(userRoutes.login.path)
                 }
-
-                window.setTimeout(() => {
-                    this.props.messageHide()
-                }, 5000)
             })
             .catch(error => {
                 this.props.messageShow('There was some error signing you up. Please try again.')
-
-                window.setTimeout(() => {
-                    this.props.messageHide()
-                }, 5000)
 
                 this.setState({
                     isLoading: false,
                     error: 'Error signing up.'
                 })
+            })
+            .then(() => {
+                window.setTimeout(() => {
+                    this.props.messageHide()
+                }, 5000)
             })
     }
 

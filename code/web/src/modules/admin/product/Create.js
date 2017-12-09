@@ -14,11 +14,12 @@ import { Input, Textarea, Select } from '../../../ui/input'
 import { white } from "../../../ui/common/colors"
 
 // App Imports
+import admin from '../../../setup/routes/admin'
+import { slug } from '../../../setup/helpers'
 import { create as productCreate, getTypes as getProductTypes } from '../../product/api/actions'
 import { getGenders as getUserGenders } from '../../user/api/actions'
-import { messageShow, messageHide } from '../../common/api/actions'
+import { upload, messageShow, messageHide } from '../../common/api/actions'
 import AdminMenu from '../common/Menu'
-import admin from '../../../setup/routes/admin'
 
 // Component
 class ProductCreate extends Component {
@@ -27,7 +28,6 @@ class ProductCreate extends Component {
         super(props)
 
         this.state = {
-            error: '',
             isLoading: false,
             product: {
                 name: '',
@@ -49,15 +49,17 @@ class ProductCreate extends Component {
                 if(response.data.errors && response.data.errors.length > 0) {
                     this.props.messageShow(response.data.errors[0].message)
                 } else {
+                    let product = this.state.product
+                    product.gender = response.data.data.productTypes[0].id
+
                     this.setState({
-                        productTypes: response.data.data.productTypes
+                        productTypes: response.data.data.productTypes,
+                        product
                     })
                 }
             })
             .catch(error => {
                 this.props.messageShow('There was some error fetching product types. Please try again.')
-
-                console.error(error)
             })
 
         // Get user genders
@@ -66,21 +68,36 @@ class ProductCreate extends Component {
                 if(response.data.errors && response.data.errors.length > 0) {
                     this.props.messageShow(response.data.errors[0].message)
                 } else {
+                    let product = this.state.product
+                    product.gender = response.data.data.userGenders[0].id
+
                     this.setState({
-                        userGenders: response.data.data.userGenders
+                        userGenders: response.data.data.userGenders,
+                        product
                     })
                 }
             })
             .catch(error => {
                 this.props.messageShow('There was some error fetching product types. Please try again.')
-
-                console.error(error)
             })
     }
 
     onChange = (event) => {
         let product = this.state.product
         product[event.target.name] = event.target.value
+
+        if(event.target.name === 'name') {
+            product.slug = slug(event.target.value)
+        }
+
+        this.setState({
+            product
+        })
+    }
+
+    onChangeSelect = (event) => {
+        let product = this.state.product
+        product[event.target.name] = parseInt(event.target.value)
 
         this.setState({
             product
@@ -94,8 +111,9 @@ class ProductCreate extends Component {
             isLoading: true
         })
 
-        this.props.messageShow('Signing you up, please wait...')
+        this.props.messageShow('Saving product, please wait...')
 
+        // Save product
         this.props.productCreate(this.state.product)
             .then(response => {
                 this.setState({
@@ -109,22 +127,59 @@ class ProductCreate extends Component {
 
                     this.props.history.push(admin.productList.path)
                 }
+            })
+            .catch(error => {
+                this.props.messageShow('There was some error. Please try again.')
 
+                this.setState({
+                    isLoading: false
+                })
+            })
+            .then(() => {
                 window.setTimeout(() => {
                     this.props.messageHide()
                 }, 5000)
             })
+    }
+
+    onUpload = (event) => {
+        this.props.messageShow('Uploading file, please wait...')
+
+        this.setState({
+            isLoading: true
+        })
+
+        let data = new FormData()
+        data.append('file', event.target.files[0])
+
+        // Upload image
+        this.props.upload(data)
+            .then(response => {
+                if (response.status === 200) {
+                    this.props.messageShow('File uploaded successfully.')
+
+                    let product = this.state.product
+                    product.image = response.data.file
+
+                    this.setState({
+                        product
+                    })
+                } else {
+                    this.props.messageShow('Please try again.')
+                }
+            })
             .catch(error => {
-                this.props.messageShow('There was some error signing you up. Please try again.')
+                this.props.messageShow('There was some error. Please try again.')
+
+            })
+            .then(() => {
+                this.setState({
+                    isLoading: false
+                })
 
                 window.setTimeout(() => {
                     this.props.messageHide()
                 }, 5000)
-
-                this.setState({
-                    isLoading: false,
-                    error: 'Error signing up.'
-                })
             })
     }
 
@@ -186,14 +241,14 @@ class ProductCreate extends Component {
                                         required="required"
                                         name="type"
                                         value={ this.state.product.type }
-                                        onChange={ this.onChange }
+                                        onChange={ this.onChangeSelect }
                                         style={ { marginTop: '1em' } }
                                     >
                                         {
                                             this.state.productTypes.length > 0
                                                 ?
                                             this.state.productTypes.map(type => (
-                                                <option value={ type.id }>{ type.name }</option>
+                                                <option value={ type.id } key={ type.id }>{ type.name }</option>
                                             ))
                                                 :
                                             <option disabled="disabled" selected="selected">Select type</option>
@@ -212,13 +267,22 @@ class ProductCreate extends Component {
                                         {
                                             this.state.userGenders.length > 0
                                                 ?
-                                            this.state.userGenders.map(type => (
-                                                <option value={ type.id }>{ type.name }</option>
+                                            this.state.userGenders.map(gender => (
+                                                <option value={ gender.id } key={ gender.id }>{ gender.name }</option>
                                             ))
                                                 :
                                             <option disabled="disabled" selected="selected">Select gender</option>
                                         }
                                     </Select>
+
+                                    {/* Upload File */}
+                                    <div style={ { marginTop: '1em' } }>
+                                        <input
+                                            type="file"
+                                            onChange={ this.onUpload }
+                                            required="required"
+                                        />
+                                    </div>
                                 </div>
 
                                 <div style={ { marginTop: '2em', textAlign: 'center' } }>
@@ -241,8 +305,9 @@ ProductCreate.propTypes = {
     productCreate: PropTypes.func.isRequired,
     getProductTypes: PropTypes.func.isRequired,
     getUserGenders: PropTypes.func.isRequired,
+    upload: PropTypes.func.isRequired,
     messageShow: PropTypes.func.isRequired,
     messageHide: PropTypes.func.isRequired
 }
 
-export default connect(null, { productCreate, getProductTypes, getUserGenders, messageShow, messageHide })(ProductCreate)
+export default connect(null, { productCreate, getProductTypes, getUserGenders, upload, messageShow, messageHide })(ProductCreate)

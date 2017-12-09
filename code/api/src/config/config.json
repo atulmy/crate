@@ -8,5 +8,10 @@
     "endpoint": "/",
     "ide": true,
     "pretty": true
+  },
+
+  "upload": {
+    "endpoint": "/upload",
+    "folder": "static/uploads/"
   }
 }

@@ -14,8 +14,28 @@ export const productCreate = {
             type: GraphQLString
         },
 
-        product: {
-            name: 'product',
+        slug: {
+            name: 'slug',
+            type: GraphQLString
+        },
+
+        description: {
+            name: 'description',
+            type: GraphQLString
+        },
+
+        type: {
+            name: 'type',
+            type: GraphQLInt
+        },
+
+        gender: {
+            name: 'gender',
+            type: GraphQLInt
+        },
+
+        image: {
+            name: 'image',
             type: GraphQLString
         }
     },

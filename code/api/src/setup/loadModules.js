@@ -15,7 +15,7 @@ export default function(server) {
 
     // Request body parser
     server.use(bodyParser.json())
-    server.use(bodyParser.urlencoded({extended: false}))
+    server.use(bodyParser.urlencoded({ extended: false }))
 
     // Request body cookie parser
     server.use(cookieParser())
