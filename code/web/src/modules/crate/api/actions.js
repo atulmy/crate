@@ -27,7 +27,11 @@ export function getList(isLoading = true) {
                 isLoading
             })
 
-            return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'crates', fields: ['id', 'name', 'description'] }))
+            return axios.post(routeApi, queryBuilder({
+                type: 'query',
+                operation: 'crates',
+                fields: ['id', 'name', 'description']
+            }) )
                 .then((response) => {
                     if(response.status === 200) {
                         dispatch({
@@ -90,13 +94,23 @@ export function get(slug, isLoading = true) {
 // Create crate
 export function create(data) {
     return dispatch => {
-        return axios.post(routeApi, queryBuilder({ type: 'mutation', operation: 'crateCreate', data, fields: ['id'] }))
+        return axios.post(routeApi, queryBuilder({
+            type: 'mutation',
+            operation: 'crateCreate',
+            data,
+            fields: ['id']
+        }) )
     }
 }
 
 // Remove crate
 export function remove(data) {
     return dispatch => {
-        return axios.post(routeApi, queryBuilder({ type: 'mutation', operation: 'crateRemove', data, fields: ['id'] }))
+        return axios.post(routeApi, queryBuilder({
+            type: 'mutation',
+            operation: 'crateRemove',
+            data,
+            fields: ['id']
+        }) )
     }
 }

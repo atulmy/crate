@@ -3,7 +3,7 @@ import { GraphQLString, GraphQLInt } from 'graphql'
 
 // App Imports
 import { ProductType } from './types'
-import { create, remove } from './resolvers'
+import { create, update, remove } from './resolvers'
 
 // Product create
 export const productCreate = {
@@ -40,6 +40,48 @@ export const productCreate = {
         }
     },
     resolve: create
+}
+
+// Product create
+export const productUpdate = {
+    type: ProductType,
+    args: {
+        id: {
+            name: 'id',
+            type: GraphQLInt
+        },
+
+        name: {
+            name: 'name',
+            type: GraphQLString
+        },
+
+        slug: {
+            name: 'slug',
+            type: GraphQLString
+        },
+
+        description: {
+            name: 'description',
+            type: GraphQLString
+        },
+
+        type: {
+            name: 'type',
+            type: GraphQLInt
+        },
+
+        gender: {
+            name: 'gender',
+            type: GraphQLInt
+        },
+
+        image: {
+            name: 'image',
+            type: GraphQLString
+        }
+    },
+    resolve: update
 }
 
 // Product remove

@@ -1,7 +1,7 @@
 // App Imports
 import Dashboard from '../../modules/admin/Dashboard'
 import ProductList from '../../modules/admin/product/List'
-import ProductCreate from '../../modules/admin/product/Create'
+import ProductCreateOrEdit from '../../modules/admin/product/CreateOrEdit'
 
 // Admin routes
 export default {
@@ -21,13 +21,13 @@ export default {
 
     productCreate: {
         path: '/admin/product/create',
-        component: ProductCreate,
+        component: ProductCreateOrEdit,
         auth: true
     },
 
     productEdit: {
         path: (id = ':id') => (`/admin/product/${ id }/edit`),
-        component: ProductList,
+        component: ProductCreateOrEdit,
         auth: true
     },
 

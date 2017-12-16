@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 // UI Imports
 import { Grid, GridCell } from '../../../ui/grid'
@@ -15,14 +16,15 @@ import { white } from "../../../ui/common/colors"
 
 // App Imports
 import admin from '../../../setup/routes/admin'
-import { slug } from '../../../setup/helpers'
-import { create as productCreate, getTypes as getProductTypes } from '../../product/api/actions'
+import { routeImage } from "../../../setup/routes"
+import { renderIf, slug } from '../../../setup/helpers'
+import { createOrUpdate as productCreateOrUpdate, getTypes as getProductTypes, getById as getProductById } from '../../product/api/actions'
 import { getGenders as getUserGenders } from '../../user/api/actions'
 import { upload, messageShow, messageHide } from '../../common/api/actions'
 import AdminMenu from '../common/Menu'
 
 // Component
-class ProductCreate extends Component {
+class CreateOrEdit extends Component {
 
     constructor(props) {
         super(props)
@@ -30,6 +32,7 @@ class ProductCreate extends Component {
         this.state = {
             isLoading: false,
             product: {
+                id: 0,
                 name: '',
                 slug: '',
                 description: '',
@@ -80,6 +83,27 @@ class ProductCreate extends Component {
             .catch(error => {
                 this.props.messageShow('There was some error fetching product types. Please try again.')
             })
+
+        // Get product details (edit case)
+        this.getProduct(parseInt(this.props.match.params.id))
+    }
+
+    getProduct = (productId) => {
+        if(productId > 0) {
+            this.props.getProductById(productId)
+                .then(response => {
+                    if(response.data.errors && response.data.errors.length > 0) {
+                        this.props.messageShow(response.data.errors[0].message)
+                    } else {
+                        this.setState({
+                            product: response.data.data.productById
+                        })
+                    }
+                })
+                .catch(error => {
+                    this.props.messageShow('There was some error fetching product types. Please try again.')
+                })
+        }
     }
 
     onChange = (event) => {
@@ -114,7 +138,7 @@ class ProductCreate extends Component {
         this.props.messageShow('Saving product, please wait...')
 
         // Save product
-        this.props.productCreate(this.state.product)
+        this.props.productCreateOrUpdate(this.state.product)
             .then(response => {
                 this.setState({
                     isLoading: false
@@ -159,7 +183,7 @@ class ProductCreate extends Component {
                     this.props.messageShow('File uploaded successfully.')
 
                     let product = this.state.product
-                    product.image = response.data.file
+                    product.image = `/images/uploads/${ response.data.file }`
 
                     this.setState({
                         product
@@ -188,7 +212,7 @@ class ProductCreate extends Component {
             <div>
                 {/* SEO */}
                 <Helmet>
-                    <title>Product / Create - Admin - Crate</title>
+                    <title>Product / Create or Edit - Admin - Crate</title>
                 </Helmet>
 
                 {/* Top menu bar */}
@@ -208,7 +232,7 @@ class ProductCreate extends Component {
                     {/* Product list */}
                     <Grid alignCenter={ true } style={ { padding: '1em' } }>
                         <GridCell>
-                            <H4 font="secondary" style={ { marginBottom: '1em', textAlign: 'center' } }>Create Product</H4>
+                            <H4 font="secondary" style={ { marginBottom: '1em', textAlign: 'center' } }>{ this.props.match.params.id === undefined ? 'Create' : 'Edit' } Product</H4>
 
                             {/* Signup Form */}
                             <form onSubmit={ this.onSubmit }>
@@ -283,6 +307,10 @@ class ProductCreate extends Component {
                                             required="required"
                                         />
                                     </div>
+
+                                    { renderIf(this.state.product.image !== '', () => (
+                                        <img src={ routeImage + this.state.product.image } alt="Product Image" style={ { width: 200, marginTop: '1em' } } />
+                                    )) }
                                 </div>
 
                                 <div style={ { marginTop: '2em', textAlign: 'center' } }>
@@ -301,8 +329,9 @@ class ProductCreate extends Component {
 }
 
 // Component Properties
-ProductCreate.propTypes = {
-    productCreate: PropTypes.func.isRequired,
+CreateOrEdit.propTypes = {
+    productCreateOrUpdate: PropTypes.func.isRequired,
+    getProductById: PropTypes.func.isRequired,
     getProductTypes: PropTypes.func.isRequired,
     getUserGenders: PropTypes.func.isRequired,
     upload: PropTypes.func.isRequired,
@@ -310,4 +339,4 @@ ProductCreate.propTypes = {
     messageHide: PropTypes.func.isRequired
 }
 
-export default connect(null, { productCreate, getProductTypes, getUserGenders, upload, messageShow, messageHide })(ProductCreate)
+export default withRouter(connect(null, { productCreateOrUpdate, getProductById, getProductTypes, getUserGenders, upload, messageShow, messageHide })(CreateOrEdit))

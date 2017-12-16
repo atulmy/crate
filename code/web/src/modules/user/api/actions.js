@@ -33,7 +33,12 @@ export function login(userCredentials, isLoading = true) {
             isLoading
         })
 
-        return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'userLogin', data: userCredentials, fields: ['user {name, email}', 'token'] }))
+        return axios.post(routeApi, queryBuilder({
+            type: 'query',
+            operation: 'userLogin',
+            data: userCredentials,
+            fields: ['user {name, email}', 'token']
+        }) )
             .then(response => {
                 let error = ''
 
@@ -75,7 +80,12 @@ export function loginSetUserLocalStorageAndCookie(token, user) {
 // Register a user
 export function register(userDetails) {
     return dispatch => {
-        return axios.post(routeApi, queryBuilder({ type: 'mutation', operation: 'userSignup', data: userDetails, fields: ['id', 'name', 'email'] }))
+        return axios.post(routeApi, queryBuilder({
+            type: 'mutation',
+            operation: 'userSignup',
+            data: userDetails,
+            fields: ['id', 'name', 'email']
+        }) )
     }
 }
 
@@ -103,6 +113,10 @@ export function logoutUnsetUserLocalStorageAndCookie(token, user) {
 // Get user gender
 export function getGenders() {
     return dispatch => {
-        return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'userGenders', fields: ['id', 'name'] }))
+        return axios.post(routeApi, queryBuilder({
+            type: 'query',
+            operation: 'userGenders',
+            fields: ['id', 'name']
+        }) )
     }
 }

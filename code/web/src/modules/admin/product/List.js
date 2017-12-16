@@ -10,7 +10,7 @@ import moment from 'moment'
 import { Grid, GridCell } from '../../../ui/grid'
 import Button from '../../../ui/button'
 import Icon from '../../../ui/icon'
-import {grey3, white} from '../../../ui/common/colors'
+import { white, black } from '../../../ui/common/colors'
 
 // App Imports
 import { getList as getProductList } from '../../product/api/actions'
@@ -108,7 +108,9 @@ class List extends Component {
                                                     </td>
 
                                                     <td style={ { textAlign: 'center' } }>
-                                                        <Icon size={ 2 }>mode_edit</Icon>
+                                                        <Link to={ admin.productEdit.path(id) }>
+                                                            <Icon size={ 2 } style={ { color: black } }>mode_edit</Icon>
+                                                        </Link>
 
                                                         <Icon size={ 2 } style={ { marginLeft: '0.5em' } }>delete</Icon>
                                                     </td>

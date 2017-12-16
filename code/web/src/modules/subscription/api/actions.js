@@ -27,7 +27,11 @@ export function getList(isLoading = true) {
                 isLoading
             })
 
-            return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'subscriptions', fields: ['id', 'name', 'slug', 'description', 'image'] }))
+            return axios.post(routeApi, queryBuilder({
+                type: 'query',
+                operation: 'subscriptions',
+                fields: ['id', 'name', 'slug', 'description', 'image']
+            }) )
                 .then((response) => {
                     if(response.status === 200) {
                         dispatch({
@@ -90,13 +94,23 @@ export function get(slug, isLoading = true) {
 // Create subscription
 export function create(data) {
     return dispatch => {
-        return axios.post(routeApi, queryBuilder({ type: 'mutation', operation: 'subscriptionCreate', data, fields: ['id'] }))
+        return axios.post(routeApi, queryBuilder({
+            type: 'mutation',
+            operation: 'subscriptionCreate',
+            data,
+            fields: ['id']
+        }) )
     }
 }
 
 // Remove subscription
 export function remove(data) {
     return dispatch => {
-        return axios.post(routeApi, queryBuilder({ type: 'mutation', operation: 'subscriptionRemove', data, fields: ['id'] }))
+        return axios.post(routeApi, queryBuilder({
+            type: 'mutation',
+            operation: 'subscriptionRemove',
+            data,
+            fields: ['id']
+        }) )
     }
 }

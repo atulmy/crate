@@ -31,7 +31,11 @@ export function getList(isLoading = true) {
                 isLoading
             })
 
-            return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'products', fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt'] }))
+            return axios.post(routeApi, queryBuilder({
+                type: 'query',
+                operation: 'products',
+                fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
+            }) )
                 .then(response => {
                     if(response.status === 200) {
                         dispatch({
@@ -41,7 +45,11 @@ export function getList(isLoading = true) {
                             list: response.data.data.products
                         })
                     } else {
-                        console.error(response)
+                        dispatch({
+                            type: PRODUCTS_GET_LIST_FAILURE,
+                            error: 'Some error occurred. Please try again.',
+                            isLoading: false
+                        })
                     }
                 })
                 .catch(error => {
@@ -74,18 +82,26 @@ export function get(slug, isLoading = true) {
                 fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
             }))
                 .then(response => {
-                    if(response.data.errors && response.data.errors.length > 0) {
-                        dispatch({
-                            type: PRODUCTS_GET_FAILURE,
-                            error: response.data.errors[0].message,
-                            isLoading: false
-                        })
+                    if(response.status === 200) {
+                        if (response.data.errors && response.data.errors.length > 0) {
+                            dispatch({
+                                type: PRODUCTS_GET_FAILURE,
+                                error: response.data.errors[0].message,
+                                isLoading: false
+                            })
+                        } else {
+                            dispatch({
+                                type: PRODUCTS_GET_RESPONSE,
+                                error: null,
+                                isLoading: false,
+                                item: response.data.data.product
+                            })
+                        }
                     } else {
                         dispatch({
-                            type: PRODUCTS_GET_RESPONSE,
-                            error: null,
-                            isLoading: false,
-                            item: response.data.data.product
+                            type: PRODUCTS_GET_FAILURE,
+                            error: 'Some error occurred. Please try again.',
+                            isLoading: false
                         })
                     }
                 })
@@ -100,6 +116,19 @@ export function get(slug, isLoading = true) {
     }
 }
 
+// Get single product by Id
+export function getById(productId) {
+    return dispatch => {
+        return axios.post(routeApi, queryBuilder({
+            type: 'query',
+            operation: 'productById',
+            data: { productId },
+            fields: ['id', 'name', 'slug', 'description', 'image', 'type', 'gender']
+        }) )
+    }
+}
+
+
 // Get list of products related to a product
 export function getRelatedList(productId, isLoading = true) {
     return (dispatch, getState) => {
@@ -112,7 +141,12 @@ export function getRelatedList(productId, isLoading = true) {
                 isLoading
             })
 
-            return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'productsRelated', data: { productId }, fields: ['id', 'name', 'slug', 'description', 'image'] }))
+            return axios.post(routeApi, queryBuilder({
+                type: 'query',
+                operation: 'productsRelated',
+                data: { productId },
+                fields: ['id', 'name', 'slug', 'description', 'image']
+            }) )
                 .then(response => {
                     if(response.status === 200) {
                         dispatch({
@@ -123,7 +157,11 @@ export function getRelatedList(productId, isLoading = true) {
                             productId
                         })
                     } else {
-                        console.error(response)
+                        dispatch({
+                            type: PRODUCTS_GET_RELATED_LIST_FAILURE,
+                            error: 'Some error occurred. Please try again.',
+                            isLoading: false
+                        })
                     }
                 })
                 .catch(error => {
@@ -137,23 +175,58 @@ export function getRelatedList(productId, isLoading = true) {
     }
 }
 
+// Create or update product
+export function createOrUpdate(product) {
+    if(product.id > 0) {
+        return update(product)
+    } else {
+        return create(product)
+    }
+}
+
 // Create product
-export function create(data) {
+export function create(product) {
     return dispatch => {
-        return axios.post(routeApi, queryBuilder({ type: 'mutation', operation: 'productCreate', data, fields: ['id'] }))
+        return axios.post(routeApi, queryBuilder({
+            type: 'mutation',
+            operation: 'productCreate',
+            data: product,
+            fields: ['id']
+        }) )
+    }
+}
+
+// Create product
+export function update(product) {
+    return dispatch => {
+        return axios.post(routeApi, queryBuilder({
+            type: 'mutation',
+            operation: 'productUpdate',
+            data: product,
+            fields: ['id']
+        }) )
     }
 }
 
 // Remove product
 export function remove(data) {
     return dispatch => {
-        return axios.post(routeApi, queryBuilder({ type: 'mutation', operation: 'productRemove', data, fields: ['id'] }))
+        return axios.post(routeApi, queryBuilder({
+            type: 'mutation',
+            operation: 'productRemove',
+            data,
+            fields: ['id']
+        }) )
     }
 }
 
 // Get product types
 export function getTypes() {
     return dispatch => {
-        return axios.post(routeApi, queryBuilder({ type: 'query', operation: 'productTypes', fields: ['id', 'name'] }))
+        return axios.post(routeApi, queryBuilder({
+            type: 'query',
+            operation: 'productTypes',
+            fields: ['id', 'name']
+        }) )
     }
 }
