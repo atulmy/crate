@@ -1,22 +1,22 @@
 // Imports
-import React  from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 // UI Imports
-import { white, grey2, black } from '../common/colors'
-import { primary, secondary } from '../common/gradients'
-import { level1, level2, level3, level4 } from '../common/shadows'
+import {white, grey2, black} from '../common/colors'
+import {primary, secondary} from '../common/gradients'
+import {level1, level2, level3, level4} from '../common/shadows'
 
 // Component
 const Button = (props) => {
-    const { children, type, disabled, theme, ...other } = props
+  const {children, type, disabled, theme, ...other} = props
 
-    return(
-        <button type={ type } disabled={ disabled } { ...other }>
-            { children }
+  return (
+    <button type={type} disabled={disabled} {...other}>
+      {children}
 
-            {/* language=CSS */}
-            <style jsx>{`
+      {/* language=CSS */}
+      <style jsx>{`
                 button {
                     padding: 0.8em 1.8em;
                     border: none;
@@ -44,21 +44,21 @@ const Button = (props) => {
                     background-image: none;
                 }
             `}
-            </style>
-        </button>
-    )
+      </style>
+    </button>
+  )
 }
 
 // Component Properties
 Button.propTypes = {
-    type: PropTypes.string,
-    disabled: PropTypes.bool,
-    theme: PropTypes.string,
+  type: PropTypes.string,
+  disabled: PropTypes.bool,
+  theme: PropTypes.string,
 }
 Button.defaultProps = {
-    type: 'button',
-    disabled: false,
-    theme: 'none'
+  type: 'button',
+  disabled: false,
+  theme: 'none'
 }
 
 export default Button

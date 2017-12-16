@@ -7,21 +7,21 @@ import authentication from './authentication'
 import schema from './schema'
 
 // Setup GraphQL
-export default function(server) {
-    console.info('SETUP - GraphQL...')
+export default function (server) {
+  console.info('SETUP - GraphQL...')
 
-    server.use(authentication)
+  server.use(authentication)
 
-    // API (GraphQL on route `/api`)
-    server.use(config.graphql.endpoint, graphqlHTTP(request => ({
-        schema,
-        graphiql: config.graphql.ide,
-        pretty: config.graphql.pretty,
-        context: {
-            auth: {
-                user: request.user,
-                isAuthenticated: request.user && request.user.id > 0
-            }
-        }
-    }) ) )
+  // API (GraphQL on route `/api`)
+  server.use(config.graphql.endpoint, graphqlHTTP(request => ({
+    schema,
+    graphiql: config.graphql.ide,
+    pretty: config.graphql.pretty,
+    context: {
+      auth: {
+        user: request.user,
+        isAuthenticated: request.user && request.user.id > 0
+      }
+    }
+  })))
 }

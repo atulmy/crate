@@ -4,37 +4,37 @@ import PropTypes from 'prop-types'
 
 // Component
 const Grid = (props) => {
-    const {
-        children,
-        flexCells,
+  const {
+    children,
+    flexCells,
 
-        justifyRight,
-        justifyCenter,
+    justifyRight,
+    justifyCenter,
 
-        alignTop,
-        alignBottom,
-        alignCenter,
+    alignTop,
+    alignBottom,
+    alignCenter,
 
-        gutter,
-        ...others
-    } = props
+    gutter,
+    ...others
+  } = props
 
-    const GridCells = React.Children.map(children, (GridCell) => {
-        if (!GridCell) {
-            return null
-        }
-        if (GridCell.props) {
-            return React.cloneElement(GridCell, { flexCells, gutter })
-        }
-        return GridCell
-    })
+  const GridCells = React.Children.map(children, (GridCell) => {
+    if (!GridCell) {
+      return null
+    }
+    if (GridCell.props) {
+      return React.cloneElement(GridCell, {flexCells, gutter})
+    }
+    return GridCell
+  })
 
-    return(
-        <div { ...others }>
-            { GridCells }
+  return (
+    <div {...others}>
+      {GridCells}
 
-            {/* language=CSS */}
-            <style jsx>{`
+      {/* language=CSS */}
+      <style jsx>{`
                 div {
                     display: flex;
                     flex-flow: row;
@@ -50,34 +50,34 @@ const Grid = (props) => {
                     ${ gutter ? 'margin-left: -1em;' : 'margin-left: 0;' }
                 }
             `}</style>
-        </div>
-    )
+    </div>
+  )
 }
 
 // Component Properties
 Grid.propTypes = {
-    flexCells: PropTypes.bool,
+  flexCells: PropTypes.bool,
 
-    justifyRight: PropTypes.bool,
-    justifyCenter: PropTypes.bool,
+  justifyRight: PropTypes.bool,
+  justifyCenter: PropTypes.bool,
 
-    alignTop: PropTypes.bool,
-    alignBottom: PropTypes.bool,
-    alignCenter: PropTypes.bool,
+  alignTop: PropTypes.bool,
+  alignBottom: PropTypes.bool,
+  alignCenter: PropTypes.bool,
 
-    gutter: PropTypes.bool,
+  gutter: PropTypes.bool,
 }
 Grid.defaultProps = {
-    flexCells: false,
+  flexCells: false,
 
-    justifyRight: false,
-    justifyCenter: false,
+  justifyRight: false,
+  justifyCenter: false,
 
-    alignTop: false,
-    alignBottom: false,
-    alignCenter: false,
+  alignTop: false,
+  alignBottom: false,
+  alignCenter: false,
 
-    gutter: false,
+  gutter: false,
 }
 
 export default Grid

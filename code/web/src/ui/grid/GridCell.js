@@ -4,24 +4,24 @@ import PropTypes from 'prop-types'
 
 // Component
 const GridCell = (props) => {
-    const {
-        children,
-        flexCells,
-        alignTop,
-        alignBottom,
-        alignCenter,
-        justifyRight,
-        justifyCenter,
-        gutter,
-        ...others
-    } = props
+  const {
+    children,
+    flexCells,
+    alignTop,
+    alignBottom,
+    alignCenter,
+    justifyRight,
+    justifyCenter,
+    gutter,
+    ...others
+  } = props
 
-    return(
-        <div { ...others }>
-            { children }
+  return (
+    <div {...others}>
+      {children}
 
-            {/* language=CSS */}
-            <style jsx>{`
+      {/* language=CSS */}
+      <style jsx>{`
                 div {
                     flex: 1;
                     ${ flexCells ? 'display: flex;' : '' }
@@ -33,28 +33,28 @@ const GridCell = (props) => {
                     ${ gutter ? 'padding-left: 1em;' : 'padding-left: 0;' }
                 }
             `}</style>
-        </div>
-    )
+    </div>
+  )
 }
 
 // Component Properties
 GridCell.propTypes = {
-    flexCells: PropTypes.bool,
-    alignTop: PropTypes.bool,
-    alignBottom: PropTypes.bool,
-    alignCenter: PropTypes.bool,
-    justifyRight: PropTypes.bool,
-    justifyCenter: PropTypes.bool,
-    gutter: PropTypes.bool
+  flexCells: PropTypes.bool,
+  alignTop: PropTypes.bool,
+  alignBottom: PropTypes.bool,
+  alignCenter: PropTypes.bool,
+  justifyRight: PropTypes.bool,
+  justifyCenter: PropTypes.bool,
+  gutter: PropTypes.bool
 }
 GridCell.defaultProps = {
-    flexCells: false,
-    alignTop: false,
-    alignBottom: false,
-    alignCenter: false,
-    justifyRight: false,
-    justifyCenter: false,
-    gutter: false
+  flexCells: false,
+  alignTop: false,
+  alignBottom: false,
+  alignCenter: false,
+  justifyRight: false,
+  justifyCenter: false,
+  gutter: false
 }
 
 export default GridCell

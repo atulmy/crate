@@ -1,20 +1,20 @@
 // Imports
-import React  from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 // UI Imports
-import { grey2, grey4, black } from '../common/colors'
+import {grey2, grey4, black} from '../common/colors'
 
 // Component
 const Input = (props) => {
-    const { children, fullWidth, ...other } = props
+  const {children, fullWidth, ...other} = props
 
-    return(
-        <div>
-            <select { ...other }>{ children }</select>
+  return (
+    <div>
+      <select {...other}>{children}</select>
 
-            {/* language=CSS */}
-            <style jsx>{`
+      {/* language=CSS */}
+      <style jsx>{`
                 select {
                     outline: none;
                     padding-top: 0.8em;
@@ -35,19 +35,19 @@ const Input = (props) => {
                     border-bottom: 1px solid ${ grey4 };
                 }
             `}
-            </style>
-        </div>
-    )
+      </style>
+    </div>
+  )
 }
 
 // Component Properties
 Input.propTypes = {
-    type: PropTypes.string,
-    fullWidth: PropTypes.bool
+  type: PropTypes.string,
+  fullWidth: PropTypes.bool
 }
 Input.defaultProps = {
-    type: 'button',
-    fullWidth: false
+  type: 'button',
+  fullWidth: false
 }
 
 export default Input

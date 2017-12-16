@@ -1,129 +1,127 @@
 // Imports
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 // UI Imports
-import { Grid, GridCell } from '../../ui/grid'
-import { H1, H6 } from '../../ui/typography'
+import {Grid, GridCell} from '../../ui/grid'
+import {H1, H6} from '../../ui/typography'
 import Modal from '../../ui/modal/Modal'
 import Button from '../../ui/button'
-import { white } from '../../ui/common/colors'
-import { textLevel1 } from '../../ui/common/shadows'
+import {white} from '../../ui/common/colors'
+import {textLevel1} from '../../ui/common/shadows'
 
 // App Imports
-import { APP_URL } from '../../setup/configs'
+import {APP_URL} from '../../setup/configs'
 
 // Component
 class Onboarding extends Component {
 
-    constructor(props) {
-        super(props)
+  toggleVisible = (visible) => {
+    this.setState({
+      visible
+    })
+  }
+  nextStep = () => {
+    this.setState(state => ({
+      currentStep: state.currentStep + 1
+    }))
+  }
+  close = () => {
+    this.toggleVisible(false)
+  }
 
-        this.state = {
-            visible: false,
-            currentStep: 0
-        }
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      visible: false,
+      currentStep: 0
     }
+  }
 
-    componentDidMount() {
-        const onboarding = window.localStorage.getItem('onboarding')
-        if(!onboarding) {
-            this.toggleVisible(true)
+  componentDidMount() {
+    const onboarding = window.localStorage.getItem('onboarding')
+    if (!onboarding) {
+      this.toggleVisible(true)
 
-            window.localStorage.setItem('onboarding', 1)
-        }
+      window.localStorage.setItem('onboarding', 1)
     }
+  }
 
-    toggleVisible = (visible) => {
-        this.setState({
-            visible
-        })
-    }
+  render() {
+    const steps = [
+      /* 1. Welcome to Crate */
+      <Grid alignCenter={true} style={{height: '100%', textAlign: 'center', color: white}}>
+        {/* Left - Headline and info */}
+        <GridCell>
+          <H1 font="secondary" style={{textShadow: textLevel1}}>Welcome to Crate</H1>
 
-    nextStep = () => {
-        this.setState(state => ({
-            currentStep: state.currentStep + 1
-        }))
-    }
+          <H6 style={{marginTop: '0.5em'}}>Your monthly subscription of trendy <br/> clothes and accessories</H6>
 
-    close = () => {
-        this.toggleVisible(false)
-    }
+          <Button theme="primary" style={{marginTop: '1.5em'}} onClick={this.nextStep}>Next</Button>
+        </GridCell>
 
-    render() {
-        const steps = [
-            /* 1. Welcome to Crate */
-            <Grid alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
-                {/* Left - Headline and info */}
-                <GridCell>
-                    <H1 font="secondary" style={ { textShadow: textLevel1 } }>Welcome to Crate</H1>
+        {/* Right - Image */}
+        <GridCell>
+          <img src={`${ APP_URL }/images/collage.png`} alt="collage" title="products collage" style={{width: 400}}/>
+        </GridCell>
+      </Grid>,
 
-                    <H6 style={ { marginTop: '0.5em' } }>Your monthly subscription of trendy <br/> clothes and accessories</H6>
+      /* 2. For Men */
+      <Grid alignCenter={true} style={{height: '100%', textAlign: 'center', color: white}}>
+        {/* Left - Image */}
+        <GridCell>
+          <img src={`${ APP_URL }/images/collage.png`} alt="collage" title="products collage" style={{width: 400}}/>
+        </GridCell>
 
-                    <Button theme="primary" style={ { marginTop: '1.5em' } } onClick={ this.nextStep }>Next</Button>
-                </GridCell>
+        {/* Right - Headline and info */}
+        <GridCell>
+          <H1 font="secondary" style={{textShadow: textLevel1}}>For Men</H1>
 
-                {/* Right - Image */}
-                <GridCell>
-                    <img src={ `${ APP_URL }/images/collage.png` } alt="collage" title="products collage" style={ { width: 400 } } />
-                </GridCell>
-            </Grid>,
+          <H6 style={{marginTop: '0.5em'}}>Your monthly subscription of trendy <br/> clothes and accessories</H6>
 
-            /* 2. For Men */
-            <Grid alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
-                {/* Left - Image */}
-                <GridCell>
-                    <img src={ `${ APP_URL }/images/collage.png` } alt="collage" title="products collage" style={ { width: 400 } } />
-                </GridCell>
+          <Button theme="primary" style={{marginTop: '1.5em'}} onClick={this.nextStep}>Next</Button>
+        </GridCell>
+      </Grid>,
 
-                {/* Right - Headline and info */}
-                <GridCell>
-                    <H1 font="secondary" style={ { textShadow: textLevel1 } }>For Men</H1>
+      /* 3. For Women */
+      <Grid alignCenter={true} style={{height: '100%', textAlign: 'center', color: white}}>
+        {/* Left - Headline and info */}
+        <GridCell>
+          <H1 font="secondary" style={{textShadow: textLevel1}}>For Women</H1>
 
-                    <H6 style={ { marginTop: '0.5em' } }>Your monthly subscription of trendy <br/> clothes and accessories</H6>
+          <H6 style={{marginTop: '0.5em'}}>Your monthly subscription of trendy <br/> clothes and accessories</H6>
 
-                    <Button theme="primary" style={ { marginTop: '1.5em' } } onClick={ this.nextStep }>Next</Button>
-                </GridCell>
-            </Grid>,
+          <Button theme="primary" style={{marginTop: '1.5em'}} onClick={this.nextStep}>Next</Button>
+        </GridCell>
 
-            /* 3. For Women */
-            <Grid alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
-                {/* Left - Headline and info */}
-                <GridCell>
-                    <H1 font="secondary" style={ { textShadow: textLevel1 } }>For Women</H1>
+        {/* Right - Image */}
+        <GridCell>
+          <img src={`${ APP_URL }/images/collage.png`} alt="collage" title="products collage" style={{width: 400}}/>
+        </GridCell>
+      </Grid>,
 
-                    <H6 style={ { marginTop: '0.5em' } }>Your monthly subscription of trendy <br/> clothes and accessories</H6>
+      /* 4. Fix me up */
+      <Grid alignCenter={true} style={{height: '100%', textAlign: 'center', color: white}}>
+        {/* Center - Headline and info */}
+        <GridCell>
+          <H1 font="secondary" style={{textShadow: textLevel1}}>Fix me up</H1>
 
-                    <Button theme="primary" style={ { marginTop: '1.5em' } } onClick={ this.nextStep }>Next</Button>
-                </GridCell>
+          <H6 style={{marginTop: '0.5em'}}>Subscribe to your crate!</H6>
 
-                {/* Right - Image */}
-                <GridCell>
-                    <img src={ `${ APP_URL }/images/collage.png` } alt="collage" title="products collage" style={ { width: 400 } } />
-                </GridCell>
-            </Grid>,
+          <Button theme="primary" style={{marginTop: '1.5em'}} onClick={this.close}>Start</Button>
+        </GridCell>
+      </Grid>
+    ]
 
-            /* 4. Fix me up */
-            <Grid alignCenter={ true } style={ { height: '100%', textAlign: 'center', color: white } }>
-                {/* Center - Headline and info */}
-                <GridCell>
-                    <H1 font="secondary" style={ { textShadow: textLevel1 } }>Fix me up</H1>
-
-                    <H6 style={ { marginTop: '0.5em' } }>Subscribe to your crate!</H6>
-
-                    <Button theme="primary" style={ { marginTop: '1.5em' } } onClick={ this.close }>Start</Button>
-                </GridCell>
-            </Grid>
-        ]
-
-        return(
-            <div>
-                {/* Modal */}
-                <Modal visible={ this.state.visible }>
-                    { steps[this.state.currentStep] }
-                </Modal>
-            </div>
-        )
-    }
+    return (
+      <div>
+        {/* Modal */}
+        <Modal visible={this.state.visible}>
+          {steps[this.state.currentStep]}
+        </Modal>
+      </div>
+    )
+  }
 }
 
 export default Onboarding

@@ -5,9 +5,9 @@ import React from 'react'
 
 // Component
 const DummyComponentPure = () => (
-    <div>
-        <h1>Dummy Component Pure</h1>
-    </div>
+  <div>
+    <h1>Dummy Component Pure</h1>
+  </div>
 )
 
 export default DummyComponentPure

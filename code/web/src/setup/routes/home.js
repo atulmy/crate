@@ -7,29 +7,29 @@ import WhatsNew from '../../modules/home/WhatsNew'
 
 // Home routes
 export default {
-    home: {
-        path: '/',
-        component: Home,
-        exact: true
-    },
+  home: {
+    path: '/',
+    component: Home,
+    exact: true
+  },
 
-    men: {
-        path: '/men',
-        component: Men
-    },
+  men: {
+    path: '/men',
+    component: Men
+  },
 
-    women: {
-        path: '/women',
-        component: Women
-    },
+  women: {
+    path: '/women',
+    component: Women
+  },
 
-    howItWorks: {
-        path: '/how-it-works',
-        component: HowItWorks
-    },
+  howItWorks: {
+    path: '/how-it-works',
+    component: HowItWorks
+  },
 
-    whatsNew: {
-        path: '/whats-new',
-        component: WhatsNew
-    }
+  whatsNew: {
+    path: '/whats-new',
+    component: WhatsNew
+  }
 }

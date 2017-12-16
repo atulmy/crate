@@ -1,5 +1,5 @@
 // Imports
-import { GraphQLObjectType } from 'graphql'
+import {GraphQLObjectType} from 'graphql'
 
 // App Imports
 import * as user from '../../modules/user/mutations'
@@ -9,15 +9,15 @@ import * as subscription from '../../modules/subscription/mutations'
 
 // Mutation
 const mutation = new GraphQLObjectType({
-    name: 'mutations',
-    description: 'API Mutations [Create, Update, Delete]',
+  name: 'mutations',
+  description: 'API Mutations [Create, Update, Delete]',
 
-    fields: {
-        ...user,
-        ...product,
-        ...crate,
-        ...subscription
-    }
+  fields: {
+    ...user,
+    ...product,
+    ...crate,
+    ...subscription
+  }
 })
 
 export default mutation

@@ -1,20 +1,20 @@
 // Imports
-import React  from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 // UI Imports
-import { grey2, grey4, black } from '../common/colors'
+import {grey2, grey4, black} from '../common/colors'
 
 // Component
 const Textarea = (props) => {
-    const { children, fullWidth, ...other } = props
+  const {children, fullWidth, ...other} = props
 
-    return(
-        <span>
-            <textarea { ...other }>{ children }</textarea>
+  return (
+    <span>
+            <textarea {...other}>{children}</textarea>
 
-            {/* language=CSS */}
-            <style jsx>{`
+      {/* language=CSS */}
+      <style jsx>{`
                 textarea {
                     outline: none;
                     color: ${ black };
@@ -35,15 +35,15 @@ const Textarea = (props) => {
             `}
             </style>
         </span>
-    )
+  )
 }
 
 // Component Properties
 Textarea.propTypes = {
-    fullWidth: PropTypes.bool
+  fullWidth: PropTypes.bool
 }
 Textarea.defaultProps = {
-    fullWidth: false
+  fullWidth: false
 }
 
 export default Textarea

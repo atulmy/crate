@@ -1,5 +1,5 @@
 // Imports
-import React  from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 // UI Imports
@@ -10,23 +10,24 @@ import Icon from '../icon'
 
 // Component
 const File = (props) => {
-    const { text, style, name, ...other } = props
+  const {text, style, name, ...other} = props
 
-    return(
-        <div>
-            <div className="file-upload" style={ style }>
-                <label htmlFor={ `file-upload-${ name }` } className="file-upload__label"><Icon size={ 1.2 }>file_upload</Icon> { text }</label>
-                <input
-                    className="file-upload__input"
-                    type="file"
-                    name={ name }
-                    id={ `file-upload-${ name }` }
-                    { ...other }
-                />
-            </div>
+  return (
+    <div>
+      <div className="file-upload" style={style}>
+        <label htmlFor={`file-upload-${ name }`} className="file-upload__label"><Icon
+          size={1.2}>file_upload</Icon> {text}</label>
+        <input
+          className="file-upload__input"
+          type="file"
+          name={name}
+          id={`file-upload-${ name }`}
+          {...other}
+        />
+      </div>
 
-            {/* language=CSS */}
-            <style jsx>{`
+      {/* language=CSS */}
+      <style jsx>{`
                 .file-upload {
                     position: relative;
                     display: inline-block;
@@ -69,21 +70,21 @@ const File = (props) => {
                     opacity: 0;
                 }
             `}
-            </style>
-        </div>
-    )
+      </style>
+    </div>
+  )
 }
 
 // Component Properties
 File.propTypes = {
-    text: PropTypes.string,
-    name: PropTypes.string,
-    style: PropTypes.object,
+  text: PropTypes.string,
+  name: PropTypes.string,
+  style: PropTypes.object,
 }
 File.defaultProps = {
-    text: 'Upload File',
-    name: 'file',
-    style: {},
+  text: 'Upload File',
+  name: 'file',
+  style: {},
 }
 
 export default File

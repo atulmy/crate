@@ -1,15 +1,12 @@
 {
   "port": 8000,
-
   "secret": "super-secret-key-crate-api",
   "saltRounds": 10,
-
   "graphql": {
     "endpoint": "/",
     "ide": true,
     "pretty": true
   },
-
   "upload": {
     "endpoint": "/upload",
     "folder": "static/uploads/"

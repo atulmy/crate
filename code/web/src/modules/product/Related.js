@@ -1,76 +1,76 @@
 // Imports
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 
 // UI Imports
-import { Grid, GridCell } from '../../ui/grid'
+import {Grid, GridCell} from '../../ui/grid'
 
 // App Imports
-import { getRelatedList as getProductRelatedList } from '../product/api/actions'
+import {getRelatedList as getProductRelatedList} from '../product/api/actions'
 import Loading from '../common/Loading'
 import ProductItem from '../product/Item'
 
 // Component
 class Related extends Component {
 
-    componentDidMount() {
-        this.refresh(this.props.productId)
-    }
+  refresh = (productId) => {
+    this.props.getProductRelatedList(productId)
+  }
 
-    componentWillReceiveProps(nextProps) {
-        if(nextProps.productId !== this.props.productId) {
-            this.refresh(nextProps.productId)
-        }
-    }
+  componentDidMount() {
+    this.refresh(this.props.productId)
+  }
 
-    refresh = (productId) => {
-        this.props.getProductRelatedList(productId)
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.productId !== this.props.productId) {
+      this.refresh(nextProps.productId)
     }
+  }
 
-    render() {
-        const { isLoading, list } = this.props.productsRelated
+  render() {
+    const {isLoading, list} = this.props.productsRelated
 
-        return (
-            <div>
-                {/* Related product list */}
-                <Grid>
-                    {
-                        isLoading
-                            ?
-                        <Loading />
-                            :
-                        (
-                            list.length > 0
-                                ?
-                            list.map(product => (
-                                <GridCell key={ product.id } style={ { textAlign: 'center' } }>
-                                    <ProductItem product={ product } />
-                                </GridCell>
-                            ))
-                                :
-                            <p>No related products to show.</p>
-                        )
-                    }
-                </Grid>
-            </div>
-        )
-    }
+    return (
+      <div>
+        {/* Related product list */}
+        <Grid>
+          {
+            isLoading
+              ?
+              <Loading/>
+              :
+              (
+                list.length > 0
+                  ?
+                  list.map(product => (
+                    <GridCell key={product.id} style={{textAlign: 'center'}}>
+                      <ProductItem product={product}/>
+                    </GridCell>
+                  ))
+                  :
+                  <p>No related products to show.</p>
+              )
+          }
+        </Grid>
+      </div>
+    )
+  }
 }
 
 // Component Properties
 Related.propTypes = {
-    productId: PropTypes.number.isRequired,
-    productsRelated: PropTypes.object.isRequired,
-    getProductRelatedList: PropTypes.func.isRequired
+  productId: PropTypes.number.isRequired,
+  productsRelated: PropTypes.object.isRequired,
+  getProductRelatedList: PropTypes.func.isRequired
 }
 
 // Component State
 function relatedState(state) {
-    return {
-        productsRelated: state.productsRelated
-    }
+  return {
+    productsRelated: state.productsRelated
+  }
 }
 
-export default withRouter(connect(relatedState, { getProductRelatedList })(Related))
+export default withRouter(connect(relatedState, {getProductRelatedList})(Related))
