@@ -42,7 +42,7 @@ export const productCreate = {
   resolve: create
 }
 
-// Product create
+// Product update
 export const productUpdate = {
   type: ProductType,
   args: {

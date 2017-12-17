@@ -20,12 +20,9 @@ export const PRODUCTS_GET_RELATED_LIST_FAILURE = 'PRODUCTS/GET_RELATED_LIST_FAIL
 // Actions
 
 // Get list of products
-export function getList(isLoading = true) {
-  return (dispatch, getState) => {
-    let state = getState()
-
-    if (state.products.list.length === 0 || isLoading) {
-      dispatch({
+export function getList(isLoading = true, forceRefresh = false) {
+  return dispatch => {
+    dispatch({
         type: PRODUCTS_GET_LIST_REQUEST,
         error: null,
         isLoading
@@ -59,18 +56,13 @@ export function getList(isLoading = true) {
             isLoading: false
           })
         })
-    }
   }
 }
 
 // Get single product
 export function get(slug, isLoading = true) {
-
-  return (dispatch, getState) => {
-    let state = getState()
-
-    if (!state.product.item || state.product.item.slug !== slug) {
-      dispatch({
+  return dispatch => {
+    dispatch({
         type: PRODUCTS_GET_REQUEST,
         isLoading
       })
@@ -112,7 +104,6 @@ export function get(slug, isLoading = true) {
             isLoading: false
           })
         })
-    }
   }
 }
 
@@ -127,7 +118,6 @@ export function getById(productId) {
     }))
   }
 }
-
 
 // Get list of products related to a product
 export function getRelatedList(productId, isLoading = true) {
@@ -197,7 +187,7 @@ export function create(product) {
   }
 }
 
-// Create product
+// Update product
 export function update(product) {
   return dispatch => {
     return axios.post(routeApi, queryBuilder({

@@ -240,7 +240,7 @@ class CreateOrEdit extends Component {
                 {this.props.match.params.id === undefined ? 'Create' : 'Edit'} Product
               </H4>
 
-              {/* Signup Form */}
+              {/* Form */}
               <form onSubmit={this.onSubmit}>
                 <div style={{width: '25em', margin: '0 auto'}}>
                   {/* Name */}

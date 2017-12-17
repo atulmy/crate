@@ -16,12 +16,9 @@ export const CRATES_GET_FAILURE = 'CRATES/GET_FAILURE'
 // Actions
 
 // Get list of crates
-export function getList(isLoading = true) {
-  return (dispatch, getState) => {
-    let state = getState()
-
-    if (state.crates.list.length === 0) {
-      dispatch({
+export function getList(isLoading = true, forceRefresh = false) {
+  return dispatch => {
+    dispatch({
         type: CRATES_GET_LIST_REQUEST,
         error: null,
         isLoading
@@ -30,7 +27,7 @@ export function getList(isLoading = true) {
       return axios.post(routeApi, queryBuilder({
         type: 'query',
         operation: 'crates',
-        fields: ['id', 'name', 'description']
+        fields: ['id', 'name', 'description', 'createdAt', 'updatedAt']
       }))
         .then((response) => {
           if (response.status === 200) {
@@ -51,17 +48,13 @@ export function getList(isLoading = true) {
             isLoading: false
           })
         })
-    }
   }
 }
 
 // Get single crate
 export function get(slug, isLoading = true) {
-  return (dispatch, getState) => {
-    let state = getState()
-
-    if (!state.crate.item || state.crate.item.slug !== slug) {
-      dispatch({
+  return dispatch => {
+    dispatch({
         type: CRATES_GET_REQUEST,
         isLoading
       })
@@ -87,7 +80,28 @@ export function get(slug, isLoading = true) {
             isLoading: false
           })
         })
-    }
+  }
+}
+
+// Get single crate by Id
+export function getById(crateId) {
+  return dispatch => {
+    return axios.post(routeApi, queryBuilder({
+      type: 'query',
+      operation: 'crateById',
+      data: {crateId},
+      fields: ['id', 'name', 'description']
+    }))
+  }
+}
+
+// Create or update crate
+export function createOrUpdate(crate) {
+  if (crate.id > 0) {
+    return update(crate)
+  } else {
+    delete crate.id
+    return create(crate)
   }
 }
 
@@ -98,6 +112,18 @@ export function create(data) {
       type: 'mutation',
       operation: 'crateCreate',
       data,
+      fields: ['id']
+    }))
+  }
+}
+
+// Update crate
+export function update(crate) {
+  return dispatch => {
+    return axios.post(routeApi, queryBuilder({
+      type: 'mutation',
+      operation: 'crateUpdate',
+      data: crate,
       fields: ['id']
     }))
   }

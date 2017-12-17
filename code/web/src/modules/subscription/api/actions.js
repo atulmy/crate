@@ -17,11 +17,8 @@ export const SUBSCRIPTIONS_GET_FAILURE = 'SUBSCRIPTIONS/GET_FAILURE'
 
 // Get list of subscriptions
 export function getList(isLoading = true) {
-  return (dispatch, getState) => {
-    let state = getState()
-
-    if (state.subscriptions.list.length === 0) {
-      dispatch({
+  return dispatch => {
+    dispatch({
         type: SUBSCRIPTIONS_GET_LIST_REQUEST,
         error: null,
         isLoading
@@ -51,17 +48,13 @@ export function getList(isLoading = true) {
             isLoading: false
           })
         })
-    }
   }
 }
 
 // Get single subscription
 export function get(slug, isLoading = true) {
-  return (dispatch, getState) => {
-    let state = getState()
-
-    if (!state.subscription.item || state.subscription.item.slug !== slug) {
-      dispatch({
+  return dispatch => {
+    dispatch({
         type: SUBSCRIPTIONS_GET_REQUEST,
         isLoading
       })
@@ -87,7 +80,6 @@ export function get(slug, isLoading = true) {
             isLoading: false
           })
         })
-    }
   }
 }
 

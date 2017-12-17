@@ -18,6 +18,8 @@ const AdminMenu = () => (
         <MenuItem to={admin.dashboard.path} type="primary" style={{color: black}}>Dashboard</MenuItem>
 
         <MenuItem to={admin.productList.path} type="primary" style={{color: black}}>Products</MenuItem>
+
+        <MenuItem to={admin.crateList.path} type="primary" style={{color: black}}>Crates</MenuItem>
       </Menu>
     </GridCell>
   </Grid>

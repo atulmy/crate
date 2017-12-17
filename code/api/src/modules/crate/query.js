@@ -3,7 +3,7 @@ import {GraphQLInt, GraphQLList} from 'graphql'
 
 // App Imports
 import CrateType from './types'
-import {getAll, get} from './resolvers'
+import {getAll, getById} from './resolvers'
 
 // Crates All
 export const crates = {
@@ -11,11 +11,11 @@ export const crates = {
   resolve: getAll
 }
 
-// Crate By slug
-export const crate = {
+// Crate By ID
+export const crateById = {
   type: CrateType,
   args: {
-    id: {type: GraphQLInt}
+    crateId: {type: GraphQLInt}
   },
-  resolve: get
+  resolve: getById
 }
