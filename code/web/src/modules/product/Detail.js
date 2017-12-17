@@ -50,59 +50,59 @@ class Detail extends Component {
         {
           !error
             ?
-            (
-              isLoading
-                ?
-                <Loading/>
-                :
-                renderIf(item && item.id, () => (
-                  <div>
-                    {/* SEO */}
-                    <Helmet>
-                      <title>{`Product - ${ item.name }`}</title>
-                    </Helmet>
+          (
+            isLoading
+              ?
+            <Loading/>
+              :
+            renderIf(item && item.id, () => (
+              <div>
+                {/* SEO */}
+                <Helmet>
+                  <title>{`Product - ${ item.name }`}</title>
+                </Helmet>
 
-                    {/* Top title bar */}
-                    <Grid style={{backgroundColor: grey}}>
-                      <GridCell style={{padding: '2em', textAlign: 'center'}}>
-                        <H3 font="secondary">Product</H3>
-                      </GridCell>
-                    </Grid>
+                {/* Top title bar */}
+                <Grid style={{backgroundColor: grey}}>
+                  <GridCell style={{padding: '2em', textAlign: 'center'}}>
+                    <H3 font="secondary">Product</H3>
+                  </GridCell>
+                </Grid>
 
-                    {/* Product Details */}
-                    <Grid gutter={true} alignCenter={true} style={{padding: '2em'}}>
-                      {/* Left Content - Image */}
-                      <GridCell style={{maxWidth: '35em'}}>
-                        <Card>
-                          <img src={routeImage + item.image} alt={item.name} style={{width: '100%'}}/>
-                        </Card>
-                      </GridCell>
+                {/* Product Details */}
+                <Grid gutter={true} alignCenter={true} style={{padding: '2em'}}>
+                  {/* Left Content - Image */}
+                  <GridCell style={{maxWidth: '35em'}}>
+                    <Card>
+                      <img src={routeImage + item.image} alt={item.name} style={{width: '100%'}}/>
+                    </Card>
+                  </GridCell>
 
-                      {/* Right Content */}
-                      <GridCell style={{textAlign: 'center'}}>
-                        <H2 font="secondary">{item.name}</H2>
+                  {/* Right Content */}
+                  <GridCell style={{textAlign: 'center'}}>
+                    <H2 font="secondary">{item.name}</H2>
 
-                        <H4 style={{marginTop: '1em'}}>{item.description}</H4>
+                    <H4 style={{marginTop: '1em'}}>{item.description}</H4>
 
-                        <p style={{marginTop: '0.5em', color: grey2}}>Launched
-                          on {moment.utc(item.createdAt).format('dddd, MMMM Do YYYY')}</p>
-                      </GridCell>
-                    </Grid>
+                    <p style={{marginTop: '0.5em', color: grey2}}>Launched
+                      on {moment.utc(item.createdAt).format('dddd, MMMM Do YYYY')}</p>
+                  </GridCell>
+                </Grid>
 
-                    {/* Related products title bar */}
-                    <Grid style={{backgroundColor: grey}}>
-                      <GridCell style={{padding: '2em', textAlign: 'center'}}>
-                        <H3 font="secondary">Related Products</H3>
-                      </GridCell>
-                    </Grid>
+                {/* Related products title bar */}
+                <Grid style={{backgroundColor: grey}}>
+                  <GridCell style={{padding: '2em', textAlign: 'center'}}>
+                    <H3 font="secondary">Related Products</H3>
+                  </GridCell>
+                </Grid>
 
-                    {/* Related products list */}
-                    <Related productId={item.id}/>
-                  </div>
-                ))
-            )
+                {/* Related products list */}
+                <Related productId={item.id}/>
+              </div>
+            ))
+          )
             :
-            <Redirect to={routes.home.path}/>
+          <Redirect to={routes.home.path}/>
         }
       </div>
     )

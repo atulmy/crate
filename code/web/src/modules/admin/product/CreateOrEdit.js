@@ -151,7 +151,7 @@ class CreateOrEdit extends Component {
         if (response.data.errors && response.data.errors.length > 0) {
           this.props.messageShow(response.data.errors[0].message)
         } else {
-          this.props.messageShow('Signed up successfully.')
+          this.props.messageShow('Product saved successfully.')
 
           this.props.history.push(admin.productList.path)
         }
@@ -236,10 +236,9 @@ class CreateOrEdit extends Component {
           {/* Product list */}
           <Grid alignCenter={true} style={{padding: '1em'}}>
             <GridCell>
-              <H4 font="secondary" style={{
-                marginBottom: '1em',
-                textAlign: 'center'
-              }}>{this.props.match.params.id === undefined ? 'Create' : 'Edit'} Product</H4>
+              <H4 font="secondary" style={{marginBottom: '1em', textAlign: 'center'}}>
+                {this.props.match.params.id === undefined ? 'Create' : 'Edit'} Product
+              </H4>
 
               {/* Signup Form */}
               <form onSubmit={this.onSubmit}>
@@ -251,6 +250,7 @@ class CreateOrEdit extends Component {
                     placeholder="Name"
                     required="required"
                     name="name"
+                    autocomplete="off"
                     value={this.state.product.name}
                     onChange={this.onChange}
                   />
@@ -278,11 +278,11 @@ class CreateOrEdit extends Component {
                     {
                       this.state.productTypes.length > 0
                         ?
-                        this.state.productTypes.map(type => (
-                          <option value={type.id} key={type.id}>{type.name}</option>
-                        ))
+                      this.state.productTypes.map(type => (
+                        <option value={type.id} key={type.id}>{type.name}</option>
+                      ))
                         :
-                        <option disabled="disabled" selected="selected">Select type</option>
+                      <option disabled="disabled" selected="selected">Select type</option>
                     }
                   </Select>
 
@@ -298,11 +298,11 @@ class CreateOrEdit extends Component {
                     {
                       this.state.userGenders.length > 0
                         ?
-                        this.state.userGenders.map(gender => (
-                          <option value={gender.id} key={gender.id}>{gender.name}</option>
-                        ))
+                      this.state.userGenders.map(gender => (
+                        <option value={gender.id} key={gender.id}>{gender.name}</option>
+                      ))
                         :
-                        <option disabled="disabled" selected="selected">Select gender</option>
+                      <option disabled="disabled" selected="selected">Select gender</option>
                     }
                   </Select>
 
@@ -311,18 +311,18 @@ class CreateOrEdit extends Component {
                     <input
                       type="file"
                       onChange={this.onUpload}
-                      required="required"
+                      required={this.state.product.id === 0}
                     />
                   </div>
 
+                  {/* Uploaded image */}
                   {renderIf(this.state.product.image !== '', () => (
-                    <img src={routeImage + this.state.product.image} alt="Product Image"
-                         style={{width: 200, marginTop: '1em'}}/>
+                    <img src={routeImage + this.state.product.image} alt="Product Image" style={{width: 200, marginTop: '1em'}}/>
                   ))}
                 </div>
 
+                {/* Form submit */}
                 <div style={{marginTop: '2em', textAlign: 'center'}}>
-                  {/* Form submit */}
                   <Button type="submit" theme="secondary" disabled={this.state.isLoading}>
                     <Icon size={1.2} style={{color: white}}>check</Icon> Save
                   </Button>

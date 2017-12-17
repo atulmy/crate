@@ -35,21 +35,21 @@ const Grid = (props) => {
 
       {/* language=CSS */}
       <style jsx>{`
-                div {
-                    display: flex;
-                    flex-flow: row;
-                    flex-wrap: wrap;
+          div {
+            display: flex;
+            flex-flow: row;
+            flex-wrap: wrap;
 
-                    ${ justifyRight ? 'justify-content: flex-end;' : '' }
-                    ${ justifyCenter ? 'justify-content: center;' : '' }
+            ${ justifyRight ? 'justify-content: flex-end;' : '' }
+            ${ justifyCenter ? 'justify-content: center;' : '' }
 
-                    ${ alignTop ? 'align-items: flex-start;' : '' }
-                    ${ alignBottom ? 'align-items: flex-end;' : '' }
-                    ${ alignCenter ? 'align-items: center;' : '' }
+            ${ alignTop ? 'align-items: flex-start;' : '' }
+            ${ alignBottom ? 'align-items: flex-end;' : '' }
+            ${ alignCenter ? 'align-items: center;' : '' }
 
-                    ${ gutter ? 'margin-left: -1em;' : 'margin-left: 0;' }
-                }
-            `}</style>
+            ${ gutter ? 'margin-left: -1em;' : 'margin-left: 0;' }
+          }
+      `}</style>
     </div>
   )
 }
@@ -67,6 +67,7 @@ Grid.propTypes = {
 
   gutter: PropTypes.bool,
 }
+
 Grid.defaultProps = {
   flexCells: false,
 

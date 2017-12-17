@@ -24,7 +24,7 @@ export function getList(isLoading = true) {
   return (dispatch, getState) => {
     let state = getState()
 
-    if (state.products.list.length === 0) {
+    if (state.products.list.length === 0 || isLoading) {
       dispatch({
         type: PRODUCTS_GET_LIST_REQUEST,
         error: null,
@@ -180,6 +180,7 @@ export function createOrUpdate(product) {
   if (product.id > 0) {
     return update(product)
   } else {
+    delete product.id
     return create(product)
   }
 }

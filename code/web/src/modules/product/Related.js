@@ -39,19 +39,19 @@ class Related extends Component {
           {
             isLoading
               ?
-              <Loading/>
+            <Loading/>
               :
-              (
-                list.length > 0
-                  ?
-                  list.map(product => (
-                    <GridCell key={product.id} style={{textAlign: 'center'}}>
-                      <ProductItem product={product}/>
-                    </GridCell>
-                  ))
-                  :
-                  <p>No related products to show.</p>
-              )
+            (
+              list.length > 0
+                ?
+              list.map(product => (
+                <GridCell key={product.id} style={{textAlign: 'center'}}>
+                  <ProductItem product={product}/>
+                </GridCell>
+              ))
+                :
+              <p>No related products to show.</p>
+            )
           }
         </Grid>
       </div>

@@ -24,6 +24,7 @@ import AuthCheck from '../auth/AuthCheck'
 
 // Component
 class Login extends Component {
+
   constructor(props) {
     super(props)
 
@@ -145,8 +146,9 @@ class Login extends Component {
               </Link>
 
               {/* Form submit */}
-              <Button type="submit" theme="secondary" disabled={isLoading}>Login <Icon size={1.2}
-                                                                                       style={{color: white}}>navigate_next</Icon></Button>
+              <Button type="submit" theme="secondary" disabled={isLoading}>
+                Login
+              <Icon size={1.2} style={{color: white}}>navigate_next</Icon></Button>
             </div>
           </form>
         </GridCell>
