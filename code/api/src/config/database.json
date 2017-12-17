@@ -7,7 +7,6 @@
     "dialect": "mysql",
     "seederStorage": "sequelize"
   },
-
   "production": {
     "username": "root",
     "password": null,

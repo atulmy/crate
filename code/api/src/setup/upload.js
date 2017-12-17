@@ -6,36 +6,36 @@ import multer from 'multer'
 import config from '../config/config.json'
 
 // Sync database tables and start server
-export default function(server) {
-    console.info('SETUP - Upload...')
+export default function (server) {
+  console.info('SETUP - Upload...')
 
-    // Set destination
-    const storage = multer.diskStorage({
-        destination: `./src/static/images/uploads/`,
+  // Set destination
+  const storage = multer.diskStorage({
+    destination: `./src/static/images/uploads/`,
 
-        filename: function(request, file, callback) {
-            callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
-        }
-    })
+    filename: function (request, file, callback) {
+      callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
+  })
 
-    const upload = multer({
-        storage: storage
-    }).single('file')
+  const upload = multer({
+    storage: storage
+  }).single('file')
 
-    // Upload route
-    server.post(config.upload.endpoint, (request, response) => {
-        upload(request, response, function(error) {
-            if(!error) {
-                response.json({
-                    success: true,
-                    file: request.file.filename
-                })
-            } else {
-                response.json({
-                    success: false,
-                    file: null
-                })
-            }
+  // Upload route
+  server.post(config.upload.endpoint, (request, response) => {
+    upload(request, response, function (error) {
+      if (!error) {
+        response.json({
+          success: true,
+          file: request.file.filename
         })
+      } else {
+        response.json({
+          success: false,
+          file: null
+        })
+      }
     })
+  })
 }

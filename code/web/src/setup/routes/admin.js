@@ -5,36 +5,36 @@ import ProductCreateOrEdit from '../../modules/admin/product/CreateOrEdit'
 
 // Admin routes
 export default {
-    // Dashboard
-    dashboard: {
-        path: '/admin/dashboard',
-        component: Dashboard,
-        auth: true
-    },
+  // Dashboard
+  dashboard: {
+    path: '/admin/dashboard',
+    component: Dashboard,
+    auth: true
+  },
 
-    // Product
-    productList: {
-        path: '/admin/products',
-        component: ProductList,
-        auth: true
-    },
+  // Product
+  productList: {
+    path: '/admin/products',
+    component: ProductList,
+    auth: true
+  },
 
-    productCreate: {
-        path: '/admin/product/create',
-        component: ProductCreateOrEdit,
-        auth: true
-    },
+  productCreate: {
+    path: '/admin/product/create',
+    component: ProductCreateOrEdit,
+    auth: true
+  },
 
-    productEdit: {
-        path: (id = ':id') => (`/admin/product/${ id }/edit`),
-        component: ProductCreateOrEdit,
-        auth: true
-    },
+  productEdit: {
+    path: (id = ':id') => (`/admin/product/${ id }/edit`),
+    component: ProductCreateOrEdit,
+    auth: true
+  },
 
-    // User
-    userList: {
-        path: '/admin/users',
-        component: Dashboard,
-        auth: true
-    }
+  // User
+  userList: {
+    path: '/admin/users',
+    component: Dashboard,
+    auth: true
+  }
 }

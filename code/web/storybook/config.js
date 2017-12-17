@@ -1,8 +1,8 @@
 // Imports
-import { configure } from '@storybook/react'
+import {configure} from '@storybook/react'
 
 function loadStories() {
-    require('./stories/common.js'),
+  require('./stories/common.js'),
     require('./stories/buttons.js'),
     require('./stories/typography.js'),
     require('./stories/icons.js'),

@@ -3,9 +3,9 @@ import List from '../../modules/crate/List'
 
 // User routes
 export default {
-    list: {
-        path: '/crates',
-        component: List,
-        auth: true
-    }
+  list: {
+    path: '/crates',
+    component: List,
+    auth: true
+  }
 }

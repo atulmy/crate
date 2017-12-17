@@ -2,4 +2,4 @@
 import dotenv from 'dotenv'
 
 // Load .env
-dotenv.config({ silent: true })
+dotenv.config({silent: true})

@@ -1,20 +1,20 @@
 // Imports
-import React  from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 // UI Imports
-import { grey2, grey4, black } from '../common/colors'
+import {grey2, grey4, black} from '../common/colors'
 
 // Component
 const Input = (props) => {
-    const { type, fullWidth, ...other } = props
+  const {type, fullWidth, ...other} = props
 
-    return(
-        <div>
-            <input type={ type } { ...other } />
+  return (
+    <div>
+      <input type={type} {...other} />
 
-            {/* language=CSS */}
-            <style jsx>{`
+      {/* language=CSS */}
+      <style jsx>{`
                 input {
                     outline: none;
                     padding-top: 0.8em;
@@ -33,19 +33,19 @@ const Input = (props) => {
                     border-bottom: 1px solid ${ grey4 };
                 }
             `}
-            </style>
-        </div>
-    )
+      </style>
+    </div>
+  )
 }
 
 // Component Properties
 Input.propTypes = {
-    type: PropTypes.string,
-    fullWidth: PropTypes.bool
+  type: PropTypes.string,
+  fullWidth: PropTypes.bool
 }
 Input.defaultProps = {
-    type: 'button',
-    fullWidth: false
+  type: 'button',
+  fullWidth: false
 }
 
 export default Input
