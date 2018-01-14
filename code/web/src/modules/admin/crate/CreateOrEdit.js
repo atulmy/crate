@@ -1,27 +1,27 @@
 // Imports
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Helmet} from 'react-helmet'
-import {Link} from 'react-router-dom'
-import {withRouter} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
+import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 // UI Imports
-import {Grid, GridCell} from '../../../ui/grid'
+import { Grid, GridCell } from '../../../ui/grid'
 import Button from '../../../ui/button'
 import Icon from '../../../ui/icon'
 import H4 from '../../../ui/typography/H4'
-import {Input, Textarea} from '../../../ui/input'
-import {white} from "../../../ui/common/colors"
+import { Input, Textarea } from '../../../ui/input'
+import { white } from "../../../ui/common/colors"
 
 // App Imports
 import admin from '../../../setup/routes/admin'
-import {slug} from '../../../setup/helpers'
+import { slug } from '../../../setup/helpers'
 import {
   createOrUpdate as crateCreateOrUpdate,
   getById as getCrateById
 } from '../../crate/api/actions'
-import {messageShow, messageHide} from '../../common/api/actions'
+import { messageShow, messageHide } from '../../common/api/actions'
 import AdminMenu from '../common/Menu'
 
 // Component
@@ -126,8 +126,8 @@ class CreateOrEdit extends Component {
         {/* Page Content */}
         <div>
           {/* Top actions bar */}
-          <Grid alignCenter={true} style={{padding: '1em'}}>
-            <GridCell style={{textAlign: 'left'}}>
+          <Grid alignCenter={true} style={{ padding: '1em' }}>
+            <GridCell style={{ textAlign: 'left' }}>
               <Link to={admin.crateList.path}>
                 <Button><Icon size={1.2}>arrow_back</Icon> Back</Button>
               </Link>
@@ -135,15 +135,15 @@ class CreateOrEdit extends Component {
           </Grid>
 
           {/* Crate list */}
-          <Grid alignCenter={true} style={{padding: '1em'}}>
+          <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell>
-              <H4 font="secondary" style={{marginBottom: '1em', textAlign: 'center'}}>
+              <H4 font="secondary" style={{ marginBottom: '1em', textAlign: 'center' }}>
                 {this.props.match.params.id === undefined ? 'Create' : 'Edit'} Crate
               </H4>
 
               {/* Form */}
               <form onSubmit={this.onSubmit}>
-                <div style={{width: '25em', margin: '0 auto'}}>
+                <div style={{ width: '25em', margin: '0 auto' }}>
                   {/* Name */}
                   <Input
                     type="text"
@@ -164,14 +164,14 @@ class CreateOrEdit extends Component {
                     name="description"
                     value={this.state.crate.description}
                     onChange={this.onChange}
-                    style={{marginTop: '1em'}}
+                    style={{ marginTop: '1em' }}
                   />
                 </div>
 
                 {/* Form submit */}
-                <div style={{marginTop: '2em', textAlign: 'center'}}>
+                <div style={{ marginTop: '2em', textAlign: 'center' }}>
                   <Button type="submit" theme="secondary" disabled={this.state.isLoading}>
-                    <Icon size={1.2} style={{color: white}}>check</Icon> Save
+                    <Icon size={1.2} style={{ color: white }}>check</Icon> Save
                   </Button>
                 </div>
               </form>

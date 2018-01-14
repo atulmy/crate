@@ -1,24 +1,24 @@
 // Imports
 import path from 'path'
-import {Server} from 'http'
+import { Server } from 'http'
 import Express from 'express'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 
 import React from 'react'
-import {renderToString} from 'react-dom/server'
-import {StaticRouter, matchPath} from 'react-router-dom'
-import {Helmet} from "react-helmet"
-import {createStore, applyMiddleware} from 'redux'
-import {Provider} from 'react-redux'
+import { renderToString } from 'react-dom/server'
+import { StaticRouter, matchPath } from 'react-router-dom'
+import { Helmet } from "react-helmet"
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-import {flushToHTML} from 'styled-jsx/server'
+import { flushToHTML } from 'styled-jsx/server'
 
 // App Imports
-import {rootReducer} from '../../setup/store'
-import {routes} from '../../setup/routes'
-import {setUser} from '../../modules/user/api/actions'
-import {APP_URL} from '../configs'
+import { rootReducer } from '../../setup/store'
+import { routes } from '../../setup/routes'
+import { setUser } from '../../modules/user/api/actions'
+import { APP_URL } from '../configs'
 import App from '../../modules/App'
 import view from './view'
 
@@ -28,7 +28,7 @@ const server = new Server(app)
 
 // Request body parser
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // Request body cookie parser
 app.use(cookieParser())
@@ -103,7 +103,7 @@ app.get('*', (request, response) => {
         // Get Meta header tags
         const helmet = Helmet.renderStatic()
 
-        // Ger Styles
+        // Get Styles
         const styles = flushToHTML()
 
         let html = view(APP_URL, helmet, appHtml, styles, initialState)

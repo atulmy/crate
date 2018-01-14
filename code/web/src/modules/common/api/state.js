@@ -1,5 +1,5 @@
 // App Imports
-import {MESSAGE_SHOW, MESSAGE_HIDE} from './actions'
+import { MESSAGE_SHOW, MESSAGE_HIDE } from './actions'
 
 // Initial State
 export const commonInitialState = {

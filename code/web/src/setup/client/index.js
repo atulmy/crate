@@ -1,12 +1,12 @@
 // Imports
 import React from 'react'
-import {hydrate} from 'react-dom'
-import {BrowserRouter as Router} from 'react-router-dom'
-import {Provider} from 'react-redux'
+import { hydrate } from 'react-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
 // App Imports
-import {store} from '../../setup/store'
-import {setUser, loginSetUserLocalStorageAndCookie} from '../../modules/user/api/actions'
+import { store } from '../../setup/store'
+import { setUser, loginSetUserLocalStorageAndCookie } from '../../modules/user/api/actions'
 import ScrollToTop from '../../modules/common/ScrollToTop'
 import App from '../../modules/App'
 

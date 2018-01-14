@@ -1,9 +1,9 @@
 // Imports
-import {GraphQLString, GraphQLInt} from 'graphql'
+import { GraphQLString, GraphQLInt } from 'graphql'
 
 // App Imports
-import {ProductType} from './types'
-import {create, update, remove} from './resolvers'
+import { ProductType } from './types'
+import { create, update, remove } from './resolvers'
 
 // Product create
 export const productCreate = {

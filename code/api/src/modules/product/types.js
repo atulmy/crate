@@ -1,5 +1,5 @@
 // Imports
-import {GraphQLObjectType, GraphQLString, GraphQLInt} from 'graphql'
+import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
 // Product type
 const ProductType = new GraphQLObjectType({
@@ -7,15 +7,15 @@ const ProductType = new GraphQLObjectType({
   description: 'Product Type',
 
   fields: () => ({
-    id: {type: GraphQLInt},
-    name: {type: GraphQLString},
-    slug: {type: GraphQLString},
-    type: {type: GraphQLInt},
-    gender: {type: GraphQLInt},
-    description: {type: GraphQLString},
-    image: {type: GraphQLString},
-    createdAt: {type: GraphQLString},
-    updatedAt: {type: GraphQLString}
+    id: { type: GraphQLInt },
+    name: { type: GraphQLString },
+    slug: { type: GraphQLString },
+    type: { type: GraphQLInt },
+    gender: { type: GraphQLInt },
+    description: { type: GraphQLString },
+    image: { type: GraphQLString },
+    createdAt: { type: GraphQLString },
+    updatedAt: { type: GraphQLString }
   })
 })
 
@@ -25,9 +25,9 @@ const ProductTypesType = new GraphQLObjectType({
   description: 'User Types Type',
 
   fields: () => ({
-    id: {type: GraphQLInt},
-    name: {type: GraphQLString}
+    id: { type: GraphQLInt },
+    name: { type: GraphQLString }
   })
 })
 
-export {ProductType, ProductTypesType}
+export { ProductType, ProductTypesType }

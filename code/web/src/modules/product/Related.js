@@ -1,14 +1,14 @@
 // Imports
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 // UI Imports
-import {Grid, GridCell} from '../../ui/grid'
+import { Grid, GridCell } from '../../ui/grid'
 
 // App Imports
-import {getRelatedList as getProductRelatedList} from '../product/api/actions'
+import { getRelatedList as getProductRelatedList } from '../product/api/actions'
 import Loading from '../common/Loading'
 import ProductItem from '../product/Item'
 
@@ -30,7 +30,7 @@ class Related extends Component {
   }
 
   render() {
-    const {isLoading, list} = this.props.productsRelated
+    const { isLoading, list } = this.props.productsRelated
 
     return (
       <div>
@@ -39,19 +39,19 @@ class Related extends Component {
           {
             isLoading
               ?
-            <Loading/>
+              <Loading/>
               :
-            (
-              list.length > 0
-                ?
-              list.map(product => (
-                <GridCell key={product.id} style={{textAlign: 'center'}}>
-                  <ProductItem product={product}/>
-                </GridCell>
-              ))
-                :
-              <p>No related products to show.</p>
-            )
+              (
+                list.length > 0
+                  ?
+                  list.map(product => (
+                    <GridCell key={product.id} style={{ textAlign: 'center' }}>
+                      <ProductItem product={product}/>
+                    </GridCell>
+                  ))
+                  :
+                  <p>No related products to show.</p>
+              )
           }
         </Grid>
       </div>
@@ -73,4 +73,4 @@ function relatedState(state) {
   }
 }
 
-export default withRouter(connect(relatedState, {getProductRelatedList})(Related))
+export default withRouter(connect(relatedState, { getProductRelatedList })(Related))

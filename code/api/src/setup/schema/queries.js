@@ -1,5 +1,5 @@
 // Imports
-import {GraphQLObjectType} from 'graphql'
+import { GraphQLObjectType } from 'graphql'
 
 // App Imports
 import * as user from '../../modules/user/query'

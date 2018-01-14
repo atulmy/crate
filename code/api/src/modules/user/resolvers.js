@@ -8,9 +8,9 @@ import params from '../../config/params'
 import models from '../../setup/models'
 
 // Create
-export async function create(parentValue, {name, email, password}) {
+export async function create(parentValue, { name, email, password }) {
   // Users exists with same email check
-  const user = await models.User.findOne({where: {email}})
+  const user = await models.User.findOne({ where: { email } })
 
   if (!user) {
     // User does not exists
@@ -27,8 +27,8 @@ export async function create(parentValue, {name, email, password}) {
   }
 }
 
-export async function login(parentValue, {email, password}) {
-  const user = await models.User.findOne({where: {email}})
+export async function login(parentValue, { email, password }) {
+  const user = await models.User.findOne({ where: { email } })
 
   if (!user) {
     // User does not exists
@@ -57,8 +57,8 @@ export async function login(parentValue, {email, password}) {
 }
 
 // Get by ID
-export async function getById(parentValue, {id}) {
-  return await models.User.findOne({where: {id}})
+export async function getById(parentValue, { id }) {
+  return await models.User.findOne({ where: { id } })
 }
 
 // Get all
@@ -67,8 +67,8 @@ export async function getAll() {
 }
 
 // Delete
-export async function remove(parentValue, {id}) {
-  return await models.User.destroy({where: {id}})
+export async function remove(parentValue, { id }) {
+  return await models.User.destroy({ where: { id } })
 }
 
 // User genders

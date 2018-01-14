@@ -3,11 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // UI Imports
-import {primary, secondary} from '../common/fonts'
+import { primary, secondary } from '../common/fonts'
 
 // Component
 const H3 = (props) => {
-  const {children, font, ...others} = props
+  const { children, font, ...others } = props
 
   return (
     <h3 {...others}>
@@ -15,11 +15,11 @@ const H3 = (props) => {
 
       {/* language=CSS */}
       <style jsx>{`
-                h3 {
-                    font-family: ${ font === 'primary' ? primary : secondary };
-                    font-size: 2em;
-                }
-            `}</style>
+        h3 {
+          font-family: ${ font === 'primary' ? primary : secondary };
+          font-size: 2em;
+        }
+      `}</style>
     </h3>
   )
 }

@@ -1,5 +1,5 @@
 // Imports
-import {GraphQLObjectType, GraphQLString, GraphQLInt} from 'graphql'
+import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
 // Subscription type
 const SubscriptionType = new GraphQLObjectType({
@@ -7,11 +7,11 @@ const SubscriptionType = new GraphQLObjectType({
   description: 'Subscription Type',
 
   fields: () => ({
-    id: {type: GraphQLInt},
-    userId: {type: GraphQLInt},
-    crateId: {type: GraphQLInt},
-    createdAt: {type: GraphQLString},
-    updatedAt: {type: GraphQLString}
+    id: { type: GraphQLInt },
+    userId: { type: GraphQLInt },
+    crateId: { type: GraphQLInt },
+    createdAt: { type: GraphQLString },
+    updatedAt: { type: GraphQLString }
   })
 })
 

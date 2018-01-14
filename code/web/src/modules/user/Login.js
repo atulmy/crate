@@ -1,25 +1,25 @@
 // Imports
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Link, withRouter} from 'react-router-dom'
-import {Helmet} from 'react-helmet'
+import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 // UI Imports
-import {Grid, GridCell} from '../../ui/grid'
+import { Grid, GridCell } from '../../ui/grid'
 import Button from '../../ui/button'
 import ImageTile from '../../ui/image/Tile'
 import Input from '../../ui/input/Input'
 import H3 from '../../ui/typography/H3'
 import Icon from '../../ui/icon'
-import {level1} from '../../ui/common/shadows'
-import {white} from '../../ui/common/colors'
+import { level1 } from '../../ui/common/shadows'
+import { white } from '../../ui/common/colors'
 
 // App Imports
-import {APP_URL} from '../../setup/configs'
+import { APP_URL } from '../../setup/configs'
 import userRoutes from '../../setup/routes/user'
-import {messageShow, messageHide} from '../common/api/actions'
-import {login} from './api/actions'
+import { messageShow, messageHide } from '../common/api/actions'
+import { login } from './api/actions'
 import AuthCheck from '../auth/AuthCheck'
 
 // Component
@@ -74,10 +74,10 @@ class Login extends Component {
   }
 
   render() {
-    const {isLoading, error} = this.props.user
+    const { isLoading, error } = this.props.user
 
     return (
-      <Grid gutter={true} alignCenter={true} style={{padding: '2em'}}>
+      <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
         {/* SEO */}
         <Helmet>
           <title>Login to your account - Crate</title>
@@ -100,7 +100,7 @@ class Login extends Component {
               <Grid>
                 <GridCell justifyCenter={true}>
                   <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/stock/men/3.jpg`}
-                             style={{marginTop: '1.9em'}}/>
+                             style={{ marginTop: '1.9em' }}/>
                 </GridCell>
               </Grid>
             </GridCell>
@@ -108,12 +108,12 @@ class Login extends Component {
         </GridCell>
 
         {/* Right Content */}
-        <GridCell style={{textAlign: 'center'}}>
-          <H3 font="secondary" style={{marginBottom: '1em'}}>Login to your account</H3>
+        <GridCell style={{ textAlign: 'center' }}>
+          <H3 font="secondary" style={{ marginBottom: '1em' }}>Login to your account</H3>
 
           {/* Login Form */}
           <form onSubmit={this.onSubmit}>
-            <div style={{width: '25em', margin: '0 auto'}}>
+            <div style={{ width: '25em', margin: '0 auto' }}>
               {/* Email */}
               <Input
                 type="email"
@@ -123,7 +123,7 @@ class Login extends Component {
                 name="email"
                 value={this.state.user.email}
                 onChange={this.onChange}
-                style={{marginTop: '1em'}}
+                style={{ marginTop: '1em' }}
               />
 
               {/* Password */}
@@ -135,20 +135,20 @@ class Login extends Component {
                 name="password"
                 value={this.state.user.password}
                 onChange={this.onChange}
-                style={{marginTop: '1em'}}
+                style={{ marginTop: '1em' }}
               />
             </div>
 
-            <div style={{marginTop: '2em'}}>
+            <div style={{ marginTop: '2em' }}>
               {/* Signup link */}
               <Link to={userRoutes.signup.path}>
-                <Button type="button" style={{marginRight: '0.5em'}}>Signup</Button>
+                <Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>
               </Link>
 
               {/* Form submit */}
               <Button type="submit" theme="secondary" disabled={isLoading}>
                 Login
-              <Icon size={1.2} style={{color: white}}>navigate_next</Icon></Button>
+                <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
             </div>
           </form>
         </GridCell>
@@ -175,4 +175,4 @@ function loginState(state) {
   }
 }
 
-export default connect(loginState, {login, messageShow, messageHide})(withRouter(Login))
+export default connect(loginState, { login, messageShow, messageHide })(withRouter(Login))

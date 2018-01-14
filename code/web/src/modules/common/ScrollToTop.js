@@ -1,6 +1,6 @@
 // Imports
-import React, {Component} from 'react'
-import {withRouter} from 'react-router-dom'
+import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 
 // Component
 class ScrollToTop extends Component {

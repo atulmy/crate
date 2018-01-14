@@ -1,17 +1,17 @@
 // Imports
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Helmet} from 'react-helmet'
-import {Link} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
+import { Link } from 'react-router-dom'
 
 // UI Imports
-import {Grid, GridCell} from '../../ui/grid'
-import {H3} from '../../ui/typography'
-import {grey, grey2} from '../../ui/common/colors'
+import { Grid, GridCell } from '../../ui/grid'
+import { H3 } from '../../ui/typography'
+import { grey, grey2 } from '../../ui/common/colors'
 
 // App Imports
-import {getList as getCratesList} from './api/actions'
+import { getList as getCratesList } from './api/actions'
 import Loading from '../common/Loading'
 import CrateItem from './Item'
 
@@ -19,13 +19,13 @@ import CrateItem from './Item'
 class List extends Component {
 
   // Runs on server only for SSR
-  static fetchData({store}) {
-    return store.dispatch(getCratesList())
+  static fetchData({ store }) {
+    return store.dispatch(getCratesList('ASC'))
   }
 
   // Runs on client only
   componentDidMount() {
-    this.props.getCratesList()
+    this.props.getCratesList('ASC')
   }
 
   render() {
@@ -37,11 +37,11 @@ class List extends Component {
         </Helmet>
 
         {/* Top title bar */}
-        <Grid style={{backgroundColor: grey}}>
-          <GridCell style={{padding: '2em', textAlign: 'center'}}>
+        <Grid style={{ backgroundColor: grey }}>
+          <GridCell style={{ padding: '2em', textAlign: 'center' }}>
             <H3 font="secondary">Crates for everyone!</H3>
 
-            <p style={{marginTop: '1em', color: grey2}}>You can choose crate which suits your need. You can also
+            <p style={{ marginTop: '1em', color: grey2 }}>You can choose crate which suits your need. You can also
               subscribe to multiple crates.</p>
           </GridCell>
         </Grid>
@@ -57,13 +57,13 @@ class List extends Component {
                 (
                   this.props.crates.list.length > 0
                     ?
-                    this.props.crates.list.map(crate => (
-                      <div key={crate.id} style={{margin: '2em', float: 'left'}}>
-                        <CrateItem crate={crate}/>
-                      </div>
-                    ))
+                  this.props.crates.list.map(crate => (
+                    <div key={crate.id} style={{ margin: '2em', float: 'left' }}>
+                      <CrateItem crate={crate}/>
+                    </div>
+                  ))
                     :
-                    <p>No crates to show.</p>
+                  <p>No crates to show.</p>
                 )
             }
           </GridCell>
@@ -86,4 +86,4 @@ function listState(state) {
   }
 }
 
-export default connect(listState, {getCratesList})(List)
+export default connect(listState, { getCratesList })(List)

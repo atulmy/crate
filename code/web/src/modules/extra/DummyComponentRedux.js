@@ -1,7 +1,7 @@
 // Imports
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 // App Imports
 // import { someAction } from './api/actions'
@@ -39,4 +39,4 @@ function dummyComponentReduxState(state) {
   return state
 }
 
-export default connect(dummyComponentReduxState, {/* someAction */})(DummyComponentRedux)
+export default connect(dummyComponentReduxState, { /* someAction */ })(DummyComponentRedux)

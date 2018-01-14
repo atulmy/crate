@@ -1,30 +1,30 @@
 // Imports
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Helmet} from 'react-helmet'
-import {Link} from 'react-router-dom'
-import {withRouter} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
+import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 // UI Imports
-import {Grid, GridCell} from '../../../ui/grid'
+import { Grid, GridCell } from '../../../ui/grid'
 import Button from '../../../ui/button'
 import Icon from '../../../ui/icon'
 import H4 from '../../../ui/typography/H4'
-import {Input, Textarea, Select} from '../../../ui/input'
-import {white} from "../../../ui/common/colors"
+import { Input, Textarea, Select } from '../../../ui/input'
+import { white } from "../../../ui/common/colors"
 
 // App Imports
 import admin from '../../../setup/routes/admin'
-import {routeImage} from "../../../setup/routes"
-import {renderIf, slug} from '../../../setup/helpers'
+import { routeImage } from "../../../setup/routes"
+import { renderIf, slug } from '../../../setup/helpers'
 import {
   createOrUpdate as productCreateOrUpdate,
   getTypes as getProductTypes,
   getById as getProductById
 } from '../../product/api/actions'
-import {getGenders as getUserGenders} from '../../user/api/actions'
-import {upload, messageShow, messageHide} from '../../common/api/actions'
+import { getGenders as getUserGenders } from '../../user/api/actions'
+import { upload, messageShow, messageHide } from '../../common/api/actions'
 import AdminMenu from '../common/Menu'
 
 // Component
@@ -225,8 +225,8 @@ class CreateOrEdit extends Component {
         {/* Page Content */}
         <div>
           {/* Top actions bar */}
-          <Grid alignCenter={true} style={{padding: '1em'}}>
-            <GridCell style={{textAlign: 'left'}}>
+          <Grid alignCenter={true} style={{ padding: '1em' }}>
+            <GridCell style={{ textAlign: 'left' }}>
               <Link to={admin.productList.path}>
                 <Button><Icon size={1.2}>arrow_back</Icon> Back</Button>
               </Link>
@@ -234,15 +234,15 @@ class CreateOrEdit extends Component {
           </Grid>
 
           {/* Product list */}
-          <Grid alignCenter={true} style={{padding: '1em'}}>
+          <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell>
-              <H4 font="secondary" style={{marginBottom: '1em', textAlign: 'center'}}>
+              <H4 font="secondary" style={{ marginBottom: '1em', textAlign: 'center' }}>
                 {this.props.match.params.id === undefined ? 'Create' : 'Edit'} Product
               </H4>
 
               {/* Form */}
               <form onSubmit={this.onSubmit}>
-                <div style={{width: '25em', margin: '0 auto'}}>
+                <div style={{ width: '25em', margin: '0 auto' }}>
                   {/* Name */}
                   <Input
                     type="text"
@@ -263,7 +263,7 @@ class CreateOrEdit extends Component {
                     name="description"
                     value={this.state.product.description}
                     onChange={this.onChange}
-                    style={{marginTop: '1em'}}
+                    style={{ marginTop: '1em' }}
                   />
 
                   {/* Type */}
@@ -273,16 +273,16 @@ class CreateOrEdit extends Component {
                     name="type"
                     value={this.state.product.type}
                     onChange={this.onChangeSelect}
-                    style={{marginTop: '1em'}}
+                    style={{ marginTop: '1em' }}
                   >
                     {
                       this.state.productTypes.length > 0
                         ?
-                      this.state.productTypes.map(type => (
-                        <option value={type.id} key={type.id}>{type.name}</option>
-                      ))
+                        this.state.productTypes.map(type => (
+                          <option value={type.id} key={type.id}>{type.name}</option>
+                        ))
                         :
-                      <option disabled="disabled" selected="selected">Select type</option>
+                        <option disabled="disabled" selected="selected">Select type</option>
                     }
                   </Select>
 
@@ -293,21 +293,21 @@ class CreateOrEdit extends Component {
                     name="gender"
                     value={this.state.product.gender}
                     onChange={this.onChange}
-                    style={{marginTop: '1em'}}
+                    style={{ marginTop: '1em' }}
                   >
                     {
                       this.state.userGenders.length > 0
                         ?
-                      this.state.userGenders.map(gender => (
-                        <option value={gender.id} key={gender.id}>{gender.name}</option>
-                      ))
+                        this.state.userGenders.map(gender => (
+                          <option value={gender.id} key={gender.id}>{gender.name}</option>
+                        ))
                         :
-                      <option disabled="disabled" selected="selected">Select gender</option>
+                        <option disabled="disabled" selected="selected">Select gender</option>
                     }
                   </Select>
 
                   {/* Upload File */}
-                  <div style={{marginTop: '1em'}}>
+                  <div style={{ marginTop: '1em' }}>
                     <input
                       type="file"
                       onChange={this.onUpload}
@@ -317,14 +317,15 @@ class CreateOrEdit extends Component {
 
                   {/* Uploaded image */}
                   {renderIf(this.state.product.image !== '', () => (
-                    <img src={routeImage + this.state.product.image} alt="Product Image" style={{width: 200, marginTop: '1em'}}/>
+                    <img src={routeImage + this.state.product.image} alt="Product Image"
+                         style={{ width: 200, marginTop: '1em' }}/>
                   ))}
                 </div>
 
                 {/* Form submit */}
-                <div style={{marginTop: '2em', textAlign: 'center'}}>
+                <div style={{ marginTop: '2em', textAlign: 'center' }}>
                   <Button type="submit" theme="secondary" disabled={this.state.isLoading}>
-                    <Icon size={1.2} style={{color: white}}>check</Icon> Save
+                    <Icon size={1.2} style={{ color: white }}>check</Icon> Save
                   </Button>
                 </div>
               </form>

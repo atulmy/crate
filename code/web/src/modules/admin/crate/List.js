@@ -1,20 +1,20 @@
 // Imports
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Helmet} from 'react-helmet'
-import {Link} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
+import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 // UI Imports
-import {Grid, GridCell} from '../../../ui/grid'
+import { Grid, GridCell } from '../../../ui/grid'
 import Button from '../../../ui/button'
 import Icon from '../../../ui/icon'
-import {white, black} from '../../../ui/common/colors'
+import { white, black } from '../../../ui/common/colors'
 
 // App Imports
-import {getList as getCrateList, remove as removeCrate} from '../../crate/api/actions'
-import {messageShow, messageHide} from '../../common/api/actions'
+import { getList as getCrateList, remove as removeCrate } from '../../crate/api/actions'
+import { messageShow, messageHide } from '../../common/api/actions'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import AdminMenu from '../common/Menu'
@@ -24,23 +24,23 @@ import admin from '../../../setup/routes/admin'
 class List extends Component {
 
   // Runs on server only for SSR
-  static fetchData({store}) {
-    return store.dispatch(getCrateList())
+  static fetchData({ store }) {
+    return store.dispatch(getCrateList('DESC'))
   }
 
   // Runs on client only
   componentDidMount() {
-    this.props.getCrateList()
+    this.props.getCrateList('DESC')
   }
 
   remove = (id) => {
-    if(id > 0) {
+    if (id > 0) {
       let check = confirm('Are you sure you want to delete this crate?')
 
-      if(check) {
+      if (check) {
         this.props.messageShow('Deleting, please wait...')
 
-        this.props.removeCrate({id})
+        this.props.removeCrate({ id })
           .then(response => {
             if (response.status === 200) {
               if (response.data.errors && response.data.errors.length > 0) {
@@ -72,7 +72,7 @@ class List extends Component {
   }
 
   render() {
-    const {isLoading, list} = this.props.crates
+    const { isLoading, list } = this.props.crates
 
     return (
       <div>
@@ -87,79 +87,79 @@ class List extends Component {
         {/* Page Content */}
         <div>
           {/* Top actions bar */}
-          <Grid alignCenter={true} style={{padding: '1em'}}>
-            <GridCell style={{textAlign: 'right'}}>
+          <Grid alignCenter={true} style={{ padding: '1em' }}>
+            <GridCell style={{ textAlign: 'right' }}>
               <Link to={admin.crateCreate.path}>
-                <Button theme="secondary" style={{marginTop: '1em'}}>
-                  <Icon size={1.2} style={{color: white}}>add</Icon> Add
+                <Button theme="secondary" style={{ marginTop: '1em' }}>
+                  <Icon size={1.2} style={{ color: white }}>add</Icon> Add
                 </Button>
               </Link>
             </GridCell>
           </Grid>
 
           {/* Crate list */}
-          <Grid alignCenter={true} style={{padding: '1em'}}>
+          <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell>
               <table className="striped">
                 <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Created at</th>
-                    <th>Updated at</th>
-                    <th style={{textAlign: 'center'}}>Actions</th>
-                  </tr>
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Created at</th>
+                  <th>Updated at</th>
+                  <th style={{ textAlign: 'center' }}>Actions</th>
+                </tr>
                 </thead>
 
                 <tbody>
                 {
                   isLoading
                     ?
-                  <tr>
-                    <td colspan="6">
-                      <Loading message="loading crates..."/>
-                    </td>
-                  </tr>
-                    :
-                  (
-                    list.length > 0
-                      ?
-                    list.map(({id, image, name, description, createdAt, updatedAt}) => (
-                      <tr key={id}>
-                        <td>
-                          {name}
-                        </td>
-
-                        <td>
-                          {description}
-                        </td>
-
-                        <td>
-                          {moment.utc(createdAt).format('dddd, MMMM Do YYYY')}
-                        </td>
-
-                        <td>
-                          {moment.utc(updatedAt).format('dddd, MMMM Do YYYY')}
-                        </td>
-
-                        <td style={{textAlign: 'center'}}>
-                          <Link to={admin.crateEdit.path(id)}>
-                            <Icon size={2} style={{color: black}}>mode_edit</Icon>
-                          </Link>
-
-                          <span style={{cursor: 'pointer'}} onClick={this.remove.bind(this, id)}>
-                            <Icon size={2} style={{marginLeft: '0.5em'}}>delete</Icon>
-                          </span>
-                        </td>
-                      </tr>
-                    ))
-                      :
                     <tr>
                       <td colspan="6">
-                        <EmptyMessage message="No crates to show."/>
+                        <Loading message="loading crates..."/>
                       </td>
                     </tr>
-                  )
+                    :
+                    (
+                      list.length > 0
+                        ?
+                        list.map(({ id, image, name, description, createdAt, updatedAt }) => (
+                          <tr key={id}>
+                            <td>
+                              {name}
+                            </td>
+
+                            <td>
+                              {description}
+                            </td>
+
+                            <td>
+                              {moment.utc(createdAt).format('dddd, MMMM Do YYYY')}
+                            </td>
+
+                            <td>
+                              {moment.utc(updatedAt).format('dddd, MMMM Do YYYY')}
+                            </td>
+
+                            <td style={{ textAlign: 'center' }}>
+                              <Link to={admin.crateEdit.path(id)}>
+                                <Icon size={2} style={{ color: black }}>mode_edit</Icon>
+                              </Link>
+
+                              <span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>
+                            <Icon size={2} style={{ marginLeft: '0.5em' }}>delete</Icon>
+                          </span>
+                            </td>
+                          </tr>
+                        ))
+                        :
+                        <tr>
+                          <td colspan="6">
+                            <EmptyMessage message="No crates to show."/>
+                          </td>
+                        </tr>
+                    )
                 }
                 </tbody>
               </table>
@@ -187,4 +187,4 @@ function listState(state) {
   }
 }
 
-export default connect(listState, {getCrateList, removeCrate, messageShow, messageHide})(List)
+export default connect(listState, { getCrateList, removeCrate, messageShow, messageHide })(List)

@@ -2,8 +2,8 @@
 import axios from 'axios'
 
 // App Imports
-import {routeApi} from '../../../setup/routes'
-import {queryBuilder} from '../../../setup/helpers'
+import { routeApi } from '../../../setup/routes'
+import { queryBuilder } from '../../../setup/helpers'
 
 // Actions Types
 export const SUBSCRIPTIONS_GET_LIST_REQUEST = 'SUBSCRIPTIONS/GET_LIST_REQUEST'
@@ -19,35 +19,35 @@ export const SUBSCRIPTIONS_GET_FAILURE = 'SUBSCRIPTIONS/GET_FAILURE'
 export function getList(isLoading = true) {
   return dispatch => {
     dispatch({
-        type: SUBSCRIPTIONS_GET_LIST_REQUEST,
-        error: null,
-        isLoading
-      })
+      type: SUBSCRIPTIONS_GET_LIST_REQUEST,
+      error: null,
+      isLoading
+    })
 
-      return axios.post(routeApi, queryBuilder({
-        type: 'query',
-        operation: 'subscriptions',
-        fields: ['id', 'name', 'slug', 'description', 'image']
-      }))
-        .then((response) => {
-          if (response.status === 200) {
-            dispatch({
-              type: SUBSCRIPTIONS_GET_LIST_RESPONSE,
-              error: null,
-              isLoading: false,
-              list: response.data.data.subscriptions
-            })
-          } else {
-            console.error(response)
-          }
-        })
-        .catch(function (error) {
+    return axios.post(routeApi, queryBuilder({
+      type: 'query',
+      operation: 'subscriptions',
+      fields: ['id', 'name', 'slug', 'description', 'image']
+    }))
+      .then((response) => {
+        if (response.status === 200) {
           dispatch({
-            type: SUBSCRIPTIONS_GET_LIST_FAILURE,
-            error: error,
-            isLoading: false
+            type: SUBSCRIPTIONS_GET_LIST_RESPONSE,
+            error: null,
+            isLoading: false,
+            list: response.data.data.subscriptions
           })
+        } else {
+          console.error(response)
+        }
+      })
+      .catch(function (error) {
+        dispatch({
+          type: SUBSCRIPTIONS_GET_LIST_FAILURE,
+          error: error,
+          isLoading: false
         })
+      })
   }
 }
 
@@ -55,31 +55,31 @@ export function getList(isLoading = true) {
 export function get(slug, isLoading = true) {
   return dispatch => {
     dispatch({
-        type: SUBSCRIPTIONS_GET_REQUEST,
-        isLoading
-      })
+      type: SUBSCRIPTIONS_GET_REQUEST,
+      isLoading
+    })
 
-      return axios.post(routeApi, queryBuilder({
-        type: 'query',
-        operation: 'subscription',
-        data: {slug},
-        fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
-      }))
-        .then((response) => {
-          dispatch({
-            type: SUBSCRIPTIONS_GET_RESPONSE,
-            error: null,
-            isLoading: false,
-            item: response.data.data.subscription
-          })
+    return axios.post(routeApi, queryBuilder({
+      type: 'query',
+      operation: 'subscription',
+      data: { slug },
+      fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
+    }))
+      .then((response) => {
+        dispatch({
+          type: SUBSCRIPTIONS_GET_RESPONSE,
+          error: null,
+          isLoading: false,
+          item: response.data.data.subscription
         })
-        .catch((error) => {
-          dispatch({
-            type: SUBSCRIPTIONS_GET_FAILURE,
-            error: error,
-            isLoading: false
-          })
+      })
+      .catch((error) => {
+        dispatch({
+          type: SUBSCRIPTIONS_GET_FAILURE,
+          error: error,
+          isLoading: false
         })
+      })
   }
 }
 

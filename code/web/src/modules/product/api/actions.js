@@ -2,8 +2,8 @@
 import axios from 'axios'
 
 // App Imports
-import {routeApi} from '../../../setup/routes'
-import {queryBuilder} from '../../../setup/helpers'
+import { routeApi } from '../../../setup/routes'
+import { queryBuilder } from '../../../setup/helpers'
 
 // Actions Types
 export const PRODUCTS_GET_LIST_REQUEST = 'PRODUCTS/GET_LIST_REQUEST'
@@ -23,39 +23,39 @@ export const PRODUCTS_GET_RELATED_LIST_FAILURE = 'PRODUCTS/GET_RELATED_LIST_FAIL
 export function getList(isLoading = true, forceRefresh = false) {
   return dispatch => {
     dispatch({
-        type: PRODUCTS_GET_LIST_REQUEST,
-        error: null,
-        isLoading
-      })
+      type: PRODUCTS_GET_LIST_REQUEST,
+      error: null,
+      isLoading
+    })
 
-      return axios.post(routeApi, queryBuilder({
-        type: 'query',
-        operation: 'products',
-        fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
-      }))
-        .then(response => {
-          if (response.status === 200) {
-            dispatch({
-              type: PRODUCTS_GET_LIST_RESPONSE,
-              error: null,
-              isLoading: false,
-              list: response.data.data.products
-            })
-          } else {
-            dispatch({
-              type: PRODUCTS_GET_LIST_FAILURE,
-              error: 'Some error occurred. Please try again.',
-              isLoading: false
-            })
-          }
-        })
-        .catch(error => {
+    return axios.post(routeApi, queryBuilder({
+      type: 'query',
+      operation: 'products',
+      fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
+    }))
+      .then(response => {
+        if (response.status === 200) {
+          dispatch({
+            type: PRODUCTS_GET_LIST_RESPONSE,
+            error: null,
+            isLoading: false,
+            list: response.data.data.products
+          })
+        } else {
           dispatch({
             type: PRODUCTS_GET_LIST_FAILURE,
-            error: error,
+            error: 'Some error occurred. Please try again.',
             isLoading: false
           })
+        }
+      })
+      .catch(error => {
+        dispatch({
+          type: PRODUCTS_GET_LIST_FAILURE,
+          error: error,
+          isLoading: false
         })
+      })
   }
 }
 
@@ -63,47 +63,47 @@ export function getList(isLoading = true, forceRefresh = false) {
 export function get(slug, isLoading = true) {
   return dispatch => {
     dispatch({
-        type: PRODUCTS_GET_REQUEST,
-        isLoading
-      })
+      type: PRODUCTS_GET_REQUEST,
+      isLoading
+    })
 
-      return axios.post(routeApi, queryBuilder({
-        type: 'query',
-        operation: 'product',
-        data: {slug},
-        fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
-      }))
-        .then(response => {
-          if (response.status === 200) {
-            if (response.data.errors && response.data.errors.length > 0) {
-              dispatch({
-                type: PRODUCTS_GET_FAILURE,
-                error: response.data.errors[0].message,
-                isLoading: false
-              })
-            } else {
-              dispatch({
-                type: PRODUCTS_GET_RESPONSE,
-                error: null,
-                isLoading: false,
-                item: response.data.data.product
-              })
-            }
-          } else {
+    return axios.post(routeApi, queryBuilder({
+      type: 'query',
+      operation: 'product',
+      data: { slug },
+      fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
+    }))
+      .then(response => {
+        if (response.status === 200) {
+          if (response.data.errors && response.data.errors.length > 0) {
             dispatch({
               type: PRODUCTS_GET_FAILURE,
-              error: 'Some error occurred. Please try again.',
+              error: response.data.errors[0].message,
               isLoading: false
             })
+          } else {
+            dispatch({
+              type: PRODUCTS_GET_RESPONSE,
+              error: null,
+              isLoading: false,
+              item: response.data.data.product
+            })
           }
-        })
-        .catch(error => {
+        } else {
           dispatch({
             type: PRODUCTS_GET_FAILURE,
-            error: error,
+            error: 'Some error occurred. Please try again.',
             isLoading: false
           })
+        }
+      })
+      .catch(error => {
+        dispatch({
+          type: PRODUCTS_GET_FAILURE,
+          error: error,
+          isLoading: false
         })
+      })
   }
 }
 
@@ -113,7 +113,7 @@ export function getById(productId) {
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'productById',
-      data: {productId},
+      data: { productId },
       fields: ['id', 'name', 'slug', 'description', 'image', 'type', 'gender']
     }))
   }
@@ -134,7 +134,7 @@ export function getRelatedList(productId, isLoading = true) {
       return axios.post(routeApi, queryBuilder({
         type: 'query',
         operation: 'productsRelated',
-        data: {productId},
+        data: { productId },
         fields: ['id', 'name', 'slug', 'description', 'image']
       }))
         .then(response => {

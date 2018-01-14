@@ -15,7 +15,7 @@ export const productCreate = {
   auth: true
 }
 
-export const productEdit ={
+export const productEdit = {
   path: (id = ':id') => (`/admin/product/${ id }/edit`),
   component: ProductCreateOrEdit,
   auth: true

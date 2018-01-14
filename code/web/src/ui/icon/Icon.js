@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 // Component
 const Icon = (props) => {
-  const {children, size, ...other} = props
+  const { children, size, ...other } = props
 
   return (
     <i className="material-icons" {...other}>
@@ -12,13 +12,12 @@ const Icon = (props) => {
 
       {/* language=CSS */}
       <style jsx>{`
-                i {
-                    font-size: ${ size }em;
-                    line-height: inherit;
-                    vertical-align: middle;
-                }
-            `}
-      </style>
+        i {
+          font-size: ${ size }em;
+          line-height: inherit;
+          vertical-align: middle;
+        }
+      `}</style>
     </i>
   )
 }

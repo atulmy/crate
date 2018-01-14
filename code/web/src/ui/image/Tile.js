@@ -4,20 +4,20 @@ import PropTypes from 'prop-types'
 
 // Component
 const Tile = (props) => {
-  const {children, image, width, height, style, shadow, ...others} = props
+  const { children, image, width, height, style, shadow, ...others } = props
 
   return (
-    <div style={Object.assign({height, width}, style)} {...others}>
+    <div style={Object.assign({ height, width }, style)} {...others}>
       {children}
 
       {/* language=CSS */}
       <style jsx>{`
-                div {
-                    background-image:url('${ image }');
-                    background-size: 100% auto;
-                    box-shadow: ${ shadow ? shadow : 'none' };
-                }
-            `}</style>
+        div {
+          background-image:url('${ image }');
+          background-size: 100% auto;
+          box-shadow: ${ shadow ? shadow : 'none' };
+        }
+      `}</style>
     </div>
   )
 }

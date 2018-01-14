@@ -2,8 +2,8 @@
 import axios from 'axios'
 
 // App Imports
-import {routeApi} from '../../../setup/routes'
-import {queryBuilder} from '../../../setup/helpers'
+import { routeApi } from '../../../setup/routes'
+import { queryBuilder } from '../../../setup/helpers'
 import cookie from 'js-cookie'
 
 // Actions Types
@@ -22,7 +22,7 @@ export function setUser(token, user) {
     delete axios.defaults.headers.common['Authorization'];
   }
 
-  return {type: SET_USER, user}
+  return { type: SET_USER, user }
 }
 
 // Login a user using credentials
@@ -74,7 +74,7 @@ export function loginSetUserLocalStorageAndCookie(token, user) {
   window.localStorage.setItem('user', JSON.stringify(user))
 
   // Set cookie for SSR
-  cookie.set('auth', {token, user}, {path: '/'})
+  cookie.set('auth', { token, user }, { path: '/' })
 }
 
 // Register a user

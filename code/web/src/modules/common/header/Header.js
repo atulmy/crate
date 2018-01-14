@@ -1,13 +1,13 @@
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 // UI Imports
-import {Grid, GridCell} from '../../../ui/grid'
-import {primary as primaryGradient} from '../../../ui/common/gradients'
-import {level1} from '../../../ui/common/shadows'
+import { Grid, GridCell } from '../../../ui/grid'
+import { primary as primaryGradient } from '../../../ui/common/gradients'
+import { level1 } from '../../../ui/common/shadows'
 
 // App Imports
 import home from '../../../setup/routes/home'
@@ -31,13 +31,13 @@ const Header = (props) => {
       right: 0,
       top: 0
     }}>
-      <Grid alignCenter={true} style={{marginTop: '1.5em'}}>
+      <Grid alignCenter={true} style={{ marginTop: '1.5em' }}>
         <GridCell>
           {/* Logo */}
-          <Logo style={{float: 'left'}}/>
+          <Logo style={{ float: 'left' }}/>
 
           {/* Left menu */}
-          <Menu style={{float: 'left', marginTop: '0.5em', marginLeft: '2em'}}>
+          <Menu style={{ float: 'left', marginTop: '0.5em', marginLeft: '2em' }}>
             <MenuItem to={home.men.path}>Men</MenuItem>
 
             <MenuItem to={home.women.path}>Women</MenuItem>
@@ -49,7 +49,7 @@ const Header = (props) => {
         </GridCell>
 
         {/* Right menu */}
-        <GridCell style={{textAlign: 'right'}}>
+        <GridCell style={{ textAlign: 'right' }}>
           {
             props.user.isAuthenticated
               ?

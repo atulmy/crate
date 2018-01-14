@@ -1,5 +1,5 @@
 // Imports
-import {GraphQLObjectType, GraphQLString, GraphQLInt} from 'graphql'
+import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
 // User type
 const UserType = new GraphQLObjectType({
@@ -7,12 +7,12 @@ const UserType = new GraphQLObjectType({
   description: 'User type',
 
   fields: () => ({
-    id: {type: GraphQLInt},
-    name: {type: GraphQLString},
-    email: {type: GraphQLString},
-    password: {type: GraphQLString},
-    createdAt: {type: GraphQLString},
-    updatedAt: {type: GraphQLString}
+    id: { type: GraphQLInt },
+    name: { type: GraphQLString },
+    email: { type: GraphQLString },
+    password: { type: GraphQLString },
+    createdAt: { type: GraphQLString },
+    updatedAt: { type: GraphQLString }
   })
 })
 
@@ -22,8 +22,8 @@ const UserLoginType = new GraphQLObjectType({
   description: 'User Authentication Type',
 
   fields: () => ({
-    user: {type: UserType},
-    token: {type: GraphQLString}
+    user: { type: UserType },
+    token: { type: GraphQLString }
   })
 })
 
@@ -33,9 +33,9 @@ const UserGenderType = new GraphQLObjectType({
   description: 'User Gender Type',
 
   fields: () => ({
-    id: {type: GraphQLInt},
-    name: {type: GraphQLString}
+    id: { type: GraphQLInt },
+    name: { type: GraphQLString }
   })
 })
 
-export {UserType, UserLoginType, UserGenderType}
+export { UserType, UserLoginType, UserGenderType }

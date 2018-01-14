@@ -2,11 +2,11 @@
 import React from 'react'
 
 // UI Imports
-import {level1} from '../common/shadows'
+import { level1 } from '../common/shadows'
 
 // Component
 const Card = (props) => {
-  const {children, ...other} = props
+  const { children, ...other } = props
 
   return (
     <div {...other}>
@@ -14,12 +14,12 @@ const Card = (props) => {
 
       {/* language=CSS */}
       <style jsx>{`
-                div {
-                    border-radius: 0.2em;
-                    font-family: 'Roboto', sans-serif;
-                    box-shadow: ${ level1 };
-                }
-            `}
+        div {
+          border-radius: 0.2em;
+          font-family: 'Roboto', sans-serif;
+          box-shadow: ${ level1 };
+        }
+        `}
       </style>
     </div>
   )

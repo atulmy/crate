@@ -1,25 +1,25 @@
 // Imports
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Link, withRouter} from 'react-router-dom'
-import {Helmet} from 'react-helmet'
+import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 // UI Imports
-import {Grid, GridCell} from '../../ui/grid'
+import { Grid, GridCell } from '../../ui/grid'
 import Button from '../../ui/button'
 import ImageTile from '../../ui/image/Tile'
 import Input from '../../ui/input/Input'
 import H3 from '../../ui/typography/H3'
 import Icon from '../../ui/icon'
-import {level1} from '../../ui/common/shadows'
-import {white} from '../../ui/common/colors'
+import { level1 } from '../../ui/common/shadows'
+import { white } from '../../ui/common/colors'
 
 // App Imports
-import {APP_URL} from '../../setup/configs'
+import { APP_URL } from '../../setup/configs'
 import userRoutes from '../../setup/routes/user'
-import {messageShow, messageHide} from '../common/api/actions'
-import {register} from './api/actions'
+import { messageShow, messageHide } from '../common/api/actions'
+import { register } from './api/actions'
 import AuthCheck from '../auth/AuthCheck'
 
 // Component
@@ -88,7 +88,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <Grid gutter={true} alignCenter={true} style={{padding: '2em'}}>
+      <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
         {/* SEO */}
         <Helmet>
           <title>Create an account - Crate</title>
@@ -111,7 +111,7 @@ class Signup extends Component {
               <Grid>
                 <GridCell justifyCenter={true}>
                   <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/stock/women/3.jpg`}
-                             style={{marginTop: '1.9em'}}/>
+                             style={{ marginTop: '1.9em' }}/>
                 </GridCell>
               </Grid>
             </GridCell>
@@ -119,12 +119,12 @@ class Signup extends Component {
         </GridCell>
 
         {/* Right Content */}
-        <GridCell style={{textAlign: 'center'}}>
-          <H3 font="secondary" style={{marginBottom: '1em'}}>Create an account</H3>
+        <GridCell style={{ textAlign: 'center' }}>
+          <H3 font="secondary" style={{ marginBottom: '1em' }}>Create an account</H3>
 
           {/* Signup Form */}
           <form onSubmit={this.onSubmit}>
-            <div style={{width: '25em', margin: '0 auto'}}>
+            <div style={{ width: '25em', margin: '0 auto' }}>
               {/* Name */}
               <Input
                 type="text"
@@ -145,7 +145,7 @@ class Signup extends Component {
                 name="email"
                 value={this.state.user.email}
                 onChange={this.onChange}
-                style={{marginTop: '1em'}}
+                style={{ marginTop: '1em' }}
               />
 
               {/* Password */}
@@ -157,20 +157,20 @@ class Signup extends Component {
                 name="password"
                 value={this.state.user.password}
                 onChange={this.onChange}
-                style={{marginTop: '1em'}}
+                style={{ marginTop: '1em' }}
               />
             </div>
 
-            <div style={{marginTop: '2em'}}>
+            <div style={{ marginTop: '2em' }}>
               {/* Login link */}
               <Link to={userRoutes.login.path}>
-                <Button type="button" style={{marginRight: '0.5em'}}>Login</Button>
+                <Button type="button" style={{ marginRight: '0.5em' }}>Login</Button>
               </Link>
 
               {/* Form submit */}
               <Button type="submit" theme="secondary" disabled={this.state.isLoading}>
                 Signup
-                <Icon size={1.2} style={{color: white}}>navigate_next</Icon>
+                <Icon size={1.2} style={{ color: white }}>navigate_next</Icon>
               </Button>
             </div>
           </form>
@@ -190,4 +190,4 @@ Signup.propTypes = {
   messageHide: PropTypes.func.isRequired
 }
 
-export default connect(null, {register, messageShow, messageHide})(withRouter(Signup))
+export default connect(null, { register, messageShow, messageHide })(withRouter(Signup))

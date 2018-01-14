@@ -1,22 +1,22 @@
 // Imports
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 // UI Imports
 import Icon from '../../ui/icon/Icon'
-import {white, black} from '../../ui/common/colors'
-import {level2} from '../../ui/common/shadows'
+import { white, black } from '../../ui/common/colors'
+import { level2 } from '../../ui/common/shadows'
 
 // App Imports
-import {renderIf} from '../../setup/helpers'
-import {messageHide} from './api/actions'
+import { renderIf } from '../../setup/helpers'
+import { messageHide } from './api/actions'
 import Header from './header/Header'
 
 class Layout extends Component {
 
   render() {
-    const {children} = this.props
+    const { children } = this.props
 
     return (
       <div>
@@ -24,7 +24,7 @@ class Layout extends Component {
         <Header/>
 
         {/* Page Content */}
-        <section style={{marginTop: '5em'}}>
+        <section style={{ marginTop: '5em' }}>
           {children}
         </section>
 
@@ -46,7 +46,7 @@ class Layout extends Component {
               marginRight: '4em'
             }}>{this.props.common.message.text}</span>
 
-            <Icon style={{position: 'absolute', padding: '1em', cursor: 'pointer', right: '0.5em', top: 0}}
+            <Icon style={{ position: 'absolute', padding: '1em', cursor: 'pointer', right: '0.5em', top: 0 }}
                   onClick={this.props.messageHide}>close</Icon>
           </div>
         ))}
@@ -68,4 +68,4 @@ function commonState(state) {
   }
 }
 
-export default connect(commonState, {messageHide})(Layout)
+export default connect(commonState, { messageHide })(Layout)

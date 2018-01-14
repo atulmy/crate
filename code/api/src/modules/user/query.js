@@ -1,11 +1,11 @@
 // Imports
-import {GraphQLInt, GraphQLString, GraphQLList} from 'graphql'
+import { GraphQLInt, GraphQLString, GraphQLList } from 'graphql'
 
 // App Imports
-import {UserType, UserLoginType, UserGenderType} from './types'
-import {getAll, getById, login, getGenders} from './resolvers'
-import {getTypes} from "../product/resolvers"
-import {ProductTypesType} from "../product/types"
+import { UserType, UserLoginType, UserGenderType } from './types'
+import { getAll, getById, login, getGenders } from './resolvers'
+import { getTypes } from "../product/resolvers"
+import { ProductTypesType } from "../product/types"
 
 // All
 export const users = {
@@ -17,7 +17,7 @@ export const users = {
 export const user = {
   type: UserType,
   args: {
-    id: {type: GraphQLInt}
+    id: { type: GraphQLInt }
   },
   resolve: getById
 }

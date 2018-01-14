@@ -1,12 +1,12 @@
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Helmet} from 'react-helmet'
+import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 // UI Imports
-import {Grid, GridCell} from '../../ui/grid'
-import {grey3} from '../../ui/common/colors'
+import { Grid, GridCell } from '../../ui/grid'
+import { grey3 } from '../../ui/common/colors'
 
 // App Imports
 import AdminMenu from './common/Menu'
@@ -23,9 +23,9 @@ const Dashboard = (props) => (
     <AdminMenu/>
 
     {/* Page Content */}
-    <Grid style={{padding: '2em'}}>
+    <Grid style={{ padding: '2em' }}>
       <GridCell>
-        <p style={{textAlign: 'center', color: grey3}}>Nothing here yet. Choose an item from admin menu.</p>
+        <p style={{ textAlign: 'center', color: grey3 }}>Nothing here yet. Choose an item from admin menu.</p>
       </GridCell>
     </Grid>
   </div>

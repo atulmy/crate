@@ -3,11 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // UI Imports
-import {grey3} from '../../ui/common/colors'
+import { grey3 } from '../../ui/common/colors'
 
 // Component
 const EmptyMessage = (props) => (
-  <p style={{textAlign: 'center', color: grey3}}>{props.message}</p>
+  <p style={{ textAlign: 'center', color: grey3 }}>{props.message}</p>
 )
 
 // Component Properties

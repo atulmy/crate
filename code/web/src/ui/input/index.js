@@ -4,4 +4,4 @@ import Textarea from './Textarea'
 import Select from './Select'
 import File from './File'
 
-export {Input, Textarea, Select, File}
+export { Input, Textarea, Select, File }

@@ -1,6 +1,6 @@
 // Imports
-import {compose, combineReducers} from 'redux'
-import {createStore, applyMiddleware} from 'redux'
+import { compose, combineReducers } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
 // App Imports

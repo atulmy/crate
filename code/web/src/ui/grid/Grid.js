@@ -24,7 +24,7 @@ const Grid = (props) => {
       return null
     }
     if (GridCell.props) {
-      return React.cloneElement(GridCell, {flexCells, gutter})
+      return React.cloneElement(GridCell, { flexCells, gutter })
     }
     return GridCell
   })
@@ -35,20 +35,20 @@ const Grid = (props) => {
 
       {/* language=CSS */}
       <style jsx>{`
-          div {
-            display: flex;
-            flex-flow: row;
-            flex-wrap: wrap;
+        div {
+          display: flex;
+          flex-flow: row;
+          flex-wrap: wrap;
 
-            ${ justifyRight ? 'justify-content: flex-end;' : '' }
-            ${ justifyCenter ? 'justify-content: center;' : '' }
+          ${ justifyRight ? 'justify-content: flex-end;' : '' }
+          ${ justifyCenter ? 'justify-content: center;' : '' }
 
-            ${ alignTop ? 'align-items: flex-start;' : '' }
-            ${ alignBottom ? 'align-items: flex-end;' : '' }
-            ${ alignCenter ? 'align-items: center;' : '' }
+          ${ alignTop ? 'align-items: flex-start;' : '' }
+          ${ alignBottom ? 'align-items: flex-end;' : '' }
+          ${ alignCenter ? 'align-items: center;' : '' }
 
-            ${ gutter ? 'margin-left: -1em;' : 'margin-left: 0;' }
-          }
+          ${ gutter ? 'margin-left: -1em;' : 'margin-left: 0;' }
+        }
       `}</style>
     </div>
   )

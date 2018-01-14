@@ -2,8 +2,8 @@
 import models from '../../setup/models'
 
 // Get crate by ID
-export async function getById(parentValue, {crateId}) {
-  const crate = await models.Crate.findOne({where: {id: crateId}})
+export async function getById(parentValue, { crateId }) {
+  const crate = await models.Crate.findOne({ where: { id: crateId } })
 
   if (!crate) {
     // Crate does not exists
@@ -14,12 +14,12 @@ export async function getById(parentValue, {crateId}) {
 }
 
 // Get all crates
-export async function getAll() {
-  return await models.Crate.findAll({order: [['id', 'DESC']]})
+export async function getAll(parentValue, { orderBy }) {
+  return await models.Crate.findAll({ order: [['id', orderBy]] })
 }
 
 // Create crate
-export async function create(parentValue, {name, description}) {
+export async function create(parentValue, { name, description }) {
   return await models.Crate.create({
     name,
     description
@@ -27,18 +27,18 @@ export async function create(parentValue, {name, description}) {
 }
 
 // Update crate
-export async function update(parentValue, {id, name, description}) {
+export async function update(parentValue, { id, name, description }) {
 
   return await models.Crate.update(
     {
       name,
       description
     },
-    {where: {id}}
+    { where: { id } }
   )
 }
 
 // Delete crate
-export async function remove(parentValue, {id}) {
-  return await models.Crate.destroy({where: {id}})
+export async function remove(parentValue, { id }) {
+  return await models.Crate.destroy({ where: { id } })
 }

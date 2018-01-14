@@ -1,9 +1,9 @@
 // Imports
-import {GraphQLString, GraphQLInt} from 'graphql'
+import { GraphQLString, GraphQLInt } from 'graphql'
 
 // App Imports
 import CrateType from './types'
-import {create, remove, update} from './resolvers'
+import { create, remove, update } from './resolvers'
 
 // Crate create
 export const crateCreate = {

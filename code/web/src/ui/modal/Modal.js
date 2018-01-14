@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 // Component
 const Modal = (props) => {
-  const {children, visible, ...other} = props
+  const { children, visible, ...other } = props
 
   return (
     <div {...other} style={{

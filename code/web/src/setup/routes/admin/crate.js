@@ -1,22 +1,22 @@
 // App Imports
-import ProductList from '../../../modules/admin/crate/List'
-import ProductCreateOrEdit from '../../../modules/admin/crate/CreateOrEdit'
+import CrateList from '../../../modules/admin/crate/List'
+import CrateCreateOrEdit from '../../../modules/admin/crate/CreateOrEdit'
 
 // Admin crate routes
 export const crateList = {
   path: '/admin/crates',
-  component: ProductList,
+  component: CrateList,
   auth: true
 }
 
 export const crateCreate = {
   path: '/admin/crate/create',
-  component: ProductCreateOrEdit,
+  component: CrateCreateOrEdit,
   auth: true
 }
 
-export const crateEdit ={
+export const crateEdit = {
   path: (id = ':id') => (`/admin/crate/${ id }/edit`),
-  component: ProductCreateOrEdit,
+  component: CrateCreateOrEdit,
   auth: true
 }

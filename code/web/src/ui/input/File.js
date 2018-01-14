@@ -3,14 +3,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // UI Imports
-import {grey2, grey4, black, white} from '../common/colors'
-import {primary, secondary} from "../common/gradients"
-import {level1, level2, level3, level4} from "../common/shadows"
+import { grey2, grey4, black, white } from '../common/colors'
+import { primary, secondary } from "../common/gradients"
+import { level1, level2, level3, level4 } from "../common/shadows"
 import Icon from '../icon'
 
 // Component
 const File = (props) => {
-  const {text, style, name, ...other} = props
+  const { text, style, name, ...other } = props
 
   return (
     <div>
@@ -28,48 +28,48 @@ const File = (props) => {
 
       {/* language=CSS */}
       <style jsx>{`
-                .file-upload {
-                    position: relative;
-                    display: inline-block;
-                }
+        .file-upload {
+          position: relative;
+          display: inline-block;
+        }
 
-                .file-upload__label {
-                    display: block;
-                    padding: 0.8em 1.8em;
-                    border: none;
-                    border-radius: 1.4em;
-                    text-transform: uppercase;
-                    font-family: 'Roboto', sans-serif;
-                    cursor: pointer;
-                    outline: none;
-                    font-size: 1em;
-                    color: ${ black };
-                }
-                .file-upload__label:hover {
-                    box-shadow: ${ level3 };
-                }
-                .file-upload__label:active {
-                    box-shadow: ${ level4 };
-                }
-                .file-upload__label:disabled {
-                    color: ${ white };
-                    box-shadow: ${ level1 };
-                    background-color: ${ grey2 };
-                    background-image: none;
-                }
+        .file-upload__label {
+          display: block;
+          padding: 0.8em 1.8em;
+          border: none;
+          border-radius: 1.4em;
+          text-transform: uppercase;
+          font-family: 'Roboto', sans-serif;
+          cursor: pointer;
+          outline: none;
+          font-size: 1em;
+          color: ${ black };
+        }
+        .file-upload__label:hover {
+          box-shadow: ${ level3 };
+        }
+        .file-upload__label:active {
+          box-shadow: ${ level4 };
+        }
+        .file-upload__label:disabled {
+          color: ${ white };
+          box-shadow: ${ level1 };
+          background-color: ${ grey2 };
+          background-image: none;
+        }
 
-                .file-upload__input {
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    font-size: 1;
-                    width:0;
-                    height: 100%;
-                    opacity: 0;
-                }
-            `}
+        .file-upload__input {
+          position: absolute;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          font-size: 1;
+          width:0;
+          height: 100%;
+          opacity: 0;
+        }
+        `}
       </style>
     </div>
   )

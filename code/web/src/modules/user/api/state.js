@@ -1,6 +1,6 @@
 // App Imports
-import {isEmpty} from '../../../setup/helpers'
-import {SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT} from './actions'
+import { isEmpty } from '../../../setup/helpers'
+import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT } from './actions'
 
 // Initial State
 export const userInitialState = {
