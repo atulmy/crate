@@ -21,7 +21,7 @@ export default function (server) {
   server.use(cookieParser())
 
   // Static files folder
-  server.use(express.static(path.join(__dirname, '../', 'static')))
+  server.use(express.static(path.join(__dirname, '..', '..', 'public')))
 
   // HTTP logger
   server.use(morgan('tiny'))

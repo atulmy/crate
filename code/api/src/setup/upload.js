@@ -11,7 +11,7 @@ export default function (server) {
 
   // Set destination
   const storage = multer.diskStorage({
-    destination: `./src/static/images/uploads/`,
+    destination: path.join(__dirname, '..', '..', 'public', 'images', 'uploads'),
 
     filename: function (request, file, callback) {
       callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))

@@ -52,19 +52,19 @@ class List extends Component {
             {
               this.props.crates.isLoading
                 ?
-                <Loading/>
+              <Loading/>
                 :
-                (
-                  this.props.crates.list.length > 0
-                    ?
-                  this.props.crates.list.map(crate => (
-                    <div key={crate.id} style={{ margin: '2em', float: 'left' }}>
-                      <CrateItem crate={crate}/>
-                    </div>
-                  ))
-                    :
-                  <p>No crates to show.</p>
-                )
+              (
+                this.props.crates.list.length > 0
+                  ?
+                this.props.crates.list.map(crate => (
+                  <div key={crate.id} style={{ margin: '2em', float: 'left' }}>
+                    <CrateItem crate={crate}/>
+                  </div>
+                ))
+                  :
+                <p>No crates to show.</p>
+              )
             }
           </GridCell>
         </Grid>

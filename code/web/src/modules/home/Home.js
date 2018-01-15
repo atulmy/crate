@@ -47,13 +47,13 @@ const Home = (props) => (
         {
           props.user.isAuthenticated
             ?
-            <Link to={crateRoutes.list.path}>
-              <Button theme="secondary" style={{ marginTop: '1em' }}>Get Subscription</Button>
-            </Link>
+          <Link to={crateRoutes.list.path}>
+            <Button theme="secondary" style={{ marginTop: '1em' }}>Get Subscription</Button>
+          </Link>
             :
-            <Link to={userRoutes.signup.path}>
-              <Button theme="secondary" style={{ marginTop: '1em' }}>Get Started</Button>
-            </Link>
+          <Link to={userRoutes.signup.path}>
+            <Button theme="secondary" style={{ marginTop: '1em' }}>Get Started</Button>
+          </Link>
         }
       </GridCell>
     </Grid>
