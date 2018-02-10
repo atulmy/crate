@@ -17,6 +17,7 @@ import crateRoutes from '../../setup/routes/crate'
 import userRoutes from '../../setup/routes/user'
 import { getList as getProductList } from '../product/api/actions'
 import Loading from '../common/Loading'
+import EmptyMessage from '../common/EmptyMessage'
 import ProductItem from '../product/Item'
 
 // Component
@@ -57,19 +58,19 @@ class WhatsNew extends Component {
           {
             isLoading
               ?
-              <Loading/>
+            <Loading/>
               :
-              (
-                list.length > 0
-                  ?
-                  list.map(product => (
-                    <GridCell key={product.id} style={{ textAlign: 'center' }}>
-                      <ProductItem product={product}/>
-                    </GridCell>
-                  ))
-                  :
-                  <p>No products to show.</p>
-              )
+            (
+              list.length > 0
+                ?
+              list.map(product => (
+                <GridCell key={product.id} style={{ textAlign: 'center' }}>
+                  <ProductItem product={product}/>
+                </GridCell>
+              ))
+                :
+              <EmptyMessage message="No products to show" />
+            )
           }
         </Grid>
 
@@ -81,14 +82,14 @@ class WhatsNew extends Component {
             {
               this.props.user.isAuthenticated
                 ?
-                <Link to={crateRoutes.list.path}>
-                  <Button theme="primary">Subscribe <Icon size={1.2}
-                                                          style={{ color: white }}>navigate_next</Icon></Button>
-                </Link>
+              <Link to={crateRoutes.list.path}>
+                <Button theme="primary">Subscribe <Icon size={1.2}
+                                                        style={{ color: white }}>navigate_next</Icon></Button>
+              </Link>
                 :
-                <Link to={userRoutes.signup.path}>
-                  <Button theme="primary">Start <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
-                </Link>
+              <Link to={userRoutes.signup.path}>
+                <Button theme="primary">Start <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
+              </Link>
             }
           </GridCell>
         </Grid>

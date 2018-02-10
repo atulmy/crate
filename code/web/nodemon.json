@@ -7,6 +7,5 @@
     "node_modules/**/node_modules",
     "public/*",
     "storybook/*"
-  ],
-  "delay": "1000"
+  ]
 }

@@ -52,7 +52,7 @@ export function getList(isLoading = true, forceRefresh = false) {
       .catch(error => {
         dispatch({
           type: PRODUCTS_GET_LIST_FAILURE,
-          error: error,
+          error: 'Some error occurred. Please try again.',
           isLoading: false
         })
       })
@@ -157,7 +157,7 @@ export function getRelatedList(productId, isLoading = true) {
         .catch(error => {
           dispatch({
             type: PRODUCTS_GET_RELATED_LIST_FAILURE,
-            error: error,
+            error: 'Some error occurred. Please try again.',
             isLoading: false
           })
         })

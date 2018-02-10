@@ -103,7 +103,6 @@ app.get('*', (request, response) => {
         // Get Meta header tags
         const helmet = Helmet.renderStatic()
 
-        // Get Styles
         const styles = flushToHTML()
 
         let html = view(APP_URL, helmet, appHtml, styles, initialState)

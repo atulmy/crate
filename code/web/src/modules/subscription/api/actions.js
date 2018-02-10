@@ -29,7 +29,7 @@ export function getList(isLoading = true) {
       operation: 'subscriptions',
       fields: ['id', 'name', 'slug', 'description', 'image']
     }))
-      .then((response) => {
+      .then(response => {
         if (response.status === 200) {
           dispatch({
             type: SUBSCRIPTIONS_GET_LIST_RESPONSE,
@@ -41,10 +41,10 @@ export function getList(isLoading = true) {
           console.error(response)
         }
       })
-      .catch(function (error) {
+      .catch(error => {
         dispatch({
           type: SUBSCRIPTIONS_GET_LIST_FAILURE,
-          error: error,
+          error: 'Some error occurred. Please try again.',
           isLoading: false
         })
       })
@@ -65,7 +65,7 @@ export function get(slug, isLoading = true) {
       data: { slug },
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
     }))
-      .then((response) => {
+      .then(response => {
         dispatch({
           type: SUBSCRIPTIONS_GET_RESPONSE,
           error: null,
@@ -73,10 +73,10 @@ export function get(slug, isLoading = true) {
           item: response.data.data.subscription
         })
       })
-      .catch((error) => {
+      .catch(error => {
         dispatch({
           type: SUBSCRIPTIONS_GET_FAILURE,
-          error: error,
+          error: 'Some error occurred. Please try again.',
           isLoading: false
         })
       })

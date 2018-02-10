@@ -30,7 +30,7 @@ export function getList(orderBy = 'DESC', isLoading = true, forceRefresh = false
       data: { orderBy },
       fields: ['id', 'name', 'description', 'createdAt', 'updatedAt']
     }))
-      .then((response) => {
+      .then(response => {
         if (response.status === 200) {
           dispatch({
             type: CRATES_GET_LIST_RESPONSE,
@@ -42,10 +42,10 @@ export function getList(orderBy = 'DESC', isLoading = true, forceRefresh = false
           console.error(response)
         }
       })
-      .catch(function (error) {
+      .catch(error => {
         dispatch({
           type: CRATES_GET_LIST_FAILURE,
-          error: error,
+          error: 'Some error occurred. Please try again.',
           isLoading: false
         })
       })
@@ -66,7 +66,7 @@ export function get(slug, isLoading = true) {
       data: { slug },
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
     }))
-      .then((response) => {
+      .then(response => {
         dispatch({
           type: CRATES_GET_RESPONSE,
           error: null,
@@ -74,10 +74,10 @@ export function get(slug, isLoading = true) {
           item: response.data.data.crate
         })
       })
-      .catch((error) => {
+      .catch(error => {
         dispatch({
           type: CRATES_GET_FAILURE,
-          error: error,
+          error: 'Some error occurred. Please try again.',
           isLoading: false
         })
       })
