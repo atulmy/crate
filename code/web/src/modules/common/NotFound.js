@@ -13,7 +13,7 @@ import { APP_URL } from '../../setup/configs'
 import home from '../../setup/routes/home'
 
 // Component
-const NotFound = (props) => (
+const NotFound = () => (
   <div>
     {/* SEO */}
     <Helmet>
@@ -23,17 +23,17 @@ const NotFound = (props) => (
     {/* Top title bar */}
     <Grid style={{ backgroundColor: grey }}>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-        <H3 font="secondary">Feeling lost?</H3>
+        <H3 font='secondary'>Feeling lost?</H3>
       </GridCell>
     </Grid>
 
     <Grid>
       <GridCell style={{ textAlign: 'center' }}>
         <p style={{ textAlign: 'center', marginTop: '2em', marginBottom: '2em' }}>
-          <img src={`${ APP_URL }/images/crate-broken.png`} alt="404" style={{ width: '10em' }}/>
+          <img src={`${APP_URL}/images/crate-broken.png`} alt='404' style={{ width: '10em' }} />
         </p>
 
-        <H3 font="secondary">Page you are looking for does not exists or has removed. It's 404.</H3>
+        <H3 font='secondary'>Page you are looking for does not exists or has removed. It's 404.</H3>
 
         <p style={{ marginTop: '2em' }}>What can you do?</p>
 

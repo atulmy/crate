@@ -14,14 +14,13 @@ import { messageHide } from './api/actions'
 import Header from './header/Header'
 
 class Layout extends Component {
-
-  render() {
+  render () {
     const { children } = this.props
 
     return (
       <div>
         {/* Header */}
-        <Header/>
+        <Header />
 
         {/* Page Content */}
         <section style={{ marginTop: '5em' }}>
@@ -46,8 +45,12 @@ class Layout extends Component {
               marginRight: '4em'
             }}>{this.props.common.message.text}</span>
 
-            <Icon style={{ position: 'absolute', padding: '1em', cursor: 'pointer', right: '0.5em', top: 0 }}
-                  onClick={this.props.messageHide}>close</Icon>
+            <Icon
+              style={{ position: 'absolute', padding: '1em', cursor: 'pointer', right: '0.5em', top: 0 }}
+              onClick={this.props.messageHide}
+            >
+              close
+            </Icon>
           </div>
         ))}
       </div>
@@ -62,7 +65,7 @@ Layout.propTypes = {
 }
 
 // Component State
-function commonState(state) {
+function commonState (state) {
   return {
     common: state.common
   }

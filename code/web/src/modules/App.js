@@ -13,13 +13,11 @@ const App = (props) => (
     <Switch>
       {Object.values(routes).map((route, index) => (
         route.auth
-          ?
-          <RoutePrivate {...route} key={index} path={typeof route.path === 'function' ? route.path() : route.path}/>
-          :
-          <Route {...route} key={index} path={typeof route.path === 'function' ? route.path() : route.path}/>
+          ? <RoutePrivate {...route} key={index} path={typeof route.path === 'function' ? route.path() : route.path} />
+          : <Route {...route} key={index} path={typeof route.path === 'function' ? route.path() : route.path} />
       ))}
 
-      <Route component={NotFound}/>
+      <Route component={NotFound} />
     </Switch>
   </Layout>
 )

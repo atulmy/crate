@@ -1,5 +1,5 @@
 // Imports
-import React, { Component } from 'react'
+import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -9,7 +9,7 @@ import crate from '../../setup/routes/crate'
 
 // Component
 const AuthCheck = (props) => (
-  props.user.isAuthenticated ? <Redirect to={crate.list.path}/> : ''
+  props.user.isAuthenticated ? <Redirect to={crate.list.path} /> : ''
 )
 
 // Component Properties
@@ -18,7 +18,7 @@ AuthCheck.propTypes = {
 }
 
 // Component State
-function authCheckState(state) {
+function authCheckState (state) {
   return {
     user: state.user
   }

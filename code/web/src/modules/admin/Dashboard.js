@@ -12,7 +12,7 @@ import { grey3 } from '../../ui/common/colors'
 import AdminMenu from './common/Menu'
 
 // Component
-const Dashboard = (props) => (
+const Dashboard = () => (
   <div>
     {/* SEO */}
     <Helmet>
@@ -20,7 +20,7 @@ const Dashboard = (props) => (
     </Helmet>
 
     {/* Top menu bar */}
-    <AdminMenu/>
+    <AdminMenu />
 
     {/* Page Content */}
     <Grid style={{ padding: '2em' }}>
@@ -37,7 +37,7 @@ Dashboard.propTypes = {
 }
 
 // Component State
-function dashboardState(state) {
+function dashboardState (state) {
   return {
     user: state.user
   }
