@@ -31,13 +31,13 @@ const Header = (props) => {
       right: 0,
       top: 0
     }}>
-      <Grid alignCenter style={{marginTop: '1.5em'}}>
+      <Grid alignCenter={true} style={{ marginTop: '1.5em' }}>
         <GridCell>
           {/* Logo */}
-          <Logo style={{float: 'left'}} />
+          <Logo style={{ float: 'left' }}/>
 
           {/* Left menu */}
-          <Menu style={{float: 'left', marginTop: '0.5em', marginLeft: '2em'}}>
+          <Menu style={{ float: 'left', marginTop: '0.5em', marginLeft: '2em' }}>
             <MenuItem to={home.men.path}>Men</MenuItem>
 
             <MenuItem to={home.women.path}>Women</MenuItem>
@@ -49,10 +49,11 @@ const Header = (props) => {
         </GridCell>
 
         {/* Right menu */}
-        <GridCell style={{textAlign: 'right'}}>
+        <GridCell style={{ textAlign: 'right' }}>
           {
             props.user.isAuthenticated
-              ? <Menu>
+              ?
+              <Menu>
                 <MenuItem to={admin.dashboard.path}>Admin</MenuItem>
 
                 <MenuItem to={crate.list.path}>Crates</MenuItem>
@@ -61,7 +62,8 @@ const Header = (props) => {
 
                 <MenuItem to={user.profile.path}>Profile</MenuItem>
               </Menu>
-              : <Menu>
+              :
+              <Menu>
                 <MenuItem to={user.login.path}>Login</MenuItem>
 
                 <MenuItem to={user.signup.path}>Signup</MenuItem>
@@ -79,7 +81,7 @@ Header.propTypes = {
 }
 
 // Component State
-function headerState (state) {
+function headerState(state) {
   return {
     user: state.user
   }

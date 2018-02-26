@@ -6,15 +6,15 @@ export const MESSAGE_SHOW = 'COMMON_MESSAGE_SHOW'
 export const MESSAGE_HIDE = 'COMMON_MESSAGE_HIDE'
 
 // Actions
-export function messageShow (message) {
+export function messageShow(message) {
   return { type: MESSAGE_SHOW, message }
 }
 
-export function messageHide () {
+export function messageHide() {
   return { type: MESSAGE_HIDE }
 }
 
-export function upload (data) {
+export function upload(data) {
   return dispatch => {
     return axios.post(routeApi + '/upload', data, {
       headers: {
@@ -23,3 +23,4 @@ export function upload (data) {
     })
   }
 }
+

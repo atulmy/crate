@@ -9,8 +9,7 @@
     "setup:db": "npm run db:migrate && npm run db:seed",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
-    "start": "nodemon src/index.js --exec babel-node --presets es2015,stage-2",
-    "standard": "node node_modules/standard/bin/cmd.js"
+    "start": "nodemon src/index.js --exec babel-node --presets es2015,stage-2"
   },
   "keywords": [],
   "author": "",
@@ -19,8 +18,7 @@
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "nodemon": "1.15.0",
-    "standard": "10.0.3"
+    "nodemon": "1.14.12"
   },
   "dependencies": {
     "bcrypt": "^1.0.3",
@@ -35,7 +33,7 @@
     "morgan": "^1.9.0",
     "multer": "^1.3.0",
     "mysql2": "1.5.2",
-    "sequelize": "4.33.4",
-    "sequelize-cli": "4.0.0"
+    "sequelize": "4.33.2",
+    "sequelize-cli": "3.2.0"
   }
 }
