@@ -46,8 +46,12 @@ class Layout extends Component {
               marginRight: '4em'
             }}>{this.props.common.message.text}</span>
 
-            <Icon style={{ position: 'absolute', padding: '1em', cursor: 'pointer', right: '0.5em', top: 0 }}
-                  onClick={this.props.messageHide}>close</Icon>
+            <Icon
+              style={{ position: 'absolute', padding: '1em', cursor: 'pointer', right: '0.5em', top: 0 }}
+              onClick={this.props.messageHide}
+            >
+              close
+            </Icon>
           </div>
         ))}
       </div>

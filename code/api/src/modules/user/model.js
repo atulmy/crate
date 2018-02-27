@@ -9,6 +9,9 @@ const User = (sequelize, DataTypes) => {
     },
     password: {
       type: DataTypes.TEXT
+    },
+    role: {
+      type: DataTypes.TEXT
     }
   })
 }

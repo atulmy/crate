@@ -12,6 +12,10 @@
     }
   },
   "user": {
+    "roles": {
+      "admin": "ADMIN",
+      "user": "USER"
+    },
     "gender": {
       "male": {
         "id": 1,

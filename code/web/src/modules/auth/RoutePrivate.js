@@ -5,11 +5,18 @@ import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 // App Imports
+import params from '../../setup/config/params'
 import userRoutes from '../../setup/routes/user'
 
 // Component
 const RoutePrivate = (props) => (
-  props.user.isAuthenticated ? <Route {...props} component={props.component}/> : <Redirect to={userRoutes.login.path}/>
+  props.user.isAuthenticated
+    ? props.role
+      ? props.user.details.role === props.role
+        ? <Route {...props} component={props.component}/>
+        : <Redirect to={userRoutes.login.path}/>
+      : <Route {...props} component={props.component}/>
+    : <Redirect to={userRoutes.login.path}/>
 )
 
 // Component Properties

@@ -19,7 +19,7 @@ import { rootReducer } from '../../setup/store'
 import { routes } from '../../setup/routes'
 import { setUser } from '../../modules/user/api/actions'
 import { APP_URL } from '../configs'
-import App from '../../modules/App'
+import App from '../../App'
 import view from './view'
 
 // Create new server

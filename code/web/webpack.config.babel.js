@@ -15,10 +15,11 @@ const config = {
   module: {
     rules: [
       {
-        test: path.join(__dirname, 'src'),
+        test: /\.jsx?$/,
         use: {
           loader: 'babel-loader',
-        }
+        },
+        exclude: /node_modules/
       }
     ]
   },

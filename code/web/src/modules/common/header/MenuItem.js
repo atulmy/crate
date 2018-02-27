@@ -17,15 +17,20 @@ const MenuItem = (props) => {
   }
 
   return (
-    <Link to={to} style={Object.assign({
-      padding: '0.6em 1em',
-      textTransform: 'uppercase',
-      color: white
-    }, isActiveRoute() ? {
-      backgroundImage: (type === 'secondary' ? secondary : primary),
-      borderRadius: '1.4em',
-      boxShadow: level1
-    } : style)}>{children}</Link>
+    <Link
+      to={to}
+      style={Object.assign({
+        padding: '0.6em 1em',
+        textTransform: 'uppercase',
+        color: white
+      }, isActiveRoute() ? {
+        backgroundImage: (type === 'secondary' ? secondary : primary),
+        borderRadius: '1.4em',
+        boxShadow: level1
+      } : style)}
+    >
+      {children}
+    </Link>
   )
 }
 

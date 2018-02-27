@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import { store } from '../../setup/store'
 import { setUser, loginSetUserLocalStorageAndCookie } from '../../modules/user/api/actions'
 import ScrollToTop from '../../modules/common/ScrollToTop'
-import App from '../../modules/App'
+import App from '../../App'
 
 // User Authentication
 const token = window.localStorage.getItem('token')
