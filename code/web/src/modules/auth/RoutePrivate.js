@@ -5,7 +5,6 @@ import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 // App Imports
-import params from '../../setup/config/params'
 import userRoutes from '../../setup/routes/user'
 
 // Component

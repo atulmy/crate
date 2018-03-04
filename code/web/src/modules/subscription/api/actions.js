@@ -85,6 +85,7 @@ export function get(slug, isLoading = true) {
 
 // Create subscription
 export function create(data) {
+  console.log(data)
   return dispatch => {
     return axios.post(routeApi, queryBuilder({
       type: 'mutation',
