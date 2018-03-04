@@ -1,5 +1,5 @@
 // Imports
-import { GraphQLString, GraphQLInt } from 'graphql'
+import { GraphQLInt } from 'graphql'
 
 // App Imports
 import SubscriptionType from './types'
@@ -9,14 +9,9 @@ import { create, remove } from './resolvers'
 export const subscriptionCreate = {
   type: SubscriptionType,
   args: {
-    name: {
-      name: 'name',
-      type: GraphQLString
-    },
-
-    description: {
-      name: 'description',
-      type: GraphQLString
+    crateId: {
+      name: 'crateId',
+      type: GraphQLInt
     }
   },
   resolve: create

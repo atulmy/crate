@@ -12,11 +12,15 @@ export async function getAll() {
 }
 
 // Create subscription
-export async function create(parentValue, { name, subscription }) {
-  return await models.Subscription.create({
-    name,
-    subscription
-  })
+export async function create(parentValue, { crateId }, context) {
+  if(context.auth.user && context.auth.user.id > 0) {
+    return await models.Subscription.create({
+      crateId,
+      userId: context.auth.user.id
+    })
+  } else {
+    throw new Error('Please login to subscribe to this crate.')
+  }
 }
 
 // Delete subscription

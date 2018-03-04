@@ -1,6 +1,8 @@
 // Imports
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router-dom'
 
 // UI Imports
 import Card from '../../ui/card/Card'
@@ -26,38 +28,31 @@ class Item extends Component {
     }
   }
 
-  onClickSubscribe = (event) => {
-    event.preventDefault()
-
+  onClickSubscribe = (crateId) => {
     this.setState({
       isLoading: true
     })
 
     this.props.messageShow('Subscribing, please wait...')
 
-    this.props.create(this.state.user)
+    this.props.create({ crateId })
       .then(response => {
+        if (response.data.errors && response.data.errors.length > 0) {
+          this.props.messageShow(response.data.errors[0].message)
+        } else {
+          this.props.messageShow('Subscribed successfully.')
+
+          this.props.history.push(userRoutes.subscriptions.path)
+        }
+      })
+      .catch(error => {
+        this.props.messageShow('There was some error subscribing to this crate. Please try again.')
+      })
+      .then(() => {
         this.setState({
           isLoading: false
         })
 
-        if (response.data.errors && response.data.errors.length > 0) {
-          this.props.messageShow(response.data.errors[0].message)
-        } else {
-          this.props.messageShow('Signed up successfully.')
-
-          this.props.history.push(userRoutes.login.path)
-        }
-      })
-      .catch(error => {
-        this.props.messageShow('There was some error signing you up. Please try again.')
-
-        this.setState({
-          isLoading: false,
-          error: 'Error signing up.'
-        })
-      })
-      .then(() => {
         window.setTimeout(() => {
           this.props.messageHide()
         }, 5000)
@@ -66,6 +61,7 @@ class Item extends Component {
 
   render() {
     const { id, name, description } = this.props.crate
+    const { isLoading } = this.state
 
     return (
       <Card style={{ width: '18em', backgroundColor: white }}>
@@ -79,7 +75,14 @@ class Item extends Component {
           <p style={{ color: grey2, marginTop: '1em' }}>{description}</p>
 
           <p style={{ textAlign: 'center', marginTop: '1.5em', marginBottom: '1em' }}>
-            <Button theme="primary" onClick={this.onClickSubscribe}><Icon size={1.2} style={{ color: white }}>add</Icon> Subscribe</Button>
+            <Button
+              theme="primary"
+              onClick={this.onClickSubscribe.bind(this, id)}
+              type="button"
+              disabled={ isLoading }
+            >
+              <Icon size={1.2} style={{ color: white }}>add</Icon> Subscribe
+            </Button>
           </p>
         </div>
       </Card>
@@ -91,16 +94,15 @@ class Item extends Component {
 Item.propTypes = {
   crate: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-  login: PropTypes.func.isRequired,
   messageShow: PropTypes.func.isRequired,
   messageHide: PropTypes.func.isRequired
 }
 
 // Component State
-function loginState(state) {
+function itemState(state) {
   return {
     user: state.user
   }
 }
 
-export default Item
+export default connect(itemState, { create, messageShow, messageHide })(withRouter(Item))

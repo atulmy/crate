@@ -3,19 +3,19 @@ import jwt from 'jsonwebtoken'
 import config from '../config/config.json'
 
 export default function (request, response, next) {
-  let token = request.body.token || request.query.token || request.headers['x-access-token'] || request.cookies.token
+  let authToken = request.headers.authorization
 
-  if (token && token !== null) {
+  if (authToken && authToken !== null) {
     try {
-      request.user = jwt.verify(token, config.secret)
+      const token = authToken.split(' ')
+      request.user = jwt.verify(token[1], config.secret)
+
     } catch (e) {
 
     }
   } else {
     request.user = {}
   }
-
-  console.log(request.user)
 
   next()
 }
