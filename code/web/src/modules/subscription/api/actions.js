@@ -75,7 +75,7 @@ export function getListByUser(isLoading = true) {
             type: SUBSCRIPTIONS_GET_LIST_BY_USER_RESPONSE,
             error: null,
             isLoading: false,
-            list: response.data.data.subscriptions
+            list: response.data.data.subscriptionsByUser
           })
         } else {
           console.error(response)

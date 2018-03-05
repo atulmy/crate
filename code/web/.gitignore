@@ -1,3 +1,3 @@
 node_modules/
 package-lock.json
-src/static/js/bundle.js
+public/js/bundle.js

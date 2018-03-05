@@ -13,6 +13,8 @@ import { grey, grey2 } from '../../ui/common/colors'
 // App Imports
 import { getListByUser } from '../subscription/api/actions'
 import Loading from '../common/Loading'
+import EmptyMessage from '../common/EmptyMessage'
+import ProductItem from '../product/Item'
 
 // Component
 class Subscriptions extends Component {
@@ -50,15 +52,17 @@ class Subscriptions extends Component {
         <Grid>
           <GridCell>
             {
-              this.props.crates.isLoading
+              this.props.subscriptions.isLoading
                 ? <Loading/>
-                : this.props.crates.list.length > 0
-                    ? this.props.crates.list.map(crate => (
-                        <div key={crate.id} style={{ margin: '2em', float: 'left' }}>
-
+                : this.props.subscriptions.list.length > 0
+                    ? this.props.subscriptions.list.map(subscription => (
+                        <div key={subscription.id} style={{ margin: '2em', float: 'left' }}>
+                          { subscription.id }
+                          { subscription.user.name }
+                          { subscription.crate.name }
                         </div>
                       ))
-                    : <p>No crates to show.</p>
+                    : <EmptyMessage message="You have not subscribed to any crates yet." />
             }
           </GridCell>
         </Grid>
@@ -70,15 +74,13 @@ class Subscriptions extends Component {
 // Component Properties
 Subscriptions.propTypes = {
   subscriptions: PropTypes.object.isRequired,
-  crates: PropTypes.object.isRequired,
   getListByUser: PropTypes.func.isRequired
 }
 
 // Component State
 function subscriptionsState(state) {
   return {
-    subscriptions: state.subscriptions,
-    crates: state.crates
+    subscriptions: state.subscriptionsByUser
   }
 }
 
