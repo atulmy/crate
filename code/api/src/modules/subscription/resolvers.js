@@ -6,17 +6,28 @@ export async function get(parentValue, { id }) {
   return await models.Subscription.findOne({ where: { id } })
 }
 
+// Get subscription by user
+export async function getByUser(parentValue, {}, { auth }) {
+  console.log(auth)
+  return await models.Subscription.findAll({
+    include: [
+      { model: models.User, as: 'user' },
+      { model: models.Crate, as: 'crate' },
+    ]
+  })
+}
+
 // Get all subscriptions
 export async function getAll() {
   return await models.Subscription.findAll()
 }
 
 // Create subscription
-export async function create(parentValue, { crateId }, context) {
-  if(context.auth.user && context.auth.user.id > 0) {
+export async function create(parentValue, { crateId }, { auth }) {
+  if(auth.user && auth.user.id > 0) {
     return await models.Subscription.create({
       crateId,
-      userId: context.auth.user.id
+      userId: auth.user.id
     })
   } else {
     throw new Error('Please login to subscribe to this crate.')

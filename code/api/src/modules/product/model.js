@@ -1,5 +1,7 @@
+'use strict'
+
 // Product
-export default (sequelize, DataTypes) => {
+module.exports = function(sequelize, DataTypes) {
   return sequelize.define('products', {
     name: {
       type: DataTypes.STRING

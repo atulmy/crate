@@ -1,6 +1,8 @@
+'use strict'
+
 // Subscription
-const Subscription = (sequelize, DataTypes) => {
-  return sequelize.define('subscriptions', {
+module.exports = function(sequelize, DataTypes) {
+  let Subscription = sequelize.define('subscriptions', {
     userId: {
       type: DataTypes.INTEGER
     },
@@ -8,11 +10,11 @@ const Subscription = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     }
   })
-}
 
-Subscription.associate = function (models) {
-  Subscription.belongsTo(models.User)
-  Subscription.belongsTo(models.Crate)
-}
+  Subscription.associate = function(models) {
+    Subscription.belongsTo(models.User)
+    Subscription.belongsTo(models.Crate)
+  }
 
-export default Subscription
+  return Subscription
+}

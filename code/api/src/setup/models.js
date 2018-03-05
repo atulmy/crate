@@ -11,8 +11,9 @@ const models = {
   Subscription: databaseConnection.import('../modules/subscription/model')
 }
 
-Object.keys(models).forEach((modelName) => {
-  if ('associate' in models[modelName]) {
+Object.keys(models).forEach(modelName => {
+  console.log(models[modelName].associate)
+  if (models[modelName].associate) {
     models[modelName].associate(models)
   }
 })

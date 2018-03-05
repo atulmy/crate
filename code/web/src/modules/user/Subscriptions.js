@@ -11,8 +11,7 @@ import { H3 } from '../../ui/typography'
 import { grey, grey2 } from '../../ui/common/colors'
 
 // App Imports
-import { getList as getCratesList } from '../crate/api/actions'
-import { getList as getSubscriptionsList } from '../subscription/api/actions'
+import { getListByUser } from '../subscription/api/actions'
 import Loading from '../common/Loading'
 
 // Component
@@ -20,13 +19,12 @@ class Subscriptions extends Component {
 
   // Runs on server only for SSR
   static fetchData({ store }) {
-    return store.dispatch(getCratesList())
+    return store.dispatch(getListByUser())
   }
 
   // Runs on client only
   componentDidMount() {
-    this.props.getCratesList()
-    this.props.getSubscriptionsList()
+    this.props.getListByUser()
   }
 
   render() {
@@ -53,20 +51,14 @@ class Subscriptions extends Component {
           <GridCell>
             {
               this.props.crates.isLoading
-                ?
-                <Loading/>
-                :
-                (
-                  this.props.crates.list.length > 0
-                    ?
-                    this.props.crates.list.map(crate => (
-                      <div key={crate.id} style={{ margin: '2em', float: 'left' }}>
+                ? <Loading/>
+                : this.props.crates.list.length > 0
+                    ? this.props.crates.list.map(crate => (
+                        <div key={crate.id} style={{ margin: '2em', float: 'left' }}>
 
-                      </div>
-                    ))
-                    :
-                    <p>No crates to show.</p>
-                )
+                        </div>
+                      ))
+                    : <p>No crates to show.</p>
             }
           </GridCell>
         </Grid>
@@ -79,8 +71,7 @@ class Subscriptions extends Component {
 Subscriptions.propTypes = {
   subscriptions: PropTypes.object.isRequired,
   crates: PropTypes.object.isRequired,
-  getSubscriptionsList: PropTypes.func.isRequired,
-  getCratesList: PropTypes.func.isRequired
+  getListByUser: PropTypes.func.isRequired
 }
 
 // Component State
@@ -91,4 +82,4 @@ function subscriptionsState(state) {
   }
 }
 
-export default connect(subscriptionsState, { getSubscriptionsList, getCratesList })(Subscriptions)
+export default connect(subscriptionsState, { getListByUser })(Subscriptions)

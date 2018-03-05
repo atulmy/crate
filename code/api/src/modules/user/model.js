@@ -1,6 +1,8 @@
+'use strict'
+
 // User
-const User = (sequelize, DataTypes) => {
-  return sequelize.define('users', {
+module.exports = function(sequelize, DataTypes) {
+  let User = sequelize.define('users', {
     name: {
       type: DataTypes.STRING
     },
@@ -14,10 +16,10 @@ const User = (sequelize, DataTypes) => {
       type: DataTypes.TEXT
     }
   })
-}
 
-User.associate = function (models) {
-  User.hasMany(models.Subscription)
-}
+  User.associate = function(models) {
+    User.hasMany(models.Subscription)
+  }
 
-export default User
+  return User
+}

@@ -3,7 +3,7 @@ import { GraphQLInt, GraphQLList } from 'graphql'
 
 // App Imports
 import SubscriptionType from './types'
-import { getAll, get } from './resolvers'
+import { getAll, getByUser, get } from './resolvers'
 
 // Subscriptions All
 export const subscriptions = {
@@ -11,7 +11,13 @@ export const subscriptions = {
   resolve: getAll
 }
 
-// Subscription By slug
+// Subscriptions by user
+export const subscriptionsByUser = {
+  type: new GraphQLList(SubscriptionType),
+  resolve: getByUser
+}
+
+// Subscription By id
 export const subscription = {
   type: SubscriptionType,
   args: {
