@@ -14,7 +14,7 @@ import { grey, grey2 } from '../../ui/common/colors'
 import { getListByUser } from '../subscription/api/actions'
 import Loading from '../common/Loading'
 import EmptyMessage from '../common/EmptyMessage'
-import ProductItem from '../product/Item'
+import SubscriptionItem from '../subscription/Item'
 
 // Component
 class Subscriptions extends Component {
@@ -57,9 +57,7 @@ class Subscriptions extends Component {
                 : this.props.subscriptions.list.length > 0
                     ? this.props.subscriptions.list.map(subscription => (
                         <div key={subscription.id} style={{ margin: '2em', float: 'left' }}>
-                          { subscription.id }
-                          { subscription.user.name }
-                          { subscription.crate.name }
+                          <SubscriptionItem subscription={subscription} />
                         </div>
                       ))
                     : <EmptyMessage message="You have not subscribed to any crates yet." />

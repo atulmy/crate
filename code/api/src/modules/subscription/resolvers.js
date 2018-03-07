@@ -8,8 +8,10 @@ export async function get(parentValue, { id }) {
 
 // Get subscription by user
 export async function getByUser(parentValue, {}, { auth }) {
-  console.log(auth)
   return await models.Subscription.findAll({
+    where: {
+      userId: auth.user.id
+    },
     include: [
       { model: models.User, as: 'user' },
       { model: models.Crate, as: 'crate' },
@@ -35,6 +37,8 @@ export async function create(parentValue, { crateId }, { auth }) {
 }
 
 // Delete subscription
-export async function remove(parentValue, { id }) {
-  return await models.Subscription.destroy({ where: { id } })
+export async function remove(parentValue, { id }, { auth }) {
+  console.log(id)
+  console.log(auth.user.id)
+  return await models.Subscription.destroy({ where: { id, userId: auth.user.id } })
 }
