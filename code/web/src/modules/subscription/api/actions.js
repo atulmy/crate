@@ -30,7 +30,7 @@ export function getList(isLoading = true) {
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'subscriptions',
-      fields: ['id', 'name', 'slug', 'description', 'image']
+      fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt']
     }))
       .then(response => {
         if (response.status === 200) {
@@ -103,7 +103,7 @@ export function get(slug, isLoading = true) {
       type: 'query',
       operation: 'subscription',
       data: { slug },
-      fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
+      fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt']
     }))
       .then(response => {
         dispatch({

@@ -3,7 +3,13 @@ import models from '../../setup/models'
 
 // Get subscription by ID
 export async function get(parentValue, { id }) {
-  return await models.Subscription.findOne({ where: { id } })
+  return await models.Subscription.findOne({
+    where: { id },
+    include: [
+      { model: models.User, as: 'user' },
+      { model: models.Crate, as: 'crate' },
+    ]
+  })
 }
 
 // Get subscription by user
@@ -21,7 +27,12 @@ export async function getByUser(parentValue, {}, { auth }) {
 
 // Get all subscriptions
 export async function getAll() {
-  return await models.Subscription.findAll()
+  return await models.Subscription.findAll({
+    include: [
+      { model: models.User, as: 'user' },
+      { model: models.Crate, as: 'crate' },
+    ]
+  })
 }
 
 // Create subscription
