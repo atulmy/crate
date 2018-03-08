@@ -44,5 +44,3 @@ export const store = createStore(
     applyMiddleware(thunk),
   )
 )
-
-console.log(store.getState())

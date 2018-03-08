@@ -10,6 +10,7 @@ import { Grid, GridCell } from '../../ui/grid'
 // App Imports
 import { getRelatedList as getProductRelatedList } from '../product/api/actions'
 import Loading from '../common/Loading'
+import EmptyMessage from '../common/EmptyMessage'
 import ProductItem from '../product/Item'
 
 // Component
@@ -38,20 +39,16 @@ class Related extends Component {
         <Grid>
           {
             isLoading
-              ?
-              <Loading/>
-              :
-              (
-                list.length > 0
-                  ?
-                  list.map(product => (
+              ? <Loading/>
+              : list.length > 0
+                ? list.map(product => (
                     <GridCell key={product.id} style={{ textAlign: 'center' }}>
                       <ProductItem product={product}/>
                     </GridCell>
                   ))
-                  :
-                  <p>No related products to show.</p>
-              )
+                : <GridCell>
+                    <EmptyMessage message="No related products to show." />
+                  </GridCell>
           }
         </Grid>
       </div>

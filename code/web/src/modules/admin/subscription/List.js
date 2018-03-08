@@ -3,17 +3,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
-import { Link } from 'react-router-dom'
-import moment from 'moment'
 
 // UI Imports
 import { Grid, GridCell } from '../../../ui/grid'
-import Button from '../../../ui/button'
-import Icon from '../../../ui/icon'
-import { white, black } from '../../../ui/common/colors'
 
 // App Imports
-import admin from '../../../setup/routes/admin'
 import { getList as getSubscriptionsList } from '../../subscription/api/actions'
 import { messageShow, messageHide } from '../../common/api/actions'
 import Loading from '../../common/Loading'
@@ -69,26 +63,26 @@ class List extends Component {
                         </td>
                       </tr>
                     : list.length > 0
-                        ? list.map(({id, user, crate, createdAt, updatedAt}) => (
-                            <tr key={id}>
-                              <td>
-                                { crate.name }
-                              </td>
+                      ? list.map(({id, user, crate, createdAt}) => (
+                          <tr key={id}>
+                            <td>
+                              { crate.name }
+                            </td>
 
-                              <td>
-                                { user.name } - { user.email }
-                              </td>
+                            <td>
+                              { user.name } - { user.email }
+                            </td>
 
-                              <td>
-                                {moment.utc(createdAt).format('dddd, MMMM Do YYYY')}
-                              </td>
-                            </tr>
-                          ))
-                        : <tr>
-                            <td colSpan="6">
-                              <EmptyMessage message="No subscriptions to show."/>
+                            <td>
+                              { new Date(createdAt).toDateString() }
                             </td>
                           </tr>
+                        ))
+                      : <tr>
+                          <td colSpan="6">
+                            <EmptyMessage message="No subscriptions to show."/>
+                          </td>
+                        </tr>
                 }
                 </tbody>
               </table>

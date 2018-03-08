@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 const GridCell = (props) => {
   const {
     children,
-    flexCells,
     alignTop,
     alignBottom,
     alignCenter,
@@ -24,7 +23,6 @@ const GridCell = (props) => {
       <style jsx>{`
         div {
           flex: 1;
-          ${ flexCells ? 'display: flex;' : '' }
           ${ alignTop ? 'align-self: flex-start;' : '' }
           ${ alignBottom ? 'align-self: flex-end;' : '' }
           ${ alignCenter ? 'align-self: center;' : '' }
@@ -39,7 +37,6 @@ const GridCell = (props) => {
 
 // Component Properties
 GridCell.propTypes = {
-  flexCells: PropTypes.bool,
   alignTop: PropTypes.bool,
   alignBottom: PropTypes.bool,
   alignCenter: PropTypes.bool,
@@ -48,7 +45,6 @@ GridCell.propTypes = {
   gutter: PropTypes.bool
 }
 GridCell.defaultProps = {
-  flexCells: false,
   alignTop: false,
   alignBottom: false,
   alignCenter: false,

@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import moment from 'moment'
 
 // UI Imports
 import Card from '../../ui/card/Card'
@@ -29,34 +28,38 @@ class Item extends Component {
   }
 
   onClickUnsubscribe = (id) => {
-    this.setState({
-      isLoading: true
-    })
+    let check = confirm('Are you sure you want to unsubscribe to this crate?')
 
-    this.props.messageShow('Subscribing, please wait...')
-
-    this.props.remove({ id })
-      .then(response => {
-        if (response.data.errors && response.data.errors.length > 0) {
-          this.props.messageShow(response.data.errors[0].message)
-        } else {
-          this.props.messageShow('Unsubscribed successfully.')
-
-          this.props.getListByUser()
-        }
+    if(check) {
+      this.setState({
+        isLoading: true
       })
-      .catch(error => {
-        this.props.messageShow('There was some error subscribing to this crate. Please try again.')
-      })
-      .then(() => {
-        this.setState({
-          isLoading: false
+
+      this.props.messageShow('Subscribing, please wait...')
+
+      this.props.remove({id})
+        .then(response => {
+          if (response.data.errors && response.data.errors.length > 0) {
+            this.props.messageShow(response.data.errors[0].message)
+          } else {
+            this.props.messageShow('Unsubscribed successfully.')
+
+            this.props.getListByUser()
+          }
         })
+        .catch(error => {
+          this.props.messageShow('There was some error subscribing to this crate. Please try again.')
+        })
+        .then(() => {
+          this.setState({
+            isLoading: false
+          })
 
-        window.setTimeout(() => {
-          this.props.messageHide()
-        }, 5000)
-      })
+          window.setTimeout(() => {
+            this.props.messageHide()
+          }, 5000)
+        })
+    }
   }
 
   render() {
@@ -86,7 +89,7 @@ class Item extends Component {
           </p>
 
           <p style={{ color: grey2, marginTop: '1em', fontSize: '0.8em', textAlign: 'center' }}>
-            Subscribed on { moment.utc(createdAt).format('MMMM Do YYYY') }
+            Subscribed on { new Date(createdAt).toDateString() }
           </p>
         </div>
       </Card>

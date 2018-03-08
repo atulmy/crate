@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 const Grid = (props) => {
   const {
     children,
-    flexCells,
 
     justifyRight,
     justifyCenter,
@@ -24,7 +23,7 @@ const Grid = (props) => {
       return null
     }
     if (GridCell.props) {
-      return React.cloneElement(GridCell, { flexCells, gutter })
+      return React.cloneElement(GridCell, { gutter })
     }
     return GridCell
   })
@@ -56,8 +55,6 @@ const Grid = (props) => {
 
 // Component Properties
 Grid.propTypes = {
-  flexCells: PropTypes.bool,
-
   justifyRight: PropTypes.bool,
   justifyCenter: PropTypes.bool,
 
@@ -69,8 +66,6 @@ Grid.propTypes = {
 }
 
 Grid.defaultProps = {
-  flexCells: false,
-
   justifyRight: false,
   justifyCenter: false,
 

@@ -22,9 +22,9 @@ const Item = (props) => {
         <img src={routeImage + image} alt={name} style={{ width: '100%' }}/>
 
         <div style={{ padding: '1em 1.2em' }}>
-          <H4 font="secondary" style={{ color: black }}>{name}</H4>
+          <H4 font="secondary" style={{ color: black }}>{ name }</H4>
 
-          <p style={{ color: grey2, marginTop: '1em' }}>{description}</p>
+          <p style={{ color: grey2, marginTop: '1em' }}>{ description }</p>
         </div>
       </Card>
     </Link>

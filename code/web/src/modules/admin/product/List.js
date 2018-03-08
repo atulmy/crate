@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
-import moment from 'moment'
 
 // UI Imports
 import { Grid, GridCell } from '../../../ui/grid'
@@ -103,49 +102,45 @@ class List extends Component {
             <GridCell>
               <table className="striped">
                 <thead>
-                <tr>
-                  <th>Image</th>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Created at</th>
-                  <th>Updated at</th>
-                  <th style={{ textAlign: 'center' }}>Actions</th>
-                </tr>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
+                    <th style={{ textAlign: 'center' }}>Actions</th>
+                  </tr>
                 </thead>
 
                 <tbody>
                 {
                   isLoading
-                    ?
-                    <tr>
-                      <td colspan="6">
-                        <Loading message="loading products..."/>
-                      </td>
-                    </tr>
-                    :
-                    (
-                      list.length > 0
-                        ?
-                        list.map(({ id, image, name, description, createdAt, updatedAt }) => (
+                    ? <tr>
+                        <td colSpan="6">
+                          <Loading message="loading products..."/>
+                        </td>
+                      </tr>
+                    : list.length > 0
+                      ? list.map(({ id, image, name, description, createdAt, updatedAt }) => (
                           <tr key={id}>
                             <td>
                               <img src={routeImage + image} alt={name} style={{ width: 100 }}/>
                             </td>
 
                             <td>
-                              {name}
+                              { name }
                             </td>
 
                             <td>
-                              {description}
+                              { description }
                             </td>
 
                             <td>
-                              {moment.utc(createdAt).format('dddd, MMMM Do YYYY')}
+                              { new Date(createdAt).toDateString() }
                             </td>
 
                             <td>
-                              {moment.utc(updatedAt).format('dddd, MMMM Do YYYY')}
+                              { new Date(updatedAt).toDateString() }
                             </td>
 
                             <td style={{ textAlign: 'center' }}>
@@ -154,18 +149,16 @@ class List extends Component {
                               </Link>
 
                               <span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>
-                            <Icon size={2} style={{ marginLeft: '0.5em' }}>delete</Icon>
-                          </span>
+                                  <Icon size={2} style={{ marginLeft: '0.5em' }}>delete</Icon>
+                                </span>
                             </td>
                           </tr>
                         ))
-                        :
-                        <tr>
-                          <td colspan="6">
+                      : <tr>
+                          <td colSpan="6">
                             <EmptyMessage message="No products to show."/>
                           </td>
                         </tr>
-                    )
                 }
                 </tbody>
               </table>

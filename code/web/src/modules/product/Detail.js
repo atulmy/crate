@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect, withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import moment from 'moment'
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
@@ -49,17 +48,17 @@ class Detail extends Component {
       <div>
         {
           !error
-            ?
-            (
-              isLoading
-                ?
-                <Loading/>
-                :
-                renderIf(item && item.id, () => (
+            ? isLoading
+              ? <Loading/>
+              : renderIf(item && item.id, () => (
                   <div>
                     {/* SEO */}
                     <Helmet>
                       <title>{`Product - ${ item.name }`}</title>
+                      <meta name="description" content={`Product - ${ item.name }`} />
+                      <meta property="og:title" content={`Product - ${ item.name }`} />
+                      <meta property="og:image" content={routeImage + item.image} />
+                      <meta property="og:description" content={`Product - ${ item.name }`} />
                     </Helmet>
 
                     {/* Top title bar */}
@@ -84,8 +83,9 @@ class Detail extends Component {
 
                         <H4 style={{ marginTop: '1em' }}>{item.description}</H4>
 
-                        <p style={{ marginTop: '0.5em', color: grey2 }}>Launched
-                          on {moment.utc(item.createdAt).format('dddd, MMMM Do YYYY')}</p>
+                        <p style={{ marginTop: '0.5em', color: grey2 }}>
+                          Launched on { new Date(item.createdAt).toDateString() }
+                        </p>
                       </GridCell>
                     </Grid>
 
@@ -100,9 +100,7 @@ class Detail extends Component {
                     <Related productId={item.id}/>
                   </div>
                 ))
-            )
-            :
-            <Redirect to={routes.home.path}/>
+            : <Redirect to={routes.home.path}/>
         }
       </div>
     )

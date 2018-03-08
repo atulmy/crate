@@ -1,5 +1,6 @@
 // App Imports
 import models from '../../setup/models'
+import params from '../../config/params'
 
 // Get crate by ID
 export async function getById(parentValue, { crateId }) {
@@ -19,26 +20,37 @@ export async function getAll(parentValue, { orderBy }) {
 }
 
 // Create crate
-export async function create(parentValue, { name, description }) {
-  return await models.Crate.create({
-    name,
-    description
-  })
+export async function create(parentValue, { name, description }, { auth }) {
+  if(auth.user && auth.user.role === params.user.roles.admin) {
+    return await models.Crate.create({
+      name,
+      description
+    })
+  } else {
+    throw new Error('Operation denied.')
+  }
 }
 
 // Update crate
-export async function update(parentValue, { id, name, description }) {
-
-  return await models.Crate.update(
-    {
-      name,
-      description
-    },
-    { where: { id } }
-  )
+export async function update(parentValue, { id, name, description }, { auth }) {
+  if(auth.user && auth.user.role === params.user.roles.admin) {
+    return await models.Crate.update(
+      {
+        name,
+        description
+      },
+      {where: {id}}
+    )
+  } else {
+    throw new Error('Operation denied.')
+  }
 }
 
 // Delete crate
-export async function remove(parentValue, { id }) {
-  return await models.Crate.destroy({ where: { id } })
+export async function remove(parentValue, { id }, { auth }) {
+  if(auth.user && auth.user.role === params.user.roles.admin) {
+    return await models.Crate.destroy({where: {id}})
+  } else {
+    throw new Error('Operation denied.')
+  }
 }

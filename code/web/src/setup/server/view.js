@@ -7,6 +7,7 @@ const index = (APP_URL, helmet = {}, appHtml = '', styles = '', initialState = {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
     ${ helmet.title.toString() }
+    ${ helmet.meta.toString() }
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="${ APP_URL }/images/favicon/favicon.ico" />

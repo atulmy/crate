@@ -250,7 +250,7 @@ class CreateOrEdit extends Component {
                     placeholder="Name"
                     required="required"
                     name="name"
-                    autocomplete="off"
+                    autoComplete="off"
                     value={this.state.product.name}
                     onChange={this.onChange}
                   />

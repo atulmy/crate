@@ -10,24 +10,30 @@ import { level1 } from '../../../ui/common/shadows'
 
 // Component
 const MenuItem = (props) => {
-  const { children, to, type, active, style } = props
+  const { children, to, type, active, style, section } = props
 
   const isActiveRoute = () => {
-    return props.location.pathname === to || active
+    const currentSection = props.location.pathname.split('/')[1]
+
+    return (currentSection === to.split('/')[1] && currentSection === section)
+      || props.location.pathname === to
+      || active
   }
 
   return (
     <Link
       to={to}
-      style={Object.assign({
-        padding: '0.6em 1em',
-        textTransform: 'uppercase',
-        color: white
-      }, isActiveRoute() ? {
-        backgroundImage: (type === 'secondary' ? secondary : primary),
-        borderRadius: '1.4em',
-        boxShadow: level1
-      } : style)}
+      style={
+        Object.assign({
+          padding: '0.6em 1em',
+          textTransform: 'uppercase',
+          color: white
+        }, isActiveRoute() ? {
+          backgroundImage: (type === 'secondary' ? secondary : primary),
+          borderRadius: '1.4em',
+          boxShadow: level1
+        } : style)
+      }
     >
       {children}
     </Link>

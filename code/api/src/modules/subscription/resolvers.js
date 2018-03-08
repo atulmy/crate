@@ -14,15 +14,19 @@ export async function get(parentValue, { id }) {
 
 // Get subscription by user
 export async function getByUser(parentValue, {}, { auth }) {
-  return await models.Subscription.findAll({
-    where: {
-      userId: auth.user.id
-    },
-    include: [
-      { model: models.User, as: 'user' },
-      { model: models.Crate, as: 'crate' },
-    ]
-  })
+  if(auth.user && auth.user.id > 0) {
+    return await models.Subscription.findAll({
+      where: {
+        userId: auth.user.id
+      },
+      include: [
+        {model: models.User, as: 'user'},
+        {model: models.Crate, as: 'crate'},
+      ]
+    })
+  } else {
+    throw new Error('Please login to view your subscriptions.')
+  }
 }
 
 // Get all subscriptions
@@ -49,7 +53,9 @@ export async function create(parentValue, { crateId }, { auth }) {
 
 // Delete subscription
 export async function remove(parentValue, { id }, { auth }) {
-  console.log(id)
-  console.log(auth.user.id)
-  return await models.Subscription.destroy({ where: { id, userId: auth.user.id } })
+  if(auth.user && auth.user.id > 0) {
+    return await models.Subscription.destroy({where: {id, userId: auth.user.id}})
+  } else {
+    throw new Error('Access denied.')
+  }
 }
