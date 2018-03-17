@@ -57,20 +57,14 @@ class WhatsNew extends Component {
         <Grid>
           {
             isLoading
-              ?
-            <Loading/>
-              :
-            (
-              list.length > 0
-                ?
-              list.map(product => (
-                <GridCell key={product.id} style={{ textAlign: 'center' }}>
-                  <ProductItem product={product}/>
-                </GridCell>
-              ))
-                :
-              <EmptyMessage message="No products to show" />
-            )
+              ? <Loading/>
+              : list.length > 0
+                ? list.map(product => (
+                    <GridCell key={product.id} style={{ textAlign: 'center' }}>
+                      <ProductItem product={product}/>
+                    </GridCell>
+                  ))
+                : <EmptyMessage message="No products to show" />
           }
         </Grid>
 
@@ -81,15 +75,14 @@ class WhatsNew extends Component {
 
             {
               this.props.user.isAuthenticated
-                ?
-              <Link to={crateRoutes.list.path}>
-                <Button theme="primary">Subscribe <Icon size={1.2}
-                                                        style={{ color: white }}>navigate_next</Icon></Button>
-              </Link>
-                :
-              <Link to={userRoutes.signup.path}>
-                <Button theme="primary">Start <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
-              </Link>
+                ? <Link to={crateRoutes.list.path}>
+                    <Button theme="primary">
+                      Subscribe <Icon size={1.2} style={{ color: white }}>navigate_next</Icon>
+                    </Button>
+                  </Link>
+                : <Link to={userRoutes.signup.path}>
+                    <Button theme="primary">Start <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
+                  </Link>
             }
           </GridCell>
         </Grid>

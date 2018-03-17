@@ -40,20 +40,19 @@ const Home = (props) => (
       <GridCell>
         <H1 font="secondary" style={{ textShadow: textLevel1 }}>Crate</H1>
 
-        <H4 style={{ textShadow: textLevel1, marginTop: '0.5em' }}>Your monthly subscription of trendy clothes and
-          accessories</H4>
+        <H4 style={{ textShadow: textLevel1, marginTop: '0.5em' }}>
+          Your monthly subscription of trendy clothes and accessories
+        </H4>
 
         {/* Call to action */}
         {
           props.user.isAuthenticated
-            ?
-          <Link to={crateRoutes.list.path}>
-            <Button theme="secondary" style={{ marginTop: '1em' }}>Get Subscription</Button>
-          </Link>
-            :
-          <Link to={userRoutes.signup.path}>
-            <Button theme="secondary" style={{ marginTop: '1em' }}>Get Started</Button>
-          </Link>
+            ? <Link to={crateRoutes.list.path}>
+                <Button theme="secondary" style={{ marginTop: '1em' }}>Get Subscription</Button>
+              </Link>
+            : <Link to={userRoutes.signup.path}>
+                <Button theme="secondary" style={{ marginTop: '1em' }}>Get Started</Button>
+              </Link>
         }
       </GridCell>
     </Grid>

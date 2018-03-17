@@ -29,20 +29,19 @@ const Women = (props) => (
     <GridCell>
       <Grid gutter={true} alignCenter={true}>
         <GridCell justifyCenter={true}>
-          <ImageTile width={300} height={530} shadow={level1} image={`${ APP_URL }/images/stock/women/1.jpg`}/>
+          <ImageTile width={300} height={530} shadow={level1} image={`${ APP_URL }/images/stock/women/1.jpg`} />
         </GridCell>
 
         <GridCell>
           <Grid>
             <GridCell justifyCenter={true}>
-              <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/stock/women/2.jpg`}/>
+              <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/stock/women/2.jpg`} />
             </GridCell>
           </Grid>
 
           <Grid>
             <GridCell justifyCenter={true}>
-              <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/stock/women/3.jpg`}
-                         style={{ marginTop: '1.9em' }}/>
+              <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/stock/women/3.jpg`} style={{ marginTop: '1.9em' }} />
             </GridCell>
           </Grid>
         </GridCell>
@@ -53,20 +52,19 @@ const Women = (props) => (
     <GridCell style={{ textAlign: 'center' }}>
       <H2 font="secondary">Monthly crates for Women</H2>
 
-      <H5 style={{ marginTop: '0.5em' }}>Save time. Look great. The personal styling service customized to your fit,
-        lifestyle & spending preferences.</H5>
+      <H5 style={{ marginTop: '0.5em' }}>
+        Save time. Look great. The personal styling service customized to your fit, lifestyle & spending preferences.
+      </H5>
 
       {/* Call to action */}
       {
         props.user.isAuthenticated
-          ?
-          <Link to={crateRoutes.list.path}>
-            <Button theme="secondary" style={{ marginTop: '1em' }}>Get Subscription</Button>
-          </Link>
-          :
-          <Link to={userRoutes.signup.path}>
-            <Button theme="secondary" style={{ marginTop: '1em' }}>Get Started</Button>
-          </Link>
+          ? <Link to={crateRoutes.list.path}>
+              <Button theme="secondary" style={{ marginTop: '1em' }}>Get Subscription</Button>
+            </Link>
+          : <Link to={userRoutes.signup.path}>
+              <Button theme="secondary" style={{ marginTop: '1em' }}>Get Started</Button>
+            </Link>
       }
     </GridCell>
   </Grid>

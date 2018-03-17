@@ -14,7 +14,7 @@ import { routeImage, routes } from '../../setup/routes'
 // Component
 const Item = (props) => {
 
-  const { id, name, slug, description, image } = props.product
+  const { name, slug, description, image } = props.product
 
   return (
     <Link to={routes.product.path(slug)}>

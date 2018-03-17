@@ -59,8 +59,7 @@ const HowItWorks = (props) => (
 
         <H4 style={{ marginTop: '0.5em', textTransform: 'uppercase' }}>Receive a Fix Delivery</H4>
 
-        <p style={{ marginTop: '0.5em', color: grey3 }}>Get 3 to 5 pieces of clothing or accessories delivered to your
-          door.</p>
+        <p style={{ marginTop: '0.5em', color: grey3 }}>Get 3 to 5 pieces of clothing or accessories delivered to your door.</p>
       </GridCell>
     </Grid>
 
@@ -82,14 +81,12 @@ const HowItWorks = (props) => (
       <GridCell style={{ padding: '3em', textAlign: 'center' }}>
         {
           props.user.isAuthenticated
-            ?
-            <Link to={crateRoutes.list.path}>
-              <Button theme="primary">Subscribe <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
-            </Link>
-            :
-            <Link to={userRoutes.signup.path}>
-              <Button theme="primary">Start <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
-            </Link>
+            ? <Link to={crateRoutes.list.path}>
+                <Button theme="primary">Subscribe <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
+              </Link>
+            : <Link to={userRoutes.signup.path}>
+                <Button theme="primary">Start <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
+              </Link>
         }
       </GridCell>
     </Grid>

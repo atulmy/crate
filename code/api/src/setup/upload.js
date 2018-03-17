@@ -5,7 +5,7 @@ import multer from 'multer'
 // App Imports
 import config from '../config/config.json'
 
-// Sync database tables and start server
+// File upload configurations and route
 export default function (server) {
   console.info('SETUP - Upload...')
 

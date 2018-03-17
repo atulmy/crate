@@ -2,6 +2,7 @@
 import jwt from 'jsonwebtoken'
 import config from '../config/config.json'
 
+// Authentication middleware
 export default function (request, response, next) {
   let authToken = request.headers.authorization
 
@@ -9,9 +10,8 @@ export default function (request, response, next) {
     try {
       const token = authToken.split(' ')
       request.user = jwt.verify(token[1], config.secret)
-
     } catch (e) {
-
+      console.warn('Invalid token detected.')
     }
   } else {
     request.user = {}
