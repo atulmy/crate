@@ -1,21 +1,23 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StackNavigator } from 'react-navigation'
+
+import Home from './src/modules/home/Home'
+import Men from './src/modules/home/Men'
+
+const RootStack = StackNavigator({
+  home: {
+    screen: Home
+  },
+  men: {
+    screen: Men
+  }
+}, {
+  initialRouteName: 'home',
+  headerMode: 'none'
+})
 
 export default class App extends React.Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Crate</Text>
-      </View>
-    )
+    return <RootStack />
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-})
