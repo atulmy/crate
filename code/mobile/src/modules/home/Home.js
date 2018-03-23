@@ -3,25 +3,16 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View, Button } from 'react-native'
 
 // App Imports
+import { grey } from '../../ui/common/colors'
+import Header from '../common/Header'
 
 // Component
 export default class Home extends Component {
-
-  constructor(props) {
-    super(props)
-
-    this.state = {}
-  }
-
   render() {
     return (
       <View style={styles.container}>
-        <Text>Home</Text>
+        <Header />
 
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('men')}
-        />
       </View>
     )
   }
@@ -30,8 +21,6 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: grey,
   }
 })

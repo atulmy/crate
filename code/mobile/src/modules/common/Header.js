@@ -3,20 +3,14 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 // App Imports
+import { primary } from '../../ui/common/colors'
 
 // Component
-export default class Home extends Component {
-
-  constructor(props) {
-    super(props)
-
-    this.state = {}
-  }
-
+export default class Header extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Men</Text>
+        <Text style={{ color: 'white' }}>What's New</Text>
       </View>
     )
   }
@@ -24,9 +18,15 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: 'white',
+    elevation: 1,
+    backgroundColor: primary,
+    height: 55,
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingHorizontal: 20
   }
 })
+
+
+
+
