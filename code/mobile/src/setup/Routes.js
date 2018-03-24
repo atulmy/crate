@@ -2,16 +2,18 @@
 import { StackNavigator } from 'react-navigation'
 
 // App Imports
-import Home from '../modules/home/Home'
-import WhatsNew from '../modules/home/WhatsNew'
+import Home from '../modules/screens/Home'
+import WhatsNew from '../modules/screens/WhatsNew'
 
 const Routes = StackNavigator(
   {
     home: {
-      screen: Home
+      screen: Home,
+      path: 'home'
     },
     whatsNew: {
-      screen: WhatsNew
+      screen: WhatsNew,
+      path: 'whats-new'
     }
   },
   {
