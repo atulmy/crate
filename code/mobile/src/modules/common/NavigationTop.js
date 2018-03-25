@@ -1,6 +1,7 @@
 // Imports
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { withNavigation } from 'react-navigation'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 // UI Imports
@@ -9,7 +10,7 @@ import { primary, white } from '../../ui/common/colors'
 // App Imports
 
 // Component
-export default class NavigationTop extends Component {
+class NavigationTop extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -27,6 +28,9 @@ export default class NavigationTop extends Component {
   }
 }
 
+export default withNavigation(NavigationTop)
+
+// Component Styles
 const styles = StyleSheet.create({
   container: {
     elevation: 3,

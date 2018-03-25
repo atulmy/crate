@@ -13,9 +13,7 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <NavigationTop
-          navigation={this.props.navigation}
-        />
+        <NavigationTop />
 
         <Body>
           <ScrollView style={styles.itemContainer}>
@@ -41,14 +39,13 @@ export default class Home extends Component {
           </ScrollView>
         </Body>
 
-        <NavigationBottom
-          navigation={this.props.navigation}
-        />
+        <NavigationBottom />
       </View>
     )
   }
 }
 
+// Component Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,

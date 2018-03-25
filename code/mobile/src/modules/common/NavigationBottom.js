@@ -1,15 +1,17 @@
 // Imports
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { withNavigation } from 'react-navigation'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 // UI Imports
 import { primary, white, grey, grey2, black } from '../../ui/common/colors'
 
 // App Imports
+import { routes } from '../../setup/Routes'
 
 // Component
-export default class NavigationBottom extends Component {
+class NavigationBottom extends Component {
 
   navigate = (routeName) => {
     if(this.props.navigation.state.routeName !== routeName) {
@@ -25,79 +27,83 @@ export default class NavigationBottom extends Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity
-          onPress={() => this.navigate('home')}
+          onPress={() => this.navigate(routes.home.name)}
           style={styles.item}
         >
           <Icon
-            name="home"
-            size={25}
-            color={this.active('home')}
+            name={routes.home.name}
+            size={23}
+            color={this.active(routes.home.name)}
           />
 
-          <Text style={[styles.itemTitle, {color: this.active('home')}]}>Home</Text>
+          <Text style={[styles.itemTitle, { color: this.active(routes.home.name) }]}>Home</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => this.navigate('whatsNew')}
+          onPress={() => this.navigate(routes.whatsNew.name)}
           style={styles.item}
         >
           <Icon
             name="whatshot"
-            size={25}
-            color={this.active('whatsNew')}
+            size={23}
+            color={this.active(routes.whatsNew.name)}
           />
 
-          <Text style={[styles.itemTitle, {color: this.active('whatsNew')}]}>What's New</Text>
+          <Text style={[styles.itemTitle, { color: this.active(routes.whatsNew.name) }]}>What's New</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => this.navigate('crates')}
+          onPress={() => this.navigate(routes.crates.name)}
           style={styles.item}
         >
           <Icon
             name="shopping-basket"
-            size={25}
-            color={this.active('crates')}
+            size={23}
+            color={this.active(routes.crates.name)}
           />
 
-          <Text style={[styles.itemTitle, {color: this.active('crates')}]}>Crates</Text>
+          <Text style={[styles.itemTitle, { color: this.active(routes.crates.name) }]}>Crates</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => this.navigate('account')}
+          onPress={() => this.navigate(routes.account.name)}
           style={styles.item}
         >
           <Icon
             name="account-circle"
-            size={25}
-            color={this.active('account')}
+            size={23}
+            color={this.active(routes.account.name)}
           />
 
-          <Text style={[styles.itemTitle, {color: this.active('account')}]}>Account</Text>
+          <Text style={[styles.itemTitle, { color: this.active(routes.account.name) }]}>Account</Text>
         </TouchableOpacity>
       </View>
     )
   }
 }
 
+export default withNavigation(NavigationBottom)
+
+// Component Styles
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: 55,
+    height: 50,
     elevation: 5,
     backgroundColor: white,
     borderTopWidth: 0.5,
     borderColor: grey
   },
   item: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
   },
   itemTitle: {
     fontSize: 11,
-    paddingTop: 3
+    paddingTop: 1
   }
 })
 

@@ -4,25 +4,41 @@ import { StackNavigator } from 'react-navigation'
 // App Imports
 import Home from '../modules/screens/Home'
 import WhatsNew from '../modules/screens/WhatsNew'
+import Crates from '../modules/screens/Crates'
+import Account from '../modules/screens/Account'
 
-const Routes = StackNavigator(
-  {
-    home: {
-      screen: Home,
-      path: 'home'
-    },
-    whatsNew: {
-      screen: WhatsNew,
-      path: 'whats-new'
-    }
+export const routes = {
+  home: {
+    name: 'home',
+    path: 'home',
+    screen: Home
   },
-  {
-    initialRouteName: 'home',
-    headerMode: 'none',
-    navigationOptions: {
-      headerVisible: false,
-    }
+  whatsNew: {
+    name: 'whatsNew',
+    path: 'whats-new',
+    screen: WhatsNew
+  },
+  crates: {
+    name: 'crates',
+    path: 'crates',
+    screen: Crates
+  },
+  account: {
+    name: 'account',
+    path: 'account',
+    screen: Account
   }
-)
+}
 
-export default Routes
+const routesStack = Object.keys(routes).reduce((result, key) => {
+  result[key] = routes[key]
+  return result
+}, {})
+
+export default StackNavigator(routesStack, {
+  initialRouteName: 'home',
+  headerMode: 'none',
+  navigationOptions: {
+    headerVisible: false,
+  }
+})
