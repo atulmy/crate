@@ -6,7 +6,14 @@ import Home from '../modules/screens/Home'
 import WhatsNew from '../modules/screens/WhatsNew'
 import Crates from '../modules/screens/Crates'
 import Account from '../modules/screens/Account'
+import Info from '../modules/screens/Info'
+import ProductDetail from '../modules/product/Detail'
 
+// API
+export const routeApi = 'http://192.168.0.10:8000'
+export const routeImage = routeApi
+
+// Routes
 export const routes = {
   home: {
     name: 'home',
@@ -27,6 +34,16 @@ export const routes = {
     name: 'account',
     path: 'account',
     screen: Account
+  },
+  info: {
+    name: 'info',
+    path: 'info',
+    screen: Info
+  },
+  product: {
+    name: 'product',
+    path: 'product/:slug',
+    screen: ProductDetail
   }
 }
 
@@ -36,9 +53,10 @@ const routesStack = Object.keys(routes).reduce((result, key) => {
 }, {})
 
 export default StackNavigator(routesStack, {
-  initialRouteName: 'home',
+  initialRouteName: routes.account.name,
   headerMode: 'none',
   navigationOptions: {
     headerVisible: false,
   }
 })
+

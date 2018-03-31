@@ -6,6 +6,16 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('products', [
       {
+        name: 'Belt for Women',
+        slug: 'belt-for-women',
+        description: 'A very nice belt for women.',
+        type: params.product.types.accessory.id,
+        gender: params.user.gender.female.id,
+        image: '/images/stock/belt-female.jpg',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
         name: 'Belt for Men',
         slug: 'belt-for-men',
         description: 'A very nice belt for men.',
@@ -16,12 +26,12 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        name: 'Belt for Women',
-        slug: 'belt-for-women',
-        description: 'A very nice belt for women.',
+        name: 'Watch for Women',
+        slug: 'watch-for-women',
+        description: 'A very nice watch for women.',
         type: params.product.types.accessory.id,
         gender: params.user.gender.female.id,
-        image: '/images/stock/belt-female.jpg',
+        image: '/images/stock/watch-female.jpg',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -36,12 +46,22 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        name: 'Watch for Women',
-        slug: 'watch-for-women',
-        description: 'A very nice watch for women.',
-        type: params.product.types.accessory.id,
+        name: 'T-Shirt for Women - Black',
+        slug: 't-shirt-for-women-black',
+        description: 'A very nice black t-shirt for women.',
+        type: params.product.types.cloth.id,
         gender: params.user.gender.female.id,
-        image: '/images/stock/watch-female.jpg',
+        image: '/images/stock/t-shirt-female-1.jpg',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: 'T-Shirt for Women - Grey',
+        slug: 't-shirt-for-women-grey',
+        description: 'A very nice grey t-shirt for women.',
+        type: params.product.types.cloth.id,
+        gender: params.user.gender.female.id,
+        image: '/images/stock/t-shirt-female-2.jpg',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -65,26 +85,6 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      {
-        name: 'T-Shirt for Women - Black',
-        slug: 't-shirt-for-women-black',
-        description: 'A very nice black t-shirt for women.',
-        type: params.product.types.cloth.id,
-        gender: params.user.gender.female.id,
-        image: '/images/stock/t-shirt-female-1.jpg',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        name: 'T-Shirt for Women - Grey',
-        slug: 't-shirt-for-women-grey',
-        description: 'A very nice grey t-shirt for women.',
-        type: params.product.types.cloth.id,
-        gender: params.user.gender.female.id,
-        image: '/images/stock/t-shirt-female-2.jpg',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      }
     ])
   },
 

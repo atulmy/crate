@@ -1,8 +1,8 @@
 // Imports
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import PropTypes from 'prop-types'
+import { StyleSheet, View, Text } from 'react-native'
 import { withNavigation } from 'react-navigation'
-import Icon from 'react-native-vector-icons/MaterialIcons'
 
 // UI Imports
 import { primary, white } from '../../ui/common/colors'
@@ -11,21 +11,32 @@ import { primary, white } from '../../ui/common/colors'
 
 // Component
 class NavigationTop extends Component {
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{ color: white }}>Crate</Text>
+        <View style={styles.leftContainer}>
+          {/* Left Icon */}
+          { this.props.leftIcon }
 
-        <TouchableOpacity>
-          <Icon
-            name="info-outline"
-            size={25}
-            color={white}
-          />
-        </TouchableOpacity>
+          {/* Title */}
+          { this.props.title ? <Text style={styles.title}>{ this.props.title }</Text> : null }
+        </View>
+
+        <View style={styles.rightContainer}>
+          {/* Right Icon */}
+          { this.props.rightIcon }
+        </View>
       </View>
     )
   }
+}
+
+// Component Properties
+NavigationTop.propTypes = {
+  leftIcon: PropTypes.any,
+  title: PropTypes.any,
+  rightIcon: PropTypes.any
 }
 
 export default withNavigation(NavigationTop)
@@ -38,11 +49,21 @@ const styles = StyleSheet.create({
     height: 50,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     justifyContent: 'space-between'
+  },
+  leftContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  rightContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center'
+  },
+  title: {
+    color: white,
+    fontSize: 20
   }
 })
-
-
-
-

@@ -1,6 +1,6 @@
 // Imports
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableNativeFeedback } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
@@ -9,6 +9,7 @@ import { primary, white, grey, grey2, black } from '../../ui/common/colors'
 
 // App Imports
 import { routes } from '../../setup/Routes'
+console.log(routes)
 
 // Component
 class NavigationBottom extends Component {
@@ -26,57 +27,61 @@ class NavigationBottom extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity
+        <TouchableNativeFeedback
           onPress={() => this.navigate(routes.home.name)}
-          style={styles.item}
         >
-          <Icon
-            name={routes.home.name}
-            size={23}
-            color={this.active(routes.home.name)}
-          />
+          <View style={styles.item}>
+            <Icon
+              name={routes.home.name}
+              size={23}
+              color={this.active(routes.home.name)}
+            />
 
-          <Text style={[styles.itemTitle, { color: this.active(routes.home.name) }]}>Home</Text>
-        </TouchableOpacity>
+            <Text style={[styles.itemTitle, { color: this.active(routes.home.name) }]}>Home</Text>
+          </View>
+        </TouchableNativeFeedback>
 
-        <TouchableOpacity
+        <TouchableNativeFeedback
           onPress={() => this.navigate(routes.whatsNew.name)}
-          style={styles.item}
         >
-          <Icon
-            name="whatshot"
-            size={23}
-            color={this.active(routes.whatsNew.name)}
-          />
+          <View style={styles.item}>
+            <Icon
+              name="whatshot"
+              size={23}
+              color={this.active(routes.whatsNew.name)}
+            />
 
-          <Text style={[styles.itemTitle, { color: this.active(routes.whatsNew.name) }]}>What's New</Text>
-        </TouchableOpacity>
+            <Text style={[styles.itemTitle, { color: this.active(routes.whatsNew.name) }]}>What's New</Text>
+          </View>
+        </TouchableNativeFeedback>
 
-        <TouchableOpacity
+        <TouchableNativeFeedback
           onPress={() => this.navigate(routes.crates.name)}
-          style={styles.item}
         >
-          <Icon
-            name="shopping-basket"
-            size={23}
-            color={this.active(routes.crates.name)}
-          />
+          <View style={styles.item}>
+            <Icon
+              name="shopping-basket"
+              size={23}
+              color={this.active(routes.crates.name)}
+            />
 
-          <Text style={[styles.itemTitle, { color: this.active(routes.crates.name) }]}>Crates</Text>
-        </TouchableOpacity>
+            <Text style={[styles.itemTitle, { color: this.active(routes.crates.name) }]}>Crates</Text>
+          </View>
+        </TouchableNativeFeedback>
 
-        <TouchableOpacity
+        <TouchableNativeFeedback
           onPress={() => this.navigate(routes.account.name)}
-          style={styles.item}
         >
-          <Icon
-            name="account-circle"
-            size={23}
-            color={this.active(routes.account.name)}
-          />
+          <View style={styles.item}>
+            <Icon
+              name="account-circle"
+              size={23}
+              color={this.active(routes.account.name)}
+            />
 
-          <Text style={[styles.itemTitle, { color: this.active(routes.account.name) }]}>Account</Text>
-        </TouchableOpacity>
+            <Text style={[styles.itemTitle, { color: this.active(routes.account.name) }]}>Account</Text>
+          </View>
+        </TouchableNativeFeedback>
       </View>
     )
   }
@@ -92,14 +97,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     height: 50,
     elevation: 5,
-    backgroundColor: white,
-    borderTopWidth: 0.5,
-    borderColor: grey
+    backgroundColor: white
   },
   item: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingVertical: 6
   },
   itemTitle: {
     fontSize: 11,

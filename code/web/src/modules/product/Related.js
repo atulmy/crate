@@ -39,7 +39,7 @@ class Related extends Component {
         <Grid>
           {
             isLoading
-              ? <Loading/>
+              ? <Loading />
               : list.length > 0
                 ? list.map(product => (
                     <GridCell key={product.id} style={{ textAlign: 'center' }}>

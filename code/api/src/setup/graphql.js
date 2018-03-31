@@ -12,7 +12,7 @@ export default function (server) {
 
   server.use(authentication)
 
-  // API (GraphQL on route `/api`)
+  // API (GraphQL on route `/`)
   server.use(config.graphql.endpoint, graphqlHTTP(request => ({
     schema,
     graphiql: config.graphql.ide,
