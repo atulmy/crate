@@ -2,9 +2,9 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, TouchableNativeFeedback } from 'react-native'
 import { withNavigation } from 'react-navigation'
-import Icon from 'react-native-vector-icons/MaterialIcons'
 
 // UI Imports
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import { primary, white, grey, grey2, black } from '../../ui/common/colors'
 
 // App Imports
@@ -29,6 +29,7 @@ class NavigationBottom extends Component {
       <View style={styles.container}>
         <TouchableNativeFeedback
           onPress={() => this.navigate(routes.home.name)}
+          background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
         >
           <View style={styles.item}>
             <Icon
@@ -43,6 +44,7 @@ class NavigationBottom extends Component {
 
         <TouchableNativeFeedback
           onPress={() => this.navigate(routes.whatsNew.name)}
+          background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
         >
           <View style={styles.item}>
             <Icon
@@ -57,6 +59,7 @@ class NavigationBottom extends Component {
 
         <TouchableNativeFeedback
           onPress={() => this.navigate(routes.crates.name)}
+          background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
         >
           <View style={styles.item}>
             <Icon
@@ -71,6 +74,7 @@ class NavigationBottom extends Component {
 
         <TouchableNativeFeedback
           onPress={() => this.navigate(routes.account.name)}
+          background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
         >
           <View style={styles.item}>
             <Icon
