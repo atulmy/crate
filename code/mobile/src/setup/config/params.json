@@ -1,4 +1,13 @@
 {
+  "message": {
+    "error": {
+      "timers": {
+        "short": 1000,
+        "default": 2000,
+        "long": 4000
+      }
+    }
+  },
   "product": {
     "types": {
       "cloth": {

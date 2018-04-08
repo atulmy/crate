@@ -5,11 +5,10 @@ import { withNavigation } from 'react-navigation'
 
 // UI Imports
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { primary, white, grey, grey2, black } from '../../ui/common/colors'
+import { white, grey2, black } from '../../ui/common/colors'
 
 // App Imports
 import { routes } from '../../setup/Routes'
-console.log(routes)
 
 // Component
 class NavigationBottom extends Component {
@@ -27,10 +26,7 @@ class NavigationBottom extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableNativeFeedback
-          onPress={() => this.navigate(routes.home.name)}
-          background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
-        >
+        <TouchableNativeFeedback onPress={() => this.navigate(routes.home.name)}>
           <View style={styles.item}>
             <Icon
               name={routes.home.name}
@@ -42,10 +38,7 @@ class NavigationBottom extends Component {
           </View>
         </TouchableNativeFeedback>
 
-        <TouchableNativeFeedback
-          onPress={() => this.navigate(routes.whatsNew.name)}
-          background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
-        >
+        <TouchableNativeFeedback onPress={() => this.navigate(routes.whatsNew.name)}>
           <View style={styles.item}>
             <Icon
               name="whatshot"
@@ -57,10 +50,7 @@ class NavigationBottom extends Component {
           </View>
         </TouchableNativeFeedback>
 
-        <TouchableNativeFeedback
-          onPress={() => this.navigate(routes.crates.name)}
-          background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
-        >
+        <TouchableNativeFeedback onPress={() => this.navigate(routes.crates.name)}>
           <View style={styles.item}>
             <Icon
               name="shopping-basket"
@@ -72,10 +62,7 @@ class NavigationBottom extends Component {
           </View>
         </TouchableNativeFeedback>
 
-        <TouchableNativeFeedback
-          onPress={() => this.navigate(routes.account.name)}
-          background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
-        >
+        <TouchableNativeFeedback onPress={() => this.navigate(routes.account.name)}>
           <View style={styles.item}>
             <Icon
               name="account-circle"

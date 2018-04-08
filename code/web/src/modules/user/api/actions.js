@@ -101,12 +101,12 @@ export function logout() {
 }
 
 // Unset user token and info in localStorage and cookie
-export function logoutUnsetUserLocalStorageAndCookie(token, user) {
-  // Update token
+export function logoutUnsetUserLocalStorageAndCookie() {
+  // Remove token
   window.localStorage.removeItem('token')
   window.localStorage.removeItem('user')
 
-  // Set cookie for SSR
+  // Remove cookie
   cookie.remove('auth')
 }
 

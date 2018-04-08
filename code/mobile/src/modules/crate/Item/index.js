@@ -27,8 +27,6 @@ class Item extends PureComponent {
   }
 
   subscribe = () => {
-    console.log(this.props.crate.id)
-
     this.setState({
       isLoading: true
     })

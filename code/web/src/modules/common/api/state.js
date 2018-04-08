@@ -4,7 +4,7 @@ import { MESSAGE_SHOW, MESSAGE_HIDE } from './actions'
 // Initial State
 export const commonInitialState = {
   message: {
-    text: [],
+    text: null,
     open: false
   }
 }
@@ -25,7 +25,7 @@ export default (state = commonInitialState, action) => {
       return {
         ...state,
         message: {
-          text: [],
+          text: null,
           open: false
         }
       }

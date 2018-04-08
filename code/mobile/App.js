@@ -6,18 +6,26 @@ import { Provider } from 'react-redux'
 // App Imports
 import { store } from './src/setup/store'
 import Routes from './src/setup/Routes'
+import { setUser, setUserLocally } from './src/modules/user/api/actions'
 
-load = async () => {
+// User Authentication
+(async () => {
   try {
-    //AsyncStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlRoZSBBZG1pbiIsImVtYWlsIjoiYWRtaW5AY3JhdGUuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNTIwNzc2MTgzfQ.5RKSYW0-nhM7OSTfSSNZNg65k-XVSTlqqnJQncEdNM0')
     const token = await AsyncStorage.getItem('token')
+    if (token && token !== 'undefined' && token !== '') {
+      const user = JSON.parse(await AsyncStorage.getItem('user'))
+      if (user) {
+        store.dispatch(setUser(token, user))
 
-    console.log(token)
+        setUserLocally(token, user)
+
+        console.log('User logged in.')
+      }
+    }
   } catch (e) {
-    console.error('Failed to load name.')
+    console.log('Failed to login user.')
   }
-}
-load()
+})()
 
 // App
 export default class App extends React.Component {

@@ -12,6 +12,7 @@ import ProductDetail from '../modules/product/Detail'
 // API
 export const routeApi = 'http://192.168.0.10:8000'
 //export const routeApi = 'http://192.168.225.94:8000'
+//export const routeApi = 'http://10.1.0.249:8000'
 export const routeImage = routeApi
 
 // Routes
