@@ -29,7 +29,15 @@ class Signup extends PureComponent {
     }
   }
 
+  loading = (isLoading) => {
+    this.setState({
+      isLoading
+    })
+  }
+
   onSubmitRegister = () => {
+    const { register, messageShow, messageHide } = this.props
+    
     const user = {
       name: this.state.name,
       email: this.state.email,
@@ -37,39 +45,35 @@ class Signup extends PureComponent {
     }
 
     if(user.name !== '' && user.email !== '' && user.password !== '') {
-      this.setState({
-        isLoading: true
-      })
+      this.loading(true)
 
-      this.props.messageShow('Signing you up, please wait...')
+      messageShow('Signing you up, please wait...')
 
-      this.props.register(user)
+      register(user)
         .then(response => {
           if (response.data.errors && response.data.errors.length > 0) {
-            this.props.messageShow(response.data.errors[0].message)
+            messageShow(response.data.errors[0].message)
           } else {
-            this.props.messageShow('Signed up successfully.')
+            messageShow('Signed up successfully.')
 
             this.props.onSuccessRegister()
           }
         })
         .catch(() => {
-          this.props.messageShow('There was some error signing you up. Please try again.')
+          messageShow('There was some error signing you up. Please try again.')
         })
         .then(() => {
-          this.setState({
-            isLoading: false
-          })
-
+          this.loading(false)
+          
           setTimeout(() => {
-            this.props.messageHide()
+            messageHide()
           }, config.message.error.timers.long)
         })
     } else {
-      this.props.messageShow('All the fields are required. Please try again.')
+      messageShow('All the fields are required. Please try again.')
 
       setTimeout(() => {
-        this.props.messageHide()
+        messageHide()
       }, config.message.error.timers.default)
     }
   }

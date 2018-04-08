@@ -12,6 +12,7 @@ import { getList as getProductList } from '../../product/api/actions'
 import Body from '../../common/Body'
 import NavigationBottom from '../../common/NavigationBottom'
 import Loading from '../../common/Loading'
+import EmptyMessage from '../../common/EmptyMessage'
 import ProductItem from '../../product/Item'
 
 // Component
@@ -40,7 +41,7 @@ class WhatsNew extends Component {
                     />
                   )) }
                 </ScrollView>
-              : <Text>No products</Text>
+              : <EmptyMessage message={'No new products are available at the moment.'} />
         }
         </Body>
 

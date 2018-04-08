@@ -10,6 +10,7 @@ import { TabBar, TabContent } from '../../../../ui/tab'
 import styles from './styles'
 
 // App Imports
+import SubscriptionList from '../../../subscription/List'
 import Profile from '../../../user/Profile'
 
 // Component
@@ -19,19 +20,13 @@ class PostLogin extends PureComponent {
     super(props)
 
     this.state = {
-      tabActive: 'login'
+      tabActive: 'subscriptions'
     }
   }
 
   tabSelect = (tabActive) => {
     this.setState({
       tabActive
-    })
-  }
-
-  onSuccessRegister = () => {
-    this.setState({
-      tabActive: 'login'
     })
   }
 
@@ -52,8 +47,8 @@ class PostLogin extends PureComponent {
             active={tabActive}
             onSelect={ this.tabSelect }
             items={[
-              {title: 'Subscriptions', key: 'subscriptions'},
-              {title: 'Profile', key: 'profile'}
+              { title: 'Subscriptions', key: 'subscriptions' },
+              { title: 'Profile', key: 'profile' }
             ]}
           />
         </View>
@@ -61,7 +56,7 @@ class PostLogin extends PureComponent {
         <TabContent
           active={tabActive}
           items={{
-            subscriptions: <View></View>,
+            subscriptions: <SubscriptionList />,
             profile: <Profile />
           }}
         />

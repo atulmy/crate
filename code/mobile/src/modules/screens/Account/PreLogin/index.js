@@ -51,10 +51,10 @@ class PreLogin extends PureComponent {
 
           <TabBar
             active={tabActive}
-            onSelect={ this.tabSelect }
+            onSelect={this.tabSelect}
             items={[
-              {title: 'Login', key: 'login'},
-              {title: 'Signup', key: 'signup'}
+              { title: 'Login', key: 'login' },
+              { title: 'Signup', key: 'signup' }
             ]}
           />
         </View>

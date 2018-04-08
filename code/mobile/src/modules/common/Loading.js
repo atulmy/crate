@@ -20,7 +20,6 @@ Loading.propTypes = {
   message: PropTypes.string,
   size: PropTypes.string
 }
-
 Loading.defaultProps = {
   message: 'loading...',
   size: 'large'

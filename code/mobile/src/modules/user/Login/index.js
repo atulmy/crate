@@ -28,44 +28,48 @@ class Login extends PureComponent {
     }
   }
 
+  loading = (isLoading) => {
+    this.setState({
+      isLoading
+    })
+  }
+
   onSubmitRegister = () => {
+    const { login, messageShow, messageHide } = this.props
+    
     const user = {
       email: this.state.email,
       password: this.state.password
     }
 
     if(user.email !== '' && user.password !== '') {
-      this.setState({
-        isLoading: true
-      })
+      this.loading(true)
 
-      this.props.messageShow('Signing you in, please wait...')
+      messageShow('Signing you in, please wait...')
 
-      this.props.login(user)
+      login(user)
         .then(() => {
           if (this.props.user.error && this.props.user.error.length > 0) {
-            this.props.messageShow(this.props.user.error)
+            messageShow(this.props.user.error)
           } else {
-            this.props.messageShow('Signed in successfully, Welcome back!')
+            messageShow('Signed in successfully, Welcome back!')
           }
         })
         .catch(() => {
-          this.props.messageShow(this.props.user.error)
+          messageShow(this.props.user.error)
         })
         .then(() => {
-          this.setState({
-            isLoading: false
-          })
+          this.loading(false)
 
           setTimeout(() => {
-            this.props.messageHide()
+            messageHide()
           }, config.message.error.timers.long)
         })
     } else {
-      this.props.messageShow('All the fields are required. Please try again.')
+      messageShow('All the fields are required. Please try again.')
 
       setTimeout(() => {
-        this.props.messageHide()
+        messageHide()
       }, config.message.error.timers.default)
     }
   }

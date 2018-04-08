@@ -61,4 +61,3 @@ export default StackNavigator(routesStack, {
     headerVisible: false,
   }
 })
-

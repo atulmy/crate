@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { View, Image, ScrollView } from 'react-native'
+import { View, ScrollView } from 'react-native'
 
 // UI Imports
 import styles from './styles'
