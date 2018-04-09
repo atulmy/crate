@@ -41,7 +41,7 @@ class NavigationBottom extends Component {
         <TouchableNativeFeedback onPress={() => this.navigate(routes.whatsNew.name)}>
           <View style={styles.item}>
             <Icon
-              name="whatshot"
+              name={'whatshot'}
               size={23}
               color={this.active(routes.whatsNew.name)}
             />
@@ -53,7 +53,7 @@ class NavigationBottom extends Component {
         <TouchableNativeFeedback onPress={() => this.navigate(routes.crates.name)}>
           <View style={styles.item}>
             <Icon
-              name="shopping-basket"
+              name={'shopping-basket'}
               size={23}
               color={this.active(routes.crates.name)}
             />
@@ -65,7 +65,7 @@ class NavigationBottom extends Component {
         <TouchableNativeFeedback onPress={() => this.navigate(routes.account.name)}>
           <View style={styles.item}>
             <Icon
-              name="account-circle"
+              name={'account-circle'}
               size={23}
               color={this.active(routes.account.name)}
             />
@@ -101,7 +101,3 @@ const styles = StyleSheet.create({
     paddingTop: 1
   }
 })
-
-
-
-

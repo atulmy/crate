@@ -2,12 +2,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Text, View, TouchableOpacity, Image, ScrollView } from 'react-native'
+import { Text, View, Image, ScrollView } from 'react-native'
 import { withNavigation } from 'react-navigation'
 
 // UI Imports
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import { white } from '../../../ui/common/colors'
+import ToolbarIcon from '../../../ui/icon/ToolbarIcon'
 import styles from './styles'
 
 // App Imports
@@ -41,13 +40,10 @@ class Detail extends PureComponent {
         <NavigationTop
           title='Product'
           leftIcon={
-            <TouchableOpacity onPress={() => this.props.navigation.navigate(routes.whatsNew.name)} style={{ height: 35, width: 35, alignItems: 'center', justifyContent: 'center' }}>
-              <Icon
-                name="arrow-back"
-                size={25}
-                color={white}
-              />
-            </TouchableOpacity>
+            <ToolbarIcon
+              icon={'arrow-back'}
+              onPress={() => this.props.navigation.navigate(routes.whatsNew.name)}
+            />
           }
         />
 

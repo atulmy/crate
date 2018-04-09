@@ -1,48 +1,22 @@
 // Imports
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Text, View, Image, ScrollView } from 'react-native'
+import React, { PureComponent } from 'react'
+import { View } from 'react-native'
 
 // UI Imports
 import styles from './styles'
 
 // App Imports
-import { getList as getProductList } from '../../product/api/actions'
 import Body from '../../common/Body'
 import NavigationBottom from '../../common/NavigationBottom'
-import Loading from '../../common/Loading'
-import EmptyMessage from '../../common/EmptyMessage'
-import ProductItem from '../../product/Item'
+import ProductList from '../../product/List'
 
 // Component
-class WhatsNew extends Component {
-
-  componentDidMount() {
-    this.props.getProductList()
-  }
-
+class WhatsNew extends PureComponent {
   render() {
-    const { isLoading, list } = this.props.products
-
     return (
       <View style={styles.container}>
         <Body>
-        {
-          isLoading
-            ? <Loading />
-            : list.length > 0
-              ? <ScrollView style={styles.itemContainer}>
-                  { list.map((product, i) => (
-                    <ProductItem
-                      key={product.id}
-                      product={product}
-                      lastItem={list.length - 1 === i}
-                    />
-                  )) }
-                </ScrollView>
-              : <EmptyMessage message={'No new products are available at the moment.'} />
-        }
+          <ProductList />
         </Body>
 
         <NavigationBottom />
@@ -51,17 +25,4 @@ class WhatsNew extends Component {
   }
 }
 
-// Component Properties
-WhatsNew.propTypes = {
-  products: PropTypes.object.isRequired,
-  getProductList: PropTypes.func.isRequired
-}
-
-// Component State
-function whatsNewState(state) {
-  return {
-    products: state.products
-  }
-}
-
-export default connect(whatsNewState, { getProductList })(WhatsNew)
+export default WhatsNew

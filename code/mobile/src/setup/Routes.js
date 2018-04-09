@@ -12,7 +12,8 @@ import ProductDetail from '../modules/product/Detail'
 // API
 export const routeApi = 'http://192.168.0.10:8000'
 //export const routeApi = 'http://192.168.225.94:8000'
-//export const routeApi = 'http://10.1.0.249:8000'
+//export const routeApi = 'http://10.1.3.79:8000'
+
 export const routeImage = routeApi
 
 // Routes
@@ -55,7 +56,7 @@ const routesStack = Object.keys(routes).reduce((result, key) => {
 }, {})
 
 export default StackNavigator(routesStack, {
-  initialRouteName: routes.account.name,
+  initialRouteName: routes.whatsNew.name,
   headerMode: 'none',
   navigationOptions: {
     headerVisible: false,

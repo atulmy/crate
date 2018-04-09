@@ -1,4 +1,5 @@
 // Imports
+import { AsyncStorage } from 'react-native'
 import axios from 'axios'
 
 // App Imports
@@ -22,12 +23,34 @@ export const PRODUCTS_GET_RELATED_LIST_FAILURE = 'PRODUCTS/GET_RELATED_LIST_FAIL
 
 // Get list of products
 export function getList(isLoading = true) {
-  return dispatch => {
-    dispatch({
-      type: PRODUCTS_GET_LIST_REQUEST,
-      error: null,
-      isLoading
-    })
+  return async dispatch => {
+    const CACHE_KEY = 'products'
+
+    // Use AsyncStorage to load data (avoid showing refresh, but still make API call)
+    try {
+      const products = JSON.parse(await AsyncStorage.getItem(CACHE_KEY))
+
+      if(products && products.length > 0) {
+        dispatch({
+          type: PRODUCTS_GET_LIST_RESPONSE,
+          error: null,
+          isLoading: false,
+          list: products
+        })
+      } else {
+        dispatch({
+          type: PRODUCTS_GET_LIST_REQUEST,
+          error: null,
+          isLoading
+        })
+      }
+    } catch(e) {
+      dispatch({
+        type: PRODUCTS_GET_LIST_REQUEST,
+        error: null,
+        isLoading
+      })
+    }
 
     return axios.post(routeApi, queryBuilder({
       type: 'query',
@@ -42,6 +65,8 @@ export function getList(isLoading = true) {
             isLoading: false,
             list: response.data.data.products
           })
+
+          AsyncStorage.setItem(CACHE_KEY, JSON.stringify(response.data.data.products))
         } else {
           dispatch({
             type: PRODUCTS_GET_LIST_FAILURE,
@@ -62,12 +87,34 @@ export function getList(isLoading = true) {
 
 // Get single product
 export function get(slug, isLoading = true) {
-  return dispatch => {
-    dispatch({
-      type: PRODUCTS_GET_REQUEST,
-      isLoading
-    })
+  return async dispatch => {
+    const CACHE_KEY = `product-${ slug }`
 
+    // Use AsyncStorage to load data (avoid showing refresh, but still make API call)
+    try {
+      const product = JSON.parse(await AsyncStorage.getItem(CACHE_KEY))
+
+      if(product) {
+        dispatch({
+          type: PRODUCTS_GET_RESPONSE,
+          error: null,
+          isLoading: false,
+          item: product
+        })
+      } else {
+        dispatch({
+          type: PRODUCTS_GET_REQUEST,
+          isLoading
+        })
+      }
+    } catch(e) {
+      dispatch({
+        type: PRODUCTS_GET_REQUEST,
+        isLoading
+      })
+    }
+
+    // API call
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'product',
@@ -89,6 +136,8 @@ export function get(slug, isLoading = true) {
               isLoading: false,
               item: response.data.data.product
             })
+
+            AsyncStorage.setItem(CACHE_KEY, JSON.stringify(response.data.data.product))
           }
         } else {
           dispatch({

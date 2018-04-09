@@ -23,26 +23,24 @@ class Item extends PureComponent {
   }
 
   render() {
-    const { product, lastItem, smallLayout } = this.props
+    const { product, lastItem, compact } = this.props
     const { image, name, description } = product
 
     return (
       <TouchableNativeFeedback onPress={() => this.navigate(product)}>
-        <View
-          style={[styles.container, { marginBottom: (lastItem ? blockMargin : 0) } ]}
-        >
+        <View style={[(compact ? styles.containerCompact : styles.container), { marginBottom: (lastItem ? blockMargin : 0) } ]}>
           <Image
             source={{ uri: routeImage + image }}
             resizeMode={'cover'}
-            style={styles.image}
+            style={compact ? styles.imageCompact : styles.image}
           />
 
           <View style={styles.textContainer}>
-            <Text numberOfLines={1} style={styles.title}>
+            <Text numberOfLines={1} style={compact ? styles.titleCompact : styles.title}>
               { name }
             </Text>
 
-            <Text numberOfLines={1} style={styles.description}>
+            <Text numberOfLines={1} style={compact ? styles.descriptionCompact : styles.description}>
               { description }
             </Text>
           </View>
@@ -55,11 +53,11 @@ class Item extends PureComponent {
 // Component Properties
 Item.propTypes = {
   preGetProduct: PropTypes.func.isRequired,
-  smallLayout: PropTypes.bool
+  compact: PropTypes.bool
 }
 
 Item.defaultProps = {
-  smallLayout: false
+  compact: false
 }
 
 export default connect(null, { preGetProduct })(withNavigation(Item))

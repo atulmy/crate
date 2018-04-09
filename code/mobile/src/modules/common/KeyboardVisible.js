@@ -14,13 +14,13 @@ export default KeyboardVisible = ChildComponent => class extends PureComponent {
   }
 
   componentWillMount () {
-    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
-    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
+    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow)
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide)
   }
 
   componentWillUnmount () {
-    this.keyboardDidShowListener.remove();
-    this.keyboardDidHideListener.remove();
+    this.keyboardDidShowListener.remove()
+    this.keyboardDidHideListener.remove()
   }
 
   _keyboardDidShow = () => {
@@ -37,7 +37,7 @@ export default KeyboardVisible = ChildComponent => class extends PureComponent {
 
   render() {
     return (
-      <ChildComponent {...this.props} keyboardVisible={this.state.keyboardVisible}/>
-    );
+      <ChildComponent {...this.props} keyboardVisible={this.state.keyboardVisible} />
+    )
   }
-};
+}

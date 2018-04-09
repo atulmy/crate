@@ -1,4 +1,5 @@
 // Imports
+import { AsyncStorage } from 'react-native'
 import axios from 'axios'
 
 // App Imports
@@ -9,21 +10,40 @@ import { queryBuilder } from '../../../setup/helpers'
 export const CRATES_GET_LIST_REQUEST = 'CRATES/GET_LIST_REQUEST'
 export const CRATES_GET_LIST_RESPONSE = 'CRATES/GET_LIST_RESPONSE'
 export const CRATES_GET_LIST_FAILURE = 'CRATES/GET_LIST_FAILURE'
-export const CRATES_GET_REQUEST = 'CRATES/GET_REQUEST'
-export const CRATES_GET_RESPONSE = 'CRATES/GET_RESPONSE'
-export const CRATES_GET_FAILURE = 'CRATES/GET_FAILURE'
 
 // Actions
 
 // Get list of crates
 export function getList(orderBy = 'DESC', isLoading = true, forceRefresh = false) {
-  return dispatch => {
-    dispatch({
-      type: CRATES_GET_LIST_REQUEST,
-      error: null,
-      isLoading
-    })
+  return async dispatch => {
+    const CACHE_KEY = 'crates'
 
+    // Use AsyncStorage to load data (avoid showing refresh, but still make API call)
+    try {
+      const crates = JSON.parse(await AsyncStorage.getItem(CACHE_KEY))
+
+      if(crates && crates.length > 0) {
+        dispatch({
+          type: CRATES_GET_LIST_RESPONSE,
+          error: null,
+          list: crates
+        })
+      } else {
+        dispatch({
+          type: CRATES_GET_LIST_REQUEST,
+          error: null,
+          isLoading
+        })
+      }
+    } catch(e) {
+      dispatch({
+        type: CRATES_GET_LIST_REQUEST,
+        error: null,
+        isLoading
+      })
+    }
+
+    // API call
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'crates',
@@ -38,6 +58,8 @@ export function getList(orderBy = 'DESC', isLoading = true, forceRefresh = false
             isLoading: false,
             list: response.data.data.crates
           })
+
+          AsyncStorage.setItem(CACHE_KEY, JSON.stringify(response.data.data.crates))
         } else {
           console.error(response)
         }
@@ -49,49 +71,5 @@ export function getList(orderBy = 'DESC', isLoading = true, forceRefresh = false
           isLoading: false
         })
       })
-  }
-}
-
-// Get single crate
-export function get(slug, isLoading = true) {
-  return dispatch => {
-    dispatch({
-      type: CRATES_GET_REQUEST,
-      isLoading
-    })
-
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
-      operation: 'crate',
-      data: { slug },
-      fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
-    }))
-      .then(response => {
-        dispatch({
-          type: CRATES_GET_RESPONSE,
-          error: null,
-          isLoading: false,
-          item: response.data.data.crate
-        })
-      })
-      .catch(error => {
-        dispatch({
-          type: CRATES_GET_FAILURE,
-          error: 'Some error occurred. Please try again.',
-          isLoading: false
-        })
-      })
-  }
-}
-
-// Get single crate by Id
-export function getById(crateId) {
-  return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
-      operation: 'crateById',
-      data: { crateId },
-      fields: ['id', 'name', 'description']
-    }))
   }
 }

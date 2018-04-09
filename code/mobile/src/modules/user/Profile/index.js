@@ -2,11 +2,10 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 
 // UI Imports
 import Button from '../../../ui/button/Button'
-import InputText from '../../../ui/input/Text'
 import styles from './styles'
 
 // App Imports
@@ -28,20 +27,21 @@ class Profile extends PureComponent {
   }
 
   render() {
-    return (
-      <View>
-        <View style={styles.buttonContainer}>
-          <View style={styles.buttonContainerLeft} />
+    const { details } = this.props.user
+    const { name, email } = details
 
-          <View style={styles.buttonContainerRight}>
-            <Button
-              title={'Logout'}
-              iconLeft={'exit-to-app'}
-              theme={'primary'}
-              onPress={this.onLogout}
-            />
-          </View>
-        </View>
+    return (
+      <View style={styles.container}>
+        <Text style={styles.name}>{ name }</Text>
+
+        <Text style={styles.email}>{ email }</Text>
+
+        <Button
+          title={'Logout'}
+          iconRight={'exit-to-app'}
+          theme={'default'}
+          onPress={this.onLogout}
+        />
       </View>
     )
   }

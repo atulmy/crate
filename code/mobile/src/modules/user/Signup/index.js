@@ -94,7 +94,7 @@ class Signup extends PureComponent {
         />
 
         <InputText
-          inputRef={(input) => { this.inputEmail = input }}
+          inputRef={input => { this.inputEmail = input }}
           placeholder={'Email'}
           keyboardType={'email-address'}
           returnKeyType={'next'}
@@ -105,13 +105,13 @@ class Signup extends PureComponent {
         />
 
         <InputText
-          inputRef={(input) => { this.inputPassword = input }}
+          inputRef={input => { this.inputPassword = input }}
           placeholder={'Password'}
           secureTextEntry={true}
           returnKeyType={'go'}
           value={password}
           onChangeText={password => this.setState({ password })}
-          onSubmitEditing={(event) => this.onSubmitRegister(event)}
+          onSubmitEditing={event => this.onSubmitRegister(event)}
         />
 
         <View style={styles.buttonContainer}>

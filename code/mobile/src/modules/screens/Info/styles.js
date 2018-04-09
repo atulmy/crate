@@ -1,17 +1,25 @@
 // Imports
 import { StyleSheet } from 'react-native'
 
+// UI Imports
+import { blockMargin, blockPadding, font } from '../../../ui/common/responsive'
+
 // Styles
 export default StyleSheet.create({
   container: {
     flex: 1
   },
-  itemContainer: {
-    flex: 1
+  content: {
+    padding: blockPadding
   },
-  item: {
-    height: 200,
-    backgroundColor: 'red',
-    marginVertical: 10
+  textContainer: {
+    marginBottom: blockMargin
+  },
+  textHeading: {
+    fontSize: font(20),
+    marginBottom: blockMargin
+  },
+  textItem: {
+    fontSize: font(16)
   }
 })

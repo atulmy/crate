@@ -1,12 +1,10 @@
 // Imports
 import React from 'react'
-import { StyleSheet, View, TouchableNativeFeedback, Text } from 'react-native'
+import PropTypes from 'prop-types'
+import { StyleSheet, View } from 'react-native'
 
 // UI Imports
-import { blockMargin, blockPadding, blockPaddingHalf, font } from '../common/responsive'
-import { grey2, secondary } from '../common/colors'
-import PropTypes from 'prop-types'
-import TabBar from './TabBar'
+import { blockPadding } from '../common/responsive'
 
 // Component
 const TabContent = (props) => {

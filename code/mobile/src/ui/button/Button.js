@@ -5,13 +5,13 @@ import { StyleSheet, TouchableNativeFeedback, View, Text } from 'react-native'
 
 // UI Imports
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { buttonPadding, blockMarginHalf, buttonRadius } from '../common/responsive'
+import { buttonPadding, blockMarginHalf, buttonRadius, buttonHeight } from '../common/responsive'
 import { primary, secondary, white, grey2, grey4 } from '../common/colors'
 import { font } from '../common/responsive'
 
 // Component
 const Button = (props) => {
-  const { title, iconLeft, iconRight, theme, disabled, onPress } = props
+  const { title, onPress, iconLeft, iconRight, theme, disabled } = props
 
   return(
     disabled
@@ -53,10 +53,11 @@ const Button = (props) => {
 // Component Properties
 Button.propTypes = {
   title: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
   iconLeft: PropTypes.string,
   iconRight: PropTypes.string,
   theme: PropTypes.string,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
 }
 Button.defaultProps = {
   theme: 'default',
@@ -68,13 +69,13 @@ export default Button
 // Component Styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     padding: buttonPadding,
     marginHorizontal: blockMarginHalf,
-    borderRadius: buttonRadius
+    borderRadius: buttonRadius,
+    height: buttonHeight
   },
   text: {
     fontSize: font(16),

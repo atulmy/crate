@@ -28,21 +28,21 @@ class Related extends PureComponent {
           isLoading
             ? <Loading message="loading related products..." />
             : list.length > 0
-              ? <View>
-                  <Text style={styles.heading}>Related Products</Text>
+                ? <View>
+                    <Text style={styles.heading}>Related Products</Text>
 
-                  <ScrollView horizontal={true}>
-                    { list.map((product, i) => (
-                      <ProductItem
-                        key={product.id}
-                        product={product}
-                        lastItem={list.length - 1 === i}
-                        smallLayout={true}
-                      />
-                    )) }
-                  </ScrollView>
-                </View>
-              : <Text>No products</Text>
+                    <ScrollView horizontal={true}>
+                      { list.map((product, i) => (
+                        <ProductItem
+                          key={product.id}
+                          product={product}
+                          lastItem={list.length - 1 === i}
+                          compact={true}
+                        />
+                      )) }
+                    </ScrollView>
+                  </View>
+                : <Text>No products</Text>
         }
       </View>
     )

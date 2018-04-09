@@ -28,4 +28,3 @@ function messageState(state) {
 }
 
 export default connect(messageState, { messageHide })(Message)
-

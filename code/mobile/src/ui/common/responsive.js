@@ -21,6 +21,7 @@ export const font = size => (size * (deviceWidth >= breakpointTablet ? 1.25 : 1)
 // Button
 export const buttonPadding = deviceWidth >= breakpointTablet ? 15 : 10
 export const buttonRadius = deviceWidth >= breakpointTablet ? 30 : 20
+export const buttonHeight = deviceWidth >= breakpointTablet ? 55 : 40
 
 // Item
 export const itemSpacing = deviceWidth >= breakpointTablet ? 30 : 20

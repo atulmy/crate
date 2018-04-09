@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Text, View, Image } from 'react-native'
+import { Text, View, Image, Alert } from 'react-native'
 
 // Assets
 import crateImage from '../../../../assets/images/crate.png'
@@ -32,6 +32,18 @@ class Item extends PureComponent {
     this.setState({
       isLoading
     })
+  }
+
+  unsubscribeCheck = () => {
+    Alert.alert(
+      'Unsubscribe',
+      'Are you sure you want to stop receiving this crate?',
+      [
+        { text: 'KEEP RECEIVING', onPress: () => {} },
+        { text: 'UNSUBSCRIBE', onPress: this.unsubscribe }
+      ],
+      { cancelable: true }
+    )
   }
 
   unsubscribe = () => {
@@ -67,7 +79,7 @@ class Item extends PureComponent {
 
   render() {
     const { subscription, lastItem } = this.props
-    const { id, crate, createdAt } = subscription
+    const { crate, createdAt } = subscription
     const { isLoading } = this.state
 
     return (
@@ -98,7 +110,7 @@ class Item extends PureComponent {
             iconLeft={'remove-circle-outline'}
             theme={'secondary'}
             disabled={isLoading}
-            onPress={this.unsubscribe}
+            onPress={this.unsubscribeCheck}
           />
         </View>
       </View>

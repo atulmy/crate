@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Text, View, ScrollView } from 'react-native'
+import { View } from 'react-native'
 
 // UI Imports
 import styles from './styles'
@@ -17,11 +17,11 @@ import Item from '../Item'
 class Crates extends Component {
 
   componentDidMount() {
-    this.props.getSubscriptionListByUser()
+    this.props.getSubscriptionListByUser(this.props.user.details.email)
   }
 
   onSuccessUnsubscribe = () => {
-    this.props.getSubscriptionListByUser()
+    this.props.getSubscriptionListByUser(this.props.user.details.email)
   }
 
   render() {
@@ -50,6 +50,7 @@ class Crates extends Component {
 
 // Component Properties
 Crates.propTypes = {
+  user: PropTypes.object.isRequired,
   subscriptions: PropTypes.object.isRequired,
   getSubscriptionListByUser: PropTypes.func.isRequired
 }
@@ -57,6 +58,7 @@ Crates.propTypes = {
 // Component State
 function cratesState(state) {
   return {
+    user: state.user,
     subscriptions: state.subscriptionsByUser
   }
 }

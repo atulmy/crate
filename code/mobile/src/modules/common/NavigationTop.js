@@ -7,8 +7,6 @@ import { withNavigation } from 'react-navigation'
 // UI Imports
 import { primary, white } from '../../ui/common/colors'
 
-// App Imports
-
 // Component
 class NavigationTop extends Component {
 

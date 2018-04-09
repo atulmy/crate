@@ -1,4 +1,5 @@
 // Imports
+import { AsyncStorage } from 'react-native'
 import axios from 'axios'
 
 // App Imports
@@ -13,14 +14,37 @@ export const SUBSCRIPTIONS_GET_LIST_BY_USER_FAILURE = 'SUBSCRIPTIONS/GET_LIST_BY
 // Actions
 
 // Get list of subscriptions by user
-export function getListByUser(isLoading = true) {
-  return dispatch => {
-    dispatch({
-      type: SUBSCRIPTIONS_GET_LIST_BY_USER_REQUEST,
-      error: null,
-      isLoading
-    })
+export function getListByUser(userEmail, isLoading = true) {
+  return async dispatch => {
+    const CACHE_KEY = `subscriptions-user-${ userEmail }`
 
+    // Use AsyncStorage to load data (avoid showing refresh, but still make API call)
+    try {
+      const subscriptions = JSON.parse(await AsyncStorage.getItem(CACHE_KEY))
+
+      if(subscriptions && subscriptions.length > 0) {
+        dispatch({
+          type: SUBSCRIPTIONS_GET_LIST_BY_USER_RESPONSE,
+          error: null,
+          isLoading: false,
+          list: subscriptions
+        })
+      } else {
+        dispatch({
+          type: SUBSCRIPTIONS_GET_LIST_BY_USER_REQUEST,
+          error: null,
+          isLoading
+        })
+      }
+    } catch(e) {
+      dispatch({
+        type: SUBSCRIPTIONS_GET_LIST_BY_USER_REQUEST,
+        error: null,
+        isLoading
+      })
+    }
+
+    // API call
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'subscriptionsByUser',
@@ -34,6 +58,8 @@ export function getListByUser(isLoading = true) {
             isLoading: false,
             list: response.data.data.subscriptionsByUser
           })
+
+          AsyncStorage.setItem(CACHE_KEY, JSON.stringify(response.data.data.subscriptionsByUser))
         } else {
           console.error(response)
         }
@@ -50,7 +76,6 @@ export function getListByUser(isLoading = true) {
 
 // Create subscription
 export function create(data) {
-  console.log(data)
   return dispatch => {
     return axios.post(routeApi, queryBuilder({
       type: 'mutation',

@@ -2,22 +2,24 @@
 import { StyleSheet } from 'react-native'
 
 // UI Imports
-import { blockMargin } from '../../../ui/common/responsive'
+import { blockMargin, font } from '../../../ui/common/responsive'
+import { grey3 } from '../../../ui/common/colors'
 
 // Styles
 export default StyleSheet.create({
   container: {
-    flex: 1
-  },
-  buttonContainer: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  buttonContainerLeft: {
-    flex: 1
+  name: {
+    fontSize: font(22),
+    marginVertical: blockMargin
   },
-  buttonContainerRight: {
-    flex: 1,
-    marginLeft: blockMargin
+  email: {
+    fontSize: font(18),
+    color: grey3,
+    marginBottom: blockMargin * 2
   }
 })

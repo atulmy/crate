@@ -1,17 +1,18 @@
 // Imports
 import React  from 'react'
 import PropTypes  from 'prop-types'
-import { View, Text, ActivityIndicator } from 'react-native'
+import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
 
 // UI Imports
-import { secondary } from '../../ui/common/colors'
+import { blockMarginHalf, blockPadding } from '../../ui/common/responsive'
+import { secondary, grey3 } from '../../ui/common/colors'
 
 // Component
 const Loading = (props) => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection: 'column', padding: 10 }}>
+  <View style={styles.container}>
     <ActivityIndicator size={props.size} color={secondary} />
 
-    <Text>{ props.message }</Text>
+    <Text style={styles.text}>{ props.message }</Text>
   </View>
 )
 
@@ -26,3 +27,18 @@ Loading.defaultProps = {
 }
 
 export default Loading
+
+// Component Styles
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    padding: blockPadding
+  },
+  text: {
+    color: grey3,
+    marginTop: blockMarginHalf
+  }
+})
