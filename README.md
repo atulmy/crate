@@ -1,3 +1,5 @@
+![Crate](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/hero-with-link.png)
+
 # Crate 👕👖📦 
 
 A very basic replica of stitchfix.com / krate.in which offers users to get monthly subscription of trendy clothes and accessories. 
