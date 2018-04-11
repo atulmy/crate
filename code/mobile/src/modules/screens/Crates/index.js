@@ -1,5 +1,5 @@
 // Imports
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { View } from 'react-native'
 
 // UI Imports
@@ -11,7 +11,7 @@ import NavigationBottom from '../../common/NavigationBottom'
 import CrateList from '../../crate/List'
 
 // Component
-class Crates extends Component {
+class Crates extends PureComponent {
   render() {
     return (
       <View style={styles.container}>

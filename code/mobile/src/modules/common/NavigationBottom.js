@@ -1,5 +1,5 @@
 // Imports
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { StyleSheet, Text, View, TouchableNativeFeedback } from 'react-native'
 import { withNavigation } from 'react-navigation'
 
@@ -8,10 +8,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import { white, grey2, black } from '../../ui/common/colors'
 
 // App Imports
-import { routes } from '../../setup/Routes'
+import { routes } from '../../setup/routes'
 
 // Component
-class NavigationBottom extends Component {
+class NavigationBottom extends PureComponent {
 
   navigate = (routeName) => {
     if(this.props.navigation.state.routeName !== routeName) {
@@ -26,6 +26,7 @@ class NavigationBottom extends Component {
   render() {
     return (
       <View style={styles.container}>
+        {/* Home */}
         <TouchableNativeFeedback onPress={() => this.navigate(routes.home.name)}>
           <View style={styles.item}>
             <Icon
@@ -38,18 +39,7 @@ class NavigationBottom extends Component {
           </View>
         </TouchableNativeFeedback>
 
-        <TouchableNativeFeedback onPress={() => this.navigate(routes.whatsNew.name)}>
-          <View style={styles.item}>
-            <Icon
-              name={'whatshot'}
-              size={23}
-              color={this.active(routes.whatsNew.name)}
-            />
-
-            <Text style={[styles.itemTitle, { color: this.active(routes.whatsNew.name) }]}>What's New</Text>
-          </View>
-        </TouchableNativeFeedback>
-
+        {/* Crates */}
         <TouchableNativeFeedback onPress={() => this.navigate(routes.crates.name)}>
           <View style={styles.item}>
             <Icon
@@ -62,6 +52,20 @@ class NavigationBottom extends Component {
           </View>
         </TouchableNativeFeedback>
 
+        {/* What's New */}
+        <TouchableNativeFeedback onPress={() => this.navigate(routes.whatsNew.name)}>
+          <View style={styles.item}>
+            <Icon
+              name={'whatshot'}
+              size={23}
+              color={this.active(routes.whatsNew.name)}
+            />
+
+            <Text style={[styles.itemTitle, { color: this.active(routes.whatsNew.name) }]}>What's New</Text>
+          </View>
+        </TouchableNativeFeedback>
+
+        {/* Account */}
         <TouchableNativeFeedback onPress={() => this.navigate(routes.account.name)}>
           <View style={styles.item}>
             <Icon

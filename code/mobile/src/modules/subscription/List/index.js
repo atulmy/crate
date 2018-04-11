@@ -1,5 +1,5 @@
 // Imports
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { View } from 'react-native'
@@ -14,7 +14,7 @@ import EmptyMessage from '../../common/EmptyMessage'
 import Item from '../Item'
 
 // Component
-class Crates extends Component {
+class Crates extends PureComponent {
 
   componentDidMount() {
     this.props.getSubscriptionListByUser(this.props.user.details.email)

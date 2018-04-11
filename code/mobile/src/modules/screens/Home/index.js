@@ -10,7 +10,7 @@ import ToolbarIcon from '../../../ui/icon/ToolbarIcon'
 import styles from './styles'
 
 // App Imports
-import { routes } from '../../../setup/Routes'
+import { routes } from '../../../setup/routes'
 import NavigationTop from '../../common/NavigationTop'
 import Body from '../../common/Body'
 import NavigationBottom from '../../common/NavigationBottom'

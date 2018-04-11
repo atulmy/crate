@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { View } from 'react-native'
+import { isEmail, isLength } from 'validator'
 
 // UI Imports
 import Button from '../../../ui/button/Button'
@@ -10,7 +11,7 @@ import InputText from '../../../ui/input/Text'
 import styles from './styles'
 
 // App Imports
-import config from '../../../setup/config/params'
+import config from '../../../setup/config'
 import { login } from '../../user/api/actions'
 import { messageShow, messageHide } from '../../common/api/actions'
 
@@ -23,8 +24,8 @@ class Login extends PureComponent {
     this.state = {
       isLoading: false,
 
-      email: 'user@crate.com',
-      password: '123456'
+      email: '',
+      password: ''
     }
   }
 
@@ -42,11 +43,31 @@ class Login extends PureComponent {
       password: this.state.password
     }
 
-    if(user.email !== '' && user.password !== '') {
+    // Validate
+    let error = false
+
+    if(!isEmail(user.email)) {
+      messageShow('The email you provided is invalid. Please try again.')
+
+      error = true
+    } else if(!isLength(user.password, { min: 3 })) {
+      messageShow('Password needs to be atleast 3 characters long. Please try again.')
+
+      error = true
+    }
+
+    if(error) {
+      setTimeout(() => {
+        messageHide()
+      }, config.message.error.timers.default)
+
+      return false
+    } else {
       this.loading(true)
 
       messageShow('Signing you in, please wait...')
 
+      // API call
       login(user)
         .then(() => {
           if (this.props.user.error && this.props.user.error.length > 0) {
@@ -65,12 +86,6 @@ class Login extends PureComponent {
             messageHide()
           }, config.message.error.timers.long)
         })
-    } else {
-      messageShow('All the fields are required. Please try again.')
-
-      setTimeout(() => {
-        messageHide()
-      }, config.message.error.timers.default)
     }
   }
 

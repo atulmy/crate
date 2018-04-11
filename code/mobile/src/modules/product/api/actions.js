@@ -4,7 +4,7 @@ import axios from 'axios'
 
 // App Imports
 import { queryBuilder } from '../../../setup/helpers'
-import { routeApi } from '../../../setup/Routes'
+import { routeApi } from '../../../setup/routes'
 
 // Actions Types
 export const PRODUCTS_GET_LIST_REQUEST = 'PRODUCTS/GET_LIST_REQUEST'

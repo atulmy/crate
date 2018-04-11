@@ -9,7 +9,7 @@ import Button from '../../../ui/button/Button'
 import styles from './styles'
 
 // App Imports
-import config from '../../../setup/config/params'
+import config from '../../../setup/config'
 import { logout } from '../../user/api/actions'
 import { messageShow, messageHide } from '../../common/api/actions'
 

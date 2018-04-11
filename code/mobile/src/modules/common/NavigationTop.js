@@ -1,5 +1,5 @@
 // Imports
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, View, Text } from 'react-native'
 import { withNavigation } from 'react-navigation'
@@ -8,7 +8,7 @@ import { withNavigation } from 'react-navigation'
 import { primary, white } from '../../ui/common/colors'
 
 // Component
-class NavigationTop extends Component {
+class NavigationTop extends PureComponent {
 
   render() {
     return (

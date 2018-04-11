@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 
 // App Imports
 import { store } from './src/setup/store'
-import Routes from './src/setup/Routes'
+import Routes from './src/setup/routes'
 import { setUser, setUserLocally } from './src/modules/user/api/actions'
 
 // User Authentication

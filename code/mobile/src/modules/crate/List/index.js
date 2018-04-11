@@ -1,5 +1,5 @@
 // Imports
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { View, ScrollView } from 'react-native'
@@ -13,10 +13,10 @@ import { getList as getCratesList } from '../../crate/api/actions'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import CrateItem from '../../crate/Item'
-import { routes } from '../../../setup/Routes'
+import { routes } from '../../../setup/routes'
 
 // Component
-class List extends Component {
+class List extends PureComponent {
 
   componentDidMount() {
     this.props.getCratesList()

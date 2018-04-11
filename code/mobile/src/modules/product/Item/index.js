@@ -10,7 +10,7 @@ import { blockMargin } from '../../../ui/common/responsive'
 import styles from './styles'
 
 // App Imports
-import { routes, routeImage } from '../../../setup/Routes'
+import { routes, routeImage } from '../../../setup/routes'
 import { preGet as preGetProduct } from '../api/actions'
 
 // Component

@@ -2,6 +2,7 @@
 import { StackNavigator } from 'react-navigation'
 
 // App Imports
+import config from '../setup/config'
 import Home from '../modules/screens/Home'
 import WhatsNew from '../modules/screens/WhatsNew'
 import Crates from '../modules/screens/Crates'
@@ -10,9 +11,9 @@ import Info from '../modules/screens/Info'
 import ProductDetail from '../modules/product/Detail'
 
 // API
-export const routeApi = 'http://192.168.0.10:8000'
+export const routeApi = config.url.api
 //export const routeApi = 'http://192.168.225.94:8000'
-//export const routeApi = 'http://10.1.3.79:8000'
+//export const routeApi = 'http://172.16.66.147:8000'
 
 export const routeImage = routeApi
 
@@ -56,7 +57,7 @@ const routesStack = Object.keys(routes).reduce((result, key) => {
 }, {})
 
 export default StackNavigator(routesStack, {
-  initialRouteName: routes.whatsNew.name,
+  initialRouteName: routes.home.name, // Initial route name
   headerMode: 'none',
   navigationOptions: {
     headerVisible: false,

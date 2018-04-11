@@ -10,6 +10,7 @@ import styles from './styles'
 // App Imports
 import { getRelatedList as getProductRelatedList } from '../../product/api/actions'
 import Loading from '../../common/Loading'
+import EmptyMessage from '../../common/EmptyMessage'
 import ProductItem from '../../product/Item'
 
 // Component
@@ -42,7 +43,7 @@ class Related extends PureComponent {
                       )) }
                     </ScrollView>
                   </View>
-                : <Text>No products</Text>
+                : <EmptyMessage message={'No related product is available at the moment'} />
         }
       </View>
     )

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { AsyncStorage } from 'react-native'
 
 // App Imports
-import { routeApi } from '../../../setup/Routes'
+import { routeApi } from '../../../setup/routes'
 import { queryBuilder } from '../../../setup/helpers'
 
 // Actions Types

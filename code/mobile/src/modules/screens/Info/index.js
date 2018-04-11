@@ -1,5 +1,5 @@
 // Imports
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Text, View, Linking, ScrollView } from 'react-native'
 
 // UI Imports
@@ -13,7 +13,7 @@ import Body from '../../common/Body'
 import NavigationBottom from '../../common/NavigationBottom'
 
 // Component
-export default class Info extends Component {
+export default class Info extends PureComponent {
 
   github = () => {
     Linking.openURL('https://github.com/atulmy/crate')

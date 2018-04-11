@@ -13,7 +13,7 @@ import Button from '../../../ui/button/Button'
 import styles from './styles'
 
 // App Imports
-import config from '../../../setup/config/params'
+import config from '../../../setup/config'
 import { remove as removeSubscription } from '../../subscription/api/actions'
 import { messageShow, messageHide } from '../../common/api/actions'
 
@@ -68,7 +68,7 @@ class Item extends PureComponent {
       .catch(() => {
         messageShow('There was some error unsubscribing. Please try again.')
 
-        this.loading(true)
+        this.loading(false)
       })
       .then(() => {
         setTimeout(() => {
