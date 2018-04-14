@@ -88,6 +88,12 @@ Click on image to view fullscreen and zoom
       ├── .gitignore
       └── README.md
 
+
+## Inspirations
+- [fullstack-graphql](https://github.com/atulmy/fullstack-graphql)
+- [universal-react](https://github.com/atulmy/universal-react)
+
+
 ## Authors
 Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
 
