@@ -89,6 +89,21 @@ Click on image to view fullscreen and zoom
       └── README.md
 
 
+## Setup and Running
+- Clone repo `git clone git@github.com:atulmy/crate.git crate`
+- Switch to `code` directory `cd code`
+- API: Install packages and database setup (migrations and seed) `cd api` and `npm run setup`
+- Webapp: Install packages `cd web` and `npm install`
+- Mobile: Install packages `cd mobile` and `npm install`
+- Modify `/api/src/config/database.json` for database credentials
+- Modify `/api/src/config/config.json` for API port (optional)
+- Modify `/web/.env` for API URL (optional)
+- Modify `/mobile/src/setup/config.json` for API URL (tip: use `ifconfig` to get your local IP address)
+- Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:3000/
+- Run Webapp `cd webapp` and `npm start`, browse webapp at http://localhost:8000/
+- Run Mobile `cd mobile` and `npm start`, browse mobile on either emulator or using Expo on your mobile phone
+
+
 ## Inspirations
 - [fullstack-graphql](https://github.com/atulmy/fullstack-graphql)
 - [universal-react](https://github.com/atulmy/universal-react)
