@@ -104,13 +104,19 @@ Click on image to view fullscreen and zoom
 - Run Mobile `cd mobile` and `npm start`, browse mobile on either emulator or using Expo on your mobile phone
 
 
-## Inspirations
-- [fullstack-graphql](https://github.com/atulmy/fullstack-graphql)
-- [universal-react](https://github.com/atulmy/universal-react)
-
+## Resources and Inspirations
+- fullstack-graphql - [GitHub](https://github.com/atulmy/fullstack-graphql)
+- universal-react - [GitHub](https://github.com/atulmy/universal-react)
+- Container Components - [Medium Post](https://medium.com/@learnreact/container-components-c0e67432e005)
+- Zero to GraphQL in 30 Minutes - [YouTube](https://www.youtube.com/watch?v=UBGzsb2UkeY&list=PLkuiMQfg5DujhOSZ1A8kDl0hKV_ICTjp-)
+- Building a GraphQL Server [YouTube Playlist](https://www.youtube.com/playlist?list=PLillGF-RfqbYZty73_PHBqKRDnv7ikh68)
+- Universal JavaScript Web Applications with React by [Luciano Mammino](https://github.com/lmammino) - [YouTube](https://www.youtube.com/watch?v=0VEwRFP8WtI)
+- Building Youtube UI in 30 Mins - [YouTube](https://www.youtube.com/watch?v=LdKtugH-sb8)
+- Building Stellar Mobile UX With React Native - [YouTube](https://www.youtube.com/watch?v=ssXB9RMTpTs)
 
 ## Authors
-Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
+- Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
+- [YOUR NAME HERE] Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Fork and sending pull request.
 
 
 ## License

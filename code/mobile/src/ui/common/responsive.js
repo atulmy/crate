@@ -26,3 +26,7 @@ export const buttonHeight = deviceWidth >= breakpointTablet ? 55 : 40
 // Item
 export const itemSpacing = deviceWidth >= breakpointTablet ? 30 : 20
 export const itemRadius = deviceWidth >= breakpointTablet ? 30 : 20
+
+// Navigation
+export const navigationTopHeight = deviceWidth >= breakpointTablet ? 70 : 50
+export const navigationBottomHeight = deviceWidth >= breakpointTablet ? 70 : 50

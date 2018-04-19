@@ -9,6 +9,7 @@ import { withNavigation } from 'react-navigation'
 import crateImage from '../../../../assets/images/crate.png'
 
 // UI Imports
+import { blockMargin } from '../../../ui/common/responsive'
 import { primary } from '../../../ui/common/colors'
 import Button from '../../../ui/button/Button'
 import styles from './styles'
@@ -36,9 +37,11 @@ class Item extends PureComponent {
   }
 
   subscribe = () => {
-    const { user, crate, createSubscription, messageShow, messageHide, onSuccessSubscription } = this.props
+    const { user,  messageShow, messageHide } = this.props
 
     if(user.isAuthenticated) {
+      const { crate, createSubscription, onSuccessSubscription } = this.props
+
       this.loading(true)
 
       messageShow('Subscribing, please wait...')
@@ -80,7 +83,7 @@ class Item extends PureComponent {
     const { isLoading } = this.state
 
     return (
-      <View style={[styles.container, { marginBottom: (lastItem ? 10 : 0) } ]}>
+      <View style={[styles.container, { marginBottom: (lastItem ? blockMargin : 0) } ]}>
         <View style={styles.imageContainer}>
           <Image
             source={crateImage}

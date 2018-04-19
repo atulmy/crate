@@ -17,7 +17,9 @@ import ProductItem from '../../product/Item'
 class Related extends PureComponent {
 
   componentDidMount() {
-    this.props.getProductRelatedList(this.props.productId)
+    const { getProductRelatedList, productId } = this.props
+
+    getProductRelatedList(productId)
   }
 
   render() {

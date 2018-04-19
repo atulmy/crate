@@ -1,12 +1,12 @@
 // Imports
 import React, { PureComponent } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { View } from 'react-native'
 
 // UI Imports
-import { grey } from '../../ui/common/colors'
+import styles from './styles'
 
 // App Imports
-import Message from './Message'
+import Message from '../Message'
 
 // Component
 export default class Body extends PureComponent {
@@ -20,10 +20,3 @@ export default class Body extends PureComponent {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: grey
-  }
-})

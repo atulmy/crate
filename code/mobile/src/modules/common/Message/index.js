@@ -4,10 +4,10 @@ import PropTypes  from 'prop-types'
 import { connect } from 'react-redux'
 
 // UI Imports
-import Toast from '../../ui/toast/Toast'
+import Toast from '../../../ui/toast/Toast'
 
 // App Imports
-import { messageHide } from './api/actions'
+import { messageHide } from '../api/actions'
 
 // Component
 const Message = (props) => (

@@ -69,6 +69,8 @@ class Signup extends PureComponent {
 
       return false
     } else {
+      const { onSuccessRegister } = this.props
+
       this.loading(true)
 
       messageShow('Signing you up, please wait...')
@@ -80,7 +82,7 @@ class Signup extends PureComponent {
           } else {
             messageShow('Signed up successfully. Go ahead and login with your credentials.')
 
-            this.props.onSuccessRegister()
+            onSuccessRegister()
           }
         })
         .catch(() => {

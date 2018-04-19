@@ -6,7 +6,7 @@ import { Text, View, Image, ScrollView } from 'react-native'
 
 // UI Imports
 import Button from '../../../ui/button/Button'
-import ToolbarIcon from '../../../ui/icon/ToolbarIcon'
+import ActionIcon from '../../../ui/icon/ActionIcon'
 import styles from './styles'
 
 // App Imports
@@ -32,7 +32,7 @@ export default class Home extends PureComponent {
         <NavigationTop
           title="Crate"
           rightIcon={
-            <ToolbarIcon
+            <ActionIcon
               icon={'info-outline'}
               onPress={() => this.props.navigation.navigate(routes.info.name)}
             />

@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 import { Text, View, Linking, ScrollView } from 'react-native'
 
 // UI Imports
-import ToolbarIcon from '../../../ui/icon/ToolbarIcon'
+import ActionIcon from '../../../ui/icon/ActionIcon'
 import Button from '../../../ui/button/Button'
 import styles from './styles'
 
@@ -25,7 +25,7 @@ export default class Info extends PureComponent {
         <NavigationTop
           title={'Info'}
           leftIcon={
-            <ToolbarIcon
+            <ActionIcon
               icon={'arrow-back'}
               onPress={() => this.props.navigation.goBack()}
             />

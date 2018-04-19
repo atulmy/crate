@@ -6,7 +6,7 @@ import { Text, View, Image, ScrollView } from 'react-native'
 import { withNavigation } from 'react-navigation'
 
 // UI Imports
-import ToolbarIcon from '../../../ui/icon/ToolbarIcon'
+import ActionIcon from '../../../ui/icon/ActionIcon'
 import styles from './styles'
 
 // App Imports
@@ -22,10 +22,11 @@ import Related from '../Related'
 class Detail extends PureComponent {
 
   componentDidMount() {
-    const slug = this.props.navigation.state.params.slug
+    const { navigation, getProduct } = this.props
+    const slug = navigation.state.params.slug
 
     if(slug && slug !== '') {
-      this.props.getProduct(slug)
+      getProduct(slug)
     }
   }
 
@@ -40,7 +41,7 @@ class Detail extends PureComponent {
         <NavigationTop
           title='Product'
           leftIcon={
-            <ToolbarIcon
+            <ActionIcon
               icon={'arrow-back'}
               onPress={() => this.props.navigation.navigate(routes.whatsNew.name)}
             />

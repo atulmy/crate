@@ -1,11 +1,11 @@
 // Imports
 import React  from 'react'
 import PropTypes  from 'prop-types'
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
+import { View, Text, ActivityIndicator } from 'react-native'
 
 // UI Imports
-import { blockMarginHalf, blockPadding } from '../../ui/common/responsive'
-import { secondary, grey3 } from '../../ui/common/colors'
+import { secondary } from '../../../ui/common/colors'
+import styles from './styles'
 
 // Component
 const Loading = (props) => (
@@ -27,18 +27,3 @@ Loading.defaultProps = {
 }
 
 export default Loading
-
-// Component Styles
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    padding: blockPadding
-  },
-  text: {
-    color: grey3,
-    marginTop: blockMarginHalf
-  }
-})

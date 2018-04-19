@@ -4,10 +4,9 @@ import PropTypes from 'prop-types'
 import { StyleSheet, TouchableNativeFeedback, View, Text } from 'react-native'
 
 // UI Imports
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import { buttonPadding, blockMarginHalf, buttonRadius, buttonHeight } from '../common/responsive'
+import { buttonPadding, blockMarginHalf, buttonRadius, buttonHeight, font } from '../common/responsive'
 import { primary, secondary, white, grey2, grey4 } from '../common/colors'
-import { font } from '../common/responsive'
+import Icon from '../icon/Icon'
 
 // Component
 const Button = (props) => {

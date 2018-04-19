@@ -8,8 +8,8 @@ import how2Image from '../../../../../assets/images/stock/how-it-works/2.jpg'
 import how3Image from '../../../../../assets/images/stock/how-it-works/3.jpg'
 
 // UI Imports
-import Icon from 'react-native-vector-icons/MaterialIcons'
 import { white } from '../../../../ui/common/colors'
+import Icon from '../../../../ui/icon/Icon'
 import styles from './styles'
 
 // Component
