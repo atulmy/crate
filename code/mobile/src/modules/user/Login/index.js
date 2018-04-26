@@ -17,7 +17,6 @@ import { messageShow, messageHide } from '../../common/api/actions'
 
 // Component
 class Login extends PureComponent {
-
   constructor(props) {
     super(props)
 
@@ -29,15 +28,15 @@ class Login extends PureComponent {
     }
   }
 
-  loading = (isLoading) => {
+  loading = isLoading => {
     this.setState({
       isLoading
     })
   }
 
-  onSubmitRegister = () => {
+  onSubmitRegister = async () => {
     const { login, messageShow, messageHide } = this.props
-    
+
     const user = {
       email: this.state.email,
       password: this.state.password
@@ -46,17 +45,17 @@ class Login extends PureComponent {
     // Validate
     let error = false
 
-    if(!isEmail(user.email)) {
+    if (!isEmail(user.email)) {
       messageShow('The email you provided is invalid. Please try again.')
 
       error = true
-    } else if(!isLength(user.password, { min: 3 })) {
+    } else if (!isLength(user.password, { min: 3 })) {
       messageShow('Password needs to be atleast 3 characters long. Please try again.')
 
       error = true
     }
 
-    if(error) {
+    if (error) {
       setTimeout(() => {
         messageHide()
       }, config.message.error.timers.default)
@@ -68,24 +67,19 @@ class Login extends PureComponent {
       messageShow('Signing you in, please wait...')
 
       // API call
-      login(user)
-        .then(() => {
-          if (this.props.user.error && this.props.user.error.length > 0) {
-            messageShow(this.props.user.error)
-          } else {
-            messageShow('Signed in successfully, Welcome back!')
-          }
-        })
-        .catch(() => {
-          messageShow(this.props.user.error)
-        })
-        .then(() => {
-          this.loading(false)
-
-          setTimeout(() => {
-            messageHide()
-          }, config.message.error.timers.long)
-        })
+      try {
+        await login(user)
+        this.props.user.error.length > 0
+          ? messageShow(this.props.user.error)
+          : messageShow('Signed in successfully, Welcome back!')
+      } catch (error) {
+        messageShow(this.props.user.error)
+      } finally {
+        this.loading(false)
+        setTimeout(() => {
+          messageHide()
+        }, config.message.error.timers.long)
+      }
     }
   }
 
@@ -102,17 +96,21 @@ class Login extends PureComponent {
           value={email}
           onChangeText={email => this.setState({ email })}
           blurOnSubmit={false}
-          onSubmitEditing={() => { this.inputPassword.focus() }}
+          onSubmitEditing={() => {
+            this.inputPassword.focus()
+          }}
         />
 
         <InputText
-          inputRef={(input) => { this.inputPassword = input }}
+          inputRef={input => {
+            this.inputPassword = input
+          }}
           placeholder={'Password'}
           secureTextEntry={true}
           returnKeyType={'go'}
           value={password}
           onChangeText={password => this.setState({ password })}
-          onSubmitEditing={(event) => this.onSubmitRegister(event)}
+          onSubmitEditing={event => this.onSubmitRegister(event)}
         />
 
         <View style={styles.buttonContainer}>
