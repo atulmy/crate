@@ -116,6 +116,7 @@ Click on image to view fullscreen and zoom
 
 ## Authors
 - Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
+- Ebou Jobe - [GitHub](https://github.com/ebouJ)
 - [YOUR NAME HERE] Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Fork and sending pull request.
 
 
