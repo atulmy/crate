@@ -1,6 +1,6 @@
 // App Imports
-import { isEmpty } from "../../../setup/helpers";
-import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT } from "./actions";
+import { isEmpty } from '../../../setup/helpers'
+import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT } from './actions'
 
 // Initial State
 export const userInitialState = {
@@ -8,7 +8,7 @@ export const userInitialState = {
   isLoading: false,
   isAuthenticated: false,
   details: null
-};
+}
 
 // State
 export default (state = userInitialState, action) => {
@@ -18,21 +18,21 @@ export default (state = userInitialState, action) => {
         ...state,
         isAuthenticated: !isEmpty(action.user),
         details: action.user
-      };
+      }
 
     case LOGIN_REQUEST:
       return {
         ...state,
         error: null,
         isLoading: action.isLoading
-      };
+      }
 
     case LOGIN_RESPONSE:
       return {
         ...state,
         error: action.error,
         isLoading: false
-      };
+      }
 
     case LOGOUT:
       return userInitialState;
@@ -40,4 +40,4 @@ export default (state = userInitialState, action) => {
     default:
       return state;
   }
-};
+}
