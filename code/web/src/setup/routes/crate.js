@@ -1,7 +1,7 @@
 // App Imports
 import List from '../../modules/crate/List'
 
-// User routes
+// Crate routes
 export default {
   list: {
     path: '/crates',

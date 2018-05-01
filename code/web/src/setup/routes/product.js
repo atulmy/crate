@@ -1,7 +1,7 @@
 // App Imports
 import Detail from '../../modules/product/Detail'
 
-// User routes
+// Product routes
 export default {
   product: {
     path: (slug = ':slug') => (`/product/${ slug }`),

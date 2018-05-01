@@ -61,15 +61,13 @@ export function queryBuilder(options) {
 
   const query = {
     query: `
-            ${ options.type } ${ queryDataArgumentAndTypeMap(options.data) } {
-                ${ options.operation } ${ queryDataNameAndArgumentMap(options.data) } {
-                    ${ options.fields.join(',') }
-                }
-            }`,
+      ${ options.type } ${ queryDataArgumentAndTypeMap(options.data) } {
+          ${ options.operation } ${ queryDataNameAndArgumentMap(options.data) } {
+              ${ options.fields.join(',') }
+          }
+      }`,
     variables: Object.assign(options.data, options.variables)
   }
-
-  // console.log(query)
 
   return query
 }
