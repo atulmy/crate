@@ -17,7 +17,6 @@ import { messageShow, messageHide } from '../../common/api/actions'
 
 // Component
 class Signup extends PureComponent {
-
   constructor(props) {
     super(props)
 
@@ -30,15 +29,15 @@ class Signup extends PureComponent {
     }
   }
 
-  loading = (isLoading) => {
+  loading = isLoading => {
     this.setState({
       isLoading
     })
   }
 
-  onSubmitRegister = () => {
+  onSubmitRegister = async () => {
     const { register, messageShow, messageHide } = this.props
-    
+
     const user = {
       name: this.state.name,
       email: this.state.email,
@@ -48,21 +47,21 @@ class Signup extends PureComponent {
     // Validate
     let error = false
 
-    if(!isLength(user.name, { min: 3 })) {
+    if (!isLength(user.name, { min: 3 })) {
       messageShow('Name needs to be atleast 3 characters long. Please try again.')
 
       error = true
-    } else if(!isEmail(user.email)) {
+    } else if (!isEmail(user.email)) {
       messageShow('The email you provided is invalid. Please try again.')
 
       error = true
-    } else if(!isLength(user.password, { min: 3 })) {
+    } else if (!isLength(user.password, { min: 3 })) {
       messageShow('Password needs to be atleast 3 characters long. Please try again.')
 
       error = true
     }
 
-    if(error) {
+    if (error) {
       setTimeout(() => {
         messageHide()
       }, config.message.error.timers.default)
@@ -75,26 +74,22 @@ class Signup extends PureComponent {
 
       messageShow('Signing you up, please wait...')
 
-      register(user)
-        .then(response => {
-          if (response.data.errors && response.data.errors.length > 0) {
-            messageShow(response.data.errors[0].message)
-          } else {
-            messageShow('Signed up successfully. Go ahead and login with your credentials.')
-
-            onSuccessRegister()
-          }
-        })
-        .catch(() => {
-          messageShow('There was some error signing you up. Please try again.')
-        })
-        .then(() => {
-          this.loading(false)
-          
-          setTimeout(() => {
-            messageHide()
-          }, config.message.error.timers.long)
-        })
+      try {
+        const response = await register(user)
+        if (response.data.errors.length > 0) {
+          messageShow(response.data.errors[0].message)
+        } else {
+          messageShow('Signed in successfully, Welcome back!')
+          onSuccessRegister()
+        }
+      } catch (error) {
+        messageShow('There was some error signing you up. Please try again.')
+      } finally {
+        this.loading(false)
+        setTimeout(() => {
+          messageHide()
+        }, config.message.error.timers.long)
+      }
     }
   }
 
@@ -110,11 +105,14 @@ class Signup extends PureComponent {
           onChangeText={name => this.setState({ name })}
           autoFocus={true}
           blurOnSubmit={false}
-          onSubmitEditing={() => { this.inputEmail.focus() }}
+          onSubmitEditing={() => {
+            this.inputEmail.focus()
+          }}
         />
-
         <InputText
-          inputRef={input => { this.inputEmail = input }}
+          inputRef={input => {
+            this.inputEmail = input
+          }}
           placeholder={'Email'}
           keyboardType={'email-address'}
           autoCapitalize={'none'}
@@ -122,11 +120,15 @@ class Signup extends PureComponent {
           value={email}
           onChangeText={email => this.setState({ email })}
           blurOnSubmit={false}
-          onSubmitEditing={() => { this.inputPassword.focus() }}
+          onSubmitEditing={() => {
+            this.inputPassword.focus()
+          }}
         />
 
         <InputText
-          inputRef={input => { this.inputPassword = input }}
+          inputRef={input => {
+            this.inputPassword = input
+          }}
           placeholder={'Password'}
           secureTextEntry={true}
           returnKeyType={'go'}

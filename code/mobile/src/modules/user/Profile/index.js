@@ -15,7 +15,6 @@ import { messageShow, messageHide } from '../../common/api/actions'
 
 // Component
 class Profile extends PureComponent {
-
   onLogout = () => {
     const { logout, messageShow, messageHide } = this.props
 
@@ -28,40 +27,27 @@ class Profile extends PureComponent {
     }, config.message.error.timers.short)
   }
 
-  clearDataCache = () => {
+  clearDataCache = async () => {
     const { messageShow, messageHide } = this.props
 
     // Get all keys
-    AsyncStorage.getAllKeys()
-      .then(keys => {
-        // Clear keys except for user authentication keys
-        const keysToClear = keys.filter(key => key !== 'token' && key !== 'user')
-
-        if(keysToClear && keysToClear.length > 0) {
-          AsyncStorage.multiRemove(keysToClear)
-            .then(() => {
-              messageShow('Data cache cleared successfully.')
-            })
-            .catch(() => {
-              messageShow('There was some error clearing the cache. Please try again.')
-            })
-            .then(() => {
-              setTimeout(() => {
-                messageHide()
-              }, config.message.error.timers.default)
-            })
-        } else {
-          messageShow('No cached data to clear.')
-        }
-      })
-      .catch(() => {
-        messageShow('There was some error clearing the cache. Please try again.')
-      })
-      .then(() => {
-        setTimeout(() => {
-          messageHide()
-        }, config.message.error.timers.default)
-      })
+    try {
+      const keys = await AsyncStorage.getAllKeys()
+      // Clear keys except for user authentication keys
+      const keysToClear = keys.filter(key => key !== 'token' && key !== 'user')
+      if (keysToClear.length > 0) {
+        await AsyncStorage.multiRemove(keysToClear)
+        messageShow('Data cache cleared successfully.')
+      } else {
+        messageShow('No cached data to clear.')
+      }
+    } catch {
+      messageShow('There was some error clearing the cache. Please try again.')
+    } finally {
+      setTimeout(() => {
+        messageHide()
+      }, config.message.error.timers.default)
+    }
   }
 
   render() {
@@ -70,27 +56,17 @@ class Profile extends PureComponent {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.name}>{ name }</Text>
+        <Text style={styles.name}>{name}</Text>
 
-        <Text style={styles.email}>{ email }</Text>
+        <Text style={styles.email}>{email}</Text>
 
         <View style={{ flexDirection: 'row' }}>
           <View>
-            <Button
-              title={'Clear Data Cache'}
-              iconLeft={'cached'}
-              theme={'default'}
-              onPress={this.clearDataCache}
-            />
+            <Button title={'Clear Data Cache'} iconLeft={'cached'} theme={'default'} onPress={this.clearDataCache} />
           </View>
 
           <View>
-            <Button
-              title={'Logout'}
-              iconRight={'exit-to-app'}
-              theme={'primary'}
-              onPress={this.onLogout}
-            />
+            <Button title={'Logout'} iconRight={'exit-to-app'} theme={'primary'} onPress={this.onLogout} />
           </View>
         </View>
       </View>

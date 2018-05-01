@@ -17,7 +17,7 @@ export default (state = userInitialState, action) => {
       return {
         ...state,
         isAuthenticated: !isEmpty(action.user),
-        details: action.user,
+        details: action.user
       }
 
     case LOGIN_REQUEST:
@@ -35,15 +35,9 @@ export default (state = userInitialState, action) => {
       }
 
     case LOGOUT:
-      return {
-        ...state,
-        error: null,
-        isLoading: false,
-        isAuthenticated: false,
-        details: null
-      }
+      return userInitialState;
 
     default:
-      return state
+      return state;
   }
 }
