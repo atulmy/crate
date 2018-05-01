@@ -60,7 +60,7 @@ class Subscriptions extends Component {
                           <SubscriptionItem subscription={subscription} />
                         </div>
                       ))
-                    : <EmptyMessage message="You have not subscribed to any crates yet." />
+                    : <EmptyMessage message="You are not subscribed to any crates yet." />
             }
           </GridCell>
         </Grid>

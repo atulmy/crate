@@ -1,5 +1,5 @@
 const index = (APP_URL, helmet = {}, appHtml = '', styles = '', initialState = {}) => (
-  `<!doctype html>
+`<!doctype html>
 <html lang="en">
 <head>
     <!-- Meta -->
