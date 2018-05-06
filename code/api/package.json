@@ -9,13 +9,15 @@
     "setup:db": "npm run db:migrate && npm run db:seed",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
-    "start": "nodemon src/index.js --exec babel-node"
+    "start": "nodemon src/index.js --exec babel-node",
+    "build": "babel src -s -D -d build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "nodemon": "1.17.3"
