@@ -9,8 +9,10 @@
     "setup:db": "npm run db:migrate && npm run db:seed",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
-    "start": "nodemon src/index.js --exec babel-node",
-    "build": "babel src -s -D -d build"
+    "start": "export NODE_ENV=development && nodemon src/index.js --exec babel-node",
+    "start:prod": "export NODE_ENV=production && npm run build:prod && npm run start:server",
+    "build:prod": "babel src -s -D -d build",
+    "start:server": "node build/index.js"
   },
   "keywords": [],
   "author": "",

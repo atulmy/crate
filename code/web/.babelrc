@@ -1,6 +1,7 @@
 {
   "presets": ["es2015", "stage-2", "react"],
   "plugins": [
-    "styled-jsx/babel"
+    "styled-jsx/babel",
+    "transform-runtime"
   ]
 }

@@ -1,4 +1,4 @@
 node_modules/
-dist/
+build/
 public/images/uploads/*
 !public/images/uploads/.gitkeep

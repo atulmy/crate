@@ -1,4 +1,4 @@
-const index = (APP_URL, helmet = {}, appHtml = '', styles = '', initialState = {}) => (
+const index = (APP_URL, NODE_ENV, helmet = {}, appHtml = '', styles = '', initialState = {}) => (
 `<!doctype html>
 <html lang="en">
 <head>
@@ -40,7 +40,7 @@ const index = (APP_URL, helmet = {}, appHtml = '', styles = '', initialState = {
     </script>
     
     <!-- JS Bundle -->
-    <script type="text/javascript" src="${ APP_URL }/js/bundle.js?${ Math.random() }"></script>
+    <script type="text/javascript" src="${ APP_URL }/js/bundle.js${ NODE_ENV !== 'production' ? ('?'+Math.random()) : '' }"></script>
 </body>
 </html>`
 )

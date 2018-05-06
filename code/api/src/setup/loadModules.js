@@ -24,5 +24,7 @@ export default function (server) {
   server.use(express.static(path.join(__dirname, '..', '..', 'public')))
 
   // HTTP logger
-  server.use(morgan('tiny'))
+  if(process.env.NODE_ENV === 'development') {
+    server.use(morgan('tiny'))
+  }
 }

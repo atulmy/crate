@@ -4,7 +4,6 @@ import { Server } from 'http'
 import Express from 'express'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
-
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter, matchPath } from 'react-router-dom'
@@ -15,10 +14,10 @@ import thunk from 'redux-thunk'
 import { flushToHTML } from 'styled-jsx/server'
 
 // App Imports
+import { APP_URL, NODE_ENV, PORT } from '../configs'
 import { rootReducer } from '../../setup/store'
 import { routes } from '../../setup/routes'
 import { setUser } from '../../modules/user/api/actions'
-import { APP_URL } from '../configs'
 import App from '../../App'
 import view from './view'
 
@@ -105,7 +104,7 @@ app.get('*', (request, response) => {
 
         const styles = flushToHTML()
 
-        let html = view(APP_URL, helmet, appHtml, styles, initialState)
+        let html = view(APP_URL, NODE_ENV, helmet, appHtml, styles, initialState)
 
         // Reset the state on server
         store.dispatch({
@@ -122,12 +121,10 @@ app.get('*', (request, response) => {
 })
 
 // Start Server
-const port = process.env.PORT || 3000
-const env = process.env.NODE_ENV || 'production'
-server.listen(port, (error) => {
+server.listen(PORT, (error) => {
   if (error) {
     return console.error(error)
   } else {
-    return console.info(`Server running on http://localhost:${ port } [${ env }]`)
+    return console.info(`Server running on http://localhost:${ PORT } [${ NODE_ENV }]`)
   }
 })

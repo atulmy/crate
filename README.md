@@ -95,13 +95,18 @@ Click on image to view fullscreen and zoom
 - API: Install packages and database setup (migrations and seed) `cd api` and `npm run setup`
 - Webapp: Install packages `cd web` and `npm install`
 - Mobile: Install packages `cd mobile` and `npm install`
-- Modify `/api/src/config/database.json` for database credentials
-- Modify `/api/src/config/config.json` for API port (optional)
-- Modify `/web/.env` for API URL (optional)
-- Modify `/mobile/src/setup/config.json` for API URL (tip: use `ifconfig` to get your local IP address)
-- Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:3000/
-- Run Webapp `cd webapp` and `npm start`, browse webapp at http://localhost:8000/
-- Run Mobile `cd mobile` and `npm start`, browse mobile on either emulator or using Expo on your mobile phone
+- Configurations
+  - Modify `/api/src/config/database.json` for database credentials
+  - Modify `/api/src/config/config.json` for API port (optional)
+  - Modify `/web/.env` for API URL (optional)
+  - Modify `/mobile/src/setup/config.json` for API URL (tip: use `ifconfig` to get your local IP address)
+- Development
+  - Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:3000/
+  - Run Webapp `cd webapp` and `npm start`, browse webapp at http://localhost:8000/
+  - Run Mobile `cd mobile` and `npm start`, browse mobile on either emulator or using Expo on your mobile phone
+- Production
+  - Run API `cd api` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
+  - Run Webapp `cd webapp` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
 
 
 ## Resources and Inspirations
