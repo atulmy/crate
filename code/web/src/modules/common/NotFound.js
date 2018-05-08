@@ -9,11 +9,11 @@ import { H3 } from '../../ui/typography'
 import { grey } from '../../ui/common/colors'
 
 // App Imports
-import { APP_URL } from '../../setup/configs'
+import { APP_URL } from '../../setup/config/env'
 import home from '../../setup/routes/home'
 
 // Component
-const NotFound = (props) => (
+const NotFound = () => (
   <div>
     {/* SEO */}
     <Helmet>

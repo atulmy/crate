@@ -14,7 +14,7 @@ import thunk from 'redux-thunk'
 import { flushToHTML } from 'styled-jsx/server'
 
 // App Imports
-import { APP_URL, NODE_ENV, PORT } from './setup/configs'
+import { APP_URL, NODE_ENV, PORT } from './setup/config/env'
 import { rootReducer } from './setup/store'
 import { routes } from './setup/routes'
 import { setUser } from './modules/user/api/actions'

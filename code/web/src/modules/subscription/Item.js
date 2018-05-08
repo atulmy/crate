@@ -12,7 +12,7 @@ import Icon from '../../ui/icon'
 import { white, grey2, black } from '../../ui/common/colors'
 
 // App Imports
-import { APP_URL } from '../../setup/configs'
+import { APP_URL } from '../../setup/config/env'
 import { messageShow, messageHide } from '../common/api/actions'
 import { remove, getListByUser } from '../subscription/api/actions'
 

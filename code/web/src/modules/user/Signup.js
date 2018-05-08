@@ -16,7 +16,7 @@ import { level1 } from '../../ui/common/shadows'
 import { white } from '../../ui/common/colors'
 
 // App Imports
-import { APP_URL } from '../../setup/configs'
+import { APP_URL } from '../../setup/config/env'
 import userRoutes from '../../setup/routes/user'
 import { messageShow, messageHide } from '../common/api/actions'
 import { register } from './api/actions'

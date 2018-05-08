@@ -13,7 +13,7 @@ import { white } from '../../ui/common/colors'
 import { textLevel1 } from '../../ui/common/shadows'
 
 // App Imports
-import { APP_URL } from '../../setup/configs'
+import { APP_URL } from '../../setup/config/env'
 import crateRoutes from '../../setup/routes/crate'
 import userRoutes from '../../setup/routes/user'
 import Onboarding from './Onboarding'

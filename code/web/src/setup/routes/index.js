@@ -1,5 +1,5 @@
 // App Imports
-import { APP_URL_API } from '../configs'
+import { APP_URL_API } from '../config/env'
 import admin from './admin'
 import home from './home'
 import user from './user'
