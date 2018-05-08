@@ -6,13 +6,11 @@
   "scripts": {
     "start": "export NODE_ENV=development && npm run build:client && npm run start:server",
     "build:client": "webpack -d",
-    "start:server": "nodemon --exec babel-node -- src/setup/server/index.js",
-
+    "start:server": "nodemon --exec babel-node -- src/index.js",
     "start:prod": "export NODE_ENV=production && npm run build:client:prod && npm run build:server:prod && npm run start:server:prod",
     "build:client:prod": "webpack -p",
     "build:server:prod": "babel src -s -D -d build",
-    "start:server:prod": " node build/setup/server/index.js",
-
+    "start:server:prod": " node build/index.js",
     "storybook": "start-storybook -p 9000 -c storybook"
   },
   "keywords": [],

@@ -3,10 +3,10 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 // App Imports
-import { routes } from './setup/routes'
-import Layout from './modules/common/Layout'
-import NotFound from './modules/common/NotFound'
-import RoutePrivate from './modules/auth/RoutePrivate'
+import { routes } from '../../setup/routes'
+import Layout from '../../modules/common/Layout'
+import NotFound from '../../modules/common/NotFound'
+import RoutePrivate from '../../modules/auth/RoutePrivate'
 
 const App = () => (
   <Layout>

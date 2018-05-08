@@ -1,9 +1,10 @@
 {
   "events": {
-    "restart": "npm run build"
+    "restart": "npm run build:client"
   },
   "ignore": [
     ".git",
+    "build/*",
     "node_modules/**/node_modules",
     "public/*",
     "storybook/*"

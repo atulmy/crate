@@ -14,12 +14,12 @@ import thunk from 'redux-thunk'
 import { flushToHTML } from 'styled-jsx/server'
 
 // App Imports
-import { APP_URL, NODE_ENV, PORT } from '../configs'
-import { rootReducer } from '../../setup/store'
-import { routes } from '../../setup/routes'
-import { setUser } from '../../modules/user/api/actions'
-import App from '../../App'
-import view from './view'
+import { APP_URL, NODE_ENV, PORT } from './setup/configs'
+import { rootReducer } from './setup/store'
+import { routes } from './setup/routes'
+import { setUser } from './modules/user/api/actions'
+import App from './setup/client/App'
+import view from './setup/server/view'
 
 // Create new server
 const app = new Express()
@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 // Public (static) files folder
-app.use(Express.static(path.join(__dirname, '..', '..', '..', 'public')))
+app.use(Express.static(path.join(__dirname, '..', 'public')))
 
 // Store (new store for each request)
 const store = createStore(
