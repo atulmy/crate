@@ -27,8 +27,7 @@ const index = (APP_URL, NODE_ENV, helmet = {}, appHtml = '', styles = '', initia
     <link href="${ APP_URL }/css/common.css" rel="stylesheet" />
     
     <!-- CSS - Generated -->
-        ${ styles }
-    </style>
+    ${ styles }
 </head>
 <body>
     <!-- App -->
