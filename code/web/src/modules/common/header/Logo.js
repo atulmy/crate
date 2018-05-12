@@ -11,7 +11,7 @@ import home from '../../../setup/routes/home'
 
 // Component
 const Logo = (props) => {
-  const { children, ...others } = props
+  const { ...others } = props
 
   return (
     <Link to={home.home.path} {...others}>

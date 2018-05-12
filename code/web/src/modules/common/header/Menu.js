@@ -1,6 +1,5 @@
 // Imports
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 // Component
 const Menu = (props) => {

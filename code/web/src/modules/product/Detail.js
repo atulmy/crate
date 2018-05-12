@@ -1,5 +1,5 @@
 // Imports
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect, withRouter } from 'react-router-dom'
@@ -19,7 +19,7 @@ import Loading from '../common/Loading'
 import Related from './Related'
 
 // Component
-class Detail extends Component {
+class Detail extends PureComponent {
 
   // Runs on server only for SSR
   static fetchData({ store, params }) {

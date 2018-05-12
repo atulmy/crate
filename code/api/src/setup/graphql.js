@@ -2,7 +2,7 @@
 import graphqlHTTP from 'express-graphql'
 
 // App Imports
-import config from '../config/config.json'
+import serverConfig from '../config/server.json'
 import authentication from './authentication'
 import schema from './schema'
 
@@ -13,10 +13,10 @@ export default function (server) {
   server.use(authentication)
 
   // API (GraphQL on route `/`)
-  server.use(config.graphql.endpoint, graphqlHTTP(request => ({
+  server.use(serverConfig.graphql.endpoint, graphqlHTTP(request => ({
     schema,
-    graphiql: config.graphql.ide,
-    pretty: config.graphql.pretty,
+    graphiql: serverConfig.graphql.ide,
+    pretty: serverConfig.graphql.pretty,
     context: {
       auth: {
         user: request.user,

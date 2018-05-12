@@ -2,11 +2,11 @@
 import { Sequelize } from 'sequelize'
 
 // App Imports
-import env from '../config/env'
+import { NODE_ENV } from '../config/env'
 import databaseConfig from '../config/database.json'
 
 // Load database config
-const databaseConfigEnv = databaseConfig[env]
+const databaseConfigEnv = databaseConfig[NODE_ENV]
 
 // Create new database connection
 const connection = new Sequelize(databaseConfigEnv.database, databaseConfigEnv.username, databaseConfigEnv.password, {

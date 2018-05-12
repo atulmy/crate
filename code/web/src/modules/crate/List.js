@@ -1,9 +1,8 @@
 // Imports
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
-import { Link } from 'react-router-dom'
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
@@ -17,7 +16,7 @@ import EmptyMessage from '../common/EmptyMessage'
 import CrateItem from './Item'
 
 // Component
-class List extends Component {
+class List extends PureComponent {
 
   // Runs on server only for SSR
   static fetchData({ store }) {

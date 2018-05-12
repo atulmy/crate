@@ -1,5 +1,5 @@
 // Imports
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
@@ -28,7 +28,7 @@ import { upload, messageShow, messageHide } from '../../common/api/actions'
 import AdminMenu from '../common/Menu'
 
 // Component
-class CreateOrEdit extends Component {
+class CreateOrEdit extends PureComponent {
 
   constructor(props) {
     super(props)

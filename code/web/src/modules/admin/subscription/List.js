@@ -1,5 +1,5 @@
 // Imports
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
@@ -15,7 +15,7 @@ import EmptyMessage from '../../common/EmptyMessage'
 import AdminMenu from '../common/Menu'
 
 // Component
-class List extends Component {
+class List extends PureComponent {
 
   // Runs on server only for SSR
   static fetchData({ store }) {

@@ -1,6 +1,6 @@
 // Imports
 import jwt from 'jsonwebtoken'
-import config from '../config/config.json'
+import serverConfig from '../config/server.json'
 
 // Authentication middleware
 export default function (request, response, next) {
@@ -9,7 +9,7 @@ export default function (request, response, next) {
   if (authToken && authToken !== null) {
     try {
       const token = authToken.split(' ')
-      request.user = jwt.verify(token[1], config.secret)
+      request.user = jwt.verify(token[1], serverConfig.secret)
     } catch (e) {
       console.warn('Invalid token detected.')
     }

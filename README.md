@@ -97,8 +97,8 @@ Click on image to view fullscreen and zoom
 - Mobile: Install packages `cd mobile` and `npm install`
 - Configurations
   - Modify `/api/src/config/database.json` for database credentials
-  - Modify `/api/src/config/config.json` for API port (optional)
-  - Modify `/web/.env` for API URL (optional)
+  - Modify `/api/.env` for PORT (optional)
+  - Modify `/web/.env` for PORT / API URL (optional)
   - Modify `/mobile/src/setup/config.json` for API URL (tip: use `ifconfig` to get your local IP address)
 - Development
   - Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:3000/

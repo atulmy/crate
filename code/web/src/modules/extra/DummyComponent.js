@@ -1,10 +1,10 @@
 // Imports
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
 // App Imports
 
 // Component
-class DummyComponent extends Component {
+class DummyComponent extends PureComponent {
 
   constructor(props) {
     super(props)

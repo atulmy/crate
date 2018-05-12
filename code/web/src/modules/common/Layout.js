@@ -1,5 +1,5 @@
 // Imports
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -13,7 +13,7 @@ import { renderIf } from '../../setup/helpers'
 import { messageHide } from './api/actions'
 import Header from './header/Header'
 
-class Layout extends Component {
+class Layout extends PureComponent {
 
   render() {
     const { children } = this.props

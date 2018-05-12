@@ -2,10 +2,10 @@
 import express from 'express'
 
 // App Imports
-import setupLoadModules from './setup/loadModules'
+import setupLoadModules from './setup/load-modules'
 import setupGraphQL from './setup/graphql'
 import setupUpload from './setup/upload'
-import setupStartServer from './setup/startServer'
+import setupStartServer from './setup/start-server'
 
 // Create express server
 const server = express()

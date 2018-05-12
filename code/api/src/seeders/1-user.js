@@ -1,7 +1,7 @@
 'use strict';
 
 const bcrypt = require('bcrypt');
-const config = require('../config/config.json');
+const config = require('../config/server.json');
 const params = require('../config/params.json');
 
 module.exports = {

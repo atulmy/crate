@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
 // App Imports
-import config from '../../config/config'
+import serverConfig from '../../config/server'
 import params from '../../config/params'
 import models from '../../setup/models'
 
@@ -14,7 +14,7 @@ export async function create(parentValue, { name, email, password }) {
 
   if (!user) {
     // User does not exists
-    const passwordHashed = await bcrypt.hash(password, config.saltRounds)
+    const passwordHashed = await bcrypt.hash(password, serverConfig.saltRounds)
 
     return await models.User.create({
       name,
@@ -51,7 +51,7 @@ export async function login(parentValue, { email, password }) {
     } else {
       return {
         user: userDetails,
-        token: jwt.sign(userDetailsToken, config.secret)
+        token: jwt.sign(userDetailsToken, serverConfig.secret)
       }
     }
   }

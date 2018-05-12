@@ -12,7 +12,7 @@ import { grey3 } from '../../ui/common/colors'
 import AdminMenu from './common/Menu'
 
 // Component
-const Dashboard = (props) => (
+const Dashboard = () => (
   <div>
     {/* SEO */}
     <Helmet>
