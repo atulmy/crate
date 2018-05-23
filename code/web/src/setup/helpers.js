@@ -38,6 +38,9 @@ export function isEmpty(obj) {
       return false;
     }
   }
+  if (obj.constructor !== Object) {
+    return false;
+  }
   return true;
 }
 
