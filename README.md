@@ -90,16 +90,20 @@ Click on image to view fullscreen and zoom
 
 
 ## Setup and Running
+- Prerequisites
+  - Node
+  - MySQL (also supports Postgres, Sqlite and MSSQL)
 - Clone repo `git clone git@github.com:atulmy/crate.git crate`
 - Switch to `code` directory `cd code`
-- API: Install packages and database setup (migrations and seed) `cd api` and `npm run setup`
-- Webapp: Install packages `cd web` and `npm install`
-- Mobile: Install packages `cd mobile` and `npm install`
 - Configurations
   - Modify `/api/src/config/database.json` for database credentials
   - Modify `/api/.env` for PORT (optional)
   - Modify `/web/.env` for PORT / API URL (optional)
   - Modify `/mobile/src/setup/config.json` for API URL (tip: use `ifconfig` to get your local IP address)
+- Setup
+  - API: Install packages and database setup (migrations and seed) `cd api` and `npm run setup`
+  - Webapp: Install packages `cd web` and `npm install`
+  - Mobile: Install packages `cd mobile` and `npm install`
 - Development
   - Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:3000/
   - Run Webapp `cd webapp` and `npm start`, browse webapp at http://localhost:8000/

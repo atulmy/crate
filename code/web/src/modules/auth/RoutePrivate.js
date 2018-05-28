@@ -11,10 +11,10 @@ import userRoutes from '../../setup/routes/user'
 const RoutePrivate = (props) => (
   props.user.isAuthenticated
     ? props.role
-      ? props.user.details.role === props.role
-        ? <Route {...props} component={props.component}/>
-        : <Redirect to={userRoutes.login.path}/>
-      : <Route {...props} component={props.component}/>
+        ? props.user.details.role === props.role
+          ? <Route {...props} component={props.component}/>
+          : <Redirect to={userRoutes.login.path}/>
+        : <Route {...props} component={props.component}/>
     : <Redirect to={userRoutes.login.path}/>
 )
 
