@@ -16,6 +16,7 @@
 - UI components in separate folder which can be swapped for your favorite UI framework easily
 - Responsive UI for React Native to support Mobile and Tablet
 - GraphQL schema with associations
+- Database migration and data seeding
 - User authentication using JSON Web Tokens with GraphQL API
 - File upload feature with GraphQL
 - React storybook demonstrating UI components for web
