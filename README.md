@@ -106,12 +106,12 @@ Click on image to view fullscreen and zoom
   - Webapp: Install packages `cd web` and `npm install`
   - Mobile: Install packages `cd mobile` and `npm install`
 - Development
-  - Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:3000/
-  - Run Webapp `cd webapp` and `npm start`, browse webapp at http://localhost:8000/
+  - Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:8000/
+  - Run Webapp `cd web` and `npm start`, browse webapp at http://localhost:3000/
   - Run Mobile `cd mobile` and `npm start`, browse mobile on either emulator or using Expo on your mobile phone
 - Production
   - Run API `cd api` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
-  - Run Webapp `cd webapp` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
+  - Run Webapp `cd web` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
 
 
 ## Resources and Inspirations
