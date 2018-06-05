@@ -106,12 +106,12 @@ Click on image to view fullscreen and zoom
   - Webapp: Install packages `cd web` and `npm install`
   - Mobile: Install packages `cd mobile` and `npm install`
 - Development
-  - Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:3000/
-  - Run Webapp `cd webapp` and `npm start`, browse webapp at http://localhost:8000/
+  - Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:8000/
+  - Run Webapp `cd web` and `npm start`, browse webapp at http://localhost:3000/
   - Run Mobile `cd mobile` and `npm start`, browse mobile on either emulator or using Expo on your mobile phone
 - Production
   - Run API `cd api` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
-  - Run Webapp `cd webapp` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
+  - Run Webapp `cd web` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
 
 
 ## Resources and Inspirations
@@ -125,11 +125,18 @@ Click on image to view fullscreen and zoom
 - Building Stellar Mobile UX With React Native - [YouTube](https://www.youtube.com/watch?v=ssXB9RMTpTs)
 
 
+## Why open source a project and not a boilerplate or framework?
+- While building a new project with Node, you can basically start scratch, adding libraries and tools as you go on building it further.
+- Comparing with any other languague, you usually start with a framework, for example, Laravel (PHP), Django (Python) or Ruby on Rails (Ruby) which includes a ton of features and codebase which you never end up using.
+- I've personally found, learning by going through a good project codebase step by step while building your own project helps in ease of understanding and remembering
+
+
 ## Authors
 - Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
 - Ebou Jobe - [GitHub](https://github.com/ebouJ)
 - Nenad Radovanovic - [GitHub](https://github.com/nrcloud) · [Twitter](https://twitter.com/publicshone)
-- [YOUR NAME HERE] - Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Fork and sending pull request.
+- [YOUR NAME HERE] - Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Feel free to fork and send pull requests.
+
 
 ## Support
 [![Become a Patreon](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/mix/patreon.png?v=1)](https://www.patreon.com/atulmy)
