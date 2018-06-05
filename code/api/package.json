@@ -22,14 +22,14 @@
     "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "nodemon": "1.17.3"
+    "nodemon": "1.17.5"
   },
   "dependencies": {
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
-    "dotenv": "^5.0.1",
+    "dotenv": "^6.0.0",
     "express": "^5.0.0-alpha.2",
     "express-graphql": "^0.6.12",
     "graphql": "^0.13.2",
@@ -37,7 +37,7 @@
     "morgan": "^1.9.0",
     "multer": "^1.3.0",
     "mysql2": "1.5.3",
-    "sequelize": "4.37.6",
+    "sequelize": "4.37.10",
     "sequelize-cli": "4.0.0"
   }
 }
