@@ -39,7 +39,8 @@ const index = (APP_URL, NODE_ENV, helmet = {}, appHtml = '', styles = '', initia
     </script>
     
     <!-- JS Bundle -->
-    <script type="text/javascript" src="${ APP_URL }/js/bundle.js${ NODE_ENV !== 'production' ? ('?'+Math.random()) : '' }"></script>
+    <script type="text/javascript" src="${ APP_URL }/js/bundles/vendor.js"></script>
+    <script type="text/javascript" src="${ APP_URL }/js/bundles/app.js${ NODE_ENV !== 'production' ? ('?'+Math.random()) : '' }"></script>
 </body>
 </html>`
 )

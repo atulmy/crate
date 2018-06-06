@@ -4,12 +4,12 @@ import Dotenv from 'dotenv-webpack'
 
 const config = {
   entry: {
-    js: './src/setup/client/index.js'
+    app: './src/setup/client/index.js'
   },
 
   output: {
-    path: path.join(__dirname, 'public', 'js'),
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'public', 'js', 'bundles'),
+    filename: '[name].js'
   },
 
   module: {
@@ -22,6 +22,14 @@ const config = {
         exclude: /node_modules/
       }
     ]
+  },
+
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: { test: /[\\/]node_modules[\\/]/, name: 'vendor', chunks: 'all' }
+      }
+    }
   },
 
   plugins: [
