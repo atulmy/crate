@@ -81,7 +81,7 @@ Click on image to view fullscreen and zoom
       │   │   ├── modules
       │   │   ├── setup
       │   │   ├── ui
-      │   │   └── App.js
+      │   │   └── index.js
       │   ├── storybook
       │   │
       │   └── package.json
@@ -93,7 +93,7 @@ Click on image to view fullscreen and zoom
 ## Setup and Running
 - Prerequisites
   - Node
-  - MySQL (also supports Postgres, Sqlite and MSSQL)
+  - MySQL (or Postgres / Sqlite / MSSQL)
 - Clone repo `git clone git@github.com:atulmy/crate.git crate`
 - Switch to `code` directory `cd code`
 - Configurations
@@ -121,7 +121,7 @@ Click on image to view fullscreen and zoom
 - Zero to GraphQL in 30 Minutes - [YouTube](https://www.youtube.com/watch?v=UBGzsb2UkeY&list=PLkuiMQfg5DujhOSZ1A8kDl0hKV_ICTjp-)
 - Building a GraphQL Server [YouTube Playlist](https://www.youtube.com/playlist?list=PLillGF-RfqbYZty73_PHBqKRDnv7ikh68)
 - Universal JavaScript Web Applications with React by [Luciano Mammino](https://github.com/lmammino) - [YouTube](https://www.youtube.com/watch?v=0VEwRFP8WtI)
-- Building Youtube UI in 30 Mins - [YouTube](https://www.youtube.com/watch?v=LdKtugH-sb8)
+- Building Youtube UI in React Native in 30 Mins - [YouTube](https://www.youtube.com/watch?v=LdKtugH-sb8)
 - Building Stellar Mobile UX With React Native - [YouTube](https://www.youtube.com/watch?v=ssXB9RMTpTs)
 
 
