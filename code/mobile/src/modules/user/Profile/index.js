@@ -41,7 +41,7 @@ class Profile extends PureComponent {
       } else {
         messageShow('No cached data to clear.')
       }
-    } catch {
+    } catch(e) {
       messageShow('There was some error clearing the cache. Please try again.')
     } finally {
       setTimeout(() => {
