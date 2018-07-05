@@ -88,7 +88,10 @@ export default function (app) {
 
           const styles = flushToHTML()
 
-          let html = view(APP_URL, NODE_ENV, helmet, appHtml, styles, initialState)
+          const htmlStatic = view(APP_URL, NODE_ENV)
+
+
+          const html = view(APP_URL, NODE_ENV, helmet, appHtml, styles, initialState)
 
           // Reset the state on server
           store.dispatch({

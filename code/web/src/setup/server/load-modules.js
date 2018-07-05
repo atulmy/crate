@@ -3,6 +3,10 @@ import path from 'path'
 import Express from 'express'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
+import morgan from 'morgan'
+
+// App Imports
+import { NODE_ENV } from '../config/env'
 
 export default function (app) {
   console.info('SETUP - Load modules..')
@@ -16,4 +20,9 @@ export default function (app) {
 
   // Public (static) files folder
   app.use(Express.static(path.join(__dirname, '..', '..', '..', 'public')))
+
+  // HTTP logger
+  if(NODE_ENV === 'development') {
+    app.use(morgan('tiny'))
+  }
 }
