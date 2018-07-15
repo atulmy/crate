@@ -1,5 +1,5 @@
 // Imports
-import { StackNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation'
 
 // App Imports
 import config from '../setup/config'
@@ -56,7 +56,7 @@ const routesStack = Object.keys(routes).reduce((result, key) => {
   return result
 }, {})
 
-export default StackNavigator(routesStack, {
+export default createStackNavigator(routesStack, {
   initialRouteName: routes.home.name, // Initial route name
   headerMode: 'none',
   navigationOptions: {
