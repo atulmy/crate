@@ -1,11 +1,12 @@
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, View, TouchableNativeFeedback, Text } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 
 // UI Imports
 import { blockPadding, font } from '../common/responsive'
 import { secondary } from '../common/colors'
+import Touchable from '../touchable/Touchable'
 
 // Component
 const TabBar = (props) => {
@@ -14,14 +15,14 @@ const TabBar = (props) => {
   return(
     <View style={styles.container}>
       { items.map(item => (
-        <TouchableNativeFeedback
+        <Touchable
           onPress={ () => { onSelect(item.key) } }
           key={item.key}
         >
           <View style={[{ flex: 1 }, (active === item.key ? { borderBottomColor: secondary, borderBottomWidth: 2 } : {})]}>
             <Text style={ styles.tabItemTitle }>{ item.title.toUpperCase() }</Text>
           </View>
-        </TouchableNativeFeedback>
+        </Touchable>
       )) }
     </View>
   )

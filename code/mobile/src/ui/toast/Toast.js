@@ -1,19 +1,20 @@
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, View, Text, TouchableNativeFeedback } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 
 // UI Imports
 import { blockPadding, itemSpacing, itemRadius, font } from '../common/responsive'
 import { white, black } from '../common/colors'
+import Touchable from '../touchable/Touchable'
 
 // Component
 const Toast = (props) => (
-  <TouchableNativeFeedback onPress={props.onPress}>
+  <Touchable onPress={props.onPress}>
     <View style={styles.container}>
       <Text style={styles.text}>{ props.message }</Text>
     </View>
-  </TouchableNativeFeedback>
+  </Touchable>
 )
 
 // Component Properties

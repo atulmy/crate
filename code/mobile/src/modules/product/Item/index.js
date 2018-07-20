@@ -2,11 +2,12 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Text, View, Image, TouchableNativeFeedback } from 'react-native'
+import { Text, View, Image } from 'react-native'
 import { withNavigation } from 'react-navigation'
 
 // UI Imports
 import { blockMargin } from '../../../ui/common/responsive'
+import Touchable from '../../../ui/touchable/Touchable'
 import styles from './styles'
 
 // App Imports
@@ -27,7 +28,7 @@ class Item extends PureComponent {
     const { image, name, description } = product
 
     return (
-      <TouchableNativeFeedback onPress={() => this.navigate(product)}>
+      <Touchable onPress={() => this.navigate(product)}>
         <View style={[(compact ? styles.containerCompact : styles.container), { marginBottom: (lastItem ? blockMargin : 0) } ]}>
           <Image
             source={{ uri: routeImage + image }}
@@ -45,7 +46,7 @@ class Item extends PureComponent {
             </Text>
           </View>
         </View>
-      </TouchableNativeFeedback>
+      </Touchable>
     )
   }
 }

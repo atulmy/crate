@@ -1,12 +1,13 @@
 // Imports
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, TouchableNativeFeedback, View, Text } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 
 // UI Imports
 import { buttonPadding, blockMarginHalf, buttonRadius, buttonHeight, font } from '../common/responsive'
 import { primary, secondary, white, grey2, grey4 } from '../common/colors'
 import Icon from '../icon/Icon'
+import Touchable from '../touchable/Touchable'
 
 // Component
 const Button = (props) => {
@@ -29,7 +30,7 @@ const Button = (props) => {
             color={white}
           /> }
         </View>
-      : <TouchableNativeFeedback onPress={onPress}>
+      : <Touchable onPress={onPress}>
           <View style={[styles.container, styles.enabled, { backgroundColor: themes[theme].background }]}>
             { iconLeft && <Icon
               name={iconLeft}
@@ -45,7 +46,7 @@ const Button = (props) => {
               color={themes[theme].text}
             /> }
           </View>
-        </TouchableNativeFeedback>
+        </Touchable>
   )
 }
 
