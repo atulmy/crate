@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@storybook/react": "3.4.8",
+    "@storybook/react": "3.4.10",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -27,9 +27,9 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "dotenv-webpack": "^1.5.4",
-    "nodemon": "1.17.5",
-    "webpack": "4.15.0",
-    "webpack-cli": "3.0.8"
+    "nodemon": "1.18.3",
+    "webpack": "4.16.4",
+    "webpack-cli": "3.1.0"
   },
   "dependencies": {
     "axios": "0.18.0",
@@ -40,14 +40,14 @@
     "js-cookie": "^2.2.0",
     "morgan": "1.9.0",
     "prop-types": "^15.6.0",
-    "react": "16.4.1",
-    "react-dom": "16.4.1",
+    "react": "16.4.2",
+    "react-dom": "16.4.2",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0",
     "styled-jsx": "2.2.7",
-    "validator": "10.4.0"
+    "validator": "10.5.0"
   }
 }
