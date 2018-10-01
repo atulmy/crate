@@ -1,10 +1,10 @@
 // Imports
 import axios from 'axios'
+import queryBuilder from 'gql-query-builder'
+import cookie from 'js-cookie'
 
 // App Imports
 import { routeApi } from '../../../setup/routes'
-import { queryBuilder } from '../../../setup/helpers'
-import cookie from 'js-cookie'
 
 // Actions Types
 export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'

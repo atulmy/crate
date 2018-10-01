@@ -1,9 +1,9 @@
 // Imports
 import axios from 'axios'
+import queryBuilder from 'gql-query-builder'
 
 // App Imports
 import { routeApi } from '../../../setup/routes'
-import { queryBuilder } from '../../../setup/helpers'
 
 // Actions Types
 export const CRATES_GET_LIST_REQUEST = 'CRATES/GET_LIST_REQUEST'
