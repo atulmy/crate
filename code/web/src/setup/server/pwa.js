@@ -7,4 +7,4 @@ import { APP_URL, NODE_ENV } from '../config/env'
 import view from './view'
 
 // Write index.html
-fs.writeFile(path.join(__dirname, '..', '..', '..', 'public', 'index.html'), view(APP_URL, NODE_ENV))
+fs.writeFileSync(path.join(__dirname, '..', '..', '..', 'public', 'index.html'), view(APP_URL, NODE_ENV))
