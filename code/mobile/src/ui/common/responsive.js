@@ -1,6 +1,10 @@
 // Imports
 import { Dimensions } from 'react-native'
 
+// Scale
+const scaleFactor = 1.4
+export const scalable = size => (size * (deviceWidth >= breakpointTablet ? scaleFactor : 1))
+
 // Breakpoints
 export const breakpointMobile = 320
 export const breakpointTablet = 768

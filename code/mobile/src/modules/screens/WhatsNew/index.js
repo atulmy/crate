@@ -7,7 +7,6 @@ import styles from './styles'
 
 // App Imports
 import Body from '../../common/Body'
-import NavigationBottom from '../../common/NavigationBottom'
 import ProductList from '../../product/List'
 
 // Component
@@ -18,8 +17,6 @@ class WhatsNew extends PureComponent {
         <Body>
           <ProductList />
         </Body>
-
-        <NavigationBottom />
       </View>
     )
   }

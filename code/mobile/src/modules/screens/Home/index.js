@@ -1,19 +1,17 @@
 // Imports
 import React, { PureComponent } from 'react'
-import { Text, View, Image, ScrollView } from 'react-native'
-
-// Assets
+import { View } from 'react-native'
+import { ScrollView } from 'react-navigation'
 
 // UI Imports
-import Button from '../../../ui/button/Button'
 import ActionIcon from '../../../ui/icon/ActionIcon'
 import styles from './styles'
 
 // App Imports
 import { routes } from '../../../setup/routes'
+import { routesHome } from '../../../setup/routes/home'
 import NavigationTop from '../../common/NavigationTop'
 import Body from '../../common/Body'
-import NavigationBottom from '../../common/NavigationBottom'
 import Intro from './Intro'
 import HowItWorks from './HowItWorks'
 import CollageMen from './Collage/Men'
@@ -28,37 +26,33 @@ export default class Home extends PureComponent {
 
   render() {
     return (
-      <View style={styles.container}>
+      <Body>
         <NavigationTop
           title="Crate"
           rightIcon={
             <ActionIcon
               icon={'info-outline'}
-              onPress={() => this.props.navigation.navigate(routes.info.name)}
+              onPress={() => this.props.navigation.navigate(routesHome.info.name)}
             />
           }
         />
 
-        <Body>
-          <ScrollView>
-            <View style={styles.bodyContainer}>
-              {/* Intro */}
-              <Intro getSubscription={this.getSubscription} />
+        <ScrollView style={styles.container}>
+          <View style={styles.bodyContainer}>
+            {/* Intro */}
+            <Intro getSubscription={this.getSubscription} />
 
-              {/* How it works */}
-              <HowItWorks />
+            {/* How it works */}
+            <HowItWorks />
 
-              {/* Collage Men */}
-              <CollageMen getSubscription={this.getSubscription} />
+            {/* Collage Men */}
+            <CollageMen getSubscription={this.getSubscription} />
 
-              {/* Collage Women */}
-              <CollageWomen getSubscription={this.getSubscription} />
-            </View>
-          </ScrollView>
-        </Body>
-
-        <NavigationBottom />
-      </View>
+            {/* Collage Women */}
+            <CollageWomen getSubscription={this.getSubscription} />
+          </View>
+        </ScrollView>
+      </Body>
     )
   }
 }

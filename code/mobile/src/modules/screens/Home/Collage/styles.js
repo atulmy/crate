@@ -27,11 +27,11 @@ export default StyleSheet.create({
   },
   imageLong: {
     width: deviceWidth / 2,
-    height: deviceHeight
+    height: deviceHeight / 1.4
   },
   imageSplit: {
     width: deviceWidth / 2,
-    height: deviceHeight / 2
+    height: deviceHeight / 2.8
   },
   titleContainer: {
     backgroundColor: grey,

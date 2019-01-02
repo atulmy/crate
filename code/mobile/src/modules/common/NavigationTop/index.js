@@ -1,7 +1,7 @@
 // Imports
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, View, Text } from 'react-native'
+import { View, Text } from 'react-native'
 import { withNavigation } from 'react-navigation'
 
 // UI Imports
@@ -19,7 +19,7 @@ class NavigationTop extends PureComponent {
           { leftIcon }
 
           {/* Title */}
-          { title ? <Text style={styles.title}>{ title }</Text> : null }
+          { title ? <Text style={styles.title}>{ title.toUpperCase() }</Text> : null }
         </View>
 
         {/* Right Icon */}

@@ -7,7 +7,6 @@ import styles from './styles'
 
 // App Imports
 import Body from '../../common/Body'
-import NavigationBottom from '../../common/NavigationBottom'
 import CrateList from '../../crate/List'
 
 // Component
@@ -18,8 +17,6 @@ class Crates extends PureComponent {
         <Body>
           <CrateList />
         </Body>
-
-        <NavigationBottom />
       </View>
     )
   }

@@ -41,7 +41,8 @@ export default TabBar
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'center'
   },
   tabItemTitle: {
     fontSize: font(18),

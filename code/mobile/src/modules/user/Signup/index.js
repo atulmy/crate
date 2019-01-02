@@ -23,9 +23,9 @@ class Signup extends PureComponent {
     this.state = {
       isLoading: false,
 
-      name: '',
-      email: '',
-      password: ''
+      name: 'abc',
+      email: 'abcxyz@aaa.co',
+      password: '123456'
     }
   }
 
@@ -76,16 +76,21 @@ class Signup extends PureComponent {
 
       try {
         const response = await register(user)
-        if (response.data.errors.length > 0) {
+
+        this.loading(false)
+
+        if (response.data.errors && response.data.errors.length > 0) {
           messageShow(response.data.errors[0].message)
         } else {
-          messageShow('Signed in successfully, Welcome back!')
+          messageShow('Registered successfully. Please login.')
+
           onSuccessRegister()
         }
       } catch (error) {
+        this.loading(false)
+
         messageShow('There was some error signing you up. Please try again.')
       } finally {
-        this.loading(false)
         setTimeout(() => {
           messageHide()
         }, config.message.error.timers.long)

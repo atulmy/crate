@@ -11,7 +11,8 @@ import Touchable from '../../../ui/touchable/Touchable'
 import styles from './styles'
 
 // App Imports
-import { routes, routeImage } from '../../../setup/routes'
+import { routeImage } from '../../../setup/routes'
+import { routesProduct } from '../../../setup/routes/product'
 import { preGet as preGetProduct } from '../api/actions'
 
 // Component
@@ -20,7 +21,7 @@ class Item extends PureComponent {
   navigate = (product) => {
     this.props.preGetProduct(product)
 
-    this.props.navigation.navigate(routes.product.name, { slug: product.slug })
+    this.props.navigation.navigate(routesProduct.product.name, { slug: product.slug })
   }
 
   render() {

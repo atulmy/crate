@@ -4,9 +4,9 @@ import { AsyncStorage } from 'react-native'
 import { Provider } from 'react-redux'
 
 // App Imports
-import { store } from './src/setup/store'
-import Routes from './src/setup/routes'
-import { setUser, setUserLocally } from './src/modules/user/api/actions'
+import { store } from './store'
+import Routes from './routes'
+import { setUser, setUserLocally } from '../modules/user/api/actions'
 
 // User Authentication
 (async () => {

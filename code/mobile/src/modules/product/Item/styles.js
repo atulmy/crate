@@ -8,7 +8,7 @@ import { deviceWidth, blockMargin, blockMarginHalf, blockPadding, font } from '.
 // Styles
 const containerWidth = deviceWidth - (blockMargin * 2)
 const containerHeight = deviceWidth + (blockMargin * 2) + 45
-const imageWidth = deviceWidth - blockMargin
+const imageWidth = deviceWidth - blockMargin * 2
 const imageHeight = deviceWidth - blockMargin
 
 export default StyleSheet.create({

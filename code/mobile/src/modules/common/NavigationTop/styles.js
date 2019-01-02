@@ -27,6 +27,6 @@ export default StyleSheet.create({
   },
   title: {
     color: white,
-    fontSize: font(18)
+    fontSize: font(16)
   }
 })

@@ -2,8 +2,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Text, View, Image, ScrollView } from 'react-native'
-import { withNavigation } from 'react-navigation'
+import { Text, View, Image } from 'react-native'
+import { ScrollView, withNavigation } from 'react-navigation'
 
 // UI Imports
 import ActionIcon from '../../../ui/icon/ActionIcon'
@@ -14,7 +14,6 @@ import { routes, routeImage } from '../../../setup/routes'
 import { get as getProduct } from '../api/actions'
 import NavigationTop from '../../common/NavigationTop'
 import Body from '../../common/Body'
-import NavigationBottom from '../../common/NavigationBottom'
 import Loading from '../../common/Loading'
 import Related from '../Related'
 
@@ -36,7 +35,7 @@ class Detail extends PureComponent {
     const { id, image, name, description, createdAt } = item
 
     return (
-      <View style={styles.container}>
+      <Body style={styles.container}>
         {/* Navigation Top */}
         <NavigationTop
           title='Product'
@@ -48,47 +47,41 @@ class Detail extends PureComponent {
           }
         />
 
-        {/* Body */}
-        <Body>
-          <ScrollView>
-            {/* Image */}
-            <View style={{ flex: 1 }}>
-              <Image
-                source={{ uri: routeImage + image }}
-                resizeMode={'cover'}
-                style={styles.image}
-              />
-            </View>
+        <ScrollView>
+          {/* Image */}
+          <View style={{ flex: 1 }}>
+            <Image
+              source={{ uri: routeImage + image }}
+              resizeMode={'cover'}
+              style={styles.image}
+            />
+          </View>
 
-            {/* Product details */}
-            <View style={styles.textContainer}>
-              {
-                isLoading
-                  ? <Loading />
-                  : <View>
-                      <Text style={styles.title}>
-                        { name }
-                      </Text>
+          {/* Product details */}
+          <View style={styles.textContainer}>
+            {
+              isLoading
+                ? <Loading />
+                : <View>
+                    <Text style={styles.title}>
+                      { name }
+                    </Text>
 
-                      <Text style={styles.description}>
-                        { description }
-                      </Text>
+                    <Text style={styles.description}>
+                      { description }
+                    </Text>
 
-                      <Text style={styles.date}>
-                        Launched on { new Date(createdAt).toDateString() }
-                      </Text>
-                    </View>
-              }
-            </View>
+                    <Text style={styles.date}>
+                      Launched on { new Date(createdAt).toDateString() }
+                    </Text>
+                  </View>
+            }
+          </View>
 
-            {/* Related products */}
-            <Related productId={id} />
-          </ScrollView>
-        </Body>
-
-        {/* Navigation Bottom */}
-        <NavigationBottom />
-      </View>
+          {/* Related products */}
+          <Related productId={id} />
+        </ScrollView>
+      </Body>
     )
   }
 }

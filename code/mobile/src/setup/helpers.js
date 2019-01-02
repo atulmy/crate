@@ -51,6 +51,14 @@ export function slug(text) {
     .replace(/-+$/, '')            // Trim - from end of text
 }
 
+// Routing
+export function getRoutesForStack(routes) {
+  return Object.values(routes).reduce((result, route) => {
+    result[route.name] = route
+    return result
+  }, {})
+}
+
 // GraphQL Query Builder
 export function queryBuilder(options) {
   options.type = options.type ? options.type : 'query'

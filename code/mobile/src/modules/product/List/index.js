@@ -2,15 +2,14 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { View, ScrollView } from 'react-native'
+import { View } from 'react-native'
+import { ScrollView } from 'react-navigation'
 
 // UI Imports
 import styles from './styles'
 
 // App Imports
 import { getList as getProductList } from '../../product/api/actions'
-import Body from '../../common/Body'
-import NavigationBottom from '../../common/NavigationBottom'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import ProductItem from '../../product/Item'

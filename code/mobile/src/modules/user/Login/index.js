@@ -21,17 +21,9 @@ class Login extends PureComponent {
     super(props)
 
     this.state = {
-      isLoading: false,
-
-      email: '',
-      password: ''
+      email: 'admin@crate.com',
+      password: '123456'
     }
-  }
-
-  loading = isLoading => {
-    this.setState({
-      isLoading
-    })
   }
 
   onSubmitRegister = async () => {
@@ -62,20 +54,12 @@ class Login extends PureComponent {
 
       return false
     } else {
-      this.loading(true)
-
-      messageShow('Signing you in, please wait...')
-
       // API call
       try {
         await login(user)
-        this.props.user.error.length > 0
-          ? messageShow(this.props.user.error)
-          : messageShow('Signed in successfully, Welcome back!')
       } catch (error) {
         messageShow(this.props.user.error)
       } finally {
-        this.loading(false)
         setTimeout(() => {
           messageHide()
         }, config.message.error.timers.long)
@@ -84,7 +68,8 @@ class Login extends PureComponent {
   }
 
   render() {
-    const { isLoading, email, password } = this.state
+    const { email, password } = this.state
+    const { user: { isLoading } } = this.props
 
     return (
       <View>

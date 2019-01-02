@@ -1,22 +1,29 @@
 // Imports
-import React, { PureComponent } from 'react'
-import { View } from 'react-native'
+import React from 'react'
+import { View, StatusBar } from 'react-native'
+import { SafeAreaView } from 'react-navigation'
 
 // UI Imports
+import { white } from '../../../ui/common/colors'
 import styles from './styles'
 
 // App Imports
 import Message from '../Message'
 
 // Component
-export default class Body extends PureComponent {
-  render() {
-    return (
-      <View style={styles.container}>
-        { this.props.children }
+const Body = ({ children }) => (
+  <SafeAreaView style={styles.container}>
+    <StatusBar
+      barStyle={'light-content'}
+      backgroundColor={white}
+    />
 
-        <Message />
-      </View>
-    )
-  }
-}
+    <View style={styles.content}>
+      { children }
+    </View>
+
+    <Message />
+  </SafeAreaView>
+)
+
+export default Body

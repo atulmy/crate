@@ -5,6 +5,7 @@ import { AsyncStorage } from 'react-native'
 // App Imports
 import { routeApi } from '../../../setup/routes'
 import { queryBuilder } from '../../../setup/helpers'
+import { MESSAGE_SHOW } from '../../common/api/actions'
 
 // Actions Types
 export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
@@ -34,6 +35,11 @@ export function login(userCredentials, isLoading = true) {
       isLoading
     })
 
+    dispatch({
+      type: MESSAGE_SHOW,
+      message: 'Signing you in, please wait...'
+    })
+
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'userLogin',
@@ -41,10 +47,10 @@ export function login(userCredentials, isLoading = true) {
       fields: ['user {name, email, role}', 'token']
     }))
       .then(response => {
-        let error = ''
+        let message = 'Please try again.'
 
         if (response.data.errors && response.data.errors.length > 0) {
-          error = response.data.errors[0].message
+          message = response.data.errors[0].message
         } else if (response.data.data.userLogin.token !== '') {
           const token = response.data.data.userLogin.token
           const user = response.data.data.userLogin.user
@@ -52,11 +58,18 @@ export function login(userCredentials, isLoading = true) {
           dispatch(setUser(token, user))
 
           setUserLocally(token, user)
+
+          message = 'Logged in successfully.'
         }
 
         dispatch({
+          type: MESSAGE_SHOW,
+          message
+        })
+
+        dispatch({
           type: LOGIN_RESPONSE,
-          error
+          error: message
         })
       })
       .catch(error => {
