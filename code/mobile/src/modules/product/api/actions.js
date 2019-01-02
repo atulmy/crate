@@ -1,9 +1,9 @@
 // Imports
 import { AsyncStorage } from 'react-native'
 import axios from 'axios'
+import queryBuilder from 'gql-query-builder'
 
 // App Imports
-import { queryBuilder } from '../../../setup/helpers'
 import { routeApi } from '../../../setup/routes'
 
 // Actions Types

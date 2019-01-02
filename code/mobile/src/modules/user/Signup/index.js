@@ -23,9 +23,9 @@ class Signup extends PureComponent {
     this.state = {
       isLoading: false,
 
-      name: 'abc',
-      email: 'abcxyz@aaa.co',
-      password: '123456'
+      name: '',
+      email: '',
+      password: ''
     }
   }
 
