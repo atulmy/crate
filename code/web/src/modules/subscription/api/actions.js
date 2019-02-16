@@ -102,7 +102,7 @@ export function get(slug, isLoading = true) {
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'subscription',
-      data: { slug },
+      variables: { slug },
       fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt']
     }))
       .then(response => {

@@ -27,7 +27,7 @@ export function getList(orderBy = 'DESC', isLoading = true, forceRefresh = false
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'crates',
-      data: { orderBy },
+      variables: { orderBy },
       fields: ['id', 'name', 'description', 'createdAt', 'updatedAt']
     }))
       .then(response => {
@@ -63,7 +63,7 @@ export function get(slug, isLoading = true) {
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'crate',
-      data: { slug },
+      variables: { slug },
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
     }))
       .then(response => {
@@ -90,7 +90,7 @@ export function getById(crateId) {
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'crateById',
-      data: { crateId },
+      variables: { crateId },
       fields: ['id', 'name', 'description']
     }))
   }
@@ -124,7 +124,7 @@ export function update(crate) {
     return axios.post(routeApi, queryBuilder({
       type: 'mutation',
       operation: 'crateUpdate',
-      data: crate,
+      variables: crate,
       fields: ['id']
     }))
   }

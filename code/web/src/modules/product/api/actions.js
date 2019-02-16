@@ -70,7 +70,7 @@ export function get(slug, isLoading = true) {
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'product',
-      data: { slug },
+      variables: { slug },
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
     }))
       .then(response => {
@@ -113,7 +113,7 @@ export function getById(productId) {
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'productById',
-      data: { productId },
+      variables: { productId },
       fields: ['id', 'name', 'slug', 'description', 'image', 'type', 'gender']
     }))
   }
@@ -134,7 +134,7 @@ export function getRelatedList(productId, isLoading = true) {
       return axios.post(routeApi, queryBuilder({
         type: 'query',
         operation: 'productsRelated',
-        data: { productId },
+        variables: { productId },
         fields: ['id', 'name', 'slug', 'description', 'image']
       }))
         .then(response => {
@@ -181,7 +181,7 @@ export function create(product) {
     return axios.post(routeApi, queryBuilder({
       type: 'mutation',
       operation: 'productCreate',
-      data: product,
+      variables: product,
       fields: ['id']
     }))
   }
@@ -193,7 +193,7 @@ export function update(product) {
     return axios.post(routeApi, queryBuilder({
       type: 'mutation',
       operation: 'productUpdate',
-      data: product,
+      variables: product,
       fields: ['id']
     }))
   }
