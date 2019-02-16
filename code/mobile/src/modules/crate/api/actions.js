@@ -47,7 +47,7 @@ export function getList(orderBy = 'DESC', isLoading = true, forceRefresh = false
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'crates',
-      data: { orderBy },
+      variables: { orderBy },
       fields: ['id', 'name', 'description', 'createdAt', 'updatedAt']
     }))
       .then(response => {

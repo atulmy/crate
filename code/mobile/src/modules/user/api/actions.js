@@ -21,7 +21,7 @@ export function register(userDetails) {
     return axios.post(routeApi, queryBuilder({
       type: 'mutation',
       operation: 'userSignup',
-      data: userDetails,
+      variables: userDetails,
       fields: ['id', 'name', 'email']
     }))
   }
@@ -43,7 +43,7 @@ export function login(userCredentials, isLoading = true) {
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'userLogin',
-      data: userCredentials,
+      variables: userCredentials,
       fields: ['user {name, email, role}', 'token']
     }))
       .then(response => {

@@ -75,24 +75,24 @@ export function getListByUser(userEmail, isLoading = true) {
 }
 
 // Create subscription
-export function create(data) {
+export function create(variables) {
   return dispatch => {
     return axios.post(routeApi, queryBuilder({
       type: 'mutation',
       operation: 'subscriptionCreate',
-      data,
+      variables,
       fields: ['id']
     }))
   }
 }
 
 // Remove subscription
-export function remove(data) {
+export function remove(variables) {
   return dispatch => {
     return axios.post(routeApi, queryBuilder({
       type: 'mutation',
       operation: 'subscriptionRemove',
-      data,
+      variables,
       fields: ['id']
     }))
   }

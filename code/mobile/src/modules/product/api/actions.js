@@ -118,7 +118,7 @@ export function get(slug, isLoading = true) {
     return axios.post(routeApi, queryBuilder({
       type: 'query',
       operation: 'product',
-      data: { slug },
+      variables: { slug },
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
     }))
       .then(response => {
@@ -182,7 +182,7 @@ export function getRelatedList(productId, isLoading = true) {
       return axios.post(routeApi, queryBuilder({
         type: 'query',
         operation: 'productsRelated',
-        data: { productId },
+        variables: { productId },
         fields: ['id', 'name', 'slug', 'description', 'image']
       }))
         .then(response => {
