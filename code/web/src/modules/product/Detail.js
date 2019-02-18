@@ -84,7 +84,7 @@ class Detail extends PureComponent {
                         <H4 style={{ marginTop: '1em' }}>{item.description}</H4>
 
                         <p style={{ marginTop: '0.5em', color: grey2 }}>
-                          Launched on { new Date(item.createdAt).toDateString() }
+                          Launched on { new Date(parseInt(item.createdAt)).toDateString() }
                         </p>
                       </GridCell>
                     </Grid>

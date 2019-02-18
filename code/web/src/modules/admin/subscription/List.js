@@ -74,7 +74,7 @@ class List extends PureComponent {
                             </td>
 
                             <td>
-                              { new Date(createdAt).toDateString() }
+                              { new Date(parseInt(createdAt)).toDateString() }
                             </td>
                           </tr>
                         ))

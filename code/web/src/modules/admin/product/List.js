@@ -136,11 +136,11 @@ class List extends PureComponent {
                             </td>
 
                             <td>
-                              { new Date(createdAt).toDateString() }
+                              { new Date(parseInt(createdAt)).toDateString() }
                             </td>
 
                             <td>
-                              { new Date(updatedAt).toDateString() }
+                              { new Date(parseInt(updatedAt)).toDateString() }
                             </td>
 
                             <td style={{ textAlign: 'center' }}>

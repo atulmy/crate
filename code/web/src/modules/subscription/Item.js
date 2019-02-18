@@ -89,7 +89,7 @@ class Item extends PureComponent {
           </p>
 
           <p style={{ color: grey2, marginTop: '1em', fontSize: '0.8em', textAlign: 'center' }}>
-            Subscribed on { new Date(createdAt).toDateString() }
+            Subscribed on { new Date(parseInt(createdAt)).toDateString() }
           </p>
         </div>
       </Card>
