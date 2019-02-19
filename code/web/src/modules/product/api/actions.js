@@ -200,12 +200,12 @@ export function update(product) {
 }
 
 // Remove product
-export function remove(data) {
+export function remove(variables) {
   return dispatch => {
     return axios.post(routeApi, queryBuilder({
       type: 'mutation',
       operation: 'productRemove',
-      data,
+      variables,
       fields: ['id']
     }))
   }

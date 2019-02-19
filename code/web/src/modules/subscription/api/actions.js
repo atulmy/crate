@@ -124,25 +124,24 @@ export function get(slug, isLoading = true) {
 }
 
 // Create subscription
-export function create(data) {
-  console.log(data)
+export function create(variables) {
   return dispatch => {
     return axios.post(routeApi, queryBuilder({
       type: 'mutation',
       operation: 'subscriptionCreate',
-      data,
+      variables,
       fields: ['id']
     }))
   }
 }
 
 // Remove subscription
-export function remove(data) {
+export function remove(variables) {
   return dispatch => {
     return axios.post(routeApi, queryBuilder({
       type: 'mutation',
       operation: 'subscriptionRemove',
-      data,
+      variables,
       fields: ['id']
     }))
   }

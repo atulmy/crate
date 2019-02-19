@@ -107,12 +107,12 @@ export function createOrUpdate(crate) {
 }
 
 // Create crate
-export function create(data) {
+export function create(variables) {
   return dispatch => {
     return axios.post(routeApi, queryBuilder({
       type: 'mutation',
       operation: 'crateCreate',
-      data,
+      variables,
       fields: ['id']
     }))
   }
@@ -131,12 +131,12 @@ export function update(crate) {
 }
 
 // Remove crate
-export function remove(data) {
+export function remove(variables) {
   return dispatch => {
     return axios.post(routeApi, queryBuilder({
       type: 'mutation',
       operation: 'crateRemove',
-      data,
+      variables,
       fields: ['id']
     }))
   }
