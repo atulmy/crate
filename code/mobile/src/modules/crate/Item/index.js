@@ -48,10 +48,11 @@ class Item extends PureComponent {
 
       createSubscription({crateId: crate.id})
         .then(response => {
+          this.loading(false)
+          
           if (response.data.errors && response.data.errors.length > 0) {
             messageShow(response.data.errors[0].message)
 
-            this.loading(false)
           } else {
             messageShow('Subscribed successfully.')
 

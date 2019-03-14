@@ -1,7 +1,7 @@
 // Imports
 import { AsyncStorage } from 'react-native'
 import axios from 'axios'
-import queryBuilder from 'gql-query-builder'
+import { query } from 'gql-query-builder'
 
 // App Imports
 import { routeApi } from '../../../setup/routes'
@@ -52,8 +52,7 @@ export function getList(isLoading = true) {
       })
     }
 
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
+    return axios.post(routeApi, query({
       operation: 'products',
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
     }))
@@ -115,8 +114,7 @@ export function get(slug, isLoading = true) {
     }
 
     // API call
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
+    return axios.post(routeApi, query({
       operation: 'product',
       variables: { slug },
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
@@ -179,8 +177,7 @@ export function getRelatedList(productId, isLoading = true) {
         isLoading
       })
 
-      return axios.post(routeApi, queryBuilder({
-        type: 'query',
+      return axios.post(routeApi, query({
         operation: 'productsRelated',
         variables: { productId },
         fields: ['id', 'name', 'slug', 'description', 'image']

@@ -1,6 +1,6 @@
 // Imports
 import axios from 'axios'
-import queryBuilder from 'gql-query-builder'
+import { query, mutation } from 'gql-query-builder'
 
 // App Imports
 import { routeApi } from '../../../setup/routes'
@@ -16,7 +16,7 @@ export const CRATES_GET_FAILURE = 'CRATES/GET_FAILURE'
 // Actions
 
 // Get list of crates
-export function getList(orderBy = 'DESC', isLoading = true, forceRefresh = false) {
+export function getList(orderBy = 'DESC', isLoading = true) {
   return dispatch => {
     dispatch({
       type: CRATES_GET_LIST_REQUEST,
@@ -24,8 +24,7 @@ export function getList(orderBy = 'DESC', isLoading = true, forceRefresh = false
       isLoading
     })
 
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
+    return axios.post(routeApi, query({
       operation: 'crates',
       variables: { orderBy },
       fields: ['id', 'name', 'description', 'createdAt', 'updatedAt']
@@ -60,8 +59,7 @@ export function get(slug, isLoading = true) {
       isLoading
     })
 
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
+    return axios.post(routeApi, query({
       operation: 'crate',
       variables: { slug },
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
@@ -87,8 +85,7 @@ export function get(slug, isLoading = true) {
 // Get single crate by Id
 export function getById(crateId) {
   return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
+    return axios.post(routeApi, query({
       operation: 'crateById',
       variables: { crateId },
       fields: ['id', 'name', 'description']
@@ -109,8 +106,7 @@ export function createOrUpdate(crate) {
 // Create crate
 export function create(variables) {
   return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'mutation',
+    return axios.post(routeApi, mutation({
       operation: 'crateCreate',
       variables,
       fields: ['id']
@@ -121,8 +117,7 @@ export function create(variables) {
 // Update crate
 export function update(crate) {
   return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'mutation',
+    return axios.post(routeApi, mutation({
       operation: 'crateUpdate',
       variables: crate,
       fields: ['id']
@@ -133,8 +128,7 @@ export function update(crate) {
 // Remove crate
 export function remove(variables) {
   return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'mutation',
+    return axios.post(routeApi, mutation({
       operation: 'crateRemove',
       variables,
       fields: ['id']

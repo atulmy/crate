@@ -1,7 +1,7 @@
 // Imports
 import { AsyncStorage } from 'react-native'
 import axios from 'axios'
-import queryBuilder from 'gql-query-builder'
+import { query, mutation } from 'gql-query-builder'
 
 // App Imports
 import { routeApi } from '../../../setup/routes'
@@ -45,8 +45,7 @@ export function getListByUser(userEmail, isLoading = true) {
     }
 
     // API call
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
+    return axios.post(routeApi, query({
       operation: 'subscriptionsByUser',
       fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt']
     }))
@@ -77,8 +76,7 @@ export function getListByUser(userEmail, isLoading = true) {
 // Create subscription
 export function create(variables) {
   return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'mutation',
+    return axios.post(routeApi, mutation({
       operation: 'subscriptionCreate',
       variables,
       fields: ['id']
@@ -89,8 +87,7 @@ export function create(variables) {
 // Remove subscription
 export function remove(variables) {
   return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'mutation',
+    return axios.post(routeApi, mutation({
       operation: 'subscriptionRemove',
       variables,
       fields: ['id']

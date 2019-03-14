@@ -1,7 +1,7 @@
 // Imports
 import { AsyncStorage } from 'react-native'
 import axios from 'axios'
-import queryBuilder from 'gql-query-builder'
+import { query } from 'gql-query-builder'
 
 // App Imports
 import { routeApi } from '../../../setup/routes'
@@ -44,8 +44,7 @@ export function getList(orderBy = 'DESC', isLoading = true, forceRefresh = false
     }
 
     // API call
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
+    return axios.post(routeApi, query({
       operation: 'crates',
       variables: { orderBy },
       fields: ['id', 'name', 'description', 'createdAt', 'updatedAt']

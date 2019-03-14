@@ -1,6 +1,6 @@
 // Imports
 import axios from 'axios'
-import queryBuilder from 'gql-query-builder'
+import { query, mutation } from 'gql-query-builder'
 import cookie from 'js-cookie'
 
 // App Imports
@@ -33,8 +33,7 @@ export function login(userCredentials, isLoading = true) {
       isLoading
     })
 
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
+    return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
       fields: ['user {name, email, role}', 'token']
@@ -80,8 +79,7 @@ export function loginSetUserLocalStorageAndCookie(token, user) {
 // Register a user
 export function register(userDetails) {
   return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'mutation',
+    return axios.post(routeApi, mutation({
       operation: 'userSignup',
       variables: userDetails,
       fields: ['id', 'name', 'email']
@@ -113,8 +111,7 @@ export function logoutUnsetUserLocalStorageAndCookie() {
 // Get user gender
 export function getGenders() {
   return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
+    return axios.post(routeApi, query({
       operation: 'userGenders',
       fields: ['id', 'name']
     }))

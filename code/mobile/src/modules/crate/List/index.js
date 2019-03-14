@@ -10,6 +10,7 @@ import styles from './styles'
 
 // App Imports
 import { getList as getCratesList } from '../../crate/api/actions'
+import { getListByUser as getSubscriptionListByUser } from '../../subscription/api/actions'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import CrateItem from '../../crate/Item'
@@ -23,6 +24,8 @@ class List extends PureComponent {
   }
 
   onSuccessSubscription = () => {
+    this.props.getSubscriptionListByUser(this.props.user.details.email)
+
     this.props.navigation.navigate(routes.account.name)
   }
 
@@ -56,7 +59,8 @@ class List extends PureComponent {
 List.propTypes = {
   crates: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-  getCratesList: PropTypes.func.isRequired
+  getCratesList: PropTypes.func.isRequired,
+  getSubscriptionListByUser: PropTypes.func.isRequired,
 }
 
 // Component State
@@ -67,4 +71,4 @@ function listState(state) {
   }
 }
 
-export default connect(listState, { getCratesList })(withNavigation(List))
+export default connect(listState, { getCratesList, getSubscriptionListByUser })(withNavigation(List))

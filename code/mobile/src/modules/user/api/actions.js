@@ -1,7 +1,7 @@
 // Imports
 import axios from 'axios'
 import { AsyncStorage } from 'react-native'
-import queryBuilder from 'gql-query-builder'
+import { query, mutation } from 'gql-query-builder'
 
 // App Imports
 import { routeApi } from '../../../setup/routes'
@@ -18,8 +18,7 @@ export const LOGOUT = 'AUTH/LOGOUT'
 // Register a user
 export function register(userDetails) {
   return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'mutation',
+    return axios.post(routeApi, mutation({
       operation: 'userSignup',
       variables: userDetails,
       fields: ['id', 'name', 'email']
@@ -40,8 +39,7 @@ export function login(userCredentials, isLoading = true) {
       message: 'Signing you in, please wait...'
     })
 
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
+    return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
       fields: ['user {name, email, role}', 'token']

@@ -2402,10 +2402,10 @@ globals@^9.18.0:
   resolved "https://registry.yarnpkg.com/globals/-/globals-9.18.0.tgz#aa3896b3e69b487f17e31ed2143d69a8e30c2d8a"
   integrity sha512-S0nG3CLEQiY/ILxqtztTWH/3iRRdyBLw6KMDxnKMchrtbj2OFmehVh0WUCfW3DUrIgx/qFrJPICrq4Z4sTR9UQ==
 
-gql-query-builder@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/gql-query-builder/-/gql-query-builder-2.0.2.tgz#83960d1862f81ee7f75cf649aba21b807a259d45"
-  integrity sha512-fI/n4jIGiAZsOsWXKw7Fgg13U8vOwyzxp8KRCwpZL4Fa3hwX1SVjLcgP6uB9HlIDCKnzvxB5XY7S1m2G4K2nJA==
+gql-query-builder@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/gql-query-builder/-/gql-query-builder-3.0.2.tgz#4f61b4c101ceaf8a1ff49ab340c9d2ffbb53d121"
+  integrity sha512-Dg7dlQSSmwpQzJpCSghab4JCOSxqYnUzjm7aggdr0keUt3q/l3AMCfEQnoUWZpQjhVbUUny5PqyV8vjTDiQK9w==
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.3, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "4.1.15"

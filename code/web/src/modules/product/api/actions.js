@@ -1,6 +1,6 @@
 // Imports
 import axios from 'axios'
-import queryBuilder from 'gql-query-builder'
+import { query, mutation } from 'gql-query-builder'
 
 // App Imports
 import { routeApi } from '../../../setup/routes'
@@ -28,8 +28,7 @@ export function getList(isLoading = true, forceRefresh = false) {
       isLoading
     })
 
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
+    return axios.post(routeApi, query({
       operation: 'products',
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
     }))
@@ -67,8 +66,7 @@ export function get(slug, isLoading = true) {
       isLoading
     })
 
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
+    return axios.post(routeApi, query({
       operation: 'product',
       variables: { slug },
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
@@ -110,8 +108,7 @@ export function get(slug, isLoading = true) {
 // Get single product by Id
 export function getById(productId) {
   return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
+    return axios.post(routeApi, query({
       operation: 'productById',
       variables: { productId },
       fields: ['id', 'name', 'slug', 'description', 'image', 'type', 'gender']
@@ -131,8 +128,7 @@ export function getRelatedList(productId, isLoading = true) {
         isLoading
       })
 
-      return axios.post(routeApi, queryBuilder({
-        type: 'query',
+      return axios.post(routeApi, query({
         operation: 'productsRelated',
         variables: { productId },
         fields: ['id', 'name', 'slug', 'description', 'image']
@@ -178,8 +174,7 @@ export function createOrUpdate(product) {
 // Create product
 export function create(product) {
   return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'mutation',
+    return axios.post(routeApi, mutation({
       operation: 'productCreate',
       variables: product,
       fields: ['id']
@@ -190,8 +185,7 @@ export function create(product) {
 // Update product
 export function update(product) {
   return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'mutation',
+    return axios.post(routeApi, mutation({
       operation: 'productUpdate',
       variables: product,
       fields: ['id']
@@ -202,8 +196,7 @@ export function update(product) {
 // Remove product
 export function remove(variables) {
   return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'mutation',
+    return axios.post(routeApi, mutation({
       operation: 'productRemove',
       variables,
       fields: ['id']
@@ -214,8 +207,7 @@ export function remove(variables) {
 // Get product types
 export function getTypes() {
   return dispatch => {
-    return axios.post(routeApi, queryBuilder({
-      type: 'query',
+    return axios.post(routeApi, query({
       operation: 'productTypes',
       fields: ['id', 'name']
     }))
