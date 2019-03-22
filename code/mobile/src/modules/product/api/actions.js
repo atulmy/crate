@@ -1,5 +1,5 @@
 // Imports
-import { AsyncStorage } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 import axios from 'axios'
 import { query } from 'gql-query-builder'
 

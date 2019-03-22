@@ -1,6 +1,6 @@
 // Imports
 import React from 'react'
-import { AsyncStorage } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 import { Provider } from 'react-redux'
 
 // App Imports
@@ -12,6 +12,7 @@ import { setUser, setUserLocally } from '../modules/user/api/actions'
 (async () => {
   try {
     const token = await AsyncStorage.getItem('token')
+    
     if (token && token !== 'undefined' && token !== '') {
       const user = JSON.parse(await AsyncStorage.getItem('user'))
       if (user) {

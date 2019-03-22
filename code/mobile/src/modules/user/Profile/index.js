@@ -2,7 +2,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { View, Text, AsyncStorage } from 'react-native'
+import { View, Text } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 
 // UI Imports
 import Button from '../../../ui/button/Button'
