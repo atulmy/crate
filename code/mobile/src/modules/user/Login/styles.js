@@ -11,13 +11,8 @@ export default StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
-    flexDirection: 'row'
-  },
-  buttonContainerLeft: {
-    flex: 1
-  },
-  buttonContainerRight: {
-    flex: 1,
-    marginLeft: blockMargin
+    flexDirection: 'row',
+    marginTop: blockMargin * 2,
+    justifyContent: 'flex-end'
   }
 })

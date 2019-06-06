@@ -101,6 +101,7 @@ Click on image to view fullscreen and zoom
   - Modify `/api/.env` for PORT (optional)
   - Modify `/web/.env` for PORT / API URL (optional)
   - Modify `/mobile/src/setup/config.json` for API URL (tip: use `ifconfig` to get your local IP address)
+  - Add your local IP address in: `code/mobile/android/app/src/debug/res/xml/react_native_config.xml` for Cleartext Traffic (API level 28+). Read more [here](https://facebook.github.io/react-native/docs/integration-with-existing-apps#network-security-config-api-level-28).
 - Setup
   - API: Install packages and database setup (migrations and seed) `cd api` and `npm run setup`
   - Webapp: Install packages `cd web` and `npm install`

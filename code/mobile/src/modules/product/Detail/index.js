@@ -21,11 +21,11 @@ import Related from '../Related'
 class Detail extends PureComponent {
 
   componentDidMount() {
-    const { navigation, getProduct } = this.props
+    const { navigation, dispatch } = this.props
     const slug = navigation.state.params.slug
 
     if(slug && slug !== '') {
-      getProduct(slug)
+      dispatch(getProduct(slug))
     }
   }
 
@@ -88,8 +88,7 @@ class Detail extends PureComponent {
 
 // Component Properties
 Detail.propTypes = {
-  product: PropTypes.object.isRequired,
-  getProduct: PropTypes.func.isRequired
+  product: PropTypes.object.isRequired
 }
 
 // Component State
@@ -99,4 +98,4 @@ function detailState(state) {
   }
 }
 
-export default connect(detailState, { getProduct })(withNavigation(Detail))
+export default connect(detailState)(withNavigation(Detail))

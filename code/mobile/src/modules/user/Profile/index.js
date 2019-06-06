@@ -16,37 +16,39 @@ import { messageShow, messageHide } from '../../common/api/actions'
 
 // Component
 class Profile extends PureComponent {
+
   onLogout = () => {
-    const { logout, messageShow, messageHide } = this.props
+    const { dispatch } = this.props
 
-    logout()
+    dispatch(logout())
 
-    messageShow('Signed out successfully.')
+    dispatch(messageShow('Signed out successfully.'))
 
     setTimeout(() => {
-      messageHide()
+      dispatch(messageHide())
     }, config.message.error.timers.short)
   }
 
   clearDataCache = async () => {
-    const { messageShow, messageHide } = this.props
+    const { dispatch } = this.props
 
     // Get all keys
     try {
       const keys = await AsyncStorage.getAllKeys()
+
       // Clear keys except for user authentication keys
       const keysToClear = keys.filter(key => key !== 'token' && key !== 'user')
       if (keysToClear.length > 0) {
         await AsyncStorage.multiRemove(keysToClear)
-        messageShow('Data cache cleared successfully.')
+        dispatch(messageShow('Data cache cleared successfully.'))
       } else {
-        messageShow('No cached data to clear.')
+        dispatch(messageShow('No cached data to clear.'))
       }
     } catch(e) {
-      messageShow('There was some error clearing the cache. Please try again.')
+      dispatch(messageShow('There was some error clearing the cache. Please try again.'))
     } finally {
       setTimeout(() => {
-        messageHide()
+        dispatch(messageHide())
       }, config.message.error.timers.default)
     }
   }
@@ -77,10 +79,7 @@ class Profile extends PureComponent {
 
 // Component Properties
 Profile.propTypes = {
-  user: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired,
-  messageHide: PropTypes.func.isRequired
+  user: PropTypes.object.isRequired
 }
 
 // Component State
@@ -90,4 +89,4 @@ function profileState(state) {
   }
 }
 
-export default connect(profileState, { logout, messageShow, messageHide })(Profile)
+export default connect(profileState)(Profile)

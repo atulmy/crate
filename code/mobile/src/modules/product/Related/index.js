@@ -8,7 +8,7 @@ import { Text, View, ScrollView } from 'react-native'
 import styles from './styles'
 
 // App Imports
-import { getRelatedList as getProductRelatedList } from '../../product/api/actions'
+import { getRelatedList } from '../../product/api/actions'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import ProductItem from '../../product/Item'
@@ -17,9 +17,9 @@ import ProductItem from '../../product/Item'
 class Related extends PureComponent {
 
   componentDidMount() {
-    const { getProductRelatedList, productId } = this.props
+    const { productId, dispatch } = this.props
 
-    getProductRelatedList(productId)
+    dispatch(getRelatedList(productId))
   }
 
   render() {
@@ -55,8 +55,7 @@ class Related extends PureComponent {
 // Component Properties
 Related.propTypes = {
   productId: PropTypes.number.isRequired,
-  productsRelated: PropTypes.object.isRequired,
-  getProductRelatedList: PropTypes.func.isRequired
+  productsRelated: PropTypes.object.isRequired
 }
 
 // Component State
@@ -66,4 +65,4 @@ function relatedState(state) {
   }
 }
 
-export default connect(relatedState, { getProductRelatedList })(Related)
+export default connect(relatedState)(Related)

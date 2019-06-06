@@ -14,7 +14,7 @@ import styles from './styles'
 
 // App Imports
 import config from '../../../setup/config'
-import { remove as removeSubscription } from '../../subscription/api/actions'
+import { remove } from '../../subscription/api/actions'
 import { messageShow, messageHide } from '../../common/api/actions'
 
 // Component
@@ -47,32 +47,32 @@ class Item extends PureComponent {
   }
 
   unsubscribe = () => {
-    const { subscription, onSuccessUnsubscribe, removeSubscription, messageShow, messageHide } = this.props
+    const { subscription, onSuccessUnsubscribe, dispatch } = this.props
 
     this.loading(true)
 
-    messageShow('Unsubscribing, please wait...')
+    dispatch(messageShow('Unsubscribing, please wait...'))
 
-    removeSubscription({ id: subscription.id })
+    dispatch(remove({ id: subscription.id }))
       .then(response => {
         if (response.data.errors && response.data.errors.length > 0) {
-          messageShow(response.data.errors[0].message)
+          dispatch(messageShow(response.data.errors[0].message))
 
           this.loading(false)
         } else {
-          messageShow('Unsubscribed successfully.')
+          dispatch(messageShow('Unsubscribed successfully.'))
 
           onSuccessUnsubscribe()
         }
       })
       .catch(() => {
-        messageShow('There was some error unsubscribing. Please try again.')
+        dispatch(messageShow('There was some error unsubscribing. Please try again.'))
 
         this.loading(false)
       })
       .then(() => {
         setTimeout(() => {
-          messageHide()
+          dispatch(messageHide())
         }, config.message.error.timers.long)
       })
   }
@@ -120,11 +120,7 @@ class Item extends PureComponent {
 
 // Component Properties
 Item.propTypes = {
-  subscription: PropTypes.object.isRequired,
-  onSuccessUnsubscribe: PropTypes.func.isRequired,
-  removeSubscription: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired,
-  messageHide: PropTypes.func.isRequired
+  subscription: PropTypes.object.isRequired
 }
 
-export default connect(null, { removeSubscription, messageShow, messageHide })(Item)
+export default connect()(Item)

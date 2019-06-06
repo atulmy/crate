@@ -9,7 +9,7 @@ import { ScrollView } from 'react-navigation'
 import styles from './styles'
 
 // App Imports
-import { getList as getProductList } from '../../product/api/actions'
+import { getList } from '../../product/api/actions'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import ProductItem from '../../product/Item'
@@ -18,7 +18,9 @@ import ProductItem from '../../product/Item'
 class List extends PureComponent {
 
   componentDidMount() {
-    this.props.getProductList()
+    const { dispatch } = this.props
+
+    dispatch(getList())
   }
 
   render() {
@@ -48,8 +50,7 @@ class List extends PureComponent {
 
 // Component Properties
 List.propTypes = {
-  products: PropTypes.object.isRequired,
-  getProductList: PropTypes.func.isRequired
+  products: PropTypes.object.isRequired
 }
 
 // Component State
@@ -59,4 +60,4 @@ function listState(state) {
   }
 }
 
-export default connect(listState, { getProductList })(List)
+export default connect(listState)(List)

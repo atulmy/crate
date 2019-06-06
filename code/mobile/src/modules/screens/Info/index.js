@@ -14,11 +14,13 @@ import Body from '../../common/Body'
 // Component
 export default class Info extends PureComponent {
 
-  github = () => {
+  #github = () => {
     Linking.openURL('https://github.com/atulmy/crate')
   }
 
   render() {
+    const { navigation } = this.props
+
     return (
       <Body>
         <NavigationTop
@@ -26,7 +28,7 @@ export default class Info extends PureComponent {
           leftIcon={
             <ActionIcon
               icon={'arrow-back'}
-              onPress={() => this.props.navigation.goBack()}
+              onPress={() => navigation.goBack()}
             />
           }
         />
@@ -60,7 +62,7 @@ export default class Info extends PureComponent {
             <Button
               title={'View Source Code on Github'}
               iconRight={'open-in-new'}
-              onPress={this.github}
+              onPress={this.#github}
               theme={'secondary'}
             />
           </View>

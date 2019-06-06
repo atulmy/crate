@@ -17,6 +17,7 @@ import { messageShow, messageHide } from '../../common/api/actions'
 
 // Component
 class Login extends PureComponent {
+
   constructor(props) {
     super(props)
 
@@ -27,7 +28,7 @@ class Login extends PureComponent {
   }
 
   onSubmitRegister = async () => {
-    const { login, messageShow, messageHide } = this.props
+    const { dispatch } = this.props
 
     const user = {
       email: this.state.email,
@@ -38,30 +39,30 @@ class Login extends PureComponent {
     let error = false
 
     if (!isEmail(user.email)) {
-      messageShow('The email you provided is invalid. Please try again.')
+      dispatch(messageShow('The email you provided is invalid. Please try again.'))
 
       error = true
     } else if (!isLength(user.password, { min: 3 })) {
-      messageShow('Password needs to be atleast 3 characters long. Please try again.')
+      dispatch(messageShow('Password needs to be atleast 3 characters long. Please try again.'))
 
       error = true
     }
 
     if (error) {
       setTimeout(() => {
-        messageHide()
+        dispatch(messageHide())
       }, config.message.error.timers.default)
 
       return false
     } else {
       // API call
       try {
-        await login(user)
+        await dispatch(login(user))
       } catch (error) {
-        messageShow(this.props.user.error)
+        dispatch(messageShow(this.props.user.error))
       } finally {
         setTimeout(() => {
-          messageHide()
+          dispatch(messageHide())
         }, config.message.error.timers.long)
       }
     }
@@ -99,17 +100,13 @@ class Login extends PureComponent {
         />
 
         <View style={styles.buttonContainer}>
-          <View style={styles.buttonContainerLeft} />
-
-          <View style={styles.buttonContainerRight}>
-            <Button
-              title={'Submit'}
-              iconLeft={'check'}
-              theme={'primary'}
-              disabled={isLoading}
-              onPress={this.onSubmitRegister}
-            />
-          </View>
+          <Button
+            title={'Submit'}
+            iconLeft={'check'}
+            theme={'primary'}
+            disabled={isLoading}
+            onPress={this.onSubmitRegister}
+          />
         </View>
       </View>
     )
@@ -119,9 +116,6 @@ class Login extends PureComponent {
 // Component Properties
 Login.propTypes = {
   user: PropTypes.object.isRequired,
-  login: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired,
-  messageHide: PropTypes.func.isRequired
 }
 
 // Component State
@@ -131,4 +125,4 @@ function loginState(state) {
   }
 }
 
-export default connect(loginState, { login, messageShow, messageHide })(Login)
+export default connect(loginState)(Login)

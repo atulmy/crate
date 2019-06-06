@@ -30,50 +30,50 @@ class Item extends PureComponent {
     }
   }
 
-  loading = (isLoading) => {
+  #loading = isLoading => {
     this.setState({
       isLoading
     })
   }
 
-  subscribe = () => {
-    const { user,  messageShow, messageHide } = this.props
+  #subscribe = () => {
+    const { user, onSuccessSubscription, dispatch } = this.props
 
     if(user.isAuthenticated) {
-      const { crate, createSubscription, onSuccessSubscription } = this.props
+      const { crate } = this.props
 
-      this.loading(true)
+      this.#loading(true)
 
-      messageShow('Subscribing, please wait...')
+      dispatch(messageShow('Subscribing, please wait...'))
 
-      createSubscription({crateId: crate.id})
+      dispatch(createSubscription({crateId: crate.id}))
         .then(response => {
-          this.loading(false)
+          this.#loading(false)
           
           if (response.data.errors && response.data.errors.length > 0) {
-            messageShow(response.data.errors[0].message)
+            dispatch(messageShow(response.data.errors[0].message))
 
           } else {
-            messageShow('Subscribed successfully.')
+            dispatch(messageShow('Subscribed successfully.'))
 
             onSuccessSubscription()
           }
         })
         .catch(() => {
-          messageShow('There was some error subscribing to this crate. Please try again.')
+          dispatch(messageShow('There was some error subscribing to this crate. Please try again.'))
 
-          this.loading(false)
+          this.#loading(false)
         })
         .then(() => {
           setTimeout(() => {
-            messageHide()
+            dispatch(messageHide())
           }, config.message.error.timers.long)
         })
     } else {
       messageShow('You need to be signed in before you can subscribe to crate.')
 
       setTimeout(() => {
-        messageHide()
+        dispatch(messageHide())
       }, config.message.error.timers.long)
     }
   }
@@ -107,7 +107,7 @@ class Item extends PureComponent {
             iconLeft={'add'}
             theme={'primary'}
             disabled={isLoading}
-            onPress={this.subscribe}
+            onPress={this.#subscribe}
           />
         </View>
       </View>
@@ -117,11 +117,7 @@ class Item extends PureComponent {
 
 // Component Properties
 Item.propTypes = {
-  user: PropTypes.object.isRequired,
-  onSuccessSubscription: PropTypes.func.isRequired,
-  createSubscription: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired,
-  messageHide: PropTypes.func.isRequired
+  user: PropTypes.object.isRequired
 }
 
 // Component State
@@ -131,4 +127,4 @@ function itemState(state) {
   }
 }
 
-export default connect(itemState, { createSubscription, messageShow, messageHide })(withNavigation(Item))
+export default connect(itemState)(withNavigation(Item))

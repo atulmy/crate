@@ -8,7 +8,7 @@ import { View } from 'react-native'
 import styles from './styles'
 
 // App Imports
-import { getListByUser as getSubscriptionListByUser } from '../../subscription/api/actions'
+import { getListByUser } from '../../subscription/api/actions'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import Item from '../Item'
@@ -17,11 +17,13 @@ import Item from '../Item'
 class Crates extends PureComponent {
 
   componentDidMount() {
-    this.props.getSubscriptionListByUser(this.props.user.details.email)
+    this.#refresh()
   }
 
-  onSuccessUnsubscribe = () => {
-    this.props.getSubscriptionListByUser(this.props.user.details.email)
+  #refresh = () => {
+    const { dispatch } = this.props
+
+    dispatch(getListByUser(this.props.user.details.email))
   }
 
   render() {
@@ -38,7 +40,7 @@ class Crates extends PureComponent {
                   key={subscription.id}
                   subscription={subscription}
                   lastItem={list.length - 1 === i}
-                  onSuccessUnsubscribe={this.onSuccessUnsubscribe}
+                  onSuccessUnsubscribe={this.#refresh}
                 />
               ))
             : <EmptyMessage message={'You are not subscribed to any crate yet'} />
@@ -51,8 +53,7 @@ class Crates extends PureComponent {
 // Component Properties
 Crates.propTypes = {
   user: PropTypes.object.isRequired,
-  subscriptions: PropTypes.object.isRequired,
-  getSubscriptionListByUser: PropTypes.func.isRequired
+  subscriptions: PropTypes.object.isRequired
 }
 
 // Component State
@@ -63,4 +64,4 @@ function cratesState(state) {
   }
 }
 
-export default connect(cratesState, { getSubscriptionListByUser })(Crates)
+export default connect(cratesState)(Crates)

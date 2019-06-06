@@ -1,6 +1,5 @@
 // Imports
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { View } from 'react-native'
 import { isEmail, isLength } from 'validator'
@@ -36,7 +35,7 @@ class Signup extends PureComponent {
   }
 
   onSubmitRegister = async () => {
-    const { register, messageShow, messageHide } = this.props
+    const { dispatch } = this.props
 
     const user = {
       name: this.state.name,
@@ -46,24 +45,27 @@ class Signup extends PureComponent {
 
     // Validate
     let error = false
+    let errorMessage = 'Please try again.'
 
     if (!isLength(user.name, { min: 3 })) {
-      messageShow('Name needs to be atleast 3 characters long. Please try again.')
+      errorMessage = 'Name needs to be atleast 3 characters long. Please try again.'
 
       error = true
     } else if (!isEmail(user.email)) {
-      messageShow('The email you provided is invalid. Please try again.')
+      errorMessage = 'The email you provided is invalid. Please try again.'
 
       error = true
     } else if (!isLength(user.password, { min: 3 })) {
-      messageShow('Password needs to be atleast 3 characters long. Please try again.')
+      errorMessage = 'Password needs to be atleast 3 characters long. Please try again.'
 
       error = true
     }
 
     if (error) {
+      dispatch(messageShow(errorMessage))
+
       setTimeout(() => {
-        messageHide()
+        dispatch(messageHide())
       }, config.message.error.timers.default)
 
       return false
@@ -72,27 +74,27 @@ class Signup extends PureComponent {
 
       this.loading(true)
 
-      messageShow('Signing you up, please wait...')
+      dispatch(messageShow('Signing you up, please wait...'))
 
       try {
-        const response = await register(user)
+        const response = await dispatch(register(user))
 
         this.loading(false)
 
         if (response.data.errors && response.data.errors.length > 0) {
-          messageShow(response.data.errors[0].message)
+          dispatch(messageShow(response.data.errors[0].message))
         } else {
-          messageShow('Registered successfully. Please login.')
+          dispatch(messageShow('Registered successfully. Please login.'))
 
           onSuccessRegister()
         }
       } catch (error) {
         this.loading(false)
 
-        messageShow('There was some error signing you up. Please try again.')
+        dispatch(messageShow('There was some error signing you up. Please try again.'))
       } finally {
         setTimeout(() => {
-          messageHide()
+          dispatch(messageHide())
         }, config.message.error.timers.long)
       }
     }
@@ -143,29 +145,17 @@ class Signup extends PureComponent {
         />
 
         <View style={styles.buttonContainer}>
-          <View style={styles.buttonContainerLeft} />
-
-          <View style={styles.buttonContainerRight}>
-            <Button
-              title={'Submit'}
-              iconLeft={'check'}
-              onPress={this.onSubmitRegister}
-              theme={'primary'}
-              disabled={isLoading}
-            />
-          </View>
+          <Button
+            title={'Submit'}
+            iconLeft={'check'}
+            onPress={this.onSubmitRegister}
+            theme={'primary'}
+            disabled={isLoading}
+          />
         </View>
       </View>
     )
   }
 }
 
-// Component Properties
-Signup.propTypes = {
-  onSuccessRegister: PropTypes.func.isRequired,
-  register: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired,
-  messageHide: PropTypes.func.isRequired
-}
-
-export default connect(null, { register, messageShow, messageHide })(Signup)
+export default connect(null)(Signup)

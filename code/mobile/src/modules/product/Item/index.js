@@ -18,10 +18,11 @@ import { preGet as preGetProduct } from '../api/actions'
 // Component
 class Item extends PureComponent {
 
-  navigate = (product) => {
-    this.props.preGetProduct(product)
+  #navigate = product => {
+    const { navigation, dispatch } = this.props
+    dispatch(preGetProduct(product))
 
-    this.props.navigation.navigate(routesProduct.product.name, { slug: product.slug })
+    navigation.navigate(routesProduct.product.name, { slug: product.slug })
   }
 
   render() {
@@ -29,7 +30,7 @@ class Item extends PureComponent {
     const { image, name, description } = product
 
     return (
-      <Touchable onPress={() => this.navigate(product)}>
+      <Touchable onPress={() => this.#navigate(product)}>
         <View style={[(compact ? styles.containerCompact : styles.container), { marginBottom: (lastItem ? blockMargin : 0) } ]}>
           <Image
             source={{ uri: routeImage + image }}
@@ -54,7 +55,6 @@ class Item extends PureComponent {
 
 // Component Properties
 Item.propTypes = {
-  preGetProduct: PropTypes.func.isRequired,
   compact: PropTypes.bool
 }
 
@@ -62,4 +62,4 @@ Item.defaultProps = {
   compact: false
 }
 
-export default connect(null, { preGetProduct })(withNavigation(Item))
+export default connect()(withNavigation(Item))

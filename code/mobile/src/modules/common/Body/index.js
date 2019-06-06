@@ -4,7 +4,7 @@ import { View, StatusBar } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 
 // UI Imports
-import { white } from '../../../ui/common/colors'
+import { white, primary } from '../../../ui/common/colors'
 import styles from './styles'
 
 // App Imports
@@ -15,7 +15,7 @@ const Body = ({ children }) => (
   <SafeAreaView style={styles.container}>
     <StatusBar
       barStyle={'light-content'}
-      backgroundColor={white}
+      backgroundColor={primary}
     />
 
     <View style={styles.content}>
