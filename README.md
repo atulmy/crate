@@ -1,6 +1,6 @@
 ![Crate](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/hero-with-link.png)
 
-# Crate 👕👖📦 
+# Crate 👕👖📦
 
 #### Get monthly subscription of trendy clothes and accessories.
 - **API** built with Node, GraphQL, Express, Sequelize (MySQL) and JWT Auth
@@ -21,6 +21,7 @@
 - File upload feature with GraphQL
 - React storybook demonstrating UI components for web
 - Server side rendering
+- Multi-package setup and dev scripts for an automated dev experiance
 
 
 ## Useful for
@@ -29,6 +30,7 @@
 - Exploring GraphQL
 - Scalable project structure and code
 - Starter application for Mobile and Web along with SSR
+- Multi-package scripts
 - Sample project with combination of all above
 
 
@@ -40,7 +42,7 @@ Click on image to view fullscreen and zoom
 
 ![Crate Desktop](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/desktop-all-with-link.png)
 
-### Mobile 
+### Mobile
 [IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/crate/mobile-all-with-link.png) · [GIF](https://github.com/atulmy/atulmy.github.io/blob/master/images/crate/mobile.gif)
 
 ![Crate Mobile](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/mobile-all-with-link.png)
@@ -87,6 +89,7 @@ Click on image to view fullscreen and zoom
       │   └── package.json
       │
       ├── .gitignore
+      ├── package.json
       └── README.md
 
 
@@ -95,24 +98,22 @@ Click on image to view fullscreen and zoom
   - Node
   - MySQL (or Postgres / Sqlite / MSSQL)
 - Clone repo `git clone git@github.com:atulmy/crate.git crate`
-- Switch to `code` directory `cd code`
 - Configurations
-  - Modify `/api/src/config/database.json` for database credentials
-  - Modify `/api/.env` for PORT (optional)
-  - Modify `/web/.env` for PORT / API URL (optional)
-  - Modify `/mobile/src/setup/config.json` for API URL (tip: use `ifconfig` to get your local IP address)
+  - Modify `code/api/src/config/database.json` for database credentials
+  - Modify `code/api/.env` for PORT (optional)
+  - Modify `code/web/.env` for PORT / API URL (optional)
+  - Modify `code/mobile/src/setup/config.json` for API URL (tip: use `ifconfig` to get your local IP address)
   - Add your local IP address in: `code/mobile/android/app/src/debug/res/xml/react_native_config.xml` for Cleartext Traffic (API level 28+). Read more [here](https://facebook.github.io/react-native/docs/integration-with-existing-apps#network-security-config-api-level-28).
 - Setup
-  - API: Install packages and database setup (migrations and seed) `cd api` and `npm run setup`
-  - Webapp: Install packages `cd web` and `npm install`
-  - Mobile: Install packages `cd mobile` and `npm install`
+  `npm run setup`
 - Development
-  - Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:8000/
-  - Run Webapp `cd web` and `npm start`, browse webapp at http://localhost:3000/
-  - Run Mobile `cd mobile` and `npm start`, browse mobile on either emulator or using Expo on your mobile phone
+  - Run API and Webapp `npm start`, browse GraphiQL at http://localhost:8000/ and Webapp at http://localhost:8000/
+  - Run API alone `npm start:api`, browse GraphiQL at http://localhost:8000/
+  - Run Webapp alone `npm start:web`, browse webapp at http://localhost:3000/
+  - Run Mobile alone `cd code/mobile` and `npm start`, browse mobile on either emulator or using Expo on your mobile phone
 - Production
-  - Run API `cd api` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
-  - Run Webapp `cd web` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
+  - Run API `cd code/api` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
+  - Run Webapp `cd code/web` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
 
 
 ## Resources and Inspirations
@@ -137,6 +138,7 @@ Click on image to view fullscreen and zoom
 - Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
 - Ebou Jobe - [GitHub](https://github.com/ebouJ)
 - Nenad Radovanovic - [GitHub](https://github.com/nrcloud) · [Twitter](https://twitter.com/publicshone)
+- Nicholas Drew - [GitHub](https://github.com/nickdrew)
 - [YOUR NAME HERE] - Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Feel free to fork and send pull requests.
 
 
