@@ -1,0 +1,30 @@
+{
+  "name": "crate",
+  "version": "1.0.0",
+  "description": "![Crate](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/hero-with-link.png)",
+  "scripts": {
+    "setup": "npm run setup:local && npm run setup:all",
+    "setup:local": "npm install",
+    "setup:all": "concurrently 'npm run setup:web' 'npm run setup:api' 'npm run setup:mobile' --names 'web,api,mobile'",
+    "setup:web": "npm run setup --prefix web",
+    "setup:api": "npm run setup --prefix api",
+    "setup:mobile": "npm install --prefix mobile",
+    "start": "concurrently 'npm run start:web' 'npm run start:api' --kill-others --names 'web,api'",
+    "start:web": "npm run start --prefix web",
+    "start:api": "npm run start --prefix api"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atulmy/crate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atulmy/crate/issues"
+  },
+  "homepage": "https://github.com/atulmy/crate#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^4.1.0"
+  }
+}
