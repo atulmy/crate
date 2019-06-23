@@ -55,6 +55,8 @@ Click on image to view fullscreen and zoom
 
 ## Core Structure
     code
+      ├── package.json
+      │
       ├── api (api.example.com)
       │   ├── public
       │   ├── src
@@ -89,7 +91,6 @@ Click on image to view fullscreen and zoom
       │   └── package.json
       │
       ├── .gitignore
-      ├── package.json
       └── README.md
 
 
@@ -121,7 +122,8 @@ Click on image to view fullscreen and zoom
 - New developers are advised to run through the above 'setup and running' process before reading further.
 - Optional multi-package automation for faster setup and easier dev environment initiation.
 - No need to cd to sub-folders unless working with mobile or running a production build.
-- Once Node, MySQL, repo clone and configuration are setup correctly, stay in the project root
+- Once Node, MySQL, repo clone and configuration are setup correctly
+    - Switch to `code` directory `cd code`
     - Setup
         - Setup API, Webapp and Mobile with a single command `npm run setup`
     - Development
