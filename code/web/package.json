@@ -38,7 +38,7 @@
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.0.0",
     "express": "5.0.0-alpha.7",
-    "gql-query-builder": "3.0.6",
+    "gql-query-builder": "3.1.1",
     "js-cookie": "^2.2.0",
     "morgan": "1.9.1",
     "prop-types": "^15.7.2",
