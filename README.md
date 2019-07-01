@@ -1,6 +1,6 @@
 ![Crate](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/hero-with-link.png)
 
-# Crate 👕👖📦 
+# Crate 👕👖📦
 
 #### Get monthly subscription of trendy clothes and accessories.
 - **API** built with Node, GraphQL, Express, Sequelize (MySQL) and JWT Auth
@@ -21,6 +21,7 @@
 - File upload feature with GraphQL
 - React storybook demonstrating UI components for web
 - Server side rendering
+- Multi-package setup and dev scripts for an automated dev experiance
 
 
 ## Useful for
@@ -29,6 +30,7 @@
 - Exploring GraphQL
 - Scalable project structure and code
 - Starter application for Mobile and Web along with SSR
+- Multi-package scripts
 - Sample project with combination of all above
 
 
@@ -40,7 +42,7 @@ Click on image to view fullscreen and zoom
 
 ![Crate Desktop](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/desktop-all-with-link.png)
 
-### Mobile 
+### Mobile
 [IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/crate/mobile-all-with-link.png) · [GIF](https://github.com/atulmy/atulmy.github.io/blob/master/images/crate/mobile.gif)
 
 ![Crate Mobile](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/mobile-all-with-link.png)
@@ -53,6 +55,8 @@ Click on image to view fullscreen and zoom
 
 ## Core Structure
     code
+      ├── package.json
+      │
       ├── api (api.example.com)
       │   ├── public
       │   ├── src
@@ -114,6 +118,18 @@ Click on image to view fullscreen and zoom
   - Run API `cd api` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
   - Run Webapp `cd web` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
 
+## Multi-package automation
+- New developers are advised to run through the above 'setup and running' process before reading further.
+- Optional multi-package automation for faster setup and easier dev environment initiation.
+- No need to cd to sub-folders unless working with mobile or running a production build.
+- Once Node, MySQL, repo clone and configuration are setup correctly
+    - Switch to `code` directory `cd code`
+    - Setup
+        - Setup API, Webapp and Mobile with a single command `npm run setup`
+    - Development
+        - Run API and Webapp `npm start`, browse GraphiQL at http://localhost:8000/ and Webapp at http://localhost:8000/
+        - Run API alone `npm start:api`, browse GraphiQL at http://localhost:8000/
+        - Run Webapp alone `npm start:web`, browse webapp at http://localhost:3000/
 
 ## Resources and Inspirations
 - ✍️ Opinionated project architecture for Full-Stack JavaScript Applications - [GitHub](https://github.com/atulmy/fullstack-javascript-architecture)
@@ -137,6 +153,7 @@ Click on image to view fullscreen and zoom
 - Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
 - Ebou Jobe - [GitHub](https://github.com/ebouJ)
 - Nenad Radovanovic - [GitHub](https://github.com/nrcloud) · [Twitter](https://twitter.com/publicshone)
+- Nicholas Drew - [GitHub](https://github.com/nickdrew)
 - [YOUR NAME HERE] - Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Feel free to fork and send pull requests.
 
 
