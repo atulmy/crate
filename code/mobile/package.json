@@ -7,9 +7,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "@react-native-community/async-storage": "1.4.2",
+    "@react-native-community/async-storage": "1.5.0",
     "axios": "0.19.0",
-    "gql-query-builder": "3.0.6",
+    "gql-query-builder": "3.1.1",
     "prop-types": "15.7.2",
     "react": "16.8.6",
     "react-native": "0.59.9",
@@ -18,9 +18,9 @@
     "react-native-vector-icons": "6.4.2",
     "react-navigation": "3.11.0",
     "react-redux": "6.0.0",
-    "redux": "4.0.1",
+    "redux": "4.0.2",
     "redux-thunk": "2.3.0",
-    "validator": "11.0.0"
+    "validator": "11.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

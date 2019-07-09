@@ -41,7 +41,7 @@ class List extends PureComponent {
         {
           isLoading
             ? <Loading />
-            : list.length > 0
+            : list && list.length > 0
               ? <ScrollView style={styles.itemContainer}>
                   { list.map((crate, i) => (
                     <CrateItem
