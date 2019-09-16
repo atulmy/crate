@@ -154,6 +154,7 @@ Click on image to view fullscreen and zoom
 - Ebou Jobe - [GitHub](https://github.com/ebouJ)
 - Nenad Radovanovic - [GitHub](https://github.com/nrcloud) · [Twitter](https://twitter.com/publicshone)
 - Nicholas Drew - [GitHub](https://github.com/nickdrew)
+- Mateus Abdala - [GitHub](https://github.com/mateusabdala)
 - [YOUR NAME HERE] - Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Feel free to fork and send pull requests.
 
 

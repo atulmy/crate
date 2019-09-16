@@ -1,7 +1,7 @@
 // Imports
 import React from 'react'
-import {storiesOf} from '@storybook/react'
-import {action} from '@storybook/addon-actions'
+import { storiesOf } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
 
 // UI Imports
 import Button from '../../src/ui/button/Button'
