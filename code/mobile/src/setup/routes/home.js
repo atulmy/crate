@@ -1,6 +1,6 @@
 // Imports
 import React from 'react'
-import { createStackNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
 
 // App Imports
 import { getRoutesForStack } from '../../setup/helpers'

@@ -1,6 +1,6 @@
 // Imports
 import React from 'react'
-import { StyleSheet, TextInput } from 'react-native'
+import { StyleSheet, TextInput, Platform } from 'react-native'
 
 // UI Imports
 import { scalable, blockPaddingHalf, font } from '../common/responsive'
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: blockPaddingHalf * 1.5,
     fontSize: font(18),
     height: scalable(48),
-    borderBottomWidth: 1,
+    borderBottomWidth: Platform.OS === 'android' ? 0 : 1,
     borderColor: grey1
   }
 })
