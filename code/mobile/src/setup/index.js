@@ -1,7 +1,7 @@
 // Imports
 import React from 'react'
 import { YellowBox } from 'react-native'
-import AsyncStorage from '@react-native-community/async-storage'
+import { AsyncStorage } from 'react-native';
 import { Provider } from 'react-redux'
 
 // App Imports

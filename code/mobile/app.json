@@ -1,4 +1,13 @@
+// {
+//   "name": "mobile",
+//   "displayName": "crate"
+// }
+
 {
-  "name": "mobile",
-  "displayName": "crate"
+  "expo": {
+    "name": "crate",
+    "slug": "crate",
+    "sdkVersion": "35.0.0",
+    "privacy": "unlisted"
+  }
 }

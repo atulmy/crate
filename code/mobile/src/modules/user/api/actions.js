@@ -1,6 +1,6 @@
 // Imports
 import axios from 'axios'
-import AsyncStorage from '@react-native-community/async-storage'
+import { AsyncStorage } from 'react-native';
 import { query, mutation } from 'gql-query-builder'
 
 // App Imports
