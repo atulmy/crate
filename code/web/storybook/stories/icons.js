@@ -1,7 +1,6 @@
 // Imports
 import React from 'react'
-import {storiesOf} from '@storybook/react'
-import {action} from '@storybook/addon-actions'
+import { storiesOf } from '@storybook/react'
 
 // UI Imports
 import Icon from '../../src/ui/icon/Icon'
@@ -12,5 +11,5 @@ storiesOf('Icon', module)
     <Icon size={3}>face</Icon>
   ))
   .add('color', () => (
-    <Icon size={3} style={{color: 'red'}}>face</Icon>
+    <Icon size={3} style={{ color: 'red' }}>face</Icon>
   ))

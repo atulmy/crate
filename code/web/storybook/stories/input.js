@@ -1,21 +1,20 @@
 // Imports
 import React from 'react'
-import {storiesOf} from '@storybook/react'
-import {action} from '@storybook/addon-actions'
+import { storiesOf } from '@storybook/react'
 
 // UI Imports
-import {Input, Textarea, Select} from '../../src/ui/input'
+import { Input, Textarea, Select } from '../../src/ui/input'
 
 // Buttons
 storiesOf('Input', module)
   .add('text', () => (
-    <Input type="text"/>
+    <Input type="text" />
   ))
   .add('password', () => (
-    <Input type="password"/>
+    <Input type="password" />
   ))
   .add('textarea', () => (
-    <Textarea/>
+    <Textarea />
   ))
   .add('select', () => (
     <Select>
