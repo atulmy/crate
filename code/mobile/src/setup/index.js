@@ -1,6 +1,5 @@
 // Imports
 import React from 'react'
-import { YellowBox } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { Provider } from 'react-redux'
 
@@ -31,17 +30,6 @@ import { setUser, setUserLocally } from '../modules/user/api/actions'
 
 // App
 export default class App extends React.Component {
-
-  constructor(props) {
-    super(props)
-
-    YellowBox.ignoreWarnings([
-      'Warning: componentWillMount is deprecated',
-      'Warning: componentWillReceiveProps is deprecated',
-      'Warning: componentWillUpdate is deprecated',
-    ])
-  }
-
   render() {
     return (
       <Provider store={store} key="provider">

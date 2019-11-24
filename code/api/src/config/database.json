@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "sgroot",
-    "password": "t4RP51D8k^jiXCrm",
+    "username": "root",
+    "password": null,
     "database": "crate",
-    "host": "SG-fullstackgraphql-1558-master.servers.mongodirector.com",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "seederStorage": "sequelize"
   },
