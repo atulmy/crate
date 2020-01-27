@@ -18,15 +18,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "7.7.4",
-    "@babel/core": "7.7.4",
-    "@babel/node": "7.7.4",
-    "@babel/plugin-transform-runtime": "7.7.4",
-    "@babel/preset-env": "7.7.4",
-    "nodemon": "2.0.1"
+    "@babel/cli": "7.8.3",
+    "@babel/core": "7.8.3",
+    "@babel/node": "7.8.3",
+    "@babel/plugin-transform-runtime": "7.8.3",
+    "@babel/preset-env": "7.8.3",
+    "nodemon": "2.0.2"
   },
   "dependencies": {
-    "@babel/runtime": "7.7.4",
+    "@babel/runtime": "7.8.3",
     "bcrypt": "3.0.7",
     "body-parser": "1.19.0",
     "cookie-parser": "1.4.4",
@@ -34,12 +34,12 @@
     "dotenv": "8.2.0",
     "express": "4.17.1",
     "express-graphql": "0.9.0",
-    "graphql": "14.5.8",
+    "graphql": "14.6.0",
     "jsonwebtoken": "8.5.1",
     "morgan": "1.9.1",
     "multer": "1.4.2",
-    "mysql2": "2.0.1",
-    "sequelize": "5.21.2",
+    "mysql2": "2.1.0",
+    "sequelize": "5.21.3",
     "sequelize-cli": "5.5.1"
   }
 }
