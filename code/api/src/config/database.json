@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "HMVqBD1XMq",
-    "password": "J85IJ5bMeO",
-    "database": "HMVqBD1XMq",
-    "host": "remotemysql.com",
+    "username": "root",
+    "password": null,
+    "database": "crate",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "seederStorage": "sequelize"
   },
