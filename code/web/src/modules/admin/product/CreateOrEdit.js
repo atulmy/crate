@@ -292,7 +292,7 @@ class CreateOrEdit extends Component {
                     required="required"
                     name="gender"
                     value={this.state.product.gender}
-                    onChange={this.onChange}
+                    onChange={this.onChangeSelect}
                     style={{ marginTop: '1em' }}
                   >
                     {
