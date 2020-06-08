@@ -105,15 +105,16 @@ Click on image to view fullscreen and zoom
   - Modify `/api/.env` for PORT (optional)
   - Modify `/web/.env` for PORT / API URL (optional)
   - Modify `/mobile/src/setup/config.json` for API URL (tip: use `ifconfig` to get your local IP address)
-  - Add your local IP address in: `code/mobile/android/app/src/debug/res/xml/react_native_config.xml` for Cleartext Traffic (API level 28+). Read more [here](https://facebook.github.io/react-native/docs/integration-with-existing-apps#network-security-config-api-level-28).
 - Setup
   - API: Install packages and database setup (migrations and seed) `cd api` and `npm run setup`
   - Webapp: Install packages `cd web` and `npm install`
-  - Mobile: Install packages `cd mobile` and `npm install`
+  - Mobile: 
+    1. Install packages `cd mobile` and `npm install`
+    2. Install iOS dependencies `cd mobile/ios` `pod install`
 - Development
   - Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:8000/
   - Run Webapp `cd web` and `npm start`, browse webapp at http://localhost:3000/
-  - Run Mobile `cd mobile` and `npm start`, browse mobile on either emulator or using Expo on your mobile phone
+  - Run Mobile `cd mobile` and `npx react-native run-ios` for iOS and `npx react-native run-android` for Android
 - Production
   - Run API `cd api` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
   - Run Webapp `cd web` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
@@ -154,12 +155,13 @@ Click on image to view fullscreen and zoom
 - Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
 
 
-## Collaborators
+## Contributors
 - Ebou Jobe - [GitHub](https://github.com/ebouJ)
 - Nenad Radovanovic - [GitHub](https://github.com/nrcloud) · [Twitter](https://twitter.com/publicshone)
 - Nicholas Drew - [GitHub](https://github.com/nickdrew)
 - Mateus Abdala - [GitHub](https://github.com/mateusabdala)
 - Hossein Nedaee - [GitHub](https://github.com/hosseinnedaee)
+- Mohammad Afzal - [GitHub](https://github.com/afzalex)
 - [YOUR NAME HERE] - Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Feel free to fork and send pull requests.
 
 
