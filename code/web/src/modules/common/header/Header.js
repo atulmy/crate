@@ -14,6 +14,7 @@ import home from '../../../setup/routes/home'
 import user from '../../../setup/routes/user'
 import crate from '../../../setup/routes/crate'
 import admin from '../../../setup/routes/admin'
+import product from '../../../setup/routes/product'
 import Logo from './Logo'
 import Menu from './Menu'
 import MenuItem from './MenuItem'
@@ -55,6 +56,8 @@ const Header = (props) => {
               ?
               <Menu>
                 { props.user.details.role === 'ADMIN' && <MenuItem to={admin.dashboard.path} section="admin">Admin</MenuItem> }
+
+                { props.user.details.role === 'USER' && <MenuItem to={product.productList.path} section="user">Products</MenuItem> }
 
                 <MenuItem to={crate.list.path}>Crates</MenuItem>
 

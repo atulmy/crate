@@ -31,6 +31,7 @@ class List extends PureComponent {
   // Runs on client only
   componentDidMount() {
     this.props.getProductList()
+
   }
 
   remove = (id) => {
@@ -74,6 +75,8 @@ class List extends PureComponent {
   render() {
     const { isLoading, list } = this.props.products
 
+    const isUser = (this.props.isAccess === 'USER') ? true : false;
+
     return (
       <div>
         {/* SEO */}
@@ -82,12 +85,12 @@ class List extends PureComponent {
         </Helmet>
 
         {/* Top menu bar */}
-        <AdminMenu/>
+        {!isUser && <AdminMenu/> }
 
         {/* Page Content */}
         <div>
           {/* Top actions bar */}
-          <Grid alignCenter={true} style={{ padding: '1em' }}>
+          {!isUser && (<Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell style={{ textAlign: 'right' }}>
               <Link to={admin.productCreate.path}>
                 <Button theme="secondary" style={{ marginTop: '1em' }}>
@@ -95,7 +98,8 @@ class List extends PureComponent {
                 </Button>
               </Link>
             </GridCell>
-          </Grid>
+          </Grid>)
+          }
 
           {/* Product list */}
           <Grid alignCenter={true} style={{ padding: '1em' }}>
@@ -108,7 +112,7 @@ class List extends PureComponent {
                     <th>Description</th>
                     <th>Created at</th>
                     <th>Updated at</th>
-                    <th style={{ textAlign: 'center' }}>Actions</th>
+                    {!isUser && <th style={{ textAlign: 'center' }}>Actions</th>}
                   </tr>
                 </thead>
 
@@ -143,7 +147,7 @@ class List extends PureComponent {
                               { new Date(parseInt(updatedAt)).toDateString() }
                             </td>
 
-                            <td style={{ textAlign: 'center' }}>
+                            {!isUser && <td style={{ textAlign: 'center' }}>
                               <Link to={admin.productEdit.path(id)}>
                                 <Icon size={2} style={{ color: black }}>mode_edit</Icon>
                               </Link>
@@ -152,6 +156,7 @@ class List extends PureComponent {
                                   <Icon size={2} style={{ marginLeft: '0.5em' }}>delete</Icon>
                                 </span>
                             </td>
+                            }
                           </tr>
                         ))
                       : <tr>
