@@ -97,27 +97,39 @@ Click on image to view fullscreen and zoom
 ## Setup and Running
 - Prerequisites
   - Node
-  - MySQL (or Postgres / Sqlite / MSSQL)
-- Clone repo `git clone git@github.com:atulmy/crate.git crate`
+  - Postgres
+- Clone repo `git clone git@github.com:jakeheft/crate.git` and `cd` into the repository
 - Switch to `code` directory `cd code`
 - Configurations
-  - Modify `/api/src/config/database.json` for database credentials
+  - Configure $PATH variable
+    - Add the following to your `.zshrc` file (or `.bash_profile` if using bash):
+    ```
+    export PATH="/Applications/Postgres.app/Contents/Versions/<your postgresql verson i.e. 12.3>/bin:$PATH"
+    ```
+    - Close or reload your terminal window
+    - Type `which psql` in terminal and verify you see the following output:
+    ```
+    /Applications/Postgres.app/Contents/Versions/latest/bin/psql
+    ```
   - Modify `/api/.env` for PORT (optional)
   - Modify `/web/.env` for PORT / API URL (optional)
   - Modify `/mobile/src/setup/config.json` for API URL (tip: use `ifconfig` to get your local IP address)
 - Setup
+  - Run your PostgreSQL interactive terminal (`psql`)
+  - Run `CREATE DATABASE crate;` to create your database in PostgreSQL and then exit out of the PostgreSQL interactive terminal (`\q`)
   - API: Install packages and database setup (migrations and seed) `cd api` and `npm run setup`
+      - If you receive the error `please install pg package manually`, run `npm install pg --save`, then run `npm run setup` again
   - Webapp: Install packages `cd web` and `npm install`
-  - Mobile: 
-    1. Install packages `cd mobile` and `npm install`
-    2. Install iOS dependencies `cd mobile/ios` `pod install`
 - Development
   - Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:8000/
   - Run Webapp `cd web` and `npm start`, browse webapp at http://localhost:3000/
-  - Run Mobile `cd mobile` and `npx react-native run-ios` for iOS and `npx react-native run-android` for Android
 - Production
   - Run API `cd api` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
-  - Run Webapp `cd web` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
+  - Run Webapp `cd web` and `npm start -prod`, creates an optimized build in `build` directory and runs the server
+      - If you receive the error `sh: babel: command not found`, run the following:
+        - `npm install @babel/cli -g`
+        - `npm install @babel/core -g`
+      - Now run `npm start -prod` again to run your production server
 
 ## Multi-package automation
 - New developers are advised to run through the above 'setup and running' process before reading further.
