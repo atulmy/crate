@@ -77,3 +77,15 @@ export async function remove(parentValue, { id }) {
 export async function getGenders() {
   return Object.values(params.user.gender)
 }
+
+// Add user style
+export async function addStyle(parentValue, { id, style } ) {
+  await models.User.update(
+    {
+      style
+    },
+  { where: { id }}
+  )
+  const user = await models.User.findOne({ where: { id } })
+  return user
+}
