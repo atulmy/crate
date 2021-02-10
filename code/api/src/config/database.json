@@ -7,6 +7,14 @@
     "dialect": "postgres",
     "seederStorage": "sequelize"
   },
+  "test": {
+    "username": "philipdefraties",
+    "password": null,
+    "database": "crate_testing",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "seederStorage": "sequelize"
+  },
   "production": {
     "username": "postgres",
     "password": null,
