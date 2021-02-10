@@ -43,7 +43,7 @@ describe('user queries', () => {
           userAddStyle: {
               id: 2,
               email: "user@crate.com",
-              style: "Edgy,Classy"
+              style: "Edgy but Classy"
           }
         }
       })
