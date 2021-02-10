@@ -79,10 +79,18 @@ export async function getGenders() {
 }
 
 // Add user style
-export async function addStyle(parentValue, { id, style } ) {
+export async function addStyle(parentValue, { id, survey_results } ) {
+  var array = survey_results.split(", ")
+  var counts = array.reduce((a, c) => {
+    a[c] = (a[c] || 0) + 1;
+    return a;
+  }, {});
+  var maxCount = Math.max(...Object.values(counts));
+  var mostFrequent = Object.keys(counts).filter(k => counts[k] === maxCount);
+  var string = mostFrequent.join( )
   await models.User.update(
     {
-      style
+      style: string
     },
   { where: { id }}
   )
