@@ -87,7 +87,7 @@ export async function addStyle(parentValue, { id, survey_results } ) {
   }, {});
   var maxCount = Math.max(...Object.values(counts));
   var mostFrequent = Object.keys(counts).filter(k => counts[k] === maxCount);
-  var string = mostFrequent.join( )
+  var string = mostFrequent.join(" but ")
   await models.User.update(
     {
       style: string
