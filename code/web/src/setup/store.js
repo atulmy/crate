@@ -35,12 +35,14 @@ if (typeof window !== 'undefined') {
   delete window.__INITIAL_STATE__
 }
 
+import { composeWithDevTools } from 'redux-devtools-extension';
+
 // Store
 export const store = createStore(
   rootReducer,
   initialState,
 
-  compose(
+  composeWithDevTools(
     applyMiddleware(thunk),
   )
 )
