@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "setup": "npm install",
-    "start": "npm run build:client && npm run start:server",
+    "start": "set NODE_OPTIONS=--openssl-legacy-provider && npm run build:client && npm run start:server",
     "build:client": "webpack -d && babel-node src/setup/server/pwa.js",
     "start:server": "nodemon --exec babel-node -- src/index.js",
     "start:prod": "npm run build:client:prod && npm run build:server:prod && npm run start:server:prod",
