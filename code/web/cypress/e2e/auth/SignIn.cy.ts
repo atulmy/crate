@@ -3,6 +3,7 @@ import {
   userCredentials,
   adminCredentials,
 } from "../../../../api/src/__tests__/testData";
+import { setResponseLoadingState } from "../../support/testUtils";
 
 beforeEach(() => {
   const wrongEmail = userCredentials.email.slice(0, -1);
@@ -54,13 +55,7 @@ describe("Sign In", () => {
 
   it("should display toast when request is in pending state", function () {
     const { wrongPassword } = this.wrongCredentials;
-    const trigger = new Promise(() => {});
-
-    cy.intercept("http://localhost:8000/", (req) =>
-      trigger.then(() => {
-        req.reply();
-      })
-    );
+    setResponseLoadingState("userLogin");
 
     cy.loginViaUI(userCredentials.email, wrongPassword);
 

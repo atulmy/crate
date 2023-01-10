@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { userCredentials } from "../../../../api/src/__tests__/testData";
+import { aliasQuery, setResponseLoadingState } from "../../support/testUtils";
 
 beforeEach(() => {
   const credentials = {
@@ -17,15 +18,17 @@ describe("Sign Up", () => {
   });
 
   it("should sign up", function () {
-    cy.intercept("http://localhost:8000/").as("signUpReq");
+    cy.intercept("http://localhost:8000/", (req) =>
+      aliasQuery(req, "userSignup")
+    );
     cy.signUp(
       this.credentials.name,
       this.credentials.email,
       this.credentials.password
     );
 
-    cy.wait("@signUpReq").then((data) => {
-      const { email, name, id } = data.response.body.data.userSignup;
+    cy.wait("@gqluserSignupQuery").then((data) => {
+      const { email, name } = data.response.body.data.userSignup;
 
       expect(data.response.statusCode).eq(200);
       expect(email).eq(this.credentials.email);
@@ -51,13 +54,7 @@ describe("Sign Up", () => {
   });
 
   it("should display toast when request is in pending state", function () {
-    const trigger = new Promise(() => {});
-
-    cy.intercept("http://localhost:8000/", (req) =>
-      trigger.then(() => {
-        req.reply();
-      })
-    );
+    setResponseLoadingState("userSignup");
 
     cy.signUp(
       this.credentials.name,
