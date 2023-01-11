@@ -1,0 +1,27 @@
+{
+	"data": {
+		"productsRelated": [
+			{
+				"id": 5,
+				"name": "T-Shirt for Women - Black",
+				"slug": "t-shirt-for-women-black",
+				"description": "A very nice black t-shirt for women.",
+				"image": "/images/stock/t-shirt-female-1.jpg"
+			},
+			{
+				"id": 4,
+				"name": "Watch for Men",
+				"slug": "watch-for-men",
+				"description": "A very nice watch for men.",
+				"image": "/images/stock/watch-male.jpg"
+			},
+			{
+				"id": 2,
+				"name": "Belt for Men",
+				"slug": "belt-for-men",
+				"description": "A very nice belt for men.",
+				"image": "/images/stock/belt-male.jpg"
+			}
+		]
+	}
+}

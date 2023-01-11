@@ -31,6 +31,8 @@ declare namespace Cypress {
     loginViaAPI(email: string, password: string): Chainable<void>;
     signUp(name: string, email: string, password: string): Chainable<void>;
     removeUser(id: number): Chainable<void>;
+    getProducts(): Chainable<void>;
+    getProductRelated(id: number): Chainable<any>;
   }
 }
 
@@ -63,4 +65,27 @@ Cypress.Commands.add("loginViaAPI", (email, password) => {
     });
     cy.setCookie("auth", JSON.stringify({ token, user }));
   });
+});
+
+Cypress.Commands.add("getProducts", () => {
+  cy.request({
+    method: "POST",
+    url: "http://localhost:8000",
+    body: {
+      query: `query { products { id, name, slug, description, image, createdAt } }`,
+    },
+  }).then((res) => cy.wrap(res.body.data.products).as("products"));
+});
+
+Cypress.Commands.add("getProductRelated", (productId) => {
+  cy.request({
+    method: "POST",
+    url: "http://localhost:8000",
+    body: {
+      query: `query ($productId: Int) { productsRelated (productId: $productId) { id, name, slug, description, image } }`,
+      variables: {
+        productId,
+      },
+    },
+  }).then((res) => res.body.data.productsRelated);
 });
