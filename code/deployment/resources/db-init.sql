@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS crate;
+
+CREATE USER 'root'@'%' IDENTIFIED BY 'password';
+GRANT ALL ON *.* TO 'root'@'%';
+FLUSH PRIVILEGES;

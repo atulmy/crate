@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_USER=root
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - 3306:3306
+    command: --init-file /resources/db-init.sql
+    volumes:
+      - ./resources/db-init.sql:/resources/db-init.sql
+  api:
+    depends_on:
+      - mysql
+    build: ../api
+    ports:
+      - 8000:8000
