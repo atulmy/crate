@@ -35,6 +35,7 @@
   "dependencies": {
     "@babel/runtime": "7.11.2",
     "axios": "0.20.0",
+    "babel-cli": "^6.26.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
