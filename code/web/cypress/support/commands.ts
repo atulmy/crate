@@ -33,6 +33,7 @@ declare namespace Cypress {
     removeUser(id: number): Chainable<void>;
     getProducts(): Chainable<void>;
     getProductRelated(id: number): Chainable<any>;
+    omitOnboarding(): Chainable<void>;
   }
 }
 
@@ -41,6 +42,12 @@ Cypress.Commands.add("signUp", (name, email, password) => {
   cy.get('input[placeholder="Email"').type(email);
   cy.get('input[placeholder="Password"').type(password);
   cy.get("form").submit();
+});
+
+Cypress.Commands.add("omitOnboarding", () => {
+  cy.window().then((win) => {
+    win.localStorage.setItem("onboarding", "1");
+  });
 });
 
 Cypress.Commands.add("loginViaUI", (email, password) => {
