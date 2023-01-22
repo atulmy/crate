@@ -33,14 +33,14 @@
     "nodemon": "2.0.4",
     "typescript": "^4.9.4",
     "webpack": "4.44.2",
-    "webpack-cli": "3.3.12"
+    "webpack-cli": "3.3.12",
+    "cypress": "^12.3.0"
   },
   "dependencies": {
     "@babel/runtime": "7.11.2",
     "axios": "0.20.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
-    "cypress": "^12.3.0",
     "dotenv": "^8.2.0",
     "express": "5.0.0-alpha.7",
     "gql-query-builder": "3.5.0",
