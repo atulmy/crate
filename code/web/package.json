@@ -12,7 +12,8 @@
     "build:client:prod": "webpack -p",
     "build:server:prod": "babel src -s -D -d build",
     "start:server:prod": " node build/index.js",
-    "storybook": "start-storybook -p 9000 -c storybook"
+    "storybook": "start-storybook -p 9000 -c storybook",
+    "cy:open": "npm run cypress open"
   },
   "keywords": [],
   "author": "",
@@ -24,13 +25,16 @@
     "@babel/plugin-transform-runtime": "7.11.5",
     "@babel/preset-env": "7.11.5",
     "@babel/preset-react": "7.10.4",
+    "@faker-js/faker": "^7.6.0",
     "@storybook/addons": "^6.0.21",
     "@storybook/react": "^6.0.21",
     "babel-loader": "8.1.0",
     "dotenv-webpack": "^1.8.0",
     "nodemon": "2.0.4",
+    "typescript": "^4.9.4",
     "webpack": "4.44.2",
-    "webpack-cli": "3.3.12"
+    "webpack-cli": "3.3.12",
+    "cypress": "^12.3.0"
   },
   "dependencies": {
     "@babel/runtime": "7.11.2",
