@@ -173,8 +173,7 @@ describe("Onboarding", () => {
     });
   });
 
-  it.skip("should display onboarding on next visit when user didnt passed last step", function () {
-    //fix source code
+  it("should display onboarding on next visit when user didnt passed last step", function () {
     cy.visit("/")
       .then(() => {
         setComponentState("onboarding", "nextStep", 3);
