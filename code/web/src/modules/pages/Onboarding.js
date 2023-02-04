@@ -24,6 +24,10 @@ class Onboarding extends PureComponent {
   }
 
   componentDidMount() {
+    if (window.Cypress) {
+      window.app = this;
+    }
+
     const onboarding = window.localStorage.getItem("onboarding");
     if (!onboarding) {
       this.toggleVisible(true);

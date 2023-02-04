@@ -1,9 +1,3 @@
-import {
-  getReactFiber,
-  getComponent,
-  setComponentState,
-} from "../../support/testUtils";
-
 describe("Onboarding", () => {
   it("should display heading on first onboarding step", function () {
     cy.visit("/");
@@ -38,7 +32,7 @@ describe("Onboarding", () => {
   it("should display heading on second onboarding step", function () {
     cy.visit("/")
       .then(() => {
-        setComponentState("onboarding", "nextStep", 1);
+        cy.appMethod("setState", { visible: true, currentStep: 1 });
       })
       .then(() => {
         cy.contains("For Men").should("be.visible");
@@ -48,7 +42,7 @@ describe("Onboarding", () => {
   it("should display paragraph on second onboarding step", function () {
     cy.visit("/")
       .then(() => {
-        setComponentState("onboarding", "nextStep", 1);
+        cy.appMethod("setState", { visible: true, currentStep: 1 });
       })
       .then(() => {
         cy.contains(
@@ -60,7 +54,7 @@ describe("Onboarding", () => {
   it("should display continue button on second onboarding step", function () {
     cy.visit("/")
       .then(() => {
-        setComponentState("onboarding", "nextStep", 1);
+        cy.appMethod("setState", { visible: true, currentStep: 1 });
       })
       .then(() => {
         cy.contains("Next").should("be.visible");
@@ -70,7 +64,7 @@ describe("Onboarding", () => {
   it("should display heading on third onboarding step", function () {
     cy.visit("/")
       .then(() => {
-        setComponentState("onboarding", "nextStep", 2);
+        cy.appMethod("setState", { visible: true, currentStep: 2 });
       })
       .then(() => {
         cy.contains("For Women").should("be.visible");
@@ -80,7 +74,7 @@ describe("Onboarding", () => {
   it("should display paragraph on third onboarding step", function () {
     cy.visit("/")
       .then(() => {
-        setComponentState("onboarding", "nextStep", 2);
+        cy.appMethod("setState", { visible: true, currentStep: 2 });
       })
       .then(() => {
         cy.contains(
@@ -92,7 +86,7 @@ describe("Onboarding", () => {
   it("should display continue button on third onboarding step", function () {
     cy.visit("/")
       .then(() => {
-        setComponentState("onboarding", "nextStep", 2);
+        cy.appMethod("setState", { visible: true, currentStep: 2 });
       })
       .then(() => {
         cy.contains("Next").should("be.visible");
@@ -102,7 +96,7 @@ describe("Onboarding", () => {
   it("should display image next to third step information", function () {
     cy.visit("/")
       .then(() => {
-        setComponentState("onboarding", "nextStep", 2);
+        cy.appMethod("setState", { visible: true, currentStep: 2 });
       })
       .then(() => {
         cy.contains("For Women")
@@ -120,7 +114,7 @@ describe("Onboarding", () => {
   it("should display heading on fourth onboarding step", function () {
     cy.visit("/")
       .then(() => {
-        setComponentState("onboarding", "nextStep", 3);
+        cy.appMethod("setState", { visible: true, currentStep: 3 });
       })
       .then(() => {
         cy.contains("Fix me up").should("be.visible");
@@ -130,7 +124,7 @@ describe("Onboarding", () => {
   it("should display paragraph on fourth onboarding step", function () {
     cy.visit("/")
       .then(() => {
-        setComponentState("onboarding", "nextStep", 3);
+        cy.appMethod("setState", { visible: true, currentStep: 3 });
       })
       .then(() => {
         cy.contains("Subscribe to your crate!").should("be.visible");
@@ -140,7 +134,7 @@ describe("Onboarding", () => {
   it("should display continue button on fourth onboarding step", function () {
     cy.visit("/")
       .then(() => {
-        setComponentState("onboarding", "nextStep", 3);
+        cy.appMethod("setState", { visible: true, currentStep: 3 });
       })
       .then(() => {
         cy.contains("Start").should("be.visible");
@@ -176,7 +170,7 @@ describe("Onboarding", () => {
   it("should display onboarding on next visit when user didnt passed last step", function () {
     cy.visit("/")
       .then(() => {
-        setComponentState("onboarding", "nextStep", 3);
+        cy.appMethod("setState", { visible: true, currentStep: 3 });
       })
       .then(() => {
         cy.visit("/").then(() => {
