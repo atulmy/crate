@@ -1,5 +1,3 @@
-import { hasOperationName } from "./testUtils";
-
 export const hasOperationName = (req, operationName) => {
   const { body } = req;
 
@@ -22,15 +20,20 @@ export const setResponseLoadingState = (
   operationName: string,
   url: string = "http://localhost:8000/"
 ) => {
-  const trigger = new Promise(() => {});
+  let sendResponse: (value: unknown) => void;
+  const trigger = new Promise((resolve) => {
+    sendResponse = resolve;
+  });
 
   cy.intercept(url, (req) => {
     if (hasOperationName(req, operationName)) {
-      trigger.then(() => {
+      return trigger.then(() => {
         req.reply();
       });
     }
   });
+
+  return sendResponse;
 };
 
 export const getReactFiber = (el: any) => {

@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import { curry } from "cypress/types/lodash";
 import { userCredentials } from "../../../../api/src/__tests__/testData";
 import { aliasQuery, setResponseLoadingState } from "../../support/testUtils";
 
@@ -40,7 +41,15 @@ describe("Sign Up", () => {
   });
 
   it("should not sign up when user exists", function () {
-    cy.signUp("mockedName", userCredentials.email, this.credentials.password);
+    cy.appMethod("setState", {
+      user: {
+        name: "mockedName",
+        password: userCredentials.password,
+        email: userCredentials.email,
+      },
+    }).then(() => {
+      cy.get("form").submit();
+    });
 
     cy.contains(
       `The email ${userCredentials.email} is already registered. Please try to login.`
@@ -53,15 +62,41 @@ describe("Sign Up", () => {
       .should("have.attr", "href", "/user/login");
   });
 
-  it("should display toast when request is in pending state", function () {
-    setResponseLoadingState("userSignup");
+  it("should display loading info in toast when request is in pending state", function () {
+    const sendResponse = setResponseLoadingState("userSignup");
+    cy.appMethod("setState", {
+      user: {
+        name: this.credentials.name,
+        password: this.credentials.password,
+        email: this.credentials.email,
+      },
+    });
+    cy.get("form").submit();
 
-    cy.signUp(
-      this.credentials.name,
-      this.credentials.email,
-      this.credentials.password
-    );
+    cy.contains("Signing you up, please wait...")
+      .should("be.visible")
+      .then(sendResponse);
+  });
 
-    cy.contains("Signing you up, please wait...").should("be.visible");
+  it("should display generic toast on request error", function () {
+    cy.intercept("http://localhost:8000/", (req) => {
+      aliasQuery(req, "userSignup");
+
+      req.reply({ statusCode: 404 });
+    });
+
+    cy.appMethod("setState", {
+      user: {
+        name: "name",
+        password: userCredentials.password,
+        email: userCredentials.email,
+      },
+    }).then(() => {
+      cy.get("form").submit();
+    });
+
+    cy.contains(
+      "There was some error signing you up. Please try again."
+    ).should("be.visible");
   });
 });
