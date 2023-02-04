@@ -34,13 +34,20 @@ declare namespace Cypress {
     getProducts(): Chainable<void>;
     getProductRelated(id: number): Chainable<any>;
     omitOnboarding(): Chainable<void>;
+    getComponent(): Chainable<JQuery<HTMLElement>>;
+    appMethod(method: string, args: any): Chainable<void>;
   }
 }
+
+Cypress.Commands.add("appMethod", (method, args) => {
+  cy.window().its("app").invoke(method, args);
+});
 
 Cypress.Commands.add("signUp", (name, email, password) => {
   cy.get('input[placeholder="Name"').type(name);
   cy.get('input[placeholder="Email"').type(email);
   cy.get('input[placeholder="Password"').type(password);
+
   cy.get("form").submit();
 });
 
