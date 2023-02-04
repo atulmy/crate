@@ -99,4 +99,26 @@ describe("Sign Up", () => {
       "There was some error signing you up. Please try again."
     ).should("be.visible");
   });
+
+  it("should hide toast after specified time", function () {
+    cy.clock();
+    cy.intercept("http://localhost:8000/", (req) => {
+      aliasQuery(req, "userSignup");
+
+      req.reply({ statusCode: 404 });
+    });
+
+    cy.appMethod("setState", {
+      user: {
+        name: "name",
+        email: userCredentials.email,
+        password: userCredentials.password,
+      },
+    }).then(() => cy.get("form").submit());
+
+    cy.contains("There was some error signing you up. Please try again.")
+      .should("be.visible")
+      .then((elem) => cy.tick(5000).then(() => elem))
+      .should("not.exist");
+  });
 });
