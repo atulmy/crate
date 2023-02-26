@@ -3,7 +3,7 @@
     "username": "root",
     "password": "string123",
     "database": "crate",
-    "host": "127.0.0.1",
+    "host": "mysql",
     "dialect": "mysql",
     "seederStorage": "sequelize"
   },
@@ -11,7 +11,7 @@
     "username": "root",
     "password": "string123",
     "database": "crate",
-    "host": "127.0.0.1",
+    "host": "mysql",
     "dialect": "mysql",
     "seederStorage": "sequelize"
   }

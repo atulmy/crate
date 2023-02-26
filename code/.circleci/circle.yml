@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    machine:
+      docker_layer_caching: false
+    steps:
+    - checkout
+    - run: docker-compose build
+    - run: docker-compose up --abort-on-container-exit --exit-code-from e2e
+    - run: cat /web/cypress/results/output.xml
+workflows:
+  build:
+    jobs:
+    - build
+  version: 2

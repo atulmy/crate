@@ -18,15 +18,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "7.11.6",
-    "@babel/core": "7.11.6",
+    "@babel/core": "^7.11.6",
     "@babel/node": "7.10.5",
     "@babel/plugin-transform-runtime": "7.11.5",
     "@babel/preset-env": "7.11.5",
-    "babel-cli": "^6.26.0",
     "nodemon": "2.0.4"
   },
   "dependencies": {
+    "@babel/cli": "^7.21.0",
     "@babel/runtime": "7.11.2",
     "bcrypt": "5.0.0",
     "body-parser": "1.19.0",

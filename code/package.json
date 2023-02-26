@@ -11,7 +11,9 @@
     "setup:mobile": "npm install --prefix mobile",
     "start": "concurrently 'npm run start:web' 'npm run start:api' --kill-others --names 'web,api'",
     "start:web": "npm run start --prefix web",
-    "start:api": "npm run start --prefix api"
+    "start:api": "npm run start --prefix api",
+    "build": "docker-compose build",
+    "up": "docker-compose up --abort-on-container-exit --exit-code-from cypress"
   },
   "repository": {
     "type": "git",
