@@ -1,3 +1,8 @@
+> # 🆕 Upgraded version is now available!
+> An upgraded and more modern version with full-stack monorepo, featuring an event-driven, highly scalable architecture using Node.js, React, Redis, MongoDB, and Docker is now available,
+ check out [github.com/atulmy/fullstack-event-driven-architecture](https://github.com/atulmy/fullstack-event-driven-architecture)
+
+
 ![Crate](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/hero-with-link.png)
 
 # Crate 👕👖📦
